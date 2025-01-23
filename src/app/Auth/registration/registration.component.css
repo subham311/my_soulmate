@@ -1,0 +1,22 @@
+/* .example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  } */
+
+  ::ng-deep .mat-horizontal-stepper-header{
+    pointer-events: none !important;
+}
+
+.profList_link_bot, .wish_link_bot, .dash_link_bot{display: none;}

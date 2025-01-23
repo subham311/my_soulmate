@@ -1,0 +1,331 @@
+
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+<!-- <div class="forDesktopHeader_login"><app-after_login_header_Global></app-after_login_header_Global></div> -->
+
+
+<!-- <div class="forResponsiveHeader_login"><app-headerResponsive></app-headerResponsive></div> -->
+
+
+
+
+	<!-- <div class="col-sm-3 float-left portfolio_left">
+
+		<app-leftBar_after_login></app-leftBar_after_login>
+
+		
+	</div> -->
+		
+	<div class="col-sm-12 float-left portfolio_right">
+
+		<div class="sectionTitle_Res mb-3">
+			<button (click)="goBack()" class="backBtn"> <img src="assets/images/turn-back.png" alt=""/> Back</button> 
+			<h2>Dashboard</h2>
+		  </div>
+
+	  <div class="portfolio_right_sub">
+
+		
+			
+		<div class="portfolio_block">
+			<div class="title_sec">
+			  <h2>Rashi Chart</h2>
+		  </div>
+		  
+		  <div class="rashiChart">
+	  <div class="centerChak rashiChart_padd">
+		  <div>
+			  <p><strong>{{this.user_basic_info_New?.u_name}}</strong></p>
+			  <p>{{this.user_basic_info_New?.dob_date}}</p>
+			  <p>{{this.user_basic_info_New?.dob_time}}</p>
+			  <!-- <p>{{this.user_basic_info_New?.dob | date:'mediumDate'}}</p>
+			  <p>{{this.user_basic_info_New?.dob | date:"shortTime"}}</p> -->
+			  <p>{{userBirthLocation?.location_name}}</p>
+		  </div>
+	  </div>
+		  
+		  
+	  
+	  
+	  <div class="rashiChart_1 rashiChart_padd">
+	  <span class="number">1</span>
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+	  <p *ngFor="let item of rashiData let i = index">
+		  <ng-container *ngIf="item?.position==1">{{item?.planet_name.substr(0,3)}} </ng-container>
+		  
+  
+	  </p>
+	  </div>
+	  </div>
+	  <div class="rashiChart_2 rashiChart_padd">
+	  <span class="number">2</span>
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+		  <p *ngFor="let item of rashiData let i = index">
+			  <ng-container *ngIf="item?.position==2">{{item?.planet_name.substr(0,3)}} </ng-container>
+  
+		  </p>
+		  </div>
+	  </div>
+		  
+	  <div class="rashiChart_3 rashiChart_padd">
+	  <span class="number">3</span>	
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+		  <p *ngFor="let item of rashiData let i = index">
+			  <ng-container *ngIf="item?.position==3">{{item?.planet_name.substr(0,3)}} </ng-container>
+  
+		  </p>
+		  </div>
+	  </div>
+		  
+	  <div class="rashiChart_4 rashiChart_padd">
+	  <span class="number">4</span>
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+		  <p *ngFor="let item of rashiData let i = index">
+			  <ng-container *ngIf="item?.position==4">{{item?.planet_name.substr(0,3)}} </ng-container>
+  
+		  </p>
+		  </div>
+	  </div>
+		  
+	  <div class="rashiChart_5 rashiChart_padd">
+	  <span class="number">5</span>
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+		  <p *ngFor="let item of rashiData let i = index">
+			  <ng-container *ngIf="item?.position==5">{{item?.planet_name.substr(0,3)}}  </ng-container>
+  
+		  </p>
+		  </div>
+	  </div>
+		  
+	  <div class="rashiChart_6 rashiChart_padd">
+	  <span class="number">6</span>
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+		  <p *ngFor="let item of rashiData let i = index">
+			  <ng-container *ngIf="item?.position==6">{{item?.planet_name.substr(0,3)}}  </ng-container>
+  
+		  </p>
+		  </div>
+	  </div>
+		  
+	  <div class="rashiChart_7 rashiChart_padd">
+		  <span class="number">7</span>
+		  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+			  <p *ngFor="let item of rashiData let i = index">
+				  <ng-container *ngIf="item?.position==7">{{item?.planet_name.substr(0,3)}}  </ng-container>
+			  </p>
+			  </div>
+	  </div>
+		  
+	  <div class="rashiChart_8 rashiChart_padd">
+		  <span class="number">8</span>
+		  <div class="dataSec">
+			<!-- <p>AAA </p>
+			<p>BBB </p>
+			<p>CCC </p>	 -->
+			  <p *ngFor="let item of rashiData let i = index">
+				  <ng-container *ngIf="item?.position==8">{{item?.planet_name.substr(0,3)}} </ng-container>
+  
+			  </p>
+			  </div>
+	  </div>
+		  
+	  <div class="rashiChart_9 rashiChart_padd">
+	  <span class="number">9</span>	
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+		  <p *ngFor="let item of rashiData let i = index">
+			  <ng-container *ngIf="item?.position==9">{{item?.planet_name.substr(0,3)}} </ng-container>
+		  </p>
+		  </div>
+	  </div>
+		  
+	  <div class="rashiChart_10 rashiChart_padd">
+	  <span class="number">10</span>
+	  <div class="dataSec">
+		<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+		  <p *ngFor="let item of rashiData let i = index">
+			  <ng-container *ngIf="item?.position==10">{{item?.planet_name.substr(0,3)}} </ng-container>
+  
+		  </p>
+		  </div>
+	  </div>
+		  
+	  <div class="rashiChart_11 rashiChart_padd">
+		  <span class="number">11</span>
+		  <div class="dataSec">
+			<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+			  <p *ngFor="let item of rashiData let i = index">
+				  <ng-container *ngIf="item?.position==11">{{item?.planet_name.substr(0,3)}} </ng-container>
+  
+			  </p>
+			  </div>
+	  </div>	
+		  
+	  <div class="rashiChart_12 rashiChart_padd">
+		  <span class="number">12</span>
+		  <div class="dataSec">
+			<!-- <p>AAA </p>
+		<p>BBB </p>
+		<p>CCC </p> -->
+			  <p *ngFor="let item of rashiData let i = index">
+				  <ng-container *ngIf="item?.position==12">{{item?.planet_name.substr(0,3)}}  </ng-container>
+  
+			  </p>
+			  </div>
+	  </div>
+		  
+	  
+		  
+		  
+		  
+		  
+		  
+	  </div>
+  
+  
+		  
+	  </div>
+			
+		  
+		  
+
+	<!-- <div class="modal fade" id="exampleModalNotice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal_Notice" role="document">
+	<div class="modal-content">
+	<div class="loginMainFrame">
+	<div class="modal-body bodyCus">
+
+	<p>Thank you for registering your profile at My Soul Mate! We're excited to   be part of your journey to find that cosmic bond for everlasting love.</p>
+	<p>  Starting from Before or After 1st December, 2023, you'll have full access to all the search   options that will help you discover your perfect match. Whether you're   looking for compatibility in personalities, interests, or life goals,   we've got you covered.</p>
+	<p>  In the meantime, we suggest you to upload   your KYC details. This step will help us ensure the authenticity and   security of our platform, creating a safe and trustworthy environment   for your search.</p>
+	<p>  Remember, the gateway to your happily ever after   begins right now. Stay tuned for updates and matches that could change   your life forever.</p>
+	<p>  Thank you for choosing My Soul Mate as your   partner in this exciting journey. We wish you all the best in your   search for love and happiness.</p>
+
+	<p>Warm regards, <br>
+	My Soul Mate Teams</p>
+	<button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close" (click)="removePopup()"><span aria-hidden="true">&times;</span></button>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div> -->
+
+
+	  
+		  
+	<!-- <div class="portfolio_block">
+		  <div class="title_sec">
+			<h2>Discover Matches</h2>
+			<p>Explore profiles from different categories that match your preferences.</p>
+		</div>
+		
+		<div class="profile_Block_outside">
+		
+		<div class="row">
+			
+
+			  
+
+				<div class="col-sm-4 float-left" *ngFor="let newData of partnerList; let i=index">
+					<div class="profile_block_main">
+					<div class="profile_block_main_thum">
+						<a (click)="memberCheckFn(newData.basic_information.value[0]?.id)" class="detailsLink">
+
+						<ng-container *ngIf="newData.basic_information.value[0]?.file_path; else noThumbnail">
+							<img src="{{imageBaseUrl+newData.basic_information.value[0]?.file_path}}" alt=""/>
+						</ng-container>
+
+						<ng-template #noThumbnail>
+						<div *ngIf="newData.basic_information.value[0]?.gender == 'M';then his_cont else her_cont"> here is ignored</div>
+						<ng-template #his_cont><img src="assets/images/male_pro_big_dash.png" alt=""/></ng-template>
+						<ng-template #her_cont><img src="assets/images/Fem_pro_big_dash.png" alt=""/></ng-template>
+
+						</ng-template>
+							
+
+						</a></div>
+					<div class="profile_block_main_details">
+					<h3>{{nameShort(newData.basic_information.value[0]?.u_name)}}</h3>
+
+		<p>{{ageCalculat(newData.basic_information.value[0]?.dob | date:'yyyy-MM-dd')}}  yrs, Height: {{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+
+	<br>
+		
+	{{newData.groom_location?.value[0]?.occu_name}},<br>
+		
+		{{newData.groom_location?.value[0]?.work_location}}</p>
+					</div>
+					</div>
+				</div>
+		
+		<div class="col-sm-12">
+			<a routerLink="/profile_list" class="view_list_profile">View List</a>
+		</div>
+
+		<div class="noteSection" *ngIf="partnerList?.length == 0">*Make sure you provided this details in edit preferences</div>
+
+		</div>
+		
+		</div>
+		
+	</div> -->
+	<!-- <ng-container *ngIf="this.userData_1.profile_verify_flag != 'Y'"> -->
+	<div class="portfolio_form_fill" *ngIf="profileVerification.profile_flag != 'Y'">
+	<div class="title_sec_Id" >
+			<h2>Your profile is pending ID Verification</h2>
+			<p>Explore profiles from different categories that match your preferences.</p>
+		</div>
+	
+	<div class="portfolio_slide_main">
+	<div class="portfolio_js_slid">
+	
+	<div class="portfolio_slide">
+	<div class="imgSec"><img src="assets/images/id_verify.png" alt=""/></div>
+	<div class="content_right">
+	<h2>Get 10x more responses by verifying your profile.</h2>
+	<a routerLink="/user/id_verification" class="link">Get your profile verified</a>
+	</div>
+	</div>
+	
+
+		
+	</div>
+	</div>
+		
+	</div>
+		  
+<!-- </ng-container> -->
+		  
+	
+	</div>
+		
+	</div>
+	
+
+

@@ -1,0 +1,107 @@
+
+<!-- <app-Before_login_header_N_Home></app-Before_login_header_N_Home> -->
+
+<!-- <div class="rejistrationPageLogo rejistrationPageLogo_Page"> <app-Before_login_header_N_Home [hidden]="withoutLogin_headerShow"></app-Before_login_header_N_Home></div> -->
+  <!-- <div class="rejistrationPageLogo rejistrationPageLogo_Page"> <app-after_login_header_Global [hidden]="afterLogin_headerShow"></app-after_login_header_Global></div> -->
+
+<!-- <div class="rejistrationPageLogo rejistrationPageLogo_Page"> <app-Before_login_header_N_Home></app-Before_login_header_N_Home></div> -->
+
+
+<div class="innerMain_wraper">
+	<div class="otp_wrapper">
+
+	<div class="col-sm-12">
+		<div class="white_block white_blockOTP">
+
+		<div class="row">
+
+		<div class="col-sm-12">
+		<div class="title_sec_main">
+			<h2>Login with OTP </h2></div>
+			<div class="innerDefaultPage">
+<!-- {{afterSendOTP_Click}} -->
+        <div class="iLaWub" [hidden]="afterSendOTP_Click">
+            <div class="otpMsg">OTP has been sent to {{nameShort()}}</div>
+            <div class="editOtp"><a (click)="editeMobileNum()">Edit</a></div>
+        </div>
+
+        <h3 [hidden]="hide_Send_OTP">Enter Mobile No.</h3>
+
+        <h4 [hidden]="hide_Send_OTP">We will send you an OTP to login</h4>
+
+        
+<!-- {{deActiveUser_Msg_Show}} -->
+       <div class="otpField_Main">
+<!-- {{deActiveUser_Msg_Show}} -->
+        <div class="deActiveUser_Msg_otp" *ngIf="!deActiveUser_Msg_Show">
+          <div class="deActiveUser_Msg_otp_Sub">
+          {{afterLoginMsg?.msg}}
+          </div>
+        </div>
+
+        <div class="otpField_Main_sub" [formGroup]="otpFormGroup" [hidden]="hide_Send_OTP">
+          <div class="otpField_Sub_field">
+            <div class="field_outer_label field_outer_label_OTP">
+        <mat-form-field class="example-full-width">
+          <mat-label>Mobile No.</mat-label>
+          <input matInput type="tel" formControlName="otp_phone" minlength=10 maxlength=10>
+          <!-- <input matInput formControlName="otp_phone" minlength=10 maxlength=10> -->
+
+          </mat-form-field>
+          
+          <!-- <div class="validation_OTP" *ngIf="!otpFormGroup.controls.otp_phone?.valid && (otpFormGroup.controls.otp_phone?.dirty ||otpFormGroup.controls.otp_phone?.touched)"> -->
+           <!-- {{signUpMsg}} -->
+            <div class="validation_OTP" [hidden]="signUpMsg">
+           <p>  <span>This Mobile no. is not registered with us</span> </p>
+            <p>New to mysoulmate.co.in?  <a routerLink="/home">Sign Up Free</a> </p>
+          </div>
+        </div>
+
+          
+        </div>
+
+        <input type="button" value="Send OTP" (click)="sendOTP_login($event)" [disabled]="!otpFormGroup.valid">
+      
+        </div>
+
+        <div class="otpMain" *ngIf="!afterSendOTP_Click">
+        <!-- <div class="otpMain"> -->
+      
+          <label class="otp">
+            <div class="field_outer_label field_outer_labelOTPLogin">
+              <p class="a-o-i">Enter verification code</p>
+              <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
+                </div>
+          </label>
+    
+          <label class="resendOtp"> <button (click)="resendOTP()"><i class="fa fa-refresh" aria-hidden="true"></i> Resend OTP</button>  <span>{{display_new}}</span>       </label>
+    
+          <div class="otpExpair" [hidden]="showExpairMsg"> <span> Your Otp has Expired</span></div>
+
+          <div class="loginwithOTP"> 
+            <input type="submit" class="otpLoginBtn" value="Login" (click)="login_Fn()" [disabled]="!otpFormGroup.valid || !verifyBtnActive">
+            <!-- <input type="submit" class="otpLoginBtn" value="Login" (click)="login_Fn()"> -->
+
+          </div>
+        </div>
+
+        
+
+       </div>
+
+</div>
+
+		
+		</div>
+
+		</div>
+	</div>
+
+	</div>
+	</div>
+
+  <div class="footer_bottomSec">
+    <a routerLink="/home" class="login_link_bot"><i class="fa fa-home" aria-hidden="true"></i>
+    <span>Home</span>
+    </a>
+    </div>

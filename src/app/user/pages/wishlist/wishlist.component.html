@@ -1,0 +1,199 @@
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+<!-- <div class="forDesktopHeader_login"><app-after_login_header_Global></app-after_login_header_Global></div> -->
+
+
+<!-- <div class="forResponsiveHeader_login"><app-headerResponsive></app-headerResponsive></div> -->
+
+
+
+    <div class="col-sm-12 float-left portfolio_right_wish">
+      <div *ngIf="inProgressShort; else sowData" style="text-align:center; margin-top:20px;">
+				<div class="spinner-border"></div>
+			</div>
+      <!-- <div class="portfolio_right"> -->
+        <ng-template #sowData>
+
+        <div class="sectionTitle_Res">
+          <button (click)="goBack()" class="backBtn"> <img src="assets/images/turn-back.png" alt=""/> Back</button> <h2>Wishlist</h2> 
+        </div>
+
+        <div *ngIf="dataArray?.length > 0; else noData">
+              
+
+          <div class="partnerListMobile">
+            <owl-carousel-o [options]="customOptions">
+              <ng-template carouselSlide *ngFor="let newData of dataArray; let i=index">
+                <div class="portfolio_Search_list_res">
+
+                  
+
+                  
+                    <!-- <div class="thumbnailSec_res" [style.background-image]="'url(' + imageBaseUrl+newData.basic_information.value[0]?.file_path + ')'"> -->
+                      <div class="thumbnailSec_res">
+
+                      <ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">
+                        <!-- <button mat-mini-fab matTooltip="Remove From Wishlist"  class="astro_link_wish" color="warn"  (click)="enableButton(newData.basic_information.value[0]?.id,i)" aria-label="Example icon button with a heart icon">
+                                <mat-icon>favorite</mat-icon>
+                              </button> -->
+                              <div class="removeFevarit_res">
+      <button matTooltip="Remove From Wishlist"  class="removeFevarit_btn" (click)="enableButton(newData.basic_information.value[0]?.id,i)"><i class="fa fa-heart" aria-hidden="true"></i>
+         Remove</button>
+        </div>
+                        </ng-container>
+
+                        <!-- <div class="removeFevarit_res">
+                          <div class="removeFevarit_btn" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+                          </div> -->
+                      
+<div class="verificationPartner_res">
+<div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+
+<div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+
+</div>
+<div class="thumbnailSec_Descrip_res">
+
+<h3>{{newData.basic_information.value[0]?.u_name}}
+<ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+<span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+</ng-container>
+</h3>
+
+<p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+{{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+
+, {{newData.basic_information.value[0]?.mother_tong}},, </p>
+<p><strong class="title">Cast:</strong>
+{{newData.basic_information.value[0]?.caste_name}} 
+<strong class="title">Occupation:
+</strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+</div>
+
+<ng-container *ngIf="newData.basic_information.value[0]?.file_path !== null; else noThumbnail">
+  <img src="{{imageBaseUrl+newData.basic_information.value[0]?.file_path}}" alt="" class="imgThum_res"/>
+</ng-container>
+
+<ng-template #noThumbnail>
+<div
+*ngIf="newData.basic_information.value[0]?.gender == 'M';then his_cont else her_cont">
+here is ignored</div>
+<ng-template #his_cont>
+  <div class="thumbnailSec_res" [style.background-image]="'url(assets/images/male_pro_big_list.png)'">
+
+    <ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">
+      <button mat-mini-fab matTooltip="Remove From Wishlist"  class="astro_link_wish" color="warn"  (click)="enableButton(newData.basic_information.value[0]?.id,i)" aria-label="Example icon button with a heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+      </ng-container>
+
+    <div class="verificationPartner_res">
+      <div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+      
+      <div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+      
+      </div>
+      <div class="thumbnailSec_Descrip_res">
+      
+      <h3>{{newData.basic_information.value[0]?.u_name}}
+      <ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+      <span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+      </ng-container>
+      </h3>
+      
+      <p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+      date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+      {{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+      
+      , {{newData.basic_information.value[0]?.mother_tong}},, </p>
+      <p><strong class="title">Cast:</strong>
+      {{newData.basic_information.value[0]?.caste_name}} 
+      <strong class="title">Occupation:
+      </strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+      class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+      </div>
+  </div>
+</ng-template>
+<ng-template #her_cont>
+  <div class="thumbnailSec_res" [style.background-image]="'url(assets/images/Fem_pro_big_list.png)'">
+
+    <ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">
+      <!-- <button mat-mini-fab matTooltip="Remove From Wishlist"  class="astro_link_wish" color="warn"  (click)="enableButton(newData.basic_information.value[0]?.id,i)" aria-label="Example icon button with a heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button> -->
+            <div class="removeFevarit_res">
+<button matTooltip="Remove From Wishlist"  class="removeFevarit_btn" (click)="enableButton(newData.basic_information.value[0]?.id,i)"><i class="fa fa-heart" aria-hidden="true"></i>
+Remove</button>
+</div>
+      </ng-container>
+      
+    <div class="verificationPartner_res">
+      <div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+      
+      <div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+      
+      </div>
+      <div class="thumbnailSec_Descrip_res">
+      
+      <h3>{{newData.basic_information.value[0]?.u_name}}
+      <ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+      <span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+      </ng-container>
+      </h3>
+      
+      <p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+      date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+      {{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+      
+      , {{newData.basic_information.value[0]?.mother_tong}},, </p>
+      <p><strong class="title">Cast:</strong>
+      {{newData.basic_information.value[0]?.caste_name}} 
+      <strong class="title">Occupation:
+      </strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+      class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+      </div>
+  </div>
+  <!-- <img src="assets/images/Fem_pro_big_list.png" alt="" class="imgThum_res" /> -->
+</ng-template>
+</ng-template>
+
+                    </div>
+
+                    
+
+                  <div class="thumbnailSec_button_res">
+                    <p class="dosa_res">Mongal Dosha: <ng-container *ngIf="newData.mongal_dasha == '100'"> <span
+                      style="color: red;">High</span></ng-container>
+                      <ng-container *ngIf="newData.mongal_dasha == '80'">
+                      Medium</ng-container>
+                      <ng-container *ngIf="newData.mongal_dasha == '20'">
+                      Low</ng-container>
+                      <ng-container *ngIf="newData.mongal_dasha == '0'">
+                      None</ng-container></p>
+                    <!-- <button type="button" class="astro_link_res" data-toggle="modal" data-target="#sendMsgPopup" (click)="showAstroPopup(newData.basic_information.value[0]?.id, this.ownProfileMatchDt2?.id)"><img src="assets/images/astrology.png" alt="" /> Astro Numerical Match </button> -->
+                  
+<a (click)="memberCheckFn(newData.basic_information.value[0]?.id +'&'+ newData.freetoSee)" class="details_res">Details</a>
+                  </div>
+                </div>
+
+              </ng-template>
+            </owl-carousel-o>
+            
+          </div>
+          
+              
+            
+        </div>
+      
+        <ng-template #noData class="noDataDiv_wish" > 
+          <p class="noData_wish">Wishlist is empty...!</p>
+          <img src="assets/images/no_data_wishlist.png" alt="" />              
+          <!-- <img src="assets/images/no_data_wish_male.png" alt="" /> -->
+        </ng-template>
+      </ng-template>
+      <!-- </div> -->
+    </div>
+
+    
+

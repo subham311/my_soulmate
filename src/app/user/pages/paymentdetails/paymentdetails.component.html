@@ -1,0 +1,305 @@
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+<!-- <div class="forDesktopHeader_login"><app-after_login_header_Global></app-after_login_header_Global></div> -->
+
+<!-- <div class="forResponsiveHeader_login"><app-headerResponsive></app-headerResponsive></div> -->
+
+
+
+    
+	<!-- <div class="col-sm-3 float-left portfolio_left">
+
+		<app-leftBar_after_login></app-leftBar_after_login>
+				
+		
+	</div> -->
+		
+	<div class="col-sm-12 float-left portfolio_right">
+
+    <div class="sectionTitle_Res mb-3">
+      <button (click)="goBack()" class="backBtn"> <img src="assets/images/turn-back.png" alt=""/> Back</button> 
+      </div>
+      
+		<div class="portfolio_right_sub">
+		  
+			<div class="portfolio_form_fill">
+			<div class="title_sec">
+					<h2><img src="assets/images/paymentHistory.png" alt="">Payment Details</h2>
+				</div>
+			
+			<div class="paymentListMainForm">
+       <!-- {{compulsoryInformation | json}} -->
+
+      <div class="paymentListMainFormSub">
+      <!-- <div class="portfolio_edit_Form_2" [formGroup]="paymentForm"> -->
+      <div class="paymentdetailsForm" [formGroup]="paymentForm">
+
+      <div class="">
+      <div class="form-group paymentDetail_row">
+
+
+      <div class="col-sm-4">
+      <div class="field_outer_label">
+      <mat-form-field class="example-full-width">
+      <mat-label>Subscription Plan</mat-label>
+      <!-- [(ngModel)]="compulsoryInformation.planName" -->
+      <input value="{{compulsoryInformation?.planName}} - ({{compulsoryInformation?.packagePeriod}} Months)" matInput [readonly]="true"/>
+      </mat-form-field>
+      </div>
+      </div>
+
+      <div class="col-sm-4">
+      <div class="field_outer_label">
+      <mat-form-field class="example-full-width">
+      <mat-label>Currency</mat-label>
+      <input value="{{compulsoryInformation?.currency}}" matInput [readonly]="true"/>
+      </mat-form-field>
+      </div>
+      </div>
+
+      <div class="col-sm-4">
+      <div class="field_outer_label">
+      <mat-form-field class="example-full-width">
+      <mat-label>Amount</mat-label>
+      <input value="{{compulsoryInformation?.amount}}" matInput [readonly]="true"/>
+      </mat-form-field>
+      </div>
+      </div>
+
+    </div>
+    
+   
+
+    <div class="form-group paymentDetail_row paymentDetail_row_Title">
+    <div class="col-sm-12"> <h2>Billing Information</h2> </div>
+    </div>
+
+    <div class="form-group paymentDetail_row">
+
+    <div class="col-sm-3">
+    <div class="field_outer_label">
+    <mat-form-field class="example-full-width">
+    <mat-label>Billing Name</mat-label>
+    <input value="" matInput formControlName="billingName"/>
+    </mat-form-field>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="field_outer_label">
+      <mat-form-field class="example-full-width">
+      <mat-label>Billing City</mat-label>
+      <input value="" matInput formControlName="billingCity"/>
+      </mat-form-field>
+      </div>
+      </div>
+  
+      <div class="col-sm-3">
+      <div class="field_outer_label">
+      <mat-form-field class="example-full-width">
+      <mat-label>Billing State</mat-label>
+      <input value="" matInput formControlName="billingState"/>
+      </mat-form-field>
+      </div>
+      </div>
+
+    </div>
+
+    <div class="form-group paymentDetail_row">
+
+      <div class="col-sm-12">
+      <div class="field_outer_label">
+      <mat-form-field class="example-full-width">
+        <mat-label>Billing Address</mat-label>
+        <textarea matInput formControlName="billingAddress"></textarea>
+      </mat-form-field>
+      </div>
+      </div>
+  
+      
+  
+      </div>
+
+    <div class="form-group paymentDetail_row">
+    <div class="col-sm-3">
+    <div class="field_outer_label">
+    <mat-form-field class="example-full-width">
+    <mat-label>Billing Zip</mat-label>
+    <input value="" matInput formControlName="billingZip"/>
+    </mat-form-field>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+    <div class="field_outer_label">
+    <mat-form-field class="example-full-width">
+    <mat-label>Billing Country</mat-label>
+    <input value="" matInput formControlName="billingCountry"/>
+    </mat-form-field>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+    <div class="field_outer_label">
+    <mat-form-field class="example-full-width">
+    <mat-label>Billing Tel</mat-label>
+    <input value="" matInput formControlName="billingTel"/>
+    </mat-form-field>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+    <div class="field_outer_label">
+    <mat-form-field class="example-full-width">
+    <mat-label>Billing Email</mat-label>
+    <input value="" matInput formControlName="billingEmail"/>
+    </mat-form-field>
+    </div>
+    </div>
+
+    </div>
+
+
+    <!-- <div class="form-group form_group_custome row">
+      <div class="col-sm-12">
+      
+          <section class="shiping_check">
+            <mat-checkbox formControlName="biling_shipinh"
+              (change)="shipingSameOrNot($event)">My Shipping Information is the same as my billing information</mat-checkbox>
+          </section>
+  
+      </div>
+      </div> -->
+
+  <!-- <div *ngIf="shipingForm_Show">
+  <div class="form-group form_group_custome row">
+  <div class="col-sm-12"> <h2>Shipping Information</h2> </div>
+  </div>
+
+  <div class="form-group form_group_custome row">
+  <div class="col-sm-3">
+  <div class="field_outer_label">
+  <mat-form-field class="example-full-width">
+  <mat-label>Shipping Name</mat-label>
+  <input [value]="checkBoxOnchangeValue ? this.paymentForm.controls.billingName.value : this.paymentForm.controls.shippingName.value" [readonly]="checkBoxOnchangeValue" matInput formControlName="shippingName"/>
+  </mat-form-field>
+  </div>
+  </div>
+
+  <div class="col-sm-3">
+  <div class="field_outer_label">
+  <mat-form-field class="example-full-width">
+  <mat-label>Shipping City</mat-label>
+  <input [value]="checkBoxOnchangeValue ? this.paymentForm.controls.billingCity.value : ''" [readonly]="checkBoxOnchangeValue" matInput formControlName="shippingCity"/>
+  </mat-form-field>
+  </div>
+  </div>
+
+  <div class="col-sm-3">
+  <div class="field_outer_label">
+  <mat-form-field class="example-full-width">
+  <mat-label>Shipping State</mat-label>
+  <input [value]="checkBoxOnchangeValue ? this.paymentForm.controls.billingState.value : ''" [readonly]="checkBoxOnchangeValue" matInput formControlName="shippingState"/>
+  </mat-form-field>
+  </div>
+  </div>
+
+
+  </div>
+
+  <div class="form-group form_group_custome row">
+
+  <div class="col-sm-12">
+  <div class="field_outer_label">
+  <mat-form-field class="example-full-width">
+  <mat-label>Shipping Address</mat-label>
+  <textarea [value]="checkBoxOnchangeValue ? this.paymentForm.controls.billingAddress.value : ''" [readonly]="checkBoxOnchangeValue" matInput formControlName="shippingAddress"></textarea>
+  </mat-form-field>
+  </div>
+  </div>
+
+
+
+  </div>
+
+
+
+  <div class="form-group form_group_custome row">
+  <div class="col-sm-3">
+  <div class="field_outer_label">
+  <mat-form-field class="example-full-width">
+  <mat-label>Shipping Zip</mat-label>
+  <input [value]="checkBoxOnchangeValue ? this.paymentForm.controls.billingZip.value : ''" [readonly]="checkBoxOnchangeValue" matInput formControlName="shippingZip"/>
+  </mat-form-field>
+  </div>
+  </div>
+
+  <div class="col-sm-3">
+  <div class="field_outer_label">
+  <mat-form-field class="example-full-width">
+  <mat-label>Shipping Country</mat-label>
+  <input [value]="checkBoxOnchangeValue ? this.paymentForm.controls.billingCountry.value : ''" [readonly]="checkBoxOnchangeValue"  matInput formControlName="shippingCountry"/>
+  </mat-form-field>
+  </div>
+  </div>
+
+  <div class="col-sm-3">
+  <div class="field_outer_label">
+  <mat-form-field class="example-full-width">
+  <mat-label>Shipping Tel</mat-label>
+  <input [value]="checkBoxOnchangeValue ? this.paymentForm.controls.billingTel.value : ''" [readonly]="checkBoxOnchangeValue" matInput formControlName="shippingTel"/>
+  </mat-form-field>
+  </div>
+  </div>
+
+
+
+  </div>
+
+  </div> -->
+
+      
+
+      </div>
+
+      <div class="portfolio_edit_Form_btn">
+      <button type="button" (click)="submit_subcriptionData()" [disabled]="!paymentForm.valid"> Submit </button>
+      </div>
+      </div>
+
+      </div>
+
+				
+			
+			<!-- <ng-container *ngIf="memberShipStatus?.plan_id == 'B'">
+				<h3>Basic</h3>
+			</ng-container>
+
+			<ng-container *ngIf="memberShipStatus?.plan_id == 'S'">
+				<h3>Standard</h3>
+			</ng-container>
+
+			<ng-container *ngIf="memberShipStatus?.plan_id == 'P'">
+				<h3>Premium</h3>
+			</ng-container> -->
+				
+			
+		
+			</div>
+				
+			</div>
+					
+			
+				  
+			
+			
+				  
+				  
+			
+				  
+			</div>
+	</div>
+		
+
+
+

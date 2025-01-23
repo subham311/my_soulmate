@@ -1,0 +1,100 @@
+
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+<!-- <div class="forDesktopHeader_login"><app-after_login_header_Global></app-after_login_header_Global></div> -->
+
+
+<!-- <div class="forResponsiveHeader_login"><app-headerResponsive></app-headerResponsive></div> -->
+
+
+
+
+		
+	<div class="col-sm-12 float-left portfolio_right">
+		<div class="sectionTitle_Res mb-3">
+			<button (click)="goBack()" class="backBtn"> <img src="assets/images/turn-back.png" alt=""/> Back</button> 
+		  </div>
+
+		<div class="white_block">
+			<div class="title_sec"><h2>Reset Password </h2></div>
+
+			<div class="edit_portfolio_field_group_main">
+				<div class="form-group setting_custome row" [formGroup]="passwordForm" autocomplete="off">
+					<div class="col-sm-6">
+						<div class="field_outer_label">
+							<mat-form-field>
+								<mat-label>Enter Old Password</mat-label>
+								<input matInput formControlName="old_pass" [type]="hide_old ? 'password' : 'text'"  #pw_old>
+								<button mat-icon-button matSuffix (click)="hide_old = !hide_old" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_old">
+								  <mat-icon>{{hide_old ? 'visibility_off' : 'visibility'}}</mat-icon>
+								</button>
+							  </mat-form-field>
+							  <div class="validation_div" *ngIf="!passwordForm.controls.old_pass?.valid && (passwordForm.controls.old_pass?.dirty ||passwordForm.controls.old_pass?.touched)"> *Old Password is required  </div>
+					</div>
+					</div>
+
+					</div>
+
+					<div class="form-group setting_custome row" [formGroup]="passwordForm" autocomplete="off">
+
+							
+							
+						<div class="col-sm-6">
+							<div class="field_outer_label">
+								<mat-form-field>
+									<mat-label>Enter New Password</mat-label>
+									<input matInput formControlName="new_pass_1" [type]="hide_new ? 'password' : 'text'"  #pw (keyup)="validatePasswordMatch()" (keyup)="validCheck($event)">
+									<button mat-icon-button matSuffix (click)="hide_new = !hide_new" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_new">
+									  <mat-icon>{{hide_new ? 'visibility_off' : 'visibility'}}</mat-icon>
+									</button>
+								  </mat-form-field>
+
+	<div *ngIf="!checkPassword" style="position: absolute; top: 100%; line-height: 15px;">
+	<small class="text-danger">
+	<ng-container *ngIf="errorPass;else templateName">
+		{{errorPass}}
+	</ng-container>
+	<ng-template #templateName>Minimum 8 characters, Minimum one uppercase and One special Character.</ng-template>
+	</small>
+	</div>
+
+	<!-- <div class="validation_div" *ngIf="!passwordForm.controls.new_pass?.valid && (passwordForm.controls.new_pass?.dirty ||passwordForm.controls.new_pass?.touched)"> *Please provide a password </div> -->
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="field_outer_label">
+								<mat-form-field>
+									<mat-label>Confirm Password</mat-label>
+									<input matInput formControlName="new_pass" [type]="hide_con ? 'password' : 'text'"  #cpw (keyup)="validatePasswordMatch()" (keyup)="validCheck($event)">
+									<button mat-icon-button matSuffix (click)="hide_con = !hide_con" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_con">
+									  <mat-icon>{{hide_con ? 'visibility_off' : 'visibility'}}</mat-icon>
+									</button>
+								  </mat-form-field>
+
+<div *ngIf="!checkPassword" style="position: absolute; top: 100%; line-height: 15px;">
+<small class="text-danger">
+<ng-container *ngIf="errorPass;else templateName">
+{{errorPass}}
+</ng-container>
+<ng-template #templateName>Minimum 8 characters, Minimum one uppercase and One special Character.</ng-template>
+</small>
+</div>
+
+
+<!-- <div class="validation_div" *ngIf="!passwordForm.controls.new_pass?.valid && (passwordForm.controls.new_pass?.dirty ||passwordForm.controls.new_pass?.touched)"> *Please provide a password </div> -->
+							
+								</div>
+						</div>
+						</div>
+								
+			</div>
+			 
+			
+				<div class="portfolio_edit_Form_btn">
+					<button type="button" (click)="savebtn()">Save</button>
+					</div>
+			</div>
+	</div>
+		
+	

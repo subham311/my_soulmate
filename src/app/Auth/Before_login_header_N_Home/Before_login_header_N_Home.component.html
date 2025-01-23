@@ -1,0 +1,158 @@
+<div class="header_top">
+	<div class="wrapper header_topSub">
+		<div class="logoSec"><a routerLink="/home">
+			<img src="assets/images/logo_new.png" alt="" class="forDesktop"/>
+			<!-- <img src="assets/images/logo_new_App.png" alt="" class="forMobile"/> -->
+			<img src="assets/images/logo_new.png" alt="" class="forMobile"/>
+		</a>
+		
+	</div>
+		<div class="topNavSec topNavSec_beforLog">
+		<ul class="beforeLogin">
+			<!-- <button (click)="testFn()">Test</button> -->
+		<!-- <li>  <a data-toggle="modal" routerLink="/customerSupport">Contact Us</a></li> -->
+			<!-- <li>  <a href="#">Help</a></li> -->
+			<li><span>Already a member?</span>   <a data-toggle="modal" data-target="#exampleModal" (click)="logout_Fnc()">Login</a></li>	
+		</ul>
+		</div>
+	</div>
+	</div>
+
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal_dialog_login" role="document">
+		  <div class="modal-content modal_content_cus" [hidden]="loginFormShoHid">
+			<div class="modal-header">
+			  <h5>Login</h5>
+			  <button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="loginMainFrame" [formGroup]="loginForm">
+			<div class="modal-body bodyCus">
+			
+		  <div class="form-group">
+			<div class="field_outer_label">
+				<mat-form-field>
+			  <mat-label>Phone Number</mat-label>
+			  <input matInput type="tel" aria-describedby="emailHelp" formControlName="login_field">
+		</mat-form-field>
+		<div class="validation_div" *ngIf="!loginForm.controls.login_field?.valid && (loginForm.controls.login_field?.dirty ||loginForm.controls.login_field?.touched)">
+		Please enter your phone number
+		</div>
+		</div>
+		</div>
+		<div class="form-group">
+
+		  <div class="field_outer_label">
+
+			<mat-form-field>
+			<mat-label>Password</mat-label>
+		  <input matInput type="password"  formControlName="password_field" [type]="hide ? 'password' : 'text'" (keyup)="enterPress_login($event)">
+		  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+			<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+		  </button>
+		</mat-form-field>
+		<div class="validation_div" *ngIf="!loginForm.controls.password_field?.valid && (loginForm.controls.password_field?.dirty ||loginForm.controls.password_field?.touched)">
+			Please enter your phone number
+		</div>
+	</div>
+	
+		</div>
+
+		
+		<div class="errorMsg_login" [hidden]="deActiveUser_Msg_Show">
+			<span class="text-danger">{{login_Data_respons?.msg}}</span>
+		</div>
+		<div class="form-check form-group form_check_cus">
+		  <div class="checkBoxDiv">
+			
+			<input type="checkbox" class="form-check-input mt-3" id="exampleCheck1" (change)="KeepmeLog($event)">
+		  <label class="form-check-label mt-3" for="exampleCheck1">Keep me logged in</label>
+		  </div>
+		  <div class="forgetPassDiv">
+			<!-- <a (click)="showForgetPassForm()">Forgot password?</a>  -->
+		  </div>
+		  
+		</div>
+				
+			</div>
+			  
+		  <div class="modalFooter_cus_Login">
+			  <div class="modalFooter_cus_Login_Full">
+			  <input type="button" value="Login" (click)="loginFunc()" [disabled]="loginForm.invalid">
+	  
+			  </div>
+
+			  <div class="Login_orSeparator__2UWgX"><span class="Login_txtOrSeparator__1DL4d">OR</span></div>
+
+			  <div class="modalFooter_cus_Login_Full">
+				<a (click)="leftNavFn('/otp-login')" class="otp_Login">Login with OTP</a>
+		
+				</div>
+			  
+			  
+		  </div>
+	  </div>
+	  
+	  
+	
+		  </div>
+
+		  <div class="modal-content modal_content_cus forget_pass" [hidden]="forgetPassFormShoHid">
+			<div class="modal-header">
+			  <h5>Forget Password</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			
+			<div class="loginMainFrame" [formGroup]="forgetPass">
+			<div class="modal-body bodyCus">
+			
+		  <div class="form-group">
+
+			<div class="field_outer_label">
+				<div class="iLaWub" *ngIf="linkSent">
+					<div class="otpMsg">Link has been sent to your registered email-id! </div>
+				</div>
+				<div class="iLaWub" *ngIf="linkNotSent">
+					<div class="otpMsg">Link has not been sent to your registered email-id! </div>
+				</div>
+				<mat-form-field>
+				<mat-label>Enter your registered email-id</mat-label>
+			  <input matInput type="email"  formControlName="reg_email">
+			</mat-form-field>
+			<div class="validation_OTP" *ngIf="emailIsNotExists">
+				<p>  <span>This email-id is not registered with us</span> </p>
+			</div>
+
+			<div class="validation_div" *ngIf="!forgetPass.controls.reg_email?.valid && (forgetPass.controls.reg_email?.dirty ||forgetPass.controls.reg_email?.touched)"> 
+				Email is not valid  
+			</div>
+
+		</div>
+
+		  
+		</div>
+
+				
+			</div>
+			  <!-- {{hidebtn}} -->
+		  <div class="modalFooter_cus">
+			  <div class="modalFooter_cus_left forget_login">
+			  <!-- <input type="button" value="Send" (click)="forgetPassFn()"> -->
+			  <a (click)="forgetPassFn()">Submit</a> 
+			  </div>
+			  <div class="modalFooter_cus_right forget_login">
+			  <a (click)="showLoginForm()">Login</a>     
+			  </div>
+		  </div>
+	  </div>
+	  
+	  
+		  </div>
+
+
+		</div>
+	  </div>

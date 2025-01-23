@@ -1,0 +1,189 @@
+
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+<!-- <div class="forDesktopHeader_login"><app-after_login_header_Global></app-after_login_header_Global></div> -->
+
+<!-- <div class="forResponsiveHeader_login"><app-headerResponsive></app-headerResponsive></div> -->
+
+
+
+		<!-- <div class="col-sm-3 float-left portfolio_left">
+			<app-leftBar_after_login></app-leftBar_after_login>
+
+		</div> -->
+
+		<div class="col-sm-12 float-left portfolio_right">
+			<div class="sectionTitle_Res mb-3">
+				<button (click)="goBack()" class="backBtn"> <img src="assets/images/turn-back.png" alt=""/> Back</button> 
+				<!-- <h2>Wishlist</h2>  -->
+			  </div>
+
+		  <div class="portfolio_right_sub">
+
+		<div class="portfolio_form_fill">
+		<div class="title_sec">
+				<ng-container *ngIf="!verifyBtn">
+					<h2><img src="assets/images/id_verify_white.png" alt="">Your Profile is Pending ID Verification</h2>
+				</ng-container>
+				<ng-container *ngIf="verifyBtn">
+					<h2><img src="assets/images/id_verify_white.png" alt="" >Your Profile is Verified <img src="assets/images/verifi_icon.png" alt="" /></h2>
+				</ng-container>
+				<!-- <span  class="verifiedObj" *ngIf="verifyBtn" ><img src="assets/images/verifi_icon.png" alt="" /></span> -->
+
+			</div>
+
+		<div class="id_verify_main">
+
+		<!-- <div class="id_verify_main_uploadSec">
+			Driving  Licence PAN Card Passport Voter ID Aadhaar
+		</div> -->
+
+		<div class="field_outer_label">
+		<div class="alert alert-danger" *ngIf="adhaarAlert">The name against the entered Aadhaar number does not match with your profile name</div>
+		<div class="alert alert-danger" *ngIf="pannAlert">The name against the entered Pan number does not match with your profile name</div>
+
+      <form class="idVery_form" [formGroup]="docTypeSelect"  (ngSubmit)="onSubmit($event)">
+		<!-- <ng-container *ngIf="user_country == 'India';else other"> -->
+	  <div class="form-group setting_custome row mt-2">
+		<div class="col-sm-6 dropdownCont" >
+
+			<!-- <div class="field_outer_label" [formGroup]="docTypeSelect"> -->
+
+				<mat-form-field class="example-full-width">
+					<mat-label>Select Document Type</mat-label>
+					<mat-select formControlName="doc_type" (selectionChange)="onDocumentTypeChange($event)">
+					<mat-option value="">Select</mat-option>
+					<mat-option  *ngFor="let items of list" [value]="items.id">
+						{{items.doc_type}}
+					</mat-option>
+					</mat-select>
+					</mat-form-field>
+					<div *ngIf="f['doc_type'].errors?.['required'] && (f['doc_type'].dirty || f['doc_type'].touched)" class="noteSection text-left">*Document type required </div>
+
+		</div>
+	</div>
+		<div class="form-group setting_custome row ">
+		<div class="col-sm-6 dropdownCont">
+			<!-- <label *ngIf="!citizenship_India">Choose Your Document</label>
+			<label *ngIf="!Out_Of_India">Out Of India Passport Is Mandatory</label>
+			
+			  <input class="form-control browse_BotsTrap"
+			  type="file"
+			  #fileInput
+			  formControlName="kyc_file"
+			  (change)="onFileSelected($event)">
+			  <div class="noteSection text-left"
+			  *ngIf="f['kyc_file'].invalid && (f['kyc_file'].dirty ||  f['kyc_file'].touched)">
+			  <span class="text-danger" *ngIf=" f['kyc_file'].errors?.['required']">*Please
+				provide file</span>
+			  <span class="text-danger" *ngIf="f['kyc_file'].errors?.['inValidExt']">*Invalid
+				file extension.</span>
+			  <span class="text-danger" *ngIf="f['kyc_file'].errors?.['fileSizeValidator']">*File size
+				must
+				not exceed than 5MB.</span> -->
+				<!-- <ng-container *ngIf="selectedDocumentType === 'aadhar'"> -->
+				<ng-container *ngIf="f['doc_type'].value == 1">
+					<mat-form-field class="example-full-width">
+						<mat-label>Aadhar card number:</mat-label>
+					  <input matInput type="text" formControlName="aadharNumber"  maxlength="12" minlength="12">
+					</mat-form-field>
+					<div *ngIf="f['aadharNumber'].errors?.['required'] && (f['aadharNumber'].dirty || f['aadharNumber'].touched)" class="noteSection text-left">*Please enter the number of your aadhar </div>
+					<div *ngIf="f['aadharNumber'].errors?.['pattern']">
+						Please enter a valid numeric value.
+					  </div>
+				  </ng-container>
+
+				  <ng-container *ngIf="f['doc_type'].value == 2">
+					<mat-form-field class="example-full-width-pan">
+					<mat-label>Pan card number:</mat-label>
+					  <input matInput  formControlName="panNumber">
+					</mat-form-field>
+					<div *ngIf="f['panNumber'].errors?.['required'] && (f['panNumber'].dirty || f['panNumber'].touched)" class="noteSection text-left">*Please enter the number of your pan </div>
+					<!-- <div *ngIf="f['panNumber'].errors?.['pattern']" class="noteSection text-left">Pan number pattern is invalid</div> -->
+					<!-- {{f['panNumber'].errors?.['pattern']}} -->
+					<div *ngIf="docTypeSelect.get('panNumber').hasError('pattern')" class="noteSection text-left">
+						Invalid PAN Number.
+					  </div>
+				  </ng-container>
+			</div>
+
+		  </div>
+		  <div class="otpField_verify">
+			<div class="row">
+			<div class="otpMain otpMain_registration" *ngIf="generateOTP_btn" >
+
+
+			<label class="otp">
+			<!-- <div class="field_outer_label" *ngIf="showOtpdiv"> -->
+			<div class="field_outer_label" >
+
+			<p class="title">Enter verification code</p>
+			<!-- <ng-otp-input #ngOtpInput  *ngIf="showOtpComponent"(onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input> -->
+			<ng-otp-input #ngOtpInput  *ngIf="showOtpComponent" 
+			(onInputChange)="onOtpChange($event)" 
+			[config]="config"></ng-otp-input>
+			
+			<!-- <ng-otp-input type=" number" #ngOtpInput (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input> -->
+			</div>
+			</label>
+
+			<!-- <label class="resendOtp" *ngIf="showOtpdiv">  -->
+			<label class="resendOtp" > 
+
+			<!-- <button (click)="resendOTP()"><i class="fa fa-refresh" aria-hidden="true"></i> Resend OTP</button>  <span>{{display_new}}</span> -->
+
+			</label>
+			<div class="field_outer_label verifyBtn" >
+			<!-- .portfolio_edit_Form_btn -->
+		   
+			<!-- <button class="verifyEmailBtn" type="button" (click)="onclickcheck($event)">Submit</button> -->
+		   
+
+			</div>
+
+			<div class="otpExpair" [hidden]="showExpairMsg"> <span> Your Otp has Expired</span></div>
+			</div>
+		  </div>
+			</div>
+		  <!-- <div class="form-group row" *ngIf="!Out_Of_India">
+
+			<div class="col-sm-6 dropdownCont">
+				<label>Out Of India Passport Is Mandatory</label>
+				  <input class="form-control browse_BotsTrap"
+				  type="file"
+				  #fileInput2
+				  (change)="onFileSelectedPassport($event)"
+				  >
+				  <div class="noteSection text-left">*only jpg,jpeg,png and pdf are allowed </div>
+			</div>
+
+			  </div> -->
+			<!-- </ng-container> -->
+			<!-- <ng-template #other>
+				<div class="form-group form_group_custome row mt-4">
+					<div class="col-sm-6 dropdownCont" >
+							<mat-form-field class="example-full-width">
+								<mat-label>Passport:</mat-label>
+					  					<input matInput type="text" formControlName="passport">
+								</mat-form-field>
+					</div>
+				</div>
+			</ng-template> -->
+
+			<div class="portfolio_edit_Form_btn  mt-0">
+				<!-- [disabled]="isDisable_1 || isDisable_2" -->
+				<button type="submit" [disabled]="docTypeSelect.invalid">Submit</button>
+				</div>
+      </form>
+			</div>
+
+		</div>
+
+		</div>
+
+
+		</div>
+		</div>
+
+
+

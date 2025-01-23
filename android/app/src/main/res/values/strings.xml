@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">My Soulmate</string>
+    <string name="title_activity_main">My Soulmate</string>
+    <string name="package_name">mysoulmate.co.in</string>
+    <string name="custom_url_scheme">mysoulmate.co.in</string>
+</resources>

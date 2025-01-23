@@ -1,0 +1,292 @@
+
+<!-- <app-before_login_header></app-before_login_header> -->
+<!-- <ng-container *ngIf="this.platform.ANDROID || this.platform.IOS">ANDROID or IOS</ng-container> -->
+
+<!-- <div class="appLoader_outer" *ngIf="inProgressShort; else mySelf">
+  <div class="loaderLogoApp">
+  <img src="assets/images/logo_new.png" alt="" class="forMobile"/>
+  <div></div>
+</div>
+  
+</div>
+
+<ng-template #mySelf> -->
+
+<div class="headerSec">
+
+  <!-- <app-Before_login_header_N_Home></app-Before_login_header_N_Home> -->
+
+
+
+  <div class="wrapper wrapper_custom">
+  <div class="headerSec_leftImg">
+    &nbsp;
+  </div>
+
+  
+  <div class="headerSec_rightForm">
+
+
+      <!-- <ng-container *ngIf="this.platform.FIREFOX">FIREFOX</ng-container>
+      <ng-container *ngIf="this.platform.isBrowser">isBrowser</ng-container>
+      <ng-container *ngIf="this.platform.EDGE">EDGE</ng-container>
+      <ng-container *ngIf="this.platform.IOS">IOS</ng-container>
+      <ng-container *ngIf="this.platform.ANDROID">ANDROID</ng-container> -->
+
+      
+      <!-- <ng-container *ngIf="!this.platform.ANDROID || !this.platform.IOS">Plain isBrowser</ng-container> -->
+   
+    <h1><span>Find someone here</span>
+      <strong>Who understands you The Best</strong></h1>
+<ng-container *ngIf="responsiveShowRegistra">
+  <div class="headerForm" [formGroup]="form_user_phone_send">
+
+    <div class="full">
+    <div class="registration_edit_phon" [hidden]="afterSendOTP_Click">
+    <div class="otpMsg">OTP has been sent to {{nameShort()}}</div>
+    <div class="editOtp"><a (click)="editeMobileNum()">Edit</a></div>
+    </div>
+    </div>
+
+    <div class="registration_user_phone" [hidden]="hide_Send_OTP">
+    <label class="half">
+      <div class="field_outer_label">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name as in Aadhaar or Pan</mat-label>
+          <input matInput formControlName="home_user">
+          </mat-form-field>
+
+          <div class="validation_div" *ngIf="!form_user_phone_send.controls.home_user?.valid && (form_user_phone_send.controls.home_user?.dirty ||form_user_phone_send.controls.home_user?.touched)">
+            <!-- Please write Name (using only alphabets & Min 6 letter) -->
+            Please write Name (Only alphabets & Min 6 letter)
+          </div>
+          </div>
+    
+      
+    
+    </label>
+    <label class="half">
+
+      <div class="field_outer_label field_outer_label_home">
+        <mat-form-field class="example-full-width">
+          <mat-label>Phone</mat-label>
+          <!-- <input matInput formControlName="home_phone" onlyNumber (keyup)="enterPress_login($event)" minlength=10 maxlength=10> -->
+          <input matInput type="tel" formControlName="home_phone" minlength=10 maxlength=10>
+
+          </mat-form-field>
+          
+          <div class="validation_div" *ngIf="!form_user_phone_send.controls.home_phone?.valid && (form_user_phone_send.controls.home_phone?.dirty ||form_user_phone_send.controls.home_phone?.touched)">
+            Phone number Required(Min 10 digit)
+          </div>
+
+          </div>
+
+    </label>
+
+    <div class="enterOTP_Btn"> <input type="button" value="Continue" (click)="enterPress_login($event)" [disabled]="!form_user_phone_send.valid"></div>
+
+    </div>
+    <div class="registration_OTP_area" *ngIf="form_user_phone_send.valid && !generateOTP_btn" [hidden]="afterSendOTP_Click">
+    <div class="otpMain otpMain_registration">
+      
+      
+      <div class="otp">
+        <div class="field_outer_label">
+          <p class="a-o-i">Enter verification code</p>
+          <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input>
+          <!-- <ng-otp-input type=" number" #ngOtpInput (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input> -->
+            </div>
+          </div>
+
+      <div class="resendOtp"> 
+        <button (click)="resendOTP()"><i class="fa fa-refresh" aria-hidden="true"></i> Resend OTP</button>  <span>{{display_new}}</span>
+
+      </div>
+
+      <div class="otpExpair" [hidden]="showExpairMsg"> <span> Your Otp has Expired</span></div>
+    </div>
+
+    <label class="full"><input type="submit" value="Continue" (click)="get_form_data_home()" [disabled]="!form_user_phone_send.valid || !verifyBtnActive"></label>
+  </div>
+
+    <div class="terms_text full responsiveNotShow">By clicking on 'Continue', you confirm that you accept the <a target="_blank" [routerLink]="['/home/terms-condition']">Terms of Condition</a> and <a target="_blank" [routerLink]="['/home/privacypolicy']">Privacy Policy</a></div>
+  
+    <label class="alreadyMember">Already a member? <a (click)="alreadyMember_Res()" class="link">Login</a></label>
+    <label class="homeBotLink">    <a [routerLink]="['/home/aboutus']" class="link" >About Us</a> | <a class="link" [routerLink]="['/home/terms-condition']">Terms Of Condition</a> | <a class="link" [routerLink]="['/home/privacypolicy']">Privacy Policy</a></label>
+  
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!responsiveShowRegistra">
+  <div class="modal_content_cus modal_content_cusRespon">
+  <div class="loginMainFrame headerForm" [formGroup]="loginForm">
+    <h5 class="responsiveTitleLogin">Login</h5>
+    <div class="modal-body bodyCus">
+    
+    <div class="form-group">
+    <div class="field_outer_label">
+      <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="tel" aria-describedby="emailHelp" formControlName="login_field">
+  </mat-form-field>
+  <div class="validation_div" *ngIf="!loginForm.controls.login_field?.valid && (loginForm.controls.login_field?.dirty ||loginForm.controls.login_field?.touched)">
+  Please enter your phone number
+  </div>
+  </div>
+  </div>
+  <div class="form-group">
+
+    <div class="field_outer_label">
+
+    <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput type="password"  formControlName="password_field" [type]="hide ? 'password' : 'text'" (keyup)="enterPress_login($event)">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field> 
+  <div class="validation_div" *ngIf="!loginForm.controls.password_field?.valid && (loginForm.controls.password_field?.dirty ||loginForm.controls.password_field?.touched)">
+    Please enter your phone number
+  </div>
+</div>
+
+  </div>
+
+  
+  <div class="errorMsg_login" [hidden]="deActiveUser_Msg_Show">
+    <span class="text-danger">{{login_Data_respons?.msg}}</span>
+  </div>
+  <div class="form-check form-group form_check_cus">
+    
+    <!-- <div class="checkBoxDiv">
+    
+    <input type="checkbox" class="form-check-input mt-3" id="exampleCheck1" (change)="KeepmeLog($event)">
+    <label class="form-check-label mt-3" for="exampleCheck1">Keep me logged in</label>
+    </div> -->
+    <div class="forgetPassDiv">
+    <!-- <a (click)="showForgetPassForm()">Forgot password?</a>  -->
+    </div>
+    
+  </div>
+      
+    </div>
+      
+    <div class="modalFooter_cus_Login">
+      <div class="modalFooter_cus_Login_Full">
+      <input type="button" value="Login" (click)="loginFunc()" [disabled]="loginForm.invalid">
+  
+      </div>
+
+      <div class="Login_orSeparator__2UWgX"><span class="Login_txtOrSeparator__1DL4d">OR</span></div>
+
+      <div class="modalFooter_cus_Login_Full">
+      <a (click)="leftNavFn('/home/otp-login')" class="otp_Login">Login with OTP</a>
+  
+      </div>
+
+      <label class="alreadyMember">Do not have an account? <a (click)="newMember()" class="link">Sign Up</a></label>
+
+      <label class="homeBotLink"> <a [routerLink]="['/home/aboutus']" class="link" >About Us</a> | <a class="link" [routerLink]="['/home/terms-condition']">Terms Of Condition</a> | <a class="link" [routerLink]="['/home/privacypolicy']">Privacy Policy</a></label>
+      <!-- <div class="modalFooter_cus_Login_Full newRegistration">
+        
+        <input type="button" value="New User" (click)="newMember()" [disabled]="responsiveShowRegistra">
+    
+        </div> -->
+      
+      
+    </div>
+  </div>
+</div>
+</ng-container>
+  
+    
+    </div>
+  </div>
+</div>
+
+
+
+<div class="wrapper">
+  
+  <div class="threeBoxWelcome">
+    <div class="col-sm-12">
+    <h2>Experience Personalized Matrimonial Service at <span>My Soul Mate</span> </h2>
+  </div>
+  <div class="col-sm-4 float-left">
+    <div class="matrimoni_box">
+      <div class="icon_sec"><img src="assets/images/icon_box_a.png" alt="" class="box_icon" /></div>
+      <h3>Precise Compatibility Matching: </h3>
+      <p>You can find a partner whose numerology and astrological profiles align with yours.</p>
+    </div>
+  </div>
+
+  <div class="col-sm-4 float-left">
+    <div class="matrimoni_box">
+      <div class="icon_sec"><img src="assets/images/icon_box_b.png" alt="" class="box_icon" /></div>
+      <h3>Personalized Cosmic Insights:</h3>
+      <p>Gain a better understanding of yourself and your partner through numerology and astrology insights.</p>
+    </div>
+  </div>
+
+  <div class="col-sm-4 float-left">
+    <div class="matrimoni_box">
+      <div class="icon_sec"><img src="assets/images/icon_box_c.png" alt="" class="box_icon" /></div>
+      <h3>Strict Privacy Protection:</h3>
+      <p>Your data is kept safe and confidential, allowing you to explore your potential matches with peace of mind.</p>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+<div class="stepSection">
+  <div class="col-sm-12"><h2> <span>Steps to </span> 
+     Find Your <span class="red"> Forever</span> </h2></div>
+
+     <div class="stepRow">
+      <div class="col-sm-6 float-left stepRow_left paddingTop">
+        <h2>Step 1</h2>
+        <h3>Register Free:</h3> 
+        <p> Register for free with your name and authorized phone number </p>
+        <img src="assets/images/arrow_new.png" alt="" class="arow"/>
+      </div>
+      <div class="col-sm-6 float-left stepRow_right"><img src="assets/images/step_a.png" alt=""/></div>
+     </div>
+
+     <div class="stepRow">
+      <div class="col-sm-6 float-left stepRow_left">
+        <img src="assets/images/step_b.png" alt=""/>
+      </div>
+      <div class="col-sm-6 float-left stepRow_right paddingTop">
+        <h2>Step 2</h2>
+        <h3>Discover Your Rashi Chart: </h3> 
+        <p> Discover Your Rashi charts to get a perfect match  </p>
+        <img src="assets/images/arrow_new_r.png" alt="" class="arow"/>
+        </div>
+     </div>
+
+     <div class="stepRow">
+      <div class="col-sm-6 float-left stepRow_left paddingTop">
+        <h2>Step 3</h2>
+        <h3>Explore Profiles: </h3> 
+        <p> Discover profiles as per your preference.</p>
+        <img src="assets/images/arrow_new.png" alt="" class="arow"/>
+      </div>
+      <div class="col-sm-6 float-left stepRow_right"><img src="assets/images/step_c.png" alt=""/></div>
+     </div>
+     
+</div>
+
+<!-- </ng-template> -->
+
+
+
+
+
+
+
+
+
+
+

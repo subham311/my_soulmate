@@ -1,0 +1,528 @@
+@media only screen and (max-width:2796px) {
+
+  .title_sec_main h2 {font-size: 18px;}
+
+.innerDefaultPage h3 {font-size: 15px;}
+.innerDefaultPage p {font-size: 15px;}
+
+  .regestra_dob_time{font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: inline-block;}
+
+  .portfolio_right_wish {max-width: 100%;}
+
+  /* New responsive Start  */
+  .headerSec .header_top{padding:3% 0 20px 0;}
+  .rejistrationPageLogo .header_top{
+    /* background: none;  */
+    background: rgb(188,28,77);
+    background: linear-gradient(0deg, rgba(188,28,77,1) 0%, rgba(250,51,84,1) 100%); background-attachment: fixed;
+    padding:2.5% 0 2.5% 0;}
+
+  .registration {padding-top: 0; padding-bottom: 0;}
+
+  .headerSec {
+    background: rgb(188,28,77);
+    background: linear-gradient(0deg, rgba(188,28,77,1) 0%, rgba(250,51,84,1) 100%); 
+    height: 80vh; padding-top: 25px; padding-bottom: 25px; min-height: inherit;
+  }
+  
+
+  .headerForm .half{margin-bottom: 30px;}
+  
+  /* .wrapperMinheight{height: 100vh; display: flex; align-items: center;} */
+
+  .wrapperMinheight{padding-top: 25px; padding-bottom: 132px;}
+
+
+
+
+  body{
+    /* background: rgb(188,28,77);
+    background: linear-gradient(0deg, rgba(188,28,77,1) 0%, rgba(250,51,84,1) 100%); background-attachment: fixed; */
+    background: #fff;
+  }
+
+  .inner_wraper_sub{box-shadow:none;}
+
+  .appLoader_outer{
+    background: rgb(188,28,77);
+    background: linear-gradient(0deg, rgba(188,28,77,1) 0%, rgba(250,51,84,1) 100%); 
+    height: 100vh; margin: 0; padding: 0; display: flex; align-items: center;
+  }
+
+  .footer_bottomSec{background: #e2e3e7;
+    padding-top: 18px;
+    padding-bottom: 20px;
+    display: block;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%; display: flex; z-index: 9;}
+
+    .portfolio_left{display: none;}
+    .portfolio_Search_list{box-shadow: 0 0 5px 1px #cecece;}
+    .portfolio_right{max-width: 100%;}
+    /* .topNavSecResponsiv{display: none;} */
+    .portfolio_form_fill_Top{box-shadow:none;}
+
+  .footer_bottomSec a{color: #5377d8; font-size: 15px; flex: content;}
+  .footer_bottomSec a i{font-size: 28px;}
+  .footer_bottomSec a span{width: 100%; display: block; line-height: 13px;}
+
+  .loaderLogoApp{text-align: center; width: 100%; padding: 0 25px;}
+  .loaderLogoApp img{margin: 0 auto 0 auto;
+    max-width: 100%;
+    margin-bottom: 0;}
+
+  .loaderLogoApp h2{color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 40%;}
+
+    .loaderLogoApp p{color: #ccc;
+      font-family: 'Cabin', sans-serif;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 6px;
+    line-height: 14px;}
+
+  .headerSec_rightForm h1 {
+    font-size: 32px;
+    line-height: 35px;
+    color: #fff;
+  }
+
+  .headerSec_rightForm h1 span {
+    font-size: inherit;
+    color: inherit;
+  }
+
+  .headerSec_rightForm h1 strong {
+    font-size: inherit;
+    color: inherit;
+  }
+
+  .topNavSec_beforLog {
+    display: none;
+  }
+
+  .logoSec {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .headerSec .header_top .logoSec img {
+    max-width: 100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .headerForm {
+    box-shadow: none; padding:25px 0;
+  }
+
+  .modalFooter_cus_Login_Full input[type="button"],
+  .modalFooter_cus_Login_Full a.otp_Login,
+  .enterOTP_Btn input[type="button"],
+  .headerForm input[type="submit"] {
+    background: rgb(255, 70, 84);
+    background: linear-gradient(315deg, rgba(255, 70, 84, 1) 0%, rgba(255, 18, 63, 1) 100%);
+    border-radius: 6px; line-height: 34px;
+  }
+
+  .alreadyMember {
+    margin: 15px 0 0; text-align: center; padding: 0 15px; font-family: 'Cabin', sans-serif;
+    display: inline-block; width: 100%; font-size: 15px; color: #333333; 
+  }
+
+  .alreadyMember a{
+    background: none;
+    border-radius: 6px;
+    padding: 0;
+    color: #f5133b !important; font-size: 15px !important; font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .responsiveNotShow{display: none;}
+
+  .homeBotLink {display: block;
+    margin: 15px 0 0; text-align: center; padding: 0 15px; font-family: 'Cabin', sans-serif;
+    display: inline-block; width: 100%; font-size: 15px; color: #333333; 
+  }
+
+  .homeBotLink a{
+    background: none;
+    border-radius: 6px; margin: 0 5px;
+    padding: 0;
+    color: #333333 !important; font-size: 15px !important; font-weight: normal;
+    text-decoration: underline;
+  }
+
+  .enterOTP_Btn input[type="button"]:disabled {
+    background: #ff4e6e;
+  }
+
+  .newRegistration input[type="button"] {
+    background: none;
+    border-radius: 6px;
+    padding: 0;
+    color: #181f35;
+    text-decoration: underline;
+  }
+
+  .field_outer_label .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+    padding-top: 20px;
+    padding-bottom: 8px;
+  }
+
+  .form_check_cus .mt-3{margin-top: 1px !important;}
+  .form_check_cus .checkBoxDiv {line-height: 8px;}
+
+  .headerSec_rightForm h1 {
+    font-size: 20px;
+    line-height: 27px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .rejistrationPageLogo{display: block;}
+
+
+  .rejistrationPageLogo .header_top .logoSec img{max-width: 100px; margin: 0 auto; width: 100%;}
+
+  .mat-horizontal-stepper-header-container{display: none !important;}
+  
+  
+  .portfolio_left_sub{border-radius:0 0 30px 30px; box-shadow: #b6b7b9 0px 0px 3px 1px;  margin: 0 0 15px 0; position: fixed; padding:10px 20px 25px 20px; z-index: 9;}
+  .innerMain_wraper{padding-top: 180px; padding-bottom: 115px;}
+  .rightPhoto_res{margin-bottom: 0;}
+
+  .personal_sumary_row{display: block;}
+  .personal_sumary_col_sm_2{display: none;}
+  .personal_sumary_col_sm_10{max-width: 100%; float: none; padding: 0 15px;}
+
+  .personal_sumary .profil_img img{max-width: 150px; height: 150px;}
+
+  .footerCopyright{display: none;}
+
+  .forDesktopHeader_login{display: none;}
+  .forResponsiveHeader_login{display: block; background: #fff;}
+  .hambergerMenu{margin: 0 0 0 auto; display: flex;}
+  .hambergerMenu a.wishLInk{color: #cd2b3b !important; font-size: 17px; margin-right: 21px;}
+  .hambergerMenu a{color: #0d2048 !important; font-size: 28px;}
+  .hambergarMenu_left .hambergarMenu_left_thum .user img{
+  width: 58px;
+  height: 58px;
+  border-radius: 50px;
+  overflow: hidden;}
+  
+  .innerMain_wraper{background: #fff;}
+  .innerMain_wraper_register{background: #fff; padding-bottom: 100px;}
+
+  .hambergarMenu_left a{background: none;
+    padding: 0;
+    border: none; text-align: center;
+    width: 100%;}
+
+  .hambergarMenu_left a:hover{background: none;
+    padding: 0;
+    border: none;
+    width: 100%;}
+
+  .hambergarMenu_left h3{color: #0d2048; font-size: 15px; font-weight: 700; text-align: center; margin-top: 7px;}
+  .hambergarMenu_left h3 span{display: block; font-size: 15px; margin-top: 3px;}
+
+  .slideMenuResponsive .portfolio_left_sub_nav ul{margin-top: 15px;}
+
+  .slideMenuResponsive .portfolio_left_sub_nav ul .viewPro_link{
+      margin: 0 0 15px 0;
+      padding:6px 6px;
+      font-size: 15px;
+      border-radius: 22px;
+      border: #ff7c0b solid 1px;
+      background: #ff7c0b;
+      color: #fff;
+    }
+
+  .backBtn_leftMenu{color: #0d2048 !important; font-size: 18px;}
+
+  .overflow_hamberger{position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1;
+    display: flex;}
+
+  .portfolio_left_sub_nav ul li a{padding: 7px 0 15px 0;}
+
+  /* .beforeLoginHead_Class .header_top{
+    width: 100%;
+    padding:20px 0;
+    background:none;
+  } */
+
+  /* .beforeLoginHead_Class .header_top .logoSec img{
+    max-width: 300px;
+    margin: 0 auto;
+    width: 100%;
+  } */
+
+  .forMobile{display: block;}
+  .forDesktop{display: none;}
+  .logoSec{width: 100%;}
+
+  /* .footerSec, .footerCopyright {
+    display: none;
+  } */
+
+ .threeBoxWelcome,
+  .stepSection{
+    display: none;
+  }
+
+  .registrationNxt_btn{padding-top:15px;}
+
+  .registrationNxt_btn button{height: 35px !important; width: 96%; margin: 0 2% !important;}
+
+  ul.msgServer{padding: 0 0 10px 0;}
+
+  .steper_title{display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #0d2048;
+    font-weight: 700; padding: 0 0;}
+
+ .formStep_group_2 .form_group_custom .col-sm-3{
+        max-width: 100%;
+        width: 100%;
+        float: left;
+        margin-bottom: 15px;
+        padding: 0;
+      }
+
+ .mat-horizontal-content-container {padding:0 0 0 0 !important;}
+ .formStep_group {margin-bottom: 0;}
+
+ ul.res_upgrade_btn{display: flex; margin-top: 5px;}
+ ul.res_upgrade_btn li{float: left;}
+ 
+ ul.res_upgrade_btn li button{margin: 0;
+  padding: 4px 6px;
+  font-size: 14px;
+  border-radius: 22px;
+  border: #ff7c0b solid 1px;
+  background: none;
+  color: #ff7c0b;}
+
+ ul.res_upgrade_btn li button.verifiId_res{margin: 0;
+  padding: 7px 12px;
+  font-size: 15px;
+  border-radius: 22px;
+  border: none;
+  background: linear-gradient(90deg, rgba(37,105,218,1) 0%, rgba(36,177,184,1) 100%);
+  color: #fff;
+  position: absolute;
+  left: 10%;
+  bottom: -37px;
+  width: 80%;
+  right: 10%;}
+
+  .portfolio_left_sub_nav ul li a{font-size: 15px;}
+
+ ul.res_upgrade_btn li:first-child{margin-right: 10px;}
+
+ .profile_photo .avatar_title h3{font-size: 17px;}
+
+ .profile_photo .avatar{width: 75px; height: 75px;}
+ .profile_photo .avatar img{width: 75px; height: 75px;}
+
+ .uploadImgGal_left{width: 23px; height: 23px; background-size: 14px !important;}
+ .profile_photo .avatar_title{padding-top: 0;}
+
+ .personal_sumary_right h3{font-size: 18px;}
+ .personal_sumary_right h3 span{font-size: 15px; line-height: 18px;}
+ .personal_sumary_right p{font-size: 15px;}
+
+ .personal_sumary_right h3 a{padding: 6px 24px; line-height: 16px; font-size: 15px;}
+ .personal_sumary, .portfolio_details_block{box-shadow: 0 0 5px 1px #cecece;}
+ .portfolio_details_block .title_sec {margin-bottom: 5px;}
+ .portfolio_details_block .title_sec h2 {font-size: 18px;}
+ .portfolio_details_block .title_sec h2 button{padding: 6px 18px; line-height: 16px; font-size: 15px;}
+ .portfolio_edit_Form_btn button{font-size: 15px; padding: 4px 30px; line-height: 23px;}
+ .popupAnimated_Edite p{font-size: 15px; line-height: 24px;}
+ .popupAnimated_Edite p img{max-width: 30px;}
+ .inner_wraper_sub_popup_sub{padding: 20px 20px 20px 20px;}
+
+.portfolio_block .title_sec h2{font-size: 18px;}
+.portfolio_form_fill .title_sec_Id h2{font-size: 18px;}
+.portfolio_form_fill .title_sec_Id p{font-size: 15px; line-height: 17px;}
+.portfolio_slide .imgSec img{max-width: 45px; width: 100%;}
+.portfolio_slide{padding: 15px 15px;}
+.portfolio_slide .content_right h2 {font-size: 15px;}
+.portfolio_slide .content_right a {font-size: 15px; padding: 5px 24px;}
+
+.portfolio_form_fill .title_sec{margin-bottom: 14px;}
+.portfolio_form_fill .title_sec h2{font-size: 15px;}
+.portfolio_form_fill .title_sec h2 img{max-width: 25px; margin-right: 9px;}
+
+
+.paymentListMain .current_package .current_package_sub h2{font-size: 15px; margin-bottom: 0px;}
+.paymentListMain .current_package_sub ul li{font-size: 15px;}
+.paymentListMain .paymentHistory h2{font-size: 15px; margin-bottom: 8px; }
+
+.table td, .table th{padding:5px 3px; font-size: 15px;}
+.paymentListMain .paymentHistory button.downloadBtn{padding: 4px 6px; line-height: 17px; font-size: 15px; display: inline-block;}
+
+.paymentHistory table{margin-bottom:0;}
+
+.white_block .title_sec h2 {font-size: 18px;}
+
+.profile_view_Sumary_left .thum img{width: 70px; max-width: 70px; height: 70px;}
+.profile_view_Sumary_left .thum_details h3{font-size: 17px;}
+.profile_view_Sumary_left .thum_details p span img{margin-right: 6px; width: 12px;}
+.profile_view_Sumary_left .thum_details p span{padding: 4px 5px; line-height: 14px;}
+.profile_view_Sumary_left .thum_details{margin-left: 6px;}
+.portfolio_view_block .title_sec{margin-bottom: 5px;}
+.portfolio_view_block_sub ul.details_list li{line-height: 18px; font-size: 15px;}
+.edit_portfolio_field_group_left img{margin-right: 3px;}
+.upgrade_Lock .lockPopupHover, .lockPopupHover{border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important; display: block;
+  background-color: inherit !important; left:0; top:0;}
+  .lockPopupHover .lockPopupHoverLink{font-size: 12px; padding: 3px 8px; line-height: 16px;}
+  .upgrade_Lock:hover .lockPopupHover .lockPopupHoverLink{font-size: 12px; padding: 3px 8px; line-height: 16px;}
+  span.responNo{display: none;}
+
+.disclaimer_sec{font-size: 15px; line-height: 18px;}
+.profile_match_left_thum{width: 70px; height: 70px;}
+.profile_match_right_thum{width: 70px; height: 70px;}
+.upgradeNowSec .upgreadetitle button{font-size: 15px;}
+
+.portfolio_Search_list_desctop{display: none;}
+.partnerListMobile{display: block; max-width: 450px; margin: 0 auto;}
+
+.portfolio_Search_list_wish{display: none;}
+
+/* New responsive End  */
+
+.profileView_Res{padding-top: 195px;}
+
+}
+
+@media only screen and (max-width:690px) {
+.paymentListMain .current_package_sub ul{display: block;}
+.paymentListMain .current_package_sub ul li{margin: 0;}
+
+.paymentHistory table thead{display: none;}
+.paymentHistory table tbody tr{width: 100%;}
+.paymentHistory table tbody tr th, .paymentHistory table tbody tr td{width: 100%; float: left;}
+.paymentHistory table tbody tr th:nth-child(1)::before{content: 'SL:'; padding-right: 15px; font-weight: bold;}
+.paymentHistory table tbody tr td:nth-child(2)::before{content: 'Payment Date:'; padding-right: 15px; font-weight: bold;}
+.paymentHistory table tbody tr td:nth-child(3)::before{content: 'Order ID:'; padding-right: 15px; font-weight: bold;}
+.paymentHistory table tbody tr td:nth-child(4)::before{content: 'Amount:'; padding-right: 15px; font-weight: bold;}
+.paymentHistory table tbody tr td:nth-child(4)::before{content: 'Download:'; padding-right: 15px; font-weight: bold;}
+
+.galleryPhoto .col-sm-3{-webkit-box-flex: 0; -ms-flex: 0 0 33%; flex: 0 0 33%; max-width: 33%;}
+
+.modal_dialog_AstroPopup{margin-top: 24%;}
+
+}
+
+@media only screen and (max-width:650px) {
+.partnerListMobile {max-width: 450px; width: 100%; margin: 0 auto;}
+.partnerListMobile .owl-carousel .owl-item{padding: 15px 6px;}
+.portfolio_Search_list_res .thumbnailSec_res{
+  height: 430px;
+  text-align: center;
+  /* display: inline-flex; */
+  /* align-items: flex-start; */
+  display: block;
+  width: 100%;}
+
+  .portfolio_right{ padding:0 20px; }
+
+
+}
+
+@media only screen and (max-width:575px) {
+.setting_custome{margin-bottom: 0;}
+.setting_custome .col-sm-6{margin-bottom: 15px;}
+.profile_match_main{display: block;}
+.profile_match{max-width: 100%; margin-bottom: 15px;}
+.profile_match_right .astro_link{width: 100%;}
+
+.profile_match_left_thum, .profile_match_right_thum {width: 60px; height: 60px;}
+.astro_popup_sec h3.rightPercan{font-size: 15px;}
+.profile_match_percentage p{font-size: 12px;}
+.profile_match_percentage {max-width: 150px;}
+.astro_popup_sec h3.rightPercan span{padding: 0px 4px; font-size: 15px;}
+
+.paymentdetailsForm .col-sm-4, .paymentdetailsForm .col-sm-3, .paymentdetailsForm .col-sm-12{margin-bottom: 15px;}
+.paymentDetail_row{margin-bottom: 0;}
+.paymentDetail_row_Title{margin-bottom: 12px;}
+
+/* =============== 080224 start ================ */
+.offerPopupBox .titleSec {font-size: 20px;}
+.offerPopupBox .titleSec img{max-width: 65px;}
+.offerPopupBox p {font-size: 15px; line-height: 24px;}
+.offerPopupBox p span.bigFont {font-size: 20px;}
+/* =============== 080224 start ================ */
+
+.planeBox_subBox .priceSec_Sub span {font-size: 18px;}
+
+.planeBox_subBox .offerPriceDIv {width: 70px; height: 70px; background-size: cover; left: -23px; top: -8px;}
+.planeBox_subBox .offerPriceDIv .percent {font-size: 14px; line-height: 15px;}
+
+.planeSec {margin-bottom: 0;}
+.planeSec_afterLog {padding-bottom: 0;}
+
+}
+
+
+@media only screen and (max-width:530px) {
+  .innerMain_wraper{padding-top: 150px; padding-bottom: 100px;}
+  .profileView_Res{padding-top: 170px;}
+  /* .innerMain_wraper_register{padding-top: 135px; padding-bottom: 115px;} */
+
+  .validation_div{bottom: -28px;}
+  .profile_photo .avatar, .profile_photo .avatar img{width: 50px; height: 50px;}
+  .profile_photo .avatar_title h3{font-size: 15px;}
+  ul.res_upgrade_btn li button{padding: 2px 10px;}
+  ul.res_upgrade_btn{margin-top: -2px;}
+  ul.res_upgrade_btn li:first-child {margin-right: 8px; font-size: 15px;}
+
+  .galleryPhoto .col-sm-3{-webkit-box-flex: 0; -ms-flex: 0 0 33%; flex: 0 0 33%; max-width: 33%;}
+
+}
+
+@media only screen and (max-width:450px) {
+.validation_div{bottom:-20px;}
+.galleryPhoto .col-sm-3{-webkit-box-flex: 0; -ms-flex: 0 0 50%; flex: 0 0 50%; max-width: 50%;}
+
+.edit_portfolio_field_group {display: flex;}
+.edit_portfolio_field_group_left{width: auto; margin: 0 auto 0 0;}
+.edit_portfolio_field_group_right{width: auto; margin: 0 0 0 auto; padding-right:0;}
+
+
+.personal_sumary_right p a.verifyEmail {padding: 3px 4px;}
+.portfolio_details_block .title_sec h2 button {padding: 5px 6px; line-height: 14px; font-size: 15px;}
+
+
+}
+
+
+@media only screen and (max-width:400px) {
+  .galleryPhoto .col-sm-3{-webkit-box-flex: 0; -ms-flex: 0 0 100%; flex: 0 0 100%; max-width: 100%;}
+  .dataSec {font-size: 12px;}
+  .personal_sumary_right p {font-size: 15px;}
+  .personal_sumary_right p.mobile_verifi {font-size: 15px;}
+
+
+  }
+
+

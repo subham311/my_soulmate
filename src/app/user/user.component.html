@@ -1,0 +1,23 @@
+<!-- <app-before_login_header [hidden]="withoutLogin_headerShow"></app-before_login_header> -->
+<!-- <app-after_login_header [hidden]="afterLogin_headerShow"></app-after_login_header> -->
+<!-- <app-user></app-user> -->
+
+
+<!-- <app-after_login_header_Global  [isVisible]="isVisible" [accountType]="accTypeAftPay"></app-after_login_header_Global> -->
+
+<div class="forResponsiveHeader_login"><app-headerResponsive [accountType]="accTypeAftPay"></app-headerResponsive></div>
+
+<div class="innerMain_wraper" [ngClass]="pageNameCheck__ == 'dashboard' ? 'innerMain_wraper_dashboard' : pageNameCheck__ == 'idVerification' ? 'idVerify_wraper' : pageNameCheck__ == 'settings' ? 'settings_wraper' : pageNameCheck__ == 'editeprofile' ? 'innerMain_wraper_ProfileEdit' : pageNameCheck__ == 'wishlist' ? 'idVerify_wraper' : pageNameCheck__ == 'partnersPref' ? 'partner_wraper' : pageNameCheck__ == 'profileView' ? 'profileView_Res' : ''">
+<div class="wrapper">
+
+<!-- <ng-container *ngIf="sidebarCheck == undefined">
+<app-leftBar_after_login></app-leftBar_after_login>
+</ng-container> -->
+
+
+<router-outlet></router-outlet>
+
+</div>
+</div>
+
+<app-footer></app-footer>

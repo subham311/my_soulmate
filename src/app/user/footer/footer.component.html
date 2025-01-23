@@ -1,0 +1,53 @@
+
+<!-- <div *ngIf="pageName == 'home'; then hideBotMenu else showBotMenu">
+  here is ignored</div>
+
+  
+  
+  <ng-template #hideBotMenu>
+
+  </ng-template>
+
+  <ng-template #showBotMenu>
+    <div class="footer_bottomSec">
+   
+        <ng-container *ngIf="pageName == 'registration'">
+        <a (click)="bottomNav('home')" class="login_link_bot"><i class="fa fa-sign-in" aria-hidden="true"></i>
+          <span>Login</span>
+        </a>
+      </ng-container>
+      <ng-container *ngIf="pageName !== 'registration'">
+        <a (click)="bottomNav('profile_list')" class="profList_link_bot"><i class="fa fa-users" aria-hidden="true"></i>
+          <span>Matches</span>
+        </a>
+        <a (click)="bottomNav('wishlist')" class="wish_link_bot"><i class="fa fa-heart" aria-hidden="true"></i>
+          <span>My Wishlist</span>
+        </a>
+        <a (click)="bottomNav('user_dashboard')" class="dash_link_bot"><i class="fa fa-tachometer" aria-hidden="true"></i>
+          <span>Dashboard</span>
+        </a>
+      </ng-container>
+
+      
+      
+      
+      </div>
+  </ng-template> -->
+
+
+
+    <div class="footer_bottomSec">
+      <a (click)="gotoPage('profile_list')" class="profList_link_bot"><i class="fa fa-users" aria-hidden="true"></i>
+      <span>Matches</span>
+      </a>
+      <a (click)="gotoPage('wishlist')" class="wish_link_bot"><i class="fa fa-heart" aria-hidden="true"></i>
+      <span>My Wishlist</span>
+      </a>
+      <a (click)="gotoPage('user_dashboard')" class="dash_link_bot"><i class="fa fa-tachometer" aria-hidden="true"></i>
+      <span>Dashboard</span>
+      </a>
+      </div>
+
+
+
+	

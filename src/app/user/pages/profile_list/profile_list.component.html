@@ -1,0 +1,687 @@
+<!-- <div class="forDesktopHeader_login"><app-after_login_header_Global [accountType]="accTypeAftPay"></app-after_login_header_Global></div> -->
+
+
+<!-- <div class="forResponsiveHeader_login"><app-headerResponsive [accountType]="accTypeAftPay"></app-headerResponsive></div> -->
+
+
+
+
+
+
+		<div class="col-sm-12 float-left portfolio_right">
+			<div *ngIf="inProgressShort; else sowData" style="text-align:center; margin-top:20px;">
+				<div class="spinner-border"></div>
+			</div>
+
+			<ng-template #sowData>
+				<div class="sectionTitle_Res mb-3">
+					<button (click)="goBack()" class="backBtn"> <img src="assets/images/turn-back.png" alt=""/> Back</button> <h2>Partner List</h2> 
+				  </div>
+				<div *ngIf="notDataFound; else noDataFound">
+					<div class="content-loaded">
+
+						<!-- <div class="spinner-border"></div> -->
+
+
+						<!-- <div class="shortin_product_Main">
+							<div class="pageneTion">
+								<mat-paginator [length]="partnerList.length" [pageSize]="12"
+									[pageSizeOptions]="[12, 15, 30]" (page)="onPageChange($event)"></mat-paginator>
+							</div> -->
+
+
+							<!-- <div class="shortin_product">
+								<mat-form-field class="example-full-width">
+									<mat-label>Profile Sorting </mat-label>
+									<mat-select formControlName="shortingList" (selectionChange)="shortingFn($event)">
+										<mat-option value="a_high_low">Astro Match High to Low </mat-option>
+										<mat-option value="a_low_high">Astro Match Low to High</mat-option>
+										<mat-option value="pro_high_low">Profile Match High to Low </mat-option>
+										<mat-option value="pro_low_high">Profile Match Low to High</mat-option>
+										<mat-option value="ASC">Name Wise ASC</mat-option>
+										<mat-option value="DESC">Name Wise DESC</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+						</div> -->
+
+						<div class="partnerListMobile">
+							<owl-carousel-o [options]="customOptions">
+								<ng-template carouselSlide *ngFor="let newData of partnerList; let i=index">
+									<div class="portfolio_Search_list_res">
+
+										<!-- <div class="thumbnailSec_res">
+											
+											<div class="verificationPartner_res">
+<div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+
+<div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+
+											</div>
+											<div class="thumbnailSec_Descrip_res">
+
+<h3>{{newData.basic_information.value[0]?.u_name}}
+<ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+<span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+</ng-container>
+</h3>
+
+<p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+{{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+
+, {{newData.basic_information.value[0]?.mother_tong}},, </p>
+<p><strong class="title">Cast:</strong>
+{{newData.basic_information.value[0]?.caste_name}} 
+<strong class="title">Occupation:
+</strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+
+
+											</div>
+											
+											<ng-container
+											*ngIf="newData.basic_information.value[0]?.file_path !==  null; else noThumbnail">
+											<img src="{{imageBaseUrl+newData.basic_information.value[0]?.file_path}}" alt="" class="imgThum_res"/>
+											</ng-container>
+
+											<ng-template #noThumbnail>
+											<div
+											*ngIf="newData.basic_information.value[0]?.gender == 'M';then his_cont else her_cont">
+											here is ignored</div>
+											<ng-template #his_cont><img src="assets/images/male_pro_big_list.png"
+											alt="" class="imgThum_res" /></ng-template>
+											<ng-template #her_cont><img src="assets/images/Fem_pro_big_list.png"
+											alt="" class="imgThum_res" /></ng-template>
+
+											</ng-template>
+											
+										</div> -->
+
+										<!-- <ng-container *ngIf="newData.basic_information.value[0]?.file_path !== null; else noThumbnail"> -->
+											<div class="thumbnailSec_res">
+											  
+												<div class="verificationPartner_res">
+													<div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+		
+													<div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+		
+													</div>
+													<div class="thumbnailSec_Descrip_res">
+		
+													<h3>{{newData.basic_information.value[0]?.u_name}}
+													<ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+													<span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+													</ng-container>
+													</h3>
+		
+													<p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+													date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+													{{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+		
+													, {{newData.basic_information.value[0]?.mother_tong}},, </p>
+													<p><strong class="title">Cast:</strong>
+													{{newData.basic_information.value[0]?.caste_name}} 
+													<strong class="title">Occupation:
+													</strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+													class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+													</div>
+
+													<ng-container
+											*ngIf="newData.basic_information.value[0]?.file_path !==  null; else noThumbnail">
+											<img src="{{imageBaseUrl+newData.basic_information.value[0]?.file_path}}" alt="" class="imgThum_res"/>
+											</ng-container>
+
+											<ng-template #noThumbnail>
+											<div
+											*ngIf="newData.basic_information.value[0]?.gender == 'M';then his_cont else her_cont">
+											here is ignored</div>
+											<ng-template #his_cont><img src="assets/images/thum_Male_respons.png"
+											alt="" class="imgThum_res" style="width: auto !important;" /></ng-template>
+											<ng-template #her_cont><img src="assets/images/thum_Fem_respons.png" style="width: auto !important;"
+											alt="" class="imgThum_res" /></ng-template>
+
+											</ng-template>
+
+											<!-- <div class="verificationPartner_res">
+											<div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+
+											<div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+
+											</div>
+											<div class="thumbnailSec_Descrip_res">
+
+											<h3>{{newData.basic_information.value[0]?.u_name}}
+											<ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+											<span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+											</ng-container>
+											</h3>
+
+											<p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+											date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+											{{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+
+											, {{newData.basic_information.value[0]?.mother_tong}},, </p>
+											<p><strong class="title">Cast:</strong>
+											{{newData.basic_information.value[0]?.caste_name}} 
+											<strong class="title">Occupation:
+											</strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+											class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+											</div> -->
+
+											</div>
+										  <!-- </ng-container> -->
+
+										  <!-- <ng-template #noThumbnail>
+											<div
+											*ngIf="newData.basic_information.value[0]?.gender == 'M';then his_cont else her_cont">
+											here is ignored</div>
+											<ng-template #his_cont>
+												<div class="thumbnailSec_res" [style.background-image]="'url(assets/images/male_pro_big_list.png)'"> -->
+										<!-- <div class="verificationPartner_res">
+										<div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+
+										<div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+
+										</div>
+										<div class="thumbnailSec_Descrip_res">
+
+										<h3>{{newData.basic_information.value[0]?.u_name}}
+										<ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+										<span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+										</ng-container>
+										</h3>
+
+										<p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+										date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+										{{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+
+										, {{newData.basic_information.value[0]?.mother_tong}},, </p>
+										<p><strong class="title">Cast:</strong>
+										{{newData.basic_information.value[0]?.caste_name}} 
+										<strong class="title">Occupation:
+										</strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+										class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+										</div> -->
+												<!-- </div>
+												
+											</ng-template>
+											<ng-template #her_cont>
+												<div class="thumbnailSec_res" [style.background-image]="'url(assets/images/Fem_pro_big_list.png)'"> -->
+													<!-- <div class="verificationPartner_res">
+														<div class="verifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</div>
+														
+														<div class="notVerifi_btn_res" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</div>
+														
+														</div>
+														<div class="thumbnailSec_Descrip_res">
+														
+														<h3>{{newData.basic_information.value[0]?.u_name}}
+														<ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+														<span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+														</ng-container>
+														</h3>
+														
+														<p><strong class="title">Age:			</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+														date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+														{{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+														
+														, {{newData.basic_information.value[0]?.mother_tong}},, </p>
+														<p><strong class="title">Cast:</strong>
+														{{newData.basic_information.value[0]?.caste_name}} 
+														<strong class="title">Occupation:
+														</strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+														class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}</p>
+														</div> -->
+												<!-- </div>
+												
+											</ng-template>
+										  </ng-template> -->
+
+										<div class="thumbnailSec_button_res">
+											<p class="dosa_res">Mongal Dosha: <ng-container *ngIf="newData.mongal_dasha == '100'"> <span
+												style="color: red;">High</span></ng-container>
+												<ng-container *ngIf="newData.mongal_dasha == '80'">
+												Medium</ng-container>
+												<ng-container *ngIf="newData.mongal_dasha == '20'">
+												Low</ng-container>
+												<ng-container *ngIf="newData.mongal_dasha == '0'">
+												None</ng-container></p>
+											<button type="button" class="astro_link_res" data-toggle="modal" data-target="#sendMsgPopup" (click)="showAstroPopup(newData.basic_information.value[0]?.id, this.ownProfileMatchDt2?.id)"><img src="assets/images/astrology.png" alt="" /> Astro Numerical Match </button>
+											<!-- <button class="astro_link_res"> <img src="assets/images/astrology.png" alt="" /> Astro Numerical Match </button> -->
+											<!-- <button class="details_res"> Details  </button> -->
+<a (click)="memberCheckFn(newData.basic_information.value[0]?.id +'&'+ newData.freetoSee)" class="details_res">Details </a>
+										</div>
+									</div>
+
+								</ng-template>
+							</owl-carousel-o>
+							
+						</div>
+						
+
+						  
+
+
+
+						<div class="portfolio_Search_list_desctop">
+						<div class="portfolio_Search_list" *ngFor="let newData of onLoadPageSlice; let i=index">
+<!-- {{newData | json}} -->
+							<!-- {{newData.blurr_content}} -->
+
+
+							<div class="portfolio_Search_list_thum">
+								<ng-container
+									*ngIf="newData.basic_information.value[0]?.file_path !==  null; else noThumbnail">
+									<img src="{{imageBaseUrl+newData.basic_information.value[0]?.file_path}}" alt="" />
+								</ng-container>
+
+								<ng-template #noThumbnail>
+									<div
+										*ngIf="newData.basic_information.value[0]?.gender == 'M';then his_cont else her_cont">
+										here is ignored</div>
+									<ng-template #his_cont><img src="assets/images/male_pro_big_list.png"
+											alt="" /></ng-template>
+									<ng-template #her_cont><img src="assets/images/Fem_pro_big_list.png"
+											alt="" /></ng-template>
+
+								</ng-template>
+								<!-- <img src="assets/images/profil_a.png" alt=""/> -->
+							</div>
+							<div class="portfolio_Search_list_descrip">
+								<div class="portfolio_Search_list_descrip_top">
+
+								
+
+									<!-- <ul [class.noBlurStyle]="newData.blurr_content < minListShowData_withoutLog"> -->
+										<ul>
+										
+											<li class="verify" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</li>
+										
+											
+											<li class="verify_not" *ngIf="newData.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not
+												Verified</li>
+										
+
+
+
+										<!-- <li class="match tooltip_Popup"><span> {{newData.astro_match_marks}} %</span>Astro Numerical Match  -->
+											<!-- {{elementory_Marks}} -->
+
+				<!-- <div class="percentage_bar_inner_green" [style.width]="partnersRasi_get?.total_marks+'%'">&nbsp;</div> -->
+
+				<!-- <span class="tooltiptext_Popup tooltip-bottom_Popup">
+					<p>Elementory: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.elementMarks+'%'"></span></span></p>
+					<p>Numerology: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.numeric_match+'%'"></span></span></p> 
+					<p>Osto Kut: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.jotok_marks+'%'"></span></span></p>
+					<p>Mongal Dosha: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.mongal_marks+'%'"></span></span></p>
+				
+				</span> -->
+										<!-- </li> -->
+										<!-- <li class="profiMatch"><span> {{addProfileMatchpercentage(newData,i)}}
+												%</span>Profile Match </li> -->
+										<li class="accept"> 
+		<!-- <button type="button" class="favour_btn"><i class="fa fa-heart" aria-hidden="true"></i>  My Favourite</button> -->
+		<!-- {{newData.freetoSee}} -->
+		<button type="button" class="astro_link" data-toggle="modal" data-target="#sendMsgPopup" (click)="showAstroPopup(newData.basic_information.value[0]?.id, this.ownProfileMatchDt2?.id)"><img src="assets/images/astrology.png" alt="" /> Astro Numerical Match </button>
+		</li>
+									</ul>
+
+									<!-- <div class="tooltip_Popup">Hover over me
+										<span class="tooltiptext_Popup tooltip-bottom_Popup">Tooltip xcvbcvbcvbtext</span>
+									  </div> -->
+								</div>
+
+								<div class="portfolio_Search_list_descrip_details">
+
+									<!-- <h3 [class.noBlurStyle]="newData.blurr_content < minListShowData_withoutLog"> -->
+										<h3> 
+											<!-- {{nameShort(newData.basic_information.value[0]?.u_name)}} -->
+											{{newData.basic_information.value[0]?.u_name}}
+										<!-- kk {{newData.basic_information.value[0].u_name.split(' ').length-1}} pp
+		sssss	{{newData.basic_information.value[0].u_name.split(' ')[1].substr(0, 2)}} hhh -->
+										<ng-container *ngIf="newData.basic_information.value[0]?.profile_id != null">
+											<span>(ID: {{newData.basic_information.value[0]?.profile_id}})</span>
+										</ng-container>
+									</h3>
+
+									<!-- <p [class.noBlurStyle]="newData.blurr_content < minListShowData_withoutLog"> -->
+										<p>
+										<strong class="title">Age:
+										</strong>{{ageCalculat(newData.basic_information.value[0]?.dob |
+										date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+										{{this.field_height_OBJ[newData.basic_information.value[0]?.height]}}
+
+										, {{newData.basic_information.value[0]?.mother_tong}}, <br>
+
+										<strong class="title">Cast:</strong>
+										{{newData.basic_information.value[0]?.caste_name}} <br>
+										<strong class="title">Occupation:
+										</strong>{{newData.groom_location.value[0]?.occu_name}}, <strong
+											class="title">Lives In</strong> {{newData.basic_information.value[0]?.state_name}},{{newData.basic_information.value[0]?.country_name}}
+										<!-- <a routerLink="/portfolio_view{{newData.basic_information.value[0]?.id}}">Details</a> -->
+
+									</p>
+									<!-- <a [routerLink]="['/portfolio_view', newData.basic_information.value[0]?.user_id]" class="detailsLink">Details </a> -->
+
+
+									<div class="profileListBlock">
+										<!-- <div class="rashiDetails" [class.noBlurStyle]="newData.blurr_content < 9"> -->
+										<div class="rashiDetails">
+											<ul>
+												<li>Mongal Dosha:
+													<ng-container *ngIf="newData.mongal_dasha == '100'"> <span
+															style="color: red;">High</span></ng-container>
+													<ng-container *ngIf="newData.mongal_dasha == '80'">
+														Medium</ng-container>
+													<ng-container *ngIf="newData.mongal_dasha == '20'">
+														Low</ng-container>
+													<ng-container *ngIf="newData.mongal_dasha == '0'">
+														None</ng-container>
+												</li>
+												<!-- <li>Sun Shine: {{newData.sun_shine_rashi_match}}</li>
+		<li>Moon Shine:</li>
+		<li>Jotok Marks: {{newData.jotok_marks}}</li>
+		<li>Numeric Match: {{newData.numeric_match}}</li> -->
+											</ul>
+						
+										</div>
+										<!-- <button mat-mini-fab color="warn" (click)="enableButton()" [ngStyle]="{'background-color': buttonColor}" aria-label="Example icon button with a heart icon">
+											<mat-icon>favorite</mat-icon>
+										</button>	 -->
+										<!-- <ng-container >
+		
+											<span class="upgrade_Lock">
+											<div class="lockPopupHover">
+											<button type="button" routerLink="/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+											</div>
+											</span>
+										</ng-container>		 -->
+										
+<!-- <a data-toggle="modal" data-target="#sendMsgPopup" class="sendMsg" (click)="sendMsg(this.ownProfileMatchDt2?.id, this.ownProfileMatchDt2?.profile_id, ownProfileMatchDt2?.u_name, this.ownProfileMatchDt2?.email_id, newData.basic_information.value[0].email_id)">Send Message </a> -->
+										<a (click)="memberCheckFn(newData.basic_information.value[0]?.id +'&'+ newData.freetoSee)"
+											class="detailsLink">Details </a>
+									</div>
+
+									<!-- <p><strong>Elementor Match </strong></p>
+		<p>{{newData.groom_location.value[0] | json}}</p>
+		<p>{{newData.basic_information.value[0] | json}}</p> -->
+
+								</div>
+
+							</div>
+						</div>
+
+						<mat-paginator [length]="partnerList.length" [pageSize]="12" [pageSizeOptions]="[12, 15, 30]"
+							(page)="onPageChange($event)"></mat-paginator>
+						</div>
+					</div>
+				</div>
+				<ng-template #noDataFound>
+					<div class="nodatFound">No Data Found</div>
+				</ng-template>
+			</ng-template>
+
+
+		</div>
+
+
+
+
+<!-- <div class="modal fade" id="sendMsgPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+<div class="modal fade" id="sendMsgPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- <div> -->
+		<div class="modal-dialog modal_dialog_AstroPopup" role="document">
+	
+			
+	
+		  <div class="modal-content modal_Astro_cus forget_pass">
+	
+			<div *ngIf="inProgressShortPopup; else sowDataPopup" style="text-align:center; margin-top:20px;">
+				<div class="spinner-border"></div>
+				</div>
+		
+				<ng-template #sowDataPopup>
+	
+			<div class="modal-header">
+			  <!-- <h5>Send Message</h5> -->
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			
+			<div class="loginMainFrame">
+			<div class="modal-body bodyCus">
+	
+				
+				<div class="astro_popup_sec topThumSec">
+				
+					<div class="profile_match profile_match_popup_left">
+						<div class="profile_match_left_thum">
+							
+							<ng-container *ngIf="listOfFiles_single[0]?.filePath !== null; else noThumbnail">
+								<img [src]="imageBaseUrl+listOfFiles_single[0]?.filePath" alt="" srcset="">
+							</ng-container>
+							<!-- partners_Details?.gender -->
+							<!-- singlePartnDetailsPop[0]?.basic_information.value[0]?.gender -->
+							
+							<ng-template #noThumbnail>
+							<div *ngIf="singlePartnDetailsPop_newAray?.partner?.gender == 'M';then his_cont_Thum else her_cont_Thum">
+							here is ignored</div>
+							<ng-template #his_cont_Thum><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+							<ng-template #her_cont_Thum><img src="assets/images/Fem_pro_big.png" alt="" /></ng-template>
+	
+							</ng-template>
+						</div>
+	
+						<!-- <div class="profile_match_percentage"> -->
+							<!-- <p>Match Score {{singlePartnDetailsPop_newAray?.total_marks}}%</p>
+	
+							<div class="percentage_bar">
+								<div class="percentage_bar_inner_green"
+									[style.width]="singlePartnDetailsPop_newAray?.total_marks+'%'">&nbsp;</div>
+							</div> -->
+	
+						<!-- </div> -->
+						
+						<div class="profile_match_right_thum">
+	
+							<ng-container
+								*ngIf="listOfFiles_single_login_user[0]?.filePath !==  null; else noThumbnailLoginUser">
+								<img [src]="this.imageBaseUrl +listOfFiles_single_login_user[0]?.filePath" alt=""
+									srcset="">
+							</ng-container>
+	
+							<ng-template #noThumbnailLoginUser>
+								<div *ngIf="this.ownProfileMatchDt2?.gender == 'M';then his_cont_match else her_cont_match"> here is ignored</div>
+								<ng-template #his_cont_match><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+								<ng-template #her_cont_match><img src="assets/images/Fem_pro_big.png" alt="" /> </ng-template>
+	
+	
+							</ng-template>
+	
+						</div>
+					</div>
+
+					<div class="profile_match_popup_right">
+				
+	
+						<div class="astro_popup_sec">
+							<h3 class="rightPercan"><img src="assets/images/astro_pop_icin_1.png" alt="" /> Profile Match</h3>
+							<div class="astro_popup_sec_percent">
+							<!-- <p>Profile: <span class="percentageBarMain"><span class="percentageBar" [style.width]="elementory_Marks+'%'"> 
+								{{addProfileMatchpercentage(560,1)}}
+							 </span></span></p> -->
+							 <p [ngStyle]="{'color': profileMarks >= 0 && profileMarks <= 29 ? '#eb0c0c' : (profileMarks >= 30 && profileMarks <= 49 ? '#ff7e00' : '#477d12')}">
+								Profile match: {{profileMarks+'%'}} 
+								<span class="percentageBarMain">
+									<span class="percentageBar" [ngStyle]="{'background-color': profileMarks >= 0 && profileMarks <= 29 ? '#eb0c0c' : (profileMarks >= 30 && profileMarks <= 49 ? '#ff7e00' : '#477d12')}" [style.width]="profileMarks+'%'"></span>
+								</span>
+								</p>
+							</div>
+							
+						</div>
+			
+						
+						
+			
+					</div>
+	
+	
+				</div>
+
+				<div class="astro_popup_sec_Full">
+				<div class="astro_popup_sec">
+					<h3 class="rightPercan"><img src="assets/images/astro_pop_icin.png" alt="" /> Astro Numerical Match 
+						
+						<!-- <span [ngStyle]="{'background-color': singlePartnDetailsPop_newAray?.total_marks >= 0 && singlePartnDetailsPop_newAray?.total_marks <= 29 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.total_marks >= 30 && singlePartnDetailsPop_newAray?.total_marks <= 49 ? '#ff7e00' : '#477d12')}">
+							{{singlePartnDetailsPop_newAray?.total_marks}}%
+						</span>  -->
+
+						<ng-container *ngIf="singlePartnDetailsPop_newAray?.total_marks >= 0 && singlePartnDetailsPop_newAray?.total_marks <= 50">
+							<span style="background: #eb0c0c;">{{singlePartnDetailsPop_newAray?.total_marks}}% Bad</span>
+						</ng-container>
+
+						<ng-container *ngIf="singlePartnDetailsPop_newAray?.total_marks >= 51 && singlePartnDetailsPop_newAray?.total_marks <= 59">
+							<span style="background: rgb(250, 63, 6);">{{singlePartnDetailsPop_newAray?.total_marks}}% Average</span>
+						</ng-container>
+
+						<ng-container *ngIf="singlePartnDetailsPop_newAray?.total_marks >= 60 && singlePartnDetailsPop_newAray?.total_marks <= 75">
+							<span style="background:#ff7e00;">{{singlePartnDetailsPop_newAray?.total_marks}}% Good</span>
+						</ng-container>
+
+						<ng-container *ngIf="singlePartnDetailsPop_newAray?.total_marks >= 76 && singlePartnDetailsPop_newAray?.total_marks <= 85">
+							<span style="background: #2bda57;">{{singlePartnDetailsPop_newAray?.total_marks}}% Very Good</span>
+						</ng-container>
+
+						<ng-container *ngIf="singlePartnDetailsPop_newAray?.total_marks >= 86 && singlePartnDetailsPop_newAray?.total_marks <= 100">
+							<span style="background: #477d12;">{{singlePartnDetailsPop_newAray?.total_marks}}% Excellent</span>
+						</ng-container>
+					
+					
+					</h3>
+					<div class="astro_popup_sec_percent">
+
+<p [ngStyle]="{'color': singlePartnDetailsPop_newAray?.partner?.elementMarks >= 0 && singlePartnDetailsPop_newAray?.partner?.elementMarks <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.elementMarks >= 10 && singlePartnDetailsPop_newAray?.partner?.elementMarks <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.elementMarks >= 20 && singlePartnDetailsPop_newAray?.partner?.elementMarks <= 29 ? '#ff7e00' : '#477d12'))  }">
+
+						Elementary: {{singlePartnDetailsPop_newAray?.partner?.elementMarks+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': singlePartnDetailsPop_newAray?.partner?.elementMarks >= 0 && singlePartnDetailsPop_newAray?.partner?.elementMarks <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.elementMarks >= 10 && singlePartnDetailsPop_newAray?.partner?.elementMarks <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.elementMarks >= 20 && singlePartnDetailsPop_newAray?.partner?.elementMarks <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="singlePartnDetailsPop_newAray?.partner?.elementMarks+'%'"></span>
+					</span>
+					</p>
+	
+<p [ngStyle]="{'color': singlePartnDetailsPop_newAray?.partner?.SunShineMatch >= 0 && singlePartnDetailsPop_newAray?.partner?.SunShineMatch <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.SunShineMatch >= 10 && singlePartnDetailsPop_newAray?.partner?.SunShineMatch <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.SunShineMatch >= 20 && singlePartnDetailsPop_newAray?.partner?.SunShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }">
+							
+							Numerology: {{singlePartnDetailsPop_newAray?.partner?.SunShineMatch+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': singlePartnDetailsPop_newAray?.partner?.SunShineMatch >= 0 && singlePartnDetailsPop_newAray?.partner?.SunShineMatch <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.SunShineMatch >= 10 && singlePartnDetailsPop_newAray?.partner?.SunShineMatch <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.SunShineMatch >= 20 && singlePartnDetailsPop_newAray?.partner?.SunShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="singlePartnDetailsPop_newAray?.partner?.SunShineMatch+'%'"></span>
+					</span>
+					</p> 
+
+<p [ngStyle]="{'color': singlePartnDetailsPop_newAray?.partner?.jotok_match >= 0 && singlePartnDetailsPop_newAray?.partner?.jotok_match <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.jotok_match >= 10 && singlePartnDetailsPop_newAray?.partner?.jotok_match <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.jotok_match >= 20 && singlePartnDetailsPop_newAray?.partner?.jotok_match <= 29 ? '#ff7e00' : '#477d12'))  }">
+					Osto Kut: {{singlePartnDetailsPop_newAray?.partner?.jotok_match+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': singlePartnDetailsPop_newAray?.partner?.jotok_match >= 0 && singlePartnDetailsPop_newAray?.partner?.jotok_match <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.jotok_match >= 10 && singlePartnDetailsPop_newAray?.partner?.jotok_match <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.jotok_match >= 20 && singlePartnDetailsPop_newAray?.partner?.jotok_match <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="singlePartnDetailsPop_newAray?.partner?.jotok_match+'%'"></span>
+					</span>
+					</p>
+
+<p [ngStyle]="{'color': singlePartnDetailsPop_newAray?.partner?.moonShineMatch >= 0 && singlePartnDetailsPop_newAray?.partner?.moonShineMatch <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.moonShineMatch >= 10 && singlePartnDetailsPop_newAray?.partner?.moonShineMatch <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.moonShineMatch >= 20 && singlePartnDetailsPop_newAray?.partner?.moonShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }">
+		Moon Sign: {{singlePartnDetailsPop_newAray?.partner?.moonShineMatch+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': singlePartnDetailsPop_newAray?.partner?.moonShineMatch >= 0 && singlePartnDetailsPop_newAray?.partner?.moonShineMatch <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.moonShineMatch >= 10 && singlePartnDetailsPop_newAray?.partner?.moonShineMatch <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.moonShineMatch >= 20 && singlePartnDetailsPop_newAray?.partner?.moonShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="singlePartnDetailsPop_newAray?.partner?.moonShineMatch+'%'"></span>
+					</span>
+					</p>
+					
+
+
+<p [ngStyle]="{'color': singlePartnDetailsPop_newAray?.partner?.mongal_marks >= 0 && singlePartnDetailsPop_newAray?.partner?.mongal_marks <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.mongal_marks >= 10 && singlePartnDetailsPop_newAray?.partner?.mongal_marks <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.mongal_marks >= 20 && singlePartnDetailsPop_newAray?.partner?.mongal_marks <= 29 ? '#ff7e00' : '#477d12'))  }">
+					Mongal Dosha: {{singlePartnDetailsPop_newAray?.partner?.mongal_marks+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': singlePartnDetailsPop_newAray?.partner?.mongal_marks >= 0 && singlePartnDetailsPop_newAray?.partner?.mongal_marks <= 9 ? '#eb0c0c' : (singlePartnDetailsPop_newAray?.partner?.mongal_marks >= 10 && singlePartnDetailsPop_newAray?.partner?.mongal_marks <= 19 ? '#fa3f06' : (singlePartnDetailsPop_newAray?.partner?.mongal_marks >= 20 && singlePartnDetailsPop_newAray?.partner?.mongal_marks <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="singlePartnDetailsPop_newAray?.partner?.mongal_marks+'%'"></span>
+					</span>
+					</p>
+	
+	
+					</div>
+	
+				</div>
+
+			</div>
+	
+	
+			
+	
+	
+	
+			</div>
+			  
+
+	  </div>
+	  
+	</ng-template>
+	  
+	
+		  </div>
+			
+	
+		</div>
+	  </div>
+
+
+
+<!-- <div class="modal fade" id="sendMsgPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal_dialog_login_senddetails" role="document">
+		  
+
+		  <div class="modal-content modal_content_cus forget_pass">
+			<div class="modal-header">
+			  <h5>Send Message</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			
+			<div class="loginMainFrame" [formGroup]="sendMsgForm">
+			<div class="modal-body bodyCus">
+
+				<p>Greetings,</p>
+
+<p>I'm <strong>{{sendMsgData?.user_name}}</strong>, and you can reach me at <strong>{{sendMsgData?.frm_email}}</strong>. Your 
+	profile has caught my attention, and I would like to know more about you. Feel 
+	free to get in touch for further communication.</p>
+
+	<div class="field_outer_label">
+		<section class="example-section">
+		<mat-checkbox formControlName="conformTerms" (change)="confirm_To_sendMSG($event)">
+			Disclaimer: As a user of My Soul Mate, I agree that information about me will be used 
+			for the purpose of matching me with other members. This platform is not a dating website; 
+			its focus is on guiding me to find a life partner through numerological and astrological insights. 
+			I willingly grant consent to My Soul Mate for this purpose, and in the event of any future occurrences, 
+			the platform bears no responsibility for subsequent outcomes</mat-checkbox>
+		</section>
+		
+		<div class="validation_div"
+		*ngIf="!sendMsgForm.controls.conformTerms?.valid &&  (sendMsgForm.controls.conformTerms?.dirty ||sendMsgForm.controls.conformTerms?.touched)">
+		Please Check
+		</div>
+		</div>
+
+
+			</div>
+			  
+		  <div class="modalFooter_cus">
+			  <div class="modalFooter_cus_left_send">
+			  <input type="button" value="Submit" data-dismiss="modal" aria-label="Close" (click)="sendMsgConfirm()"[disabled]="!sendMsgForm.valid || ischecked_desclaimer">
+			  </div>
+			  
+		  </div>
+	  </div>
+	  
+	  
+
+		  </div>
+
+
+		</div>
+	  </div> -->
+

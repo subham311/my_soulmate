@@ -1,0 +1,1155 @@
+<!-- <div class="beforeLoginHead_Class"> <app-Before_login_header_N_Home></app-Before_login_header_N_Home></div> -->
+
+<!-- <div class="rejistrationPageLogo rejistrationPageLogo_Page"> <app-Before_login_header_N_Home></app-Before_login_header_N_Home></div> -->
+
+<div class="innerMain_wraper_register wrapperMinheight">
+	<div class="wrapper col-sm-12">
+
+		<!-- <div class="rejistrationPageLogo">
+		<div class="header_top">
+			<div class="wrapper header_topSub">
+				<div class="logoSec"><a routerLink="/home">
+					<img src="assets/images/logo_new.png" alt="" class="forDesktop"/>
+					<img src="assets/images/logo_new_App.png" alt="" class="forMobile"/>
+				</a></div>
+
+			</div>
+			</div>
+		</div> -->
+
+	<div class="inner_wraper_sub registration popupAnimated" id="popup_Id">
+			<p>
+				<img src="assets/images/anounce.png" alt="My Soul Mate"/> <br>
+				
+				Thank you for registering at <span class="titleName">My Soul Mate!</span> <br> Your profile is under review. <br> Expect an <strong>email</strong> and 
+				<strong>SMS</strong> 
+				within <span>48 hours</span> confirming login details for full access to our features.</p>
+		</div>
+	
+
+		<!-- <div class="inner_wraper_sub registration" *ngIf="popupWindowAftreRegestra">
+			<p>Thank you for registering at My Soul Mate! Your profile is under review. Expect an email and SMS 
+				within 48 hours confirming login details for full access to our features.</p>
+		</div> -->
+
+		<div class="inner_wraper_sub registration ragestrationFrm_Active" id="regestration_Id" *ngIf="offRegestrationForm">
+			<ul class="msgServer">
+				<li *ngIf="selectFutureDate;"><i class="fa fa-arrow-circle-right"
+						aria-hidden="true"></i> Please Select Right DOB</li>
+
+				<li *ngIf="showAge <= 18;"><i class="fa fa-arrow-circle-right"
+						aria-hidden="true"></i> Your Age is Below 18</li>
+
+				<li *ngIf="this.receivedData_Form_1_msg_String"><i class="fa fa-arrow-circle-right"
+						aria-hidden="true"></i> {{this.receivedData_Form_1_msg_String}}</li>
+				<ng-container *ngIf="this.receivedData_Form_1_msg_Aray">
+					<ng-container *ngFor="let item of this.receivedData_Form_1">
+						<li *ngIf="this.receivedData_Form_1_msg_Aray[item] != 'valid'">
+							<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+							{{this.form_step_2_1_field_name[item]}}: {{this.receivedData_Form_1_msg_Aray[item]}}
+						</li>
+					</ng-container>
+				</ng-container>
+
+				<li *ngIf="this.receivedData_Form_2_msg_String"><i class="fa fa-arrow-circle-right"
+						aria-hidden="true"></i> {{this.receivedData_Form_2_msg_String}}</li>
+				<ng-container *ngIf="this.receivedData_Form_2_msg_Aray">
+					<ng-container *ngFor="let item of this.receivedData_Form_2">
+						<li *ngIf="this.receivedData_Form_2_msg_Aray[item] != 'valid'">
+							<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+							{{this.form_step_2_field_name[item]}}: {{this.receivedData_Form_2_msg_Aray[item]}}
+						</li>
+					</ng-container>
+				</ng-container>
+
+				<li *ngIf="this.receivedData_Form_3_msg_String"><i class="fa fa-arrow-circle-right"
+					aria-hidden="true"></i> {{this.receivedData_Form_3_msg_String}}</li>
+			<ng-container *ngIf="this.receivedData_Form_3_msg_Aray">
+				<ng-container *ngFor="let item of this.receivedData_Form_3">
+					<li *ngIf="this.receivedData_Form_3_msg_Aray[item] != 'valid'">
+						<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+						{{this.form_step_3_field_name[item]}}: {{this.receivedData_Form_3_msg_Aray[item]}}
+					</li>
+				</ng-container>
+			</ng-container>
+
+				<li *ngIf="this.receivedData_Form_4_msg_String"><i class="fa fa-arrow-circle-right"
+						aria-hidden="true"></i> {{this.receivedData_Form_4_msg_String}}</li>
+				<ng-container *ngIf="this.receivedData_Form_4_msg_Aray">
+					<ng-container *ngFor="let item of this.receivedData_Form_4">
+						<li *ngIf="this.receivedData_Form_4_msg_Aray[item] != 'valid'">
+							<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+							{{this.form_step_4_field_name[item]}}: {{this.receivedData_Form_4_msg_Aray[item]}}
+						</li>
+					</ng-container>
+				</ng-container>
+
+				<li *ngIf="this.receivedData_Form_5_msg_String"><i class="fa fa-arrow-circle-right"
+						aria-hidden="true"></i> {{this.receivedData_Form_5_msg_String}}</li>
+				<ng-container *ngIf="this.receivedData_Form_5_msg_Aray">
+					<ng-container *ngFor="let item of this.receivedData_Form_5">
+						<li *ngIf="this.receivedData_Form_5_msg_Aray[item] != 'valid'">
+							<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+							{{this.form_step_5_field_name[item]}}: {{this.receivedData_Form_5_msg_Aray[item]}}
+						</li>
+					</ng-container>
+				</ng-container>
+
+				<li *ngIf="this.receivedData_Form_6_msg_String"><i class="fa fa-arrow-circle-right"
+						aria-hidden="true"></i> {{this.receivedData_Form_5_msg_String}}</li>
+				<ng-container *ngIf="this.receivedData_Form_6_msg_Aray">
+					<ng-container *ngFor="let item of this.receivedData_Form_6_msg">
+						<li *ngIf="this.receivedData_Form_6_msg_Aray[item] != 'valid'">
+							<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+							{{this.form_step_6_field_name[item]}}: {{this.receivedData_Form_6_msg_Aray[item]}}
+						</li>
+					</ng-container>
+				</ng-container>
+
+			</ul>
+			
+
+			  <div class="tabCustom">
+			  <mat-stepper [linear]="isLinear" #stepper>
+
+				<mat-step [stepControl]="form_step_2_1" label="Birth Details & Etc">
+					<h3 class="steper_title">Birth Details & Etc</h3>
+					<form class="formStep_group formStep_group_2_1" [formGroup]="form_step_2_1">
+						
+						<!-- <mat-form-field>
+							<mat-label>Address</mat-label>
+							<input matInput formControlName="formCtrl_1" placeholder="Ex. 1 Main St, New York, NY"
+								   required>
+						  </mat-form-field> -->
+
+						<div class="form-group form_group_custom row">
+	
+							<div class="col-sm-3">
+								<div class="field_outer_label">
+									<!-- [readonly]="true" -->
+									<mat-form-field class="example-full-width">
+										<mat-label>Name</mat-label>
+										<input matInput type="text" [value]="userName_phone.home_user"
+											formControlName="field_name" [readonly]="true">
+									</mat-form-field>
+								</div>
+							</div>
+	
+	
+							<div class="col-sm-3">
+								<div class="field_outer_label">
+	
+									<mat-form-field class="example-full-width">
+										<mat-label>Mobile Number</mat-label>
+	
+										<input matInput [value]="userName_phone.home_phone"
+											formControlName="field_mobile" [readonly]="true">
+											<!-- [readonly]="true" -->
+	
+									</mat-form-field>
+	
+								</div>
+							</div>
+						</div>
+	
+						<div class="form-group form_group_custom row">
+	
+							<div class="col-sm-3">
+								<div class="field_outer_label">
+	
+	
+									<mat-form-field class="example-full-width">
+										<mat-label>Actual Birth Location</mat-label>
+										<input matInput type="text" id="location"
+											formControlName="field_birth_loca">
+									</mat-form-field>
+	
+									<div class="validation_div"
+										*ngIf="!form_step_2_1.controls.field_birth_loca?.valid && (form_step_2_1.controls.field_birth_loca?.dirty ||form_step_2_1.controls.field_birth_loca?.touched)">
+										Please Select 'Birth Location'
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="field_outer_label">
+	
+	
+									<!-- <i class="fa fa-info-circle dob_info"
+										matTooltip="You must be 18 years & above. Please put your EXACT date of birth & time of birth to get an accurate horoscope. It may differ from your Passport/Aadhaar or any other document/s"
+										aria-hidden="true"></i> -->
+	
+	
+	
+									<span class="regestra_dob_time">Please put your EXACT Date Of Birth & Time</span>
+									<input type="datetime-local" class="form-control date_BotsTrap"
+										formControlName="field_birth_date" (change)="checkAdult($event)">
+	
+									<ng-container *ngIf="selectFutureDate">
+										<div class="validation_div">Please select Right DOB</div>
+									</ng-container>
+	
+									<ng-container *ngIf="!selectFutureDate">
+										
+									<ng-container *ngIf="showAge <= 18; else adult">
+										<div class="validation_div">
+											Your Age is Below 18
+										</div>
+									</ng-container>
+	
+									<ng-template #adult>
+										<div class="validation_div"
+											*ngIf="!form_step_2_1.controls.field_birth_date?.valid && (form_step_2_1.controls.field_birth_date?.dirty ||form_step_2_1.controls.field_birth_date?.touched)">
+											Please put your 'Actual Date Of Birth'
+										</div>
+									</ng-template>
+									
+									</ng-container>
+	
+	
+								</div>
+							</div>
+	
+						</div>
+	
+						<div class="registrationNxt_btn">
+						  <button mat-button matStepperNext [disabled]="form_step_2_1.invalid || isButtonDisabledAge || selectFutureDate" (click)="serverSideCheckForm_1(stepper)">Next</button>
+						</div>
+					  </form>
+				</mat-step>
+
+				<mat-step [stepControl]="form_step_2" label="Basic Details">
+					<h3 class="steper_title">Basic Details</h3>
+				  <form class="formStep_group formStep_group_2" [formGroup]="form_step_2">
+					
+					<div class="form-group form_group_custom row">
+
+						<div class="col-sm-4">
+							<div class="field_outer_label">
+
+								<mat-form-field class="example-full-width">
+									<mat-label>Select Gender</mat-label>
+									<mat-select formControlName="field_gender">
+										<mat-option value="M">Male</mat-option>
+										<mat-option value="F">Female</mat-option>
+									</mat-select>
+								</mat-form-field>
+
+								<div class="validation_div"
+									*ngIf="!form_step_2.controls.field_gender?.valid && (form_step_2.controls.field_gender?.dirty ||form_step_2.controls.field_gender?.touched)">
+									Please Select 'Gender'
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-sm-4">
+							<div class="field_outer_label">
+
+								<mat-form-field class="example-full-width">
+									<mat-label> Create Profile For</mat-label>
+									<mat-select formControlName="field_who_creat_profile">
+										<mat-option value="">Select</mat-option>
+										<mat-option value="M">Myself</mat-option>
+										<mat-option value="D">Daughter</mat-option>
+										<mat-option value="S">Son</mat-option>
+										<mat-option value="I">Sister</mat-option>
+										<mat-option value="B">Brother</mat-option>
+										<mat-option value="R">Relative</mat-option>
+										<mat-option value="F">Friend</mat-option>
+									</mat-select>
+								</mat-form-field>
+
+
+								<div class="validation_div"
+									*ngIf="!form_step_2.controls.field_who_creat_profile?.valid && (form_step_2.controls.field_who_creat_profile?.dirty ||form_step_2.controls.field_who_creat_profile?.touched)">
+									Please Select 'Who Create This Profile'
+								</div>
+
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="field_outer_label">
+								<mat-form-field class="example-full-width">
+									<mat-label>Email ID</mat-label>
+									<input matInput type="email" formControlName="field_email_id"
+										(change)="email_verify($event)">
+								</mat-form-field>
+
+								<div class="validation_div">{{isEmaiAlrtTxt}} </div>
+								<div class="validation_div"
+									*ngIf="!form_step_2.controls.field_email_id?.valid && (form_step_2.controls.field_email_id?.dirty ||form_step_2.controls.field_email_id?.touched)">
+									Email is not valid
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+					<div class="form-group form_group_custom row">
+
+
+
+						<div class="col-sm-4">
+							<div class="field_outer_label">
+								<input type="text" formControlName="field_Country" hidden="true">
+								<mat-form-field class="example-full-width">
+									<mat-label>Country (Your Living Location)</mat-label>
+									<input type="text" placeholder="Select" matInput
+										formControlName="field_Country1" [matAutocomplete]="auto">
+									<mat-autocomplete #auto="matAutocomplete"
+										(optionSelected)="stateChange_ByCountry($event)">
+										<mat-option value="">Select</mat-option>
+										<mat-option *ngFor="let newData of filteredCountry"
+											[value]="newData.name">
+											{{newData.name}}
+										</mat-option>
+									</mat-autocomplete>
+								</mat-form-field>
+
+								<div class="validation_div"
+									*ngIf="!form_step_2.controls.field_Country1?.valid && (form_step_2.controls.field_Country1?.dirty ||form_step_2.controls.field_Country?.touched)">
+									Please Select 'Country'
+								</div>
+
+							</div>
+						</div>
+
+
+
+						<div class="col-sm-4">
+
+							<div class="field_outer_label">
+								<input type="text" formControlName="field_State" hidden="true">
+								<mat-form-field class="example-full-width">
+									<mat-label>State (Your Living Location)</mat-label>
+									<input type="text" placeholder="Select" matInput
+										formControlName="field_State1" [matAutocomplete]="state">
+									<mat-autocomplete #state="matAutocomplete"
+										(optionSelected)="cityChange_ByState($event)">
+										<mat-option value="">Select</mat-option>
+										<mat-option *ngFor="let newData of filteredState"
+											[value]="newData.name">
+											{{newData.name}}
+										</mat-option>
+									</mat-autocomplete>
+								</mat-form-field>
+
+
+
+								<div class="validation_div"
+									*ngIf="!form_step_2.controls.field_State?.valid && (form_step_2.controls.field_State?.dirty ||form_step_2.controls.field_State?.touched)">
+									Please Select 'State'
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="col-sm-4">
+
+							<div class="field_outer_label">
+								<input type="text" formControlName="field_mother_tong" hidden="true">
+								<mat-form-field class="example-full-width">
+									<mat-label>Mother Tongue</mat-label>
+									<input type="text" placeholder="Select" matInput
+										formControlName="field_mother_tong1" [matAutocomplete]="mother_tongue">
+									<mat-autocomplete #mother_tongue="matAutocomplete"
+										(optionSelected)="mother_tongue_select($event)">
+										<mat-option value="">Select</mat-option>
+										<mat-option *ngFor="let newData of filteredMotherTongue"
+											[value]="newData.lang_name">
+											{{newData.lang_name}}
+										</mat-option>
+									</mat-autocomplete>
+								</mat-form-field>
+
+
+								<div class="validation_div"
+									*ngIf="!form_step_2.controls.field_mother_tong?.valid && (form_step_2.controls.field_mother_tong?.dirty ||form_step_2.controls.field_mother_tong?.touched)">
+									Please Select 'Mother Tongue'
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="form-group form_group_custom row">
+
+						<div class="col-sm-4 passWord">
+							<div class="field_outer_label">
+
+								<mat-form-field>
+									<mat-label>Enter Password</mat-label>
+									<input matInput formControlName="field_pass"
+										[type]="hide ? 'password' : 'text'" #pw (keyup)="validCheck($event)">
+									<button mat-icon-button matSuffix (click)="hide = !hide"
+										[attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+										<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+									</button>
+								</mat-form-field>
+
+								<!-- <div *ngIf="checkPassword" style="position: absolute; top: 100%; line-height: 15px;"> -->
+								<div style="position: absolute; top: 100%; line-height: 15px;">
+									<small class="text-danger">
+										<p>Password must contain Minimum 8 characters.</p>
+									</small>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-sm-4 ConfirmpassWord">
+							<div class="field_outer_label">
+
+								<mat-form-field>
+									<mat-label>Confirm Password</mat-label>
+									<input matInput formControlName="field_confirm_pass"
+										[type]="hide_con ? 'password' : 'text'" #cpw
+										(keyup)="validCheck($event)">
+									<button mat-icon-button matSuffix (click)="hide_con = !hide_con"
+										[attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_con">
+										<mat-icon>{{hide_con ? 'visibility_off' : 'visibility'}}</mat-icon>
+									</button>
+								</mat-form-field>
+
+								<div *ngIf="isButtonDisabled"
+									style="position: absolute; top: 100%; line-height: 15px;">
+									<small class="text-danger">
+										{{errorPass}}
+									</small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- <mat-form-field>
+						<mat-label>Address</mat-label>
+						<input matInput formControlName="formCtrl_2" placeholder="Ex. 1 Main St, New York, NY"
+							   required>
+					  </mat-form-field> -->
+
+					<div class="registrationNxt_btn">
+					  <button mat-button matStepperPrevious>Back</button>
+					  <button mat-button matStepperNext [disabled]="form_step_2.invalid || checkPassword || isEmailExit"
+					  (click)="serverSideCheckForm_2(stepper)">Next</button>
+					</div>
+				  </form>
+				</mat-step>
+
+				<mat-step [stepControl]="form_step_3" label="Religion and Caste Details">
+					<h3 class="steper_title">Religion and Caste Details</h3>
+					<form class="formStep_group formStep_group_2" [formGroup]="form_step_3">
+						<div class="form-group form_group_custom row">
+							<div class="col-sm-3">
+								<div class="field_outer_label">
+									<input type="text" formControlName="field_ur_religion" hidden="true">
+									<mat-form-field class="example-full-width">
+										<mat-label>Religion</mat-label>
+										<input type="text" placeholder="Select" matInput
+											formControlName="field_ur_religion1" [matAutocomplete]="religion">
+										<mat-autocomplete #religion="matAutocomplete"
+											(optionSelected)="religion_select($event)">
+											<mat-option value="">Select</mat-option>
+											<mat-option *ngFor="let rel of filteredRel" [value]="rel.name">
+												{{rel.name}}
+											</mat-option>
+										</mat-autocomplete>
+									</mat-form-field>
+
+									<div class="validation_div"
+										*ngIf="!form_step_3.controls.field_ur_religion?.valid && (form_step_3.controls.field_ur_religion?.dirty ||form_step_3.controls.field_ur_religion?.touched)">
+										Please Select 'Religion'
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="field_outer_label">
+									<input type="text" formControlName="field_cast" hidden="true">
+									<mat-form-field class="example-full-width">
+										<mat-label>Caste</mat-label>
+										<input type="text" placeholder="Select" matInput
+											formControlName="field_cast1" [matAutocomplete]="caste">
+										<mat-autocomplete #caste="matAutocomplete"
+											(optionSelected)="caste_select($event)">
+											<mat-option value="">Select</mat-option>
+											<mat-option *ngFor="let newData of filteredCaste"
+												[value]="newData.name">
+												{{newData.name}}
+											</mat-option>
+										</mat-autocomplete>
+									</mat-form-field>
+
+
+									<div class="validation_div"
+										*ngIf="!form_step_3.controls.field_cast?.valid && (form_step_3.controls.field_cast?.dirty ||form_step_3.controls.field_cast?.touched)">
+										Please Select 'Cast'
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+					  <div class="registrationNxt_btn">
+						<button mat-button matStepperPrevious>Back</button>
+						<button mat-button matStepperNext  [disabled]="!form_step_3.valid" (click)="serverSideCheckForm_3(stepper)">Next</button>
+					  </div>
+					</form>
+				  </mat-step>
+				
+				  <mat-step [stepControl]="form_step_4" label="Personal Details">
+					<h3 class="steper_title">Personal Details</h3>
+					<form class="formStep_group formStep_group_4" [formGroup]="form_step_4">
+					 
+						<div class="form-group form_group_custom row">
+							<div class="col-sm-12">
+								<div class="field_outer_label">
+									<label class="radio_title">Marital Status</label>
+									<mat-radio-group aria-label="Select an option"
+										formControlName="field_marital_status">
+										<mat-radio-button value="N">Never Married</mat-radio-button>
+										<mat-radio-button value="W">Widow</mat-radio-button>
+										<mat-radio-button value="D">Divorced</mat-radio-button>
+										<mat-radio-button value="A">Awaiting divorce</mat-radio-button>
+									</mat-radio-group>
+								</div>
+								<!-- <div class="validation_div" *ngIf="!form_step_4.controls.field_marital_status?.valid && (form_step_4.controls.field_marital_status?.dirty ||form_step_4.controls.field_marital_status?.touched)">
+					Please Select 'Marital Status'
+					</div> -->
+
+
+							</div>
+
+
+
+						</div>
+
+
+						<div class="form-group form_group_custom row">
+							<div class="col-sm-4">
+								<!-- <label for="exampleInputEmail1">Height</label> -->
+								<div class="field_outer_label">
+									<mat-form-field class="example-full-width">
+										<mat-label>Height</mat-label>
+										<mat-select formControlName="field_height">
+											<mat-option value="">--Feet/Inches--</mat-option>
+											<mat-option value="4-6">4ft 6in</mat-option>
+											<mat-option value="4-7">4ft 7in</mat-option>
+											<mat-option value="4-8">4ft 8in</mat-option>
+											<mat-option value="4-9">4ft 9in</mat-option>
+											<mat-option value="4-10">4ft 10in</mat-option>
+											<mat-option value="4-11">4ft 11in</mat-option>
+											<mat-option value="5">5ft</mat-option>
+											<mat-option value="5-1">5ft 1in</mat-option>
+											<mat-option value="5-2">5ft 2in</mat-option>
+											<mat-option value="5-3">5ft 3in</mat-option>
+											<mat-option value="5-4">5ft 4in</mat-option>
+											<mat-option value="5-5">5ft 5in</mat-option>
+											<mat-option value="5-6">5ft 6in</mat-option>
+											<mat-option value="5-7">5ft 7in</mat-option>
+											<mat-option value="5-8">5ft 8in</mat-option>
+											<mat-option value="5-9">5ft 9in</mat-option>
+											<mat-option value="5-10">5ft 10in</mat-option>
+											<mat-option value="5-11">5ft 11in</mat-option>
+											<mat-option value="6" selected="">6ft</mat-option>
+											<mat-option value="6-1">6ft 1in</mat-option>
+											<mat-option value="6-2">6ft 2in</mat-option>
+											<mat-option value="6-3">6ft 3in</mat-option>
+											<mat-option value="6-4">6ft 4in</mat-option>
+											<mat-option value="6-5">6ft 5in</mat-option>
+											<mat-option value="6-6">6ft 6in</mat-option>
+											<mat-option value="6-7">6ft 7in</mat-option>
+											<mat-option value="6-8">6ft 8in</mat-option>
+											<mat-option value="6-9">6ft 9in</mat-option>
+											<mat-option value="6-10">6ft 10in</mat-option>
+											<mat-option value="6-11">6ft 11in</mat-option>
+											<mat-option value="7">7ft</mat-option>
+										</mat-select>
+									</mat-form-field>
+
+									<!-- <input matInput type="text" formControlName="field_height"> -->
+
+									<!-- <input type="text" class="form-control" formControlName="field_height"> -->
+									<div class="validation_div"
+										*ngIf="!form_step_4.controls.field_height?.valid && (form_step_4.controls.field_height?.dirty ||form_step_4.controls.field_height?.touched)">
+										Please Select 'Height'
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-sm-4">
+								<div class="field_outer_label">
+									<mat-form-field class="example-full-width">
+										<mat-label>Weight</mat-label>
+										<mat-select formControlName="field_weight">
+											<mat-option value="">--Kgs--</mat-option>
+											<mat-option value="41">41 Kg</mat-option>
+											<mat-option value="42">42 Kg</mat-option>
+											<mat-option value="43">43 Kg</mat-option>
+											<mat-option value="44">44 Kg</mat-option>
+											<mat-option value="45">45 Kg</mat-option>
+											<mat-option value="46">46 Kg</mat-option>
+											<mat-option value="47">47 Kg</mat-option>
+											<mat-option value="48">48 Kg</mat-option>
+											<mat-option value="49">49 Kg</mat-option>
+											<mat-option value="50">50 Kg</mat-option>
+											<mat-option value="51">51 Kg</mat-option>
+											<mat-option value="52">52 Kg</mat-option>
+											<mat-option value="53">53 Kg</mat-option>
+											<mat-option value="54">54 Kg</mat-option>
+											<mat-option value="55">55 Kg</mat-option>
+											<mat-option value="56">56 Kg</mat-option>
+											<mat-option value="57">57 Kg</mat-option>
+											<mat-option value="58">58 Kg</mat-option>
+											<mat-option value="59">59 Kg</mat-option>
+											<mat-option value="60">60 Kg</mat-option>
+											<mat-option value="61">61 Kg</mat-option>
+											<mat-option value="62">62 Kg</mat-option>
+											<mat-option value="63">63 Kg</mat-option>
+											<mat-option value="64">64 Kg</mat-option>
+											<mat-option value="65">65 Kg</mat-option>
+											<mat-option value="66">66 Kg</mat-option>
+											<mat-option value="67">67 Kg</mat-option>
+											<mat-option value="68">68 Kg</mat-option>
+											<mat-option value="69">69 Kg</mat-option>
+											<mat-option value="70">70 Kg</mat-option>
+											<mat-option value="71">71 Kg</mat-option>
+											<mat-option value="72">72 Kg</mat-option>
+											<mat-option value="73">73 Kg</mat-option>
+											<mat-option value="74">74 Kg</mat-option>
+											<mat-option value="75">75 Kg</mat-option>
+											<mat-option value="76">76 Kg</mat-option>
+											<mat-option value="77">77 Kg</mat-option>
+											<mat-option value="78">78 Kg</mat-option>
+											<mat-option value="79">79 Kg</mat-option>
+											<mat-option value="80">80 Kg</mat-option>
+											<mat-option value="81">81 Kg</mat-option>
+											<mat-option value="82">82 Kg</mat-option>
+											<mat-option value="83">83 Kg</mat-option>
+											<mat-option value="84">84 Kg</mat-option>
+											<mat-option value="85">85 Kg</mat-option>
+											<mat-option value="86">86 Kg</mat-option>
+											<mat-option value="87">87 Kg</mat-option>
+											<mat-option value="88">88 Kg</mat-option>
+											<mat-option value="89">89 Kg</mat-option>
+											<mat-option value="90">90 Kg</mat-option>
+											<mat-option value="91">91 Kg</mat-option>
+											<mat-option value="92">92 Kg</mat-option>
+											<mat-option value="93">93 Kg</mat-option>
+											<mat-option value="94">94 Kg</mat-option>
+											<mat-option value="95">95 Kg</mat-option>
+											<mat-option value="96">96 Kg</mat-option>
+											<mat-option value="97">97 Kg</mat-option>
+											<mat-option value="98">98 Kg</mat-option>
+											<mat-option value="99">99 Kg</mat-option>
+											<mat-option value="100">100 Kg</mat-option>
+											<mat-option value="101">101 Kg</mat-option>
+											<mat-option value="102">102 Kg</mat-option>
+											<mat-option value="103">103 Kg</mat-option>
+											<mat-option value="104">104 Kg</mat-option>
+											<mat-option value="105">105 Kg</mat-option>
+											<mat-option value="106">106 Kg</mat-option>
+											<mat-option value="107">107 Kg</mat-option>
+											<mat-option value="108">108 Kg</mat-option>
+											<mat-option value="109">109 Kg</mat-option>
+											<mat-option value="110">110 Kg</mat-option>
+											<mat-option value="111">111 Kg</mat-option>
+											<mat-option value="112">112 Kg</mat-option>
+											<mat-option value="113">113 Kg</mat-option>
+											<mat-option value="114">114 Kg</mat-option>
+											<mat-option value="115">115 Kg</mat-option>
+											<mat-option value="116">116 Kg</mat-option>
+											<mat-option value="117">117 Kg</mat-option>
+											<mat-option value="118">118 Kg</mat-option>
+											<mat-option value="119">119 Kg</mat-option>
+											<mat-option value="120">120 Kg</mat-option>
+											<mat-option value="121">121 Kg</mat-option>
+											<mat-option value="122">122 Kg</mat-option>
+											<mat-option value="123">123 Kg</mat-option>
+											<mat-option value="124">124 Kg</mat-option>
+											<mat-option value="125">125 Kg</mat-option>
+											<mat-option value="126">126 Kg</mat-option>
+											<mat-option value="127">127 Kg</mat-option>
+											<mat-option value="128">128 Kg</mat-option>
+											<mat-option value="129">129 Kg</mat-option>
+											<mat-option value="130">130 Kg</mat-option>
+											<mat-option value="131">131 Kg</mat-option>
+											<mat-option value="132">132 Kg</mat-option>
+											<mat-option value="133">133 Kg</mat-option>
+											<mat-option value="134">134 Kg</mat-option>
+											<mat-option value="135">135 Kg</mat-option>
+											<mat-option value="136">136 Kg</mat-option>
+											<mat-option value="137">137 Kg</mat-option>
+											<mat-option value="138">138 Kg</mat-option>
+											<mat-option value="139">139 Kg</mat-option>
+											<mat-option value="140">140 Kg</mat-option>
+										</mat-select>
+									</mat-form-field>
+									<div class="validation_div"
+										*ngIf="!form_step_4.controls.field_weight?.valid && (form_step_4.controls.field_weight?.dirty ||form_step_4.controls.field_weight?.touched)">
+										Please Select 'Weight'
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-sm-4">
+								<div class="field_outer_label">
+									<mat-form-field class="example-full-width">
+										<mat-label>Body Type</mat-label>
+										<mat-select formControlName="field_body_type">
+											<mat-option value="">Select</mat-option>
+											<mat-option value="S">Slim</mat-option>
+											<mat-option value="A">Athletic</mat-option>
+											<mat-option value="Aver">Average </mat-option>
+											<mat-option value="H">Heavy </mat-option>
+										</mat-select>
+									</mat-form-field>
+									<div class="validation_div"
+										*ngIf="!form_step_4.controls.field_body_type?.valid && (form_step_4.controls.field_body_type?.dirty ||form_step_4.controls.field_body_type?.touched)">
+										Please Select 'Body Type'
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+
+
+
+						<div class="form-group form_group_custom row">
+							<div class="col-sm-6 float-left">
+
+								<div class="field_outer_label">
+									<label class="radio_title">Family Status</label>
+									<mat-radio-group aria-label="Select an option"
+										formControlName="field_family_status">
+										<mat-radio-button value="M">Middle class</mat-radio-button>
+										<mat-radio-button value="U">Upper middle class </mat-radio-button>
+										<mat-radio-button value="R">Rich</mat-radio-button>
+										<mat-radio-button value="A">Affluent</mat-radio-button>
+									</mat-radio-group>
+								</div>
+
+
+							</div>
+
+
+							<div class="col-sm-6 float-left">
+								<div class="field_outer_label">
+									<label class="radio_title">Family Type</label>
+									<mat-radio-group aria-label="Select an option"
+										formControlName="field_family_type">
+										<mat-radio-button value="J">Joint</mat-radio-button>
+										<mat-radio-button value="N">Nuclear</mat-radio-button>
+									</mat-radio-group>
+								</div>
+							</div>
+
+
+						</div>
+
+						<div class="form-group form_group_custom row">
+							<div class="col-sm-6 float-left">
+								<div class="field_outer_label">
+									<label class="radio_title">Family Values </label>
+									<mat-radio-group aria-label="Select an option"
+										formControlName="field_family_value">
+										<mat-radio-button value="O">Orthodox</mat-radio-button>
+										<mat-radio-button value="T">Traditional</mat-radio-button>
+										<mat-radio-button value="M">Moderate</mat-radio-button>
+										<mat-radio-button value="L">Liberal</mat-radio-button>
+									</mat-radio-group>
+								</div>
+
+							</div>
+
+
+							<div class="col-sm-6 float-left">
+								<div class="field_outer_label">
+									<label class="radio_title">Any Disability</label>
+									<mat-radio-group aria-label="Select an option"
+										formControlName="field_disability">
+										<mat-radio-button value="N">None</mat-radio-button>
+										<mat-radio-button value="P">Physically challenged</mat-radio-button>
+									</mat-radio-group>
+								</div>
+							</div>
+
+
+						</div>
+					  <div class="registrationNxt_btn">
+						<button mat-button matStepperPrevious>Back</button>
+						<button mat-button matStepperNext [disabled]="!form_step_4.valid" (click)="serverSideCheckForm_4(stepper)">Next</button>
+					  </div>
+					</form>
+				  </mat-step>
+
+				  <mat-step [stepControl]="form_step_5" label="Professional Details">
+					<h3 class="steper_title">Professional Details</h3>
+					<form class="formStep_group formStep_group_5" [formGroup]="form_step_5">
+
+					  <div class="form-group form_group_custom row">
+								<div class="col-sm-6">
+
+									<div class="field_outer_label">
+
+										<mat-form-field class="example-full-width" appearance="fill">
+											<mat-label>Highest Education</mat-label>
+											<input type="text" matInput formControlName="field_highest_education"
+												[matAutocomplete]="education">
+											<mat-autocomplete #education="matAutocomplete" [displayWith]="displayFn">
+												<mat-option *ngFor="let option of filteredEducation | async"
+													[value]="option">
+													{{option.name}}
+												</mat-option>
+											</mat-autocomplete>
+										</mat-form-field>
+
+
+
+										<div class="validation_div"
+											*ngIf="!form_step_5.controls.field_highest_education?.valid && (form_step_5.controls.field_highest_education?.dirty ||form_step_5.controls.field_highest_education?.touched)">
+											Please Select 'Highest Education'
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+
+							<div class="form-group form_group_custom row">
+								<div class="col-sm-12">
+									<div class="field_outer_label">
+										<label class="radio_title">Employed in </label>
+
+										<mat-radio-group aria-label="Select an option" formControlName="field_employed">
+											<mat-radio-button value="G">Government/PSU</mat-radio-button>
+											<mat-radio-button value="P">Private</mat-radio-button>
+											<mat-radio-button value="B">Business</mat-radio-button>
+											<mat-radio-button value="D">Defence</mat-radio-button>
+											<mat-radio-button value="S">Self Employed</mat-radio-button>
+											<mat-radio-button value="N">Not working</mat-radio-button>
+										</mat-radio-group>
+									</div>
+
+								</div>
+							</div>
+
+
+							<div class="form-group form_group_custom row">
+
+								<div class="col-sm-4">
+									<div class="field_outer_label">
+										<mat-form-field class="example-full-width">
+											<mat-label>Occupation</mat-label>
+											<input type="text" matInput formControlName="field_Occupation"
+												[matAutocomplete]="occupation">
+											<mat-autocomplete #occupation="matAutocomplete" [displayWith]="displayFnO">
+												<mat-option value="">Select</mat-option>
+												<mat-option *ngFor="let option of filteredOccupation | async"
+													[value]="option">
+													{{option.name}}
+												</mat-option>
+											</mat-autocomplete>
+										</mat-form-field>
+
+										<div class="validation_div"
+											*ngIf="!form_step_5.controls.field_Occupation?.valid && (form_step_5.controls.field_Occupation?.dirty ||form_step_5.controls.field_Occupation?.touched)">
+											Please Select 'Occupation'
+										</div>
+									</div>
+
+
+								</div>
+
+								<div class="col-sm-4">
+
+									<div class="field_outer_label">
+										<input type="text" formControlName="field_Annual_Income" hidden="true">
+										<mat-form-field class="example-full-width">
+
+											<mat-label>Annual Income</mat-label>
+											<input type="text" placeholder="Select" matInput
+												formControlName="field_Annual_Income1" [matAutocomplete]="annual">
+											<mat-autocomplete #annual="matAutocomplete"
+												(optionSelected)="income_select($event)">
+												<mat-option value="">Select</mat-option>
+												<mat-option *ngFor="let key_incom of filteredIncome"
+													[value]="key_incom.income">
+													{{key_incom.income}}
+												</mat-option>
+											</mat-autocomplete>
+										</mat-form-field>
+
+
+										<div class="validation_div"
+											*ngIf="!form_step_5.controls.field_Annual_Income?.valid && (form_step_5.controls.field_Annual_Income?.dirty ||form_step_5.controls.field_Annual_Income?.touched)">
+											Please Select 'Annual Income'
+										</div>
+
+									</div>
+
+
+								</div>
+
+								<div class="col-sm-4">
+									<div class="field_outer_label">
+
+										<mat-form-field>
+											<input type="text" placeholder="Work Location"
+												[formControl]="form_step_5.controls.field_Work_Locatio" matInput
+												[matAutocomplete]="manku">
+											<mat-autocomplete #manku="matAutocomplete">
+												<cdk-virtual-scroll-viewport [ngStyle]="{height: '200px'}"
+													itemSize="25">
+													<mat-option *cdkVirtualFor="let newData of workLocation | async"
+														[value]="newData.id">
+														{{newData.name}}
+													</mat-option>
+
+												</cdk-virtual-scroll-viewport>
+											</mat-autocomplete>
+										</mat-form-field>
+
+										<div class="validation_div"
+											*ngIf="!form_step_5.controls.field_Work_Locatio?.valid && (form_step_5.controls.field_Work_Locatio?.dirty ||form_step_5.controls.field_Work_Locatio?.touched)">
+											Please Select 'Work Location'
+										</div>
+
+									</div>
+
+
+								</div>
+
+							</div>
+
+					  <div class="registrationNxt_btn">
+						<button mat-button matStepperPrevious>Back</button>
+						<button mat-button matStepperNext [disabled]="!form_step_5.valid" (click)="serverSideCheckForm_5(stepper)">Next</button>
+					  </div>
+					</form>
+				  </mat-step>
+
+				  <mat-step [stepControl]="form_step_6" label="About You">
+					<h3 class="steper_title">About You</h3>
+					<form class="formStep_group formStep_group_5" [formGroup]="form_step_6">
+					 
+						<div class="form-group form_group_custom row">
+							<div class="col-sm-12">
+								<div class="field_outer_label">
+
+									<mat-form-field class="example-full-width">
+										<mat-label>About You</mat-label>
+										<textarea matInput formControlName="field_About_us"
+											(keyup)="wordCounter_250('about_you_text')"></textarea>
+									</mat-form-field>
+									({{count_AboutYou}}/250)
+
+									<div class="validation_div"
+										*ngIf="!form_step_6.controls.field_About_us?.valid &&  (form_step_6.controls.field_About_us?.dirty ||form_step_6.controls.field_About_us?.touched)">
+										Please write about you within 250 words.
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+
+					  <div class="registrationNxt_btn">
+						<button mat-button matStepperPrevious>Back</button>
+						<button mat-button matStepperNext [disabled]="!form_step_6.valid" (click)="serverSideCheckForm_6(stepper)">Next</button>
+					  </div>
+					</form>
+				  </mat-step>
+
+				  <mat-step [stepControl]="form_step_7" label="Declaration">
+					<form class="formStep_group formStep_group_5" [formGroup]="form_step_7">
+					  
+						<div class="form-group form_group_custom row">
+
+							<div class="col-sm-12">
+								<div class="submitLastBtnSec">
+									<div class="checkBoxLast">
+										<div class="field_outer_label">
+											<section class="example-section">
+												<mat-checkbox formControlName="terms"
+													(change)="terms_Condition_CheckBox($event)">
+													I certify that the information I have provided in the registration form to
+													be true and accurate. </mat-checkbox>
+											</section>
+		
+											<div class="validation_div"
+												*ngIf="!form_step_7.controls.terms?.valid &&  (form_step_7.controls.terms?.dirty ||form_step_7.controls.terms?.touched)">
+												Please Check
+											</div>
+										</div>
+		
+										<div class="field_outer_label">
+											<section class="example-section">
+												<mat-checkbox formControlName="terms_2"
+													(change)="terms_Condition_CheckBox_2($event)">
+													I understand and agree that any false or misleading information will justify
+													a deactivation of my profile by the Admin. </mat-checkbox>
+											</section>
+		
+											<div class="validation_div"
+												*ngIf="!form_step_7.controls.terms_2?.valid &&  (form_step_7.controls.terms_2?.dirty ||form_step_7.controls.terms_2?.touched)">
+												Please Check
+											</div>
+										</div>
+									</div>
+									<!-- *ngIf="serverSideValid_1 && serverSideValid_2 && serverSideValid_3 && serverSideValid_4 && serverSideValid_5 && serverSideValid_6" -->
+									<div class="registrationNxt_btn">
+
+										<button mat-button matStepperPrevious>Back</button>
+<!-- <div >
+<button *ngIf="!form_step_2_1.invalid && !isButtonDisabledAge && !form_step_2.invalid && !checkPassword && !isEmailExit && form_step_3.valid && form_step_4.valid && form_step_5.valid && form_step_6.valid" mat-button matStepperNext [disabled]="!form_step_7.valid && ischecked_Terms_Condition && ischecked_Terms_Condition_2" (click)="submitAllData()">Submit</button>
+</div> -->
+
+<ng-container *ngIf="showAge >= 18 && !selectFutureDate;">
+<button *ngIf="serverSideValid_1 && serverSideValid_2 && serverSideValid_3 && serverSideValid_4 && serverSideValid_5 && serverSideValid_6 && !ischecked_Terms_Condition && !ischecked_Terms_Condition_2" [disabled]="!form_step_7.valid && ischecked_Terms_Condition && ischecked_Terms_Condition_2" (click)="submitAllData()">Submit</button>
+</ng-container>
+										<!-- <button mat-button matStepperPrevious>Back</button>
+
+<button *ngIf="!form_step_2_1.invalid && !isButtonDisabledAge && !form_step_2.invalid && !checkPassword && !isEmailExit && form_step_3.valid && form_step_4.valid && form_step_5.valid && form_step_6.valid" mat-button matStepperNext [disabled]="!form_step_7.valid || ischecked_Terms_Condition || ischecked_Terms_Condition_2" (click)="submitAllData()">Submit</button> -->
+										<!-- <input type="button" value="Submit" class="yellowBtn" (click)="submitAllData()"
+											[disabled]="!form_step_7.valid || ischecked_Terms_Condition || ischecked_Terms_Condition_2"> -->
+									</div>
+								</div>
+							</div>
+		
+						</div>
+
+					  <!-- <div class="registrationNxt_btn">
+						<button mat-button matStepperPrevious>Back</button>
+						<button mat-button matStepperNext>Next</button>
+					  </div> -->
+					</form>
+				  </mat-step>
+
+				  
+
+				<!-- <mat-step>
+				  <ng-template matStepLabel>Declaration</ng-template>
+				  <p>You are now done.</p>
+				  <div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button (click)="stepper.reset()">Reset</button>
+				  </div>
+				</mat-step> -->
+			  </mat-stepper>
+			</div>
+		
+
+
+			
+<!-- 
+<p>Form 1: {{form_step_2_1.invalid}} || {{isButtonDisabledAge}} || (Steper: {{step2Complete}})</p>
+<p>Form 2: {{form_step_2_1.invalid}} || {{isButtonDisabledAge}} || (Steper: {{step3Complete}})</p>
+
+<p>Form 3: {{form_step_2.invalid}} || {{checkPassword}} || {{isEmailExit}} || (Steper: {{step4Complete}})</p>
+<p>Form 4: {{!form_step_3.valid}} || (Steper: {{step5Complete}})</p>
+<p>Form 5: {{!form_step_4.valid}}  || (Steper: {{step6Complete}})</p>
+<p>Form 6: {{!form_step_4.valid}} || (Steper: {{step7Complete}})</p>
+<p>Form 7: {{!form_step_6.valid}} || (Steper: None)</p> -->
+
+
+
+		</div>
+	</div>
+
+</div>
+
+
+
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal_dialogTerms" role="document">
+		<div class="modal-content modal_content_cus">
+			<div class="modal-header">
+
+				<h5>Terms & Condition</h5>
+				<button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			</div>
+			<div class="modal-body">
+				<div class="innerDefaultPage">
+					<p>
+						Welcome to My Soulmate, a platform dedicated to helping individuals find potential life partners
+						through our Astro numerical matchmaking services. By using our website, you agree to adhere to
+						the following terms and conditions:
+					</p>
+					<h3>Eligibility:</h3>
+					<p>You must be of legal age to use our services. By registering with us, you confirm that you are
+						eligible for matrimonial services under the applicable laws.
+					</p>
+					<h3>Registration and User Accounts:
+					</h3>
+					<p>
+						To access our services, you must create an account. You are responsible for providing accurate
+						and up-to-date information in your profile. False information and abusive behavior will not be
+						tolerated.
+					</p>
+					<h3>Horoscope Matchmaking:
+					</h3>
+					<p>
+						Our Astro numerical matchmaking service is provided to give you the perfect match. It does not
+						guarantee compatibility or marital success.
+					</p>
+					<h3>Privacy and Data Collection:
+					</h3>
+					<p>
+						We respect your privacy. Our data collection and usage are governed by our Privacy Policy, which
+						you should review. We employ industry-standard security measures to protect your information.
+					</p>
+					<h3>Content Guidelines:
+					</h3>
+					<p>
+						You are responsible for the content you post. Prohibited content includes offensive, misleading,
+						or inappropriate material. We reserve the right to remove or edit content that violates these
+						guidelines.
+					</p>
+					<h3>Termination of Accounts:
+					</h3>
+					<p>
+						We reserve the right to suspend or terminate your account if you violate our terms and
+						conditions or engage in improper conduct. You will be notified if such action is taken.
+					</p>
+					<h3>Fees and Billing:
+					</h3>
+					<p>We offer premium services that may involve fees. Pricing, and payment methods policies are
+						detailed on our website. By using these services, you agree to the associated charges.
+					</p>
+					<h3>Liability and Disclaimers:
+					</h3>
+					<p>MySoulMate is not responsible for the success or failure of any match. We disclaim liability for
+						any losses or damages incurred while using our services. You use our platform at your own risk.
+					</p>
+					<h3>Changes to Terms and Conditions:
+					</h3>
+					<p>
+						We may update these terms and conditions from time to time. We will notify you of any changes,
+						and your continued use of our website implies your acceptance of the updated terms.
+
+						If you have any questions or concerns, please contact us at us. By using our website, you agree
+						to these terms and conditions, and you acknowledge having read our Privacy Policy. Thank you for
+						choosing MySoulMate.
+
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="footer_bottomSec">
+<a routerLink="/home" class="login_link_bot"><i class="fa fa-home" aria-hidden="true"></i>
+<span>Home</span>
+</a>
+</div>

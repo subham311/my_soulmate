@@ -1,0 +1,102 @@
+[
+    {
+        "value":"Hin-Beng",
+        "name":"Hindu - Bengali"
+
+    },
+    {
+        "value":"Hin-Mar",
+        "name":"Hindu - Marwari"
+
+    },
+    {
+        "value":"Hin-Tam",
+        "name":"Hindu - Tamil"
+
+    },
+    {
+        "value":"Hin-Pun",
+        "name":"Hindu - Punjabi"
+
+    },
+    {
+        "value":"Hin-Guj",
+        "name":"Hindu - Gujarati"
+
+    },
+    {
+        "value":"Hin-Nep",
+        "name":"Hindu - Nepali"
+
+    },
+    {
+        "value":"Hin-Bali",
+        "name":"Hindu - Balinese"
+
+    },
+    {
+        "value":"Hin-Sind",
+        "name":"Hindu - Sindhi"
+
+    },
+    {
+        "value":"Hin-Oth",
+        "name":"Hindu - Others"
+
+    },
+    {
+        "value":"Mu_Shi",
+        "name":"Muslim - Shia"
+
+    },
+    {
+        "value":"Mu_Sun",
+        "name":"Muslim - Sunni"
+
+    },
+    {
+        "value":"Mu_Oth",
+        "name":"Muslim - Others"
+
+    },
+    {
+        "value":"Chr",
+        "name":"Christian"
+
+    },
+    {
+        "value":"Sik",
+        "name":"Sikh"
+
+    },
+    {
+        "value":"Ja_Dig",
+        "name":"Jain - Digambar"
+
+    },
+    {
+        "value":"Ja_Shw",
+        "name":"Jain - Shwetambar"
+
+    },
+    {
+        "value":"Ja_Oth",
+        "name":"Jain - Others"
+
+    },
+    {
+        "value":"Par",
+        "name":"Parsi"
+
+    },
+    {
+        "value":"Bud",
+        "name":"Buddhist"
+
+    },
+    {
+        "value":"Int-Rel",
+        "name":"Inter-Religion"
+
+    }
+]
