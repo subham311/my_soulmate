@@ -1,0 +1,149 @@
+
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+
+
+
+		<!-- <div class="col-sm-3 float-left portfolio_left">
+
+			<app-leftBar_after_login></app-leftBar_after_login>
+
+
+		</div> -->
+
+		<div class="col-sm-9 float-left portfolio_right">
+			<div class="portfolio_right_sub">
+
+				<div class="portfolio_form_fill">
+
+					
+					<!-- <div class="title_sec">
+						<h2><img src="assets/images/uploadPhoto_white.png" alt="">Add Your Profile Photo </h2>
+					</div>
+
+					<div class="id_verify_main mb-5">
+						<div class="form-group row">
+							<div class="col-sm-9">
+								<div class="field_outer_label">
+									
+
+									<button hidden id="logo_crop" mat-raised-button class="btn btn-success"
+										(click)="open_crop_modal()"></button>
+									<input type="file" (change)="section_img_upload($event)" class="uploadImgGal" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-3">
+								<div class="galaryImg">
+									<img [src]="this.listOfFiles_single[0]?.filePath" alt="" srcset="">
+								</div>
+							</div>
+
+
+
+
+						</div>
+						<p *ngIf="isLoading">Loading.....</p>
+
+
+						
+
+					</div> -->
+
+
+					
+
+
+					<div class="title_sec">
+						<h2><img src="assets/images/uploadPhoto_white.png" alt="">Add Maximum 5 Photos. Each Images Size Max 5 mb. Accepted Format jpg, jpeg, png </h2>
+					</div>
+
+					<div class="id_verify_main">
+
+						<div class="form-group row">
+							<div class="col-sm-9">
+
+								<!-- <mat-dialog-actions>
+									<button mat-raised-button (click)="openDialog()">Contact Us</button>
+								</mat-dialog-actions> -->
+
+
+
+								<div class="field_outer_label">
+									<ng-container *ngIf="listOfFiles.length < 5">
+										<button [disabled]="listOfFiles.length >= 5" (click)="fileInput.click()" class="uploadImgGal"><i class="fa fa-upload"></i> Choose Photo</button>
+
+										<!-- <input style="display: none" #attachments type="file"
+											(change)="onMultyplPhotSele($event)" #fileInput multiple="true" /> -->
+											<input style="display: none" #attachments type="file"
+											(change)="onMultyplPhotSele($event)" #fileInput/>
+									</ng-container>
+									<ng-container *ngIf="listOfFiles.length >= 5">
+
+										<button [disabled]="true" class="uploadImgGal"><i class="fa fa-upload"></i> Choose Photo</button>
+									</ng-container>
+									
+								</div>
+							</div>
+
+							
+							<div class="col-sm-3">
+								<!-- {{submit_isDisabled}} ||  {{listOfFiles.length > 5}} || 
+								{{listOfFiles.length}} || {{fileList.length}} -->
+								<div class="field_outer_label">
+									<!-- <ng-container *ngIf="submit_isDisabled || listOfFiles.length > 5 || listOfFiles.length < 1">
+										<button [disabled]="true" class="uploadImgBtn">Upload Photo</button>
+									</ng-container>
+
+									<ng-container *ngIf="!submit_isDisabled || listOfFiles.length < 5 || listOfFiles.length > 0">
+										<button [disabled]="false" (click)="uploadMUltyImg()" class="uploadImgBtn">Upload Photo</button>
+									</ng-container> -->
+
+									<!-- <ng-container *ngIf="listOfFiles.length < 5">
+									<button [disabled]="submit_isDisabled || listOfFiles.length > 5" (click)="uploadMUltyImg()" class="uploadImgBtn">Upload Photo</button>
+									</ng-container>
+									<ng-container *ngIf="listOfFiles.length >= 5">
+										<button [disabled]="true" class="uploadImgBtn">Upload Photo</button>
+									</ng-container> -->
+									
+								</div>
+								
+
+							</div>
+
+						</div>
+						
+
+						<div class="form-group row mb-0">
+							<div *ngIf="fileList.length > 5 || listOfFiles.length > 5" class="uploadNotice">
+								You have Chose more than 5 Images
+							</div>
+							<!-- {{listOfFiles.length | json}} -->
+<!-- {{listOfFiles.length| json}} -->
+<!-- {{listOfFiles | json}} -->
+							<div class="col-sm-3" *ngFor="let selected of listOfFiles; let index = index">
+
+								<!-- index:{{index}} == ID:{{selected.id}} == selected.index:{{selected.index}} -->
+								<div class="galaryImg">
+									<img [src]="selected.filePath" alt="" srcset="">
+									<button mat-icon-button (click)="removeMultyImg(index, selected.id, selected.index >= 0 ? selected.index : -1)" class="removeImg"><i class="fa fa-times-circle" aria-hidden="true"></i>
+									</button>
+								</div>
+							</div>
+
+
+
+						</div>
+
+						<p *ngIf="isLoading">Loading.....</p>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+

@@ -1,0 +1,350 @@
+
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+
+
+	<div class="col-sm-12">
+		<div class="white_block">
+
+		<div class="row">
+
+		<div class="col-sm-12">
+		<div class="title_sec_main">
+			<h2>Partner Preferences</h2>
+			<p>We believe that every person is unique, and we strive to help you find someone who complements your personality and shares your vision for a happy future.
+			</p>
+		</div>
+		</div>
+
+		<div class="col-sm-3 float-left blue_leftSec_custom">
+		<div class="blue_leftSec">
+
+		<div class="title_sec">
+			<h2><img src="assets/images/love_fev.png" alt=""> Partner Preferences </h2>
+		</div>
+
+			  <ul>
+          <li> <span>Basic</span></li>
+          <!-- <li> <a href="#">Religious</a></li>
+          <li> <a href="#">Professional</a></li>
+          <li> <a href="#">Location</a></li>
+          <li> <a href="#">About My Partner</a></li> -->
+        </ul>
+		</div>
+		</div>
+
+		<div class="col-sm-9 float-left blue_rightSec">
+
+
+
+		<div class="hobbies_sec">
+			<div class="loader_outer" *ngIf="inProgressShort; else familyDet">
+				<div class="spinner-border"></div>
+				</div>
+				<ng-template #familyDet>
+
+			<div class="title_sec">
+			<h2>Partner Preferences <button (click)="toggleDisplayForm(1)">Edit</button></h2>
+		</div>
+
+		<div class="edit_portfolio_field_group_main">
+
+		<div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left"> 
+				
+				<div *ngIf="user_basic_info_New?.gender == 'M';then brid_cont else groom_cont">
+					here is ignored</div>
+				<ng-template #groom_cont>Groom's</ng-template>
+				<ng-template #brid_cont>Bride's</ng-template> Age  </div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+				<ng-container *ngIf="partners_info[0]?.age_frm; else nobride_age">
+					{{partners_info[0].age_frm}} -  {{partners_info[0].age_to}}  years
+        </ng-container>
+        <ng-template #nobride_age>
+            Not Specified
+        </ng-template>
+       </div>
+		</div>
+
+
+
+		<div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left">  Marital Status  </div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+				<ng-container *ngIf="partners_info[0]?.marital_status;else nomarital_status">
+					{{this.field_marital_status_OBJ[partners_info[0].marital_status]}}
+			</ng-container>
+      <ng-template #nomarital_status>
+               Not Specified
+      </ng-template>
+			</div>
+		</div>
+		
+		<div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left">  Mother Tongue  </div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+        <ng-container *ngIf="partners_info[0]?.mother_tounge; else no_mother_tongue">
+          {{partners_info[0].mother_tounge}}
+        </ng-container>
+        <ng-template #no_mother_tongue>
+          Not Specified
+        </ng-template>
+			</div>
+		</div>
+
+		<div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left">  Religion   </div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+				<ng-container *ngIf="partners_info[0]?.religion && partners_info[0]?.religion != '0'; else no_religion">
+					{{this.field_Religion_OBJ[partners_info[0].religion]}}
+			  </ng-container>
+        <ng-template #no_religion>
+          Not Specified
+        </ng-template>
+			</div>
+		</div>
+
+
+		<div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left">    Country     </div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+				<ng-container *ngIf="partners_info[0]?.country_name; else no_country">
+					{{partners_info[0].country_name}}
+			</ng-container>
+      <ng-template #no_country>
+        Not Specified
+      </ng-template>
+			</div>
+		</div>
+
+		<div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left">    State     </div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+				<ng-container *ngIf="partners_info[0]?.state_name; else no_state">
+					{{partners_info[0].state_name}}
+			</ng-container>
+      <ng-template #no_state>
+        Not Specified
+      </ng-template>
+			</div>
+		</div>
+
+		<div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left">    City     </div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+				<ng-container *ngIf="partners_info[0]?.city_name; else no_city">
+					{{partners_info[0].city_name}}
+			</ng-container>
+      <ng-template #no_city>
+        Not Specified
+      </ng-template>
+			</div>
+		</div>
+
+		</div>
+
+	</ng-template>
+
+		<div class="portfolio_edit_Form partner_preferance_form" [formGroup]="form_step_1" [hidden]="isShowForm_1">
+
+			<div class="edit_portfolio_field_group_main">
+				<div class="form-group form_group_custome row">
+					<div class="col-sm-4 ageStartEnd_part">
+						<div class="field_outer_label ageStart">
+					<!-- <label for="exampleInputEmail1">Who Create This Profile</label> -->
+					<mat-form-field class="example-full-width">
+						<mat-label>Bride's From Age</mat-label>
+						<mat-select formControlName="field_frm_age" (selectionChange)="generateAgeToList($event.value)">
+						<mat-option value="0">Select</mat-option>
+						<mat-option *ngFor="let age of ageList" [value]="age">
+						{{age}}
+						</mat-option>
+						</mat-select>
+						</mat-form-field>
+					</div>
+
+						<div class="field_outer_label ageEnd">
+							<mat-form-field class="example-full-width">
+								<mat-label>Bride's To Age</mat-label>
+								<mat-select formControlName="field_to_age">
+									<mat-option value="0">Select</mat-option>
+									<mat-option *ngFor="let age of ageToList" [value]="age">
+										{{age}}
+									</mat-option>
+								</mat-select>
+								</mat-form-field>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="field_outer_label">
+							<mat-form-field class="example-full-width">
+								<mat-label>Mother Tongue </mat-label>
+								<mat-select formControlName="field_mother_tong">
+								<mat-option value="0">Select</mat-option>
+								<mat-option *ngFor="let newData of lang_list" [value]="newData.id.toString()">
+								{{newData.lang_name}}
+								</mat-option>
+								</mat-select>
+								</mat-form-field>
+						</div>
+					</div>
+
+
+					<div class="col-sm-4">
+						<div class="field_outer_label">
+							<mat-form-field class="example-full-width">
+								<mat-label>Religion</mat-label>
+								<mat-select formControlName="field_ur_religion">
+								<mat-option value="0">Select</mat-option>
+								<mat-option value="Hin-Beng">Hindu - Bengali</mat-option>
+								<mat-option value="Hin-Mar">Hindu - Marwari </mat-option>
+								<mat-option value="Hin-Tam">Hindu - Tamil  </mat-option>
+								<mat-option value="Hin-Pun">Hindu - Punjabi  </mat-option>
+								<mat-option value="Hin-Guj">Hindu - Gujarati  </mat-option>
+								<mat-option value="Hin-Nep">Hindu - Nepali  </mat-option>
+								<mat-option value="Hin-Bali">Hindu - Balinese   </mat-option>
+								<mat-option value="Hin-Sind">Hindu - Sindhi   </mat-option>
+								<mat-option value="Hin-Oth">Hindu - Others   </mat-option>
+								<mat-option value="Mu_Shi">Muslim - Shia</mat-option>
+								<mat-option value="Mu_Sun">Muslim - Sunni</mat-option>
+								<mat-option value="Mu_Oth">Muslim - Others</mat-option>
+								<mat-option value="Chr">Christian</mat-option>
+								<mat-option value="Sik">Sikh</mat-option>
+								<mat-option value="Ja_Dig">Jain - Digambar</mat-option>
+								<mat-option value="Ja_Shw">Jain - Shwetambar</mat-option>
+								<mat-option value="Ja_Oth">Jain - Others</mat-option>
+								<mat-option value="Par">Parsi</mat-option>
+								<mat-option value="Bud">Buddhist</mat-option>
+								<mat-option value="Int-Rel">Inter-Religion</mat-option>
+								</mat-select>
+								</mat-form-field>
+
+					</div>
+					</div>
+
+
+
+				</div>
+
+				<div class="form-group form_group_custome row">
+
+
+
+
+				<div class="col-sm-4">
+					<div class="field_outer_label">
+
+
+							<mat-form-field class="example-full-width">
+								<mat-label>Country (Preferred Location)</mat-label>
+								<mat-select formControlName="field_Country" (selectionChange)="stateChange_ByCountry($event)">
+								<mat-option value="0">Select</mat-option>
+								<mat-option *ngFor="let newData of countryList" [value]="newData.id">
+								{{newData.name}}
+								</mat-option>
+								</mat-select>
+								</mat-form-field>
+
+
+
+
+					</div>
+					</div>
+
+
+
+			<div class="col-sm-4">
+			<!-- <label for="exampleInputEmail1">State</label> -->
+
+			<div class="field_outer_label">
+				 <mat-form-field class="example-full-width">
+					<mat-label>State (Preferred Location)</mat-label>
+					<mat-select formControlName="field_State" (selectionChange)="cityChange_ByState($event)">
+					<mat-option value="0">Select</mat-option>
+					<mat-option *ngFor="let newData of stateList" [value]="newData.id">
+					{{newData.name}}
+					</mat-option>
+					</mat-select>
+					</mat-form-field>
+
+
+
+
+
+			</div>
+
+			</div>
+
+			<div class="col-sm-4">
+			<!-- <label for="exampleInputEmail1">City </label> -->
+
+			<div class="field_outer_label">
+
+
+					<mat-form-field class="example-full-width">
+						<mat-label>City (Preferred Location)</mat-label>
+						<mat-select formControlName="field_City">
+						<mat-option value="0">Select</mat-option>
+						<mat-option *ngFor="let newData of cityList" [value]="newData.id">
+						{{newData.name}}
+						</mat-option>
+						</mat-select>
+						</mat-form-field>
+
+
+
+
+			</div>
+
+
+			</div>
+
+
+
+			</div>
+
+					<div class="form-group form_group_custome row">
+ 
+						<div class="col-sm-9">
+							<div class="field_outer_label">
+								<label class="radio_title">Marital Status</label>
+
+								<mat-radio-group aria-label="Select an option" formControlName="field_marital_status">
+								<mat-radio-button value="N">Never Married</mat-radio-button>
+								<mat-radio-button value="W">Widowed</mat-radio-button>
+								<mat-radio-button value="D">Divorced Awaiting divorce</mat-radio-button>
+								<mat-radio-button value="A">Awaiting divorce</mat-radio-button>
+								</mat-radio-group>
+
+							</div>
+						</div>
+
+
+
+						</div>
+
+</div>
+
+
+			<div class="portfolio_edit_Form_btn">
+			<button type="button" (click)="edit_saveForm_1()">Save</button>
+			<!-- <button type="button" (click)="clear_saveForm_1()">Clear</button> -->
+			</div>
+			</div>
+
+		</div>
+
+
+
+		<!-- <div class="text-center continueBtn_sec">
+		<input type="button" value="Submit" class="yellowBtn">
+		</div> -->
+
+		</div>
+		</div>
+
+		</div>
+	</div>
+
+

@@ -1,0 +1,186 @@
+
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+<!-- <div class="innerMain_wraper">
+	<div class="wrapper"> -->
+
+    
+	
+		
+	<div class="col-sm-9 float-left portfolio_right">
+		<div class="portfolio_right_sub">
+		  
+			<div class="portfolio_form_fill">
+			<div class="title_sec">
+					<h2><img src="assets/images/paymentHistory.png" alt="">Membership Details</h2>
+				</div>
+			<div class="paymentListMain">
+
+				
+					<div class="invoiceSecAfterPay p-3 mb-3 testDiv" id="couponPage" #couponPage>
+
+						<!-- info row -->
+						<div class="row invoice-info">
+						  <!-- /.col -->
+						  <div class="col-sm-12 float-left invoice-col address_sec">
+							
+						  </div>
+						  <div class="col-sm-6 float-left invoice-col address_sec">
+							<address>
+								<h2>{{order_Response?.billing_name}},</h2>
+							  {{order_Response?.billing_address}},<br>
+							  {{order_Response?.billing_city}}- {{order_Response?.billing_zip}},<br>
+							  {{order_Response?.billing_country}}, {{order_Response?.billing_state}},<br>
+								 Phone: {{order_Response?.billing_tel}},<br>
+								 Email: {{order_Response?.billing_email}}
+							</address>
+						  </div>
+						  <!-- /.col -->
+						  <div class="col-sm-6 float-left invoice-col address_sec">
+							<b>Reference ID:</b> {{order_Response?.tracking_id}}<br>
+							<b>Bank Ref ID:</b> {{order_Response?.bank_ref_no}}<br>
+							<b>Invoice Date:</b> {{order_Response?.trans_rec_date | date:'mediumDate'}}, Time: {{order_Response?.trans_rec_date | date:"HH:mm"}}<br>
+							<b>Order Date: </b> {{order_Response?.tnx_date | date:'mediumDate'}}, Time: {{order_Response?.tnx_date | date:"HH:mm"}}<br>
+							<b>Order ID:</b> {{order_Response?.order_id}}<br>
+							<b>Payment Mode: </b> {{order_Response?.payment_mode}}<br>
+						  </div>
+						  <!-- /.col -->
+						</div>
+						<!-- /.row -->
+			
+						<!-- Table row -->
+						<div class="row">
+						  <div class="col-12 table-responsive">
+							<table class="table table-striped">
+							  <thead>
+							  <tr>
+								<th>Qty</th>
+								<th>Product</th>
+								<th>Tennure(In Month)</th>
+								<th>Total</th>
+							  </tr>
+							  </thead>
+							  <tbody>
+							  <tr>
+								<td>{{order_Response?.qty}}</td>
+								<td>{{order_Response?.pay_name}}</td>
+								<td>{{order_Response?.tennure_period}} months</td>
+								<td>₹ {{order_Response?.amount}}</td>
+							  </tr>
+							  <tr>
+								<td><b>Total QTY: {{order_Response?.qty}}</b></td>
+								<td></td>
+								<td></td>
+								<td><b>Total Price: &nbsp; ₹{{order_Response?.qty * order_Response?.amount}}</b><br>
+									All values are in {{order_Response?.currency}}</td>
+							  </tr>
+							  </tbody>
+							</table>
+						  </div>
+						</div>
+						
+					  </div>
+				
+				
+
+
+
+
+
+
+
+
+
+
+
+				
+
+			<div *ngIf="inProgress; else sowData" style="text-align:center; margin-top:20px;">
+			<div class="spinner-border"></div>
+			</div>
+
+			<ng-template #sowData>
+
+				<div class="showSubscriptioMsgdiv" *ngIf="showSubscriptioMsg" style="min-height: 350px;">
+				<p>Please Upgrade Now...!</p>
+				<a routerLink="/user/paymentGetway" class="upgradeNow">Upgrade Now</a>
+				</div>
+				<div *ngIf="!showSubscriptioMsg">
+				<div class="current_package">
+				<div class="current_package_sub">
+				<h2>Current Package</h2>
+				<ul>
+				<li><i class="fa fa-gift" aria-hidden="true"></i> Membership Type: {{billingAllHistory[0]?.pay_name}}</li>
+				<li><i class="fa fa-inr" aria-hidden="true"></i> Tenure: {{billingAllHistory[0]?.tennure_period}} months</li>
+				<li><i class="fa fa-calendar" aria-hidden="true"></i> Expiry Date: {{billingAllHistory[0]?.expire_dt | date:'mediumDate'}}</li>
+				</ul>
+				</div>
+				<!-- {{user_basic_info_New?.dob | date:'mediumDate'}}, Time: {{user_basic_info_New?.dob | date:"HH:mm"}} -->
+
+				</div>
+
+
+
+				<div class="paymentHistory">
+				<h2>Payment History</h2>
+				<table class="table">
+				<thead>
+				<tr>
+				<th scope="col">#SL</th>
+				<th scope="col">Payment Date</th>
+				<th scope="col">Order ID</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Download</th>
+				</tr>
+				</thead>
+				<tbody>
+
+				<tr *ngFor="let item of billingAllHistory; let i = index">
+				<th scope="row">{{i+1}}</th>
+				<td>{{item?.tnx_date | date:'mediumDate'}}</td>
+				<td>{{item?.order_id}}</td>
+				<td>Rs.{{item?.amount}}</td>
+				<td>
+					<!-- <button type="button" class="downloadBtn" (click)="downloadBill(item?.order_id)">Download</button> -->
+					<!-- <span class="loader_white smallLoader" *ngIf="verifyDivPause; else showVerifyData"></span> -->
+					
+
+					<button type="button" class="downloadBtn downloadTd" (click)="openPDF(item?.order_id, item)"><span class="loader_btn smallLoader loader_cus" [hidden]="item.loaderShow"></span> Download</button>
+					
+				 </td>
+				</tr>
+
+				</tbody>
+				</table>
+
+
+
+
+
+
+				</div>
+
+				</div>
+
+
+			</ng-template>
+				
+			
+		
+			</div>
+				
+			</div>
+					
+			
+				  
+			
+			
+				  
+				  
+			
+				  
+			</div>
+	</div>
+		
+	<!-- </div>
+	</div> -->

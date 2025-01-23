@@ -1,0 +1,441 @@
+
+<!-- <div *ngIf="hideOtheres == true; then showDiv else hideDiv">
+  here is ignored</div> -->
+
+<div *ngIf="hideOtheres == true; then hideDiv else hideDiv">
+here is ignored</div>
+
+<!-- <ng-template #hideDiv>His</ng-template>
+<ng-template #showDiv>Her</ng-template> -->
+
+
+<ng-template #hideDiv>
+<!-- <ng-template #hideDiv> -->
+  <div class="col-sm-3 float-left portfolio_left">
+<div class="portfolio_left_sub">
+  <div class="profile_photo">
+    
+    <div class="avatar">
+
+      <button hidden id="logo_crop" mat-raised-button class="btn btn-success" (click)="open_crop_modal()"></button>
+<input type="file" (change)="section_img_upload($event)" class="uploadImgGal_left" />
+      
+        <!-- <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+          <mat-icon class="material-icons">home</mat-icon>
+        </button> -->
+    <span class="loader smallLoader" *ngIf="is_loader_Thum;else userThumLeft"></span>
+    <ng-template #userThumLeft>
+
+    <ng-container *ngIf="listOfFiles_single[0]?.filePath !== null; else noThumbnail">
+    <img [src]="imageBaseUrl+listOfFiles_single[0]?.filePath" alt="" srcset="">
+    </ng-container>
+
+    <ng-template #noThumbnail>
+    <div *ngIf="this.userData_1?.gender == 'M';then his_cont else her_cont"> here is ignored</div>
+    <ng-template #his_cont><img src="assets/images/male_pro_big.png" alt=""/></ng-template>
+		<ng-template #her_cont><img src="assets/images/Fem_pro_big.png" alt=""/></ng-template>
+    </ng-template>
+
+  </ng-template>
+    
+    </div>
+    <div class="avatar_title">
+    <h3>{{this.userData_1?.u_name}}
+    <span>Id: {{this.userData_1?.profile_id}} </span></h3>
+
+    <!-- <ng-container *ngIf="this.progressValue != '100'" >
+    <a (click)="leftNavFn('/user_profile_edit')" >Complete Your Profile <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    </ng-container> -->
+
+    
+    
+    <!-- <div class="progressBar">{{progressValue}}</div> -->
+    <!-- <div class="percentage_bar">
+      <div class="percentage_bar_inner_green" [style.width]="progressValue+'%'">&nbsp;</div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- <span class="loader smallLoader"></span> -->
+    <!-- <div *ngIf="this.progressValue != '100'; then withLink else withNoLink"></div> -->
+    
+      <div class="profile_match_percentage_left">
+        
+        <span class="loader smallLoader" *ngIf="is_loader;else showMatches"></span>
+        <ng-template #showMatches>
+        <!-- {{is_loader}} -->
+        <div *ngIf="progressValue == '100';then withNoLink else withLink"> here is ignored</div>
+        <ng-template #withNoLink><p>Your Profile is {{progressValue}}% Complete.</p></ng-template>
+        <ng-template #withLink><p><a (click)="leftNavFn('/user_profile_edit')" >Your Profile is {{progressValue}}% Complete.</a></p></ng-template>
+        <div class="percentage_bar_left">
+        <div class="percentage_bar_inner_green_left" [style.width]="progressValue+'%'">&nbsp;</div>
+        </div>
+      </ng-template>
+        </div> 
+    
+    
+      <!-- <div class="profile_match_percentage_left">
+        
+        <div class="percentage_bar_left">
+        <div class="percentage_bar_inner_green_left" [style.width]="progressValue+'%'">&nbsp;</div>
+        </div>
+        </div> -->
+
+  <!-- <button type="button" [routerLink]="['/portfolio_view', localstorageDT.id]" class="viewPro_link">View Profile</button> -->
+  <button type="button" (click)="gotoViewProfile(localstorageDT.id)" class="viewPro_link">View Profile</button>
+
+  <!-- {{listOfFiles_single[0]?.filePath}} -->
+
+  
+
+  <div *ngIf="memberShipStatus.payStatus > '0';then paidMember else nonePaidMember">
+    here is ignored</div>
+  <ng-template #paidMember> <button type="button" routerLink="/user/paymentGetway" class="upgrade_link">Upgrade Now </button> </ng-template>
+  <ng-template #nonePaidMember><button type="button" routerLink="/user/paymentGetway" class="upgrade_link">Upgrade Now </button></ng-template>
+  
+    
+    
+    
+    <div class="portfolio_left_sub_nav">
+      <ul>
+        <li><a (click)="leftNavFn('/user/user_dashboard')"> <span><img src="assets/images/icon/dashboard.svg" alt=""></span> Dashboard</a></li>
+        <li><a (click)="leftNavFn('/user/profile_list')"> <span><img src="assets/images/icon/match.svg" alt=""></span> My Matches</a></li>
+        <li><a (click)="leftNavFn('/user/wishlist')"> <span><img src="assets/images/icon/wishlist.svg" alt=""></span>  My Wishlist</a></li>
+        <li><a (click)="leftNavFn('/user/user_profile_edit')"> <span><img src="assets/images/icon/edit.svg" alt=""></span> Edit Profile</a></li>
+        <li><a (click)="leftNavFn('/user/paymenthistory')"> <span><img src="assets/images/icon/membership.svg" alt=""></span>  My Membership</a></li>
+        <li><a (click)="leftNavFn('/user/upload_photo')"> <span><img src="assets/images/icon/photo.svg" alt=""></span>  Photo Gallery</a></li>
+      <li><a (click)="leftNavFn('/user/settings')"> <span><img src="assets/images/icon/reset_password.svg" alt=""></span>  Reset Password</a></li>
+        <!-- <li><a (click)="leftNavFn('/partner_preferences')"><img src="assets/images/profil_blue.png" alt=""> My preference</a></li> -->
+      <li><a (click)="leftNavFn('/user/id_verification')"> <span><img src="assets/images/icon/verify.svg" alt=""></span>  Verify Your Profile</a></li>
+      
+      <li><a (click)="logout_Fnc()"> <span><img src="assets/images/icon/logout.svg" alt=""></span> Logout</a></li>
+        </ul>
+    
+    </div>
+    
+  </div>
+</div>
+    
+  <!-- <div class="fabourite_box">
+    <h2><i class="fa fa-heart" aria-hidden="true"></i>  Favourite</h2>
+    
+    <div class="fabourite_box_full">
+    
+    <div class="fabourite_user_list">
+    <div class="fabourite_user_list_thum"><img src="assets/images/user.png" alt=""/></div>
+    <div class="fabourite_user_list_descrip">
+    <p>Name: Avijith Dey <strong>(VTTV9611)</strong><br>
+    Age: 29, Kolkata</p>
+    </div>
+    </div>
+    
+    <div class="fabourite_user_list">
+    <div class="fabourite_user_list_thum"><img src="assets/images/user.png" alt=""/></div>
+    <div class="fabourite_user_list_descrip">
+    <p>Name: Avijith Dey <strong>(VTTV9611)</strong><br>
+    Age: 29, Kolkata</p>
+    </div>
+    </div>
+    
+    <div class="fabourite_user_list">
+    <div class="fabourite_user_list_thum"><img src="assets/images/user.png" alt=""/></div>
+    <div class="fabourite_user_list_descrip">
+    <p>Name: Avijith Dey <strong>(VTTV9611)</strong><br>
+    Age: 29, Kolkata</p>
+    </div>
+    </div>
+    
+    
+    </div>
+    
+  </div>
+    
+  <div class="sucess_story_mainBlock">
+    
+    <h2>Add Partners ID For Success Story </h2> 
+    <div class="row">
+    <div class="col-sm-12">
+    <label for="exampleInputEmail1">Enter Partners ID</label>
+    <input type="text" class="form-control">
+    <label for="exampleInputEmail1">Write Something</label>
+    <textarea class="form-control"></textarea>
+    
+    <input type="submit" value="Submit">
+    
+    </div>
+    
+    </div>
+  </div> -->
+</ng-template> 
+
+<!-- <ng-template #showDiv> -->
+<ng-template hidden="false">
+  <div class="col-sm-3 float-left portfolio_left">
+  <div class="search_box">
+    
+    <!-- <h2>Profile Search</h2>
+    <div class="search_field">
+    <input type="search" class="form-control"><input type="submit" value="Search">
+    </div> -->
+    
+    <h2><i class="fa fa-filter" aria-hidden="true"></i>      Filter Search</h2>
+    <div class="search_partner" [formGroup]="searchPartner">
+    <div class="esearch_field_group">
+    
+    <div class="esearch_field_group_left">
+      <div class="field_outer_label">
+        <mat-form-field class="example-full-width">
+          <mat-label>Age From</mat-label>
+          <mat-select formControlName="sear_frm_age" (selectionChange)="generateAgeToList($event)">
+          <mat-option value="">Select</mat-option>
+          <mat-option *ngFor="let age of ageList" [value]="age">
+          {{age}}
+          </mat-option>
+          </mat-select>
+          </mat-form-field>
+        </div>
+
+    <!-- <label>Age From</label>
+    <select class="form-control" formControlName="sear_frm_age">
+      <option>Select</option>
+      <option>20</option>
+      <option>30</option>
+    </select> -->
+    </div>
+    <div class="esearch_field_group_right">
+    
+      <div class="field_outer_label">
+        <mat-form-field class="example-full-width">
+          <mat-label>Age To</mat-label>
+          <mat-select formControlName="sear_to_age">
+            <mat-option value="">Select</mat-option>
+            <mat-option *ngFor="let age of ageToList" [value]="age">
+              {{age}}
+            </mat-option>
+          </mat-select>
+          </mat-form-field>
+      </div>
+    <!-- <label>Age To</label>
+    <select class="form-control" formControlName="sear_to_age">
+      <option>Select</option>
+      <option>20</option>
+      <option>30</option>
+    </select> -->
+    
+    </div>
+    
+    </div>
+    
+    <div class="esearch_field_group_full">
+      <div class="field_outer_label">
+        <mat-form-field class="example-full-width">
+          <mat-label>Religion</mat-label>
+          <mat-select formControlName="sear_religion">
+            <mat-option value="0">None</mat-option>
+            <mat-option value="Hin-Beng">Hindu - Bengali</mat-option>
+            <mat-option value="Hin-Mar">Hindu - Marwari </mat-option>
+            <mat-option value="Hin-Tam">Hindu - Tamil  </mat-option>
+            <mat-option value="Hin-Pun">Hindu - Punjabi  </mat-option>
+            <mat-option value="Hin-Guj">Hindu - Gujarati  </mat-option>
+            <mat-option value="Hin-Nep">Hindu - Nepali  </mat-option>
+            <mat-option value="Hin-Bali">Hindu - Balinese   </mat-option>
+            <mat-option value="Hin-Sind">Hindu - Sindhi   </mat-option>
+            <mat-option value="Hin-Oth">Hindu - Others   </mat-option>
+            <mat-option value="Mu_Shi">Muslim - Shia</mat-option>
+            <mat-option value="Mu_Sun">Muslim - Sunni</mat-option>
+            <mat-option value="Mu_Oth">Muslim - Others</mat-option>
+            <mat-option value="Chr">Christian</mat-option>
+            <mat-option value="Sik">Sikh</mat-option>
+            <mat-option value="Ja_Dig">Jain - Digambar</mat-option>
+            <mat-option value="Ja_Shw">Jain - Shwetambar</mat-option>
+            <mat-option value="Ja_Oth">Jain - Others</mat-option>
+            <mat-option value="Par">Parsi</mat-option>
+            <mat-option value="Bud">Buddhist</mat-option>
+            <mat-option value="Int-Rel">Inter-Religion</mat-option>
+          </mat-select>
+          </mat-form-field>
+
+    </div>
+    <!-- <label>Religion</label>
+    
+    <input type="text" class="form-control" formControlName="sear_religion"> -->
+    </div>
+    
+    <div class="esearch_field_group_full">
+      <div class="field_outer_label">
+        <label class="radio_title">Marital Status</label>
+
+        <mat-radio-group aria-label="Select an option" formControlName="sear_mari_stat">
+        <mat-radio-button value="N">Never Married</mat-radio-button>
+        <mat-radio-button value="W">Widowed</mat-radio-button>
+        <mat-radio-button value="D">Divorced Awaiting divorce</mat-radio-button>
+        <mat-radio-button value="A">Awaiting divorce</mat-radio-button>
+        </mat-radio-group>									  
+        
+      </div>
+
+    <!-- <label>Marital Status</label>
+    
+    <select class="form-control" formControlName="sear_mari_stat">
+      <option>Select</option>
+      <option>Maraide</option>
+      <option>Unmaraide</option>
+    <option>Devorce</option>
+    </select> -->
+    </div>
+    
+    <div class="esearch_field_group_full">
+
+      <div class="field_outer_label">
+        <mat-form-field class="example-full-width">
+          <mat-label>Mother Tongue </mat-label>
+          <mat-select formControlName="sear_moth_ton">
+          <mat-option value="0">None</mat-option>
+          <mat-option *ngFor="let newData of lang_list" [value]="newData.lang_name">
+          {{newData.lang_name}}
+          </mat-option>
+          </mat-select>
+          </mat-form-field>
+      </div>
+
+    <!-- <label>Mother Tongue</label>
+    
+    <select class="form-control" formControlName="sear_moth_ton">
+      <option>Select</option>
+      <option>Bengali</option>
+      <option>Hindi</option>
+    <option>English</option>
+    </select> -->
+    </div>
+
+    <div class="esearch_field_group_full">
+
+      <div class="field_outer_label">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Country</mat-label>
+          <mat-select formControlName="sear_Country" (selectionChange)="stateChange_ByCountry($event)">
+            <mat-option value="">Select</mat-option>
+            <mat-option *ngFor="let newData of countryList" [value]="newData.name">
+            {{newData.name}}
+            </mat-option>
+          </mat-select>
+          </mat-form-field>
+
+      </div></div>
+    
+    <div class="esearch_field_group_full">
+
+      <div class="field_outer_label">
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="sear_state" (selectionChange)="cityChange_ByState($event)">
+              <mat-option value="">Select</mat-option>
+              <mat-option *ngFor="let newData of stateList" [value]="newData.name">
+              {{newData.name}}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+						
+      </div>
+
+    </div>
+
+    <div class="esearch_field_group_full">
+      <div class="field_outer_label">
+          <mat-form-field class="example-full-width">
+						<mat-label>City</mat-label>
+						<mat-select formControlName="sear_city">
+							<mat-option value="">Select</mat-option>
+							<mat-option *ngFor="let newData of cityList" [value]="newData.name">
+								{{newData.name}}
+								</mat-option>
+						</mat-select>
+						</mat-form-field>
+					
+      </div>
+    </div>
+    
+    <div class="esearch_field_group_full">
+    
+    <input type="submit" class="search" value="Search" (click)="partnerSearch_fn('pushSarchData')" [disabled]="!searchPartner.valid">
+    <input type="submit" class="clear" value="Clear" (click)="partnerSearch_fn('clearSarchData')">
+    <!-- <button type="button" (click)="edit_saveForm_1()" [disabled]="!form_step_1.valid">Save</button> -->
+    </div>
+
+  </div>
+    
+    
+  </div>
+</div>
+</ng-template>
+<div class="inner_wraper_sub_popup popupAnimated_Edite" id="popup_Id">
+  <div class="inner_wraper_sub_popup_sub registration">
+    <button (click)="closeEditePopup()" class="closeEditReview"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+    <p>
+      <img src="assets/images/important.png" alt="My Soul Mate"/> <br>
+      
+      Thrilling update! Your profile is live, and currently under careful review for a secure community. In the next 48 hours, our team will ensure it aligns 
+      with the guidelines. During this period, exploration of the search list is temporarily unavailable. Thank you!</p>
+  </div>
+</div>
+<div class="modal cropModulContent" id="id01">
+	<div class="modal-dialog">
+
+		<div class="modal-content modal_contentCustom">
+
+
+
+			<div class="modal-body modal-body_crop">
+				<!-- <div class="row">
+			  <div class="col-2 text-center">
+				  <i class="fa fa-minus-circle fa-2x " type="button" [hidden]="ZoomIn"  (click)="zoomOut()"></i>
+			  </div>
+			  <div class="col-2">
+				  <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="Zoomout" (click)="zoomIn()"></i>
+			  </div>
+			  <div class="col-2">
+				  <button class="float-right" (click)="close_modal_on_crop()">&times;</button>
+			  </div>
+		  </div> -->
+
+				<ul class="cropBtnTop">
+					<li><i class="fa fa-minus-circle fa-2x " type="button" [hidden]="true" (click)="zoomOut()"></i></li>
+					<li> <i class="fa fa-plus-circle fa-2x " type="button" [hidden]="true" (click)="zoomIn()"></i></li>
+					<li> <button class="cropCloseBtn" (click)="close_modal_on_crop()"><span class="material-icons">cancel</span></button></li>
+
+				</ul>
+				<!-- <image-cropper [hidden]="hide" [imageChangedEvent]="img_cover" [maintainAspectRatio]="false"
+					[containWithinAspectRatio]="contain_within_aspect_ratio" [aspectRatio]="aspect_ratio"
+					[onlyScaleDown]="false" [cropperMaxWidth]="crop_width" [cropperMaxHeight]="crop_height"
+					[cropperMinWidth]="crop_min_width" [cropperMinHeight]="crop_min_height" [onlyScaleDown]="false"
+					[output]="'base64'" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+					(cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()"
+					[style.display]="showCropper ? null: 'none'" [transform]="transform">
+				</image-cropper> -->
+
+        <image-cropper [hidden]="hide" [imageChangedEvent]="img_cover" [maintainAspectRatio]="true"
+					[containWithinAspectRatio]="contain_within_aspect_ratio" [aspectRatio]="3/2"
+					[onlyScaleDown]="false" [cropperMaxWidth]="550" [cropperMaxHeight]="650"
+					[cropperMinWidth]="350" [cropperMinHeight]="450" [onlyScaleDown]="false"
+					[output]="'base64'" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+					(cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()"
+					[style.display]="showCropper ? null: 'none'" [transform]="transform">
+				</image-cropper>
+
+       
+
+			</div>
+			<footer class="cropFooter">
+        
+				<button mat-raised-button class="btn btn-danger" [hidden]="isSave"
+					(click)="saveCroppedImg()">Save</button>
+			</footer>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,20 @@
+
+
+<!-- <ng-container  *ngIf="pageNameCheck__ == 'home'; else otherPages">
+    <div class="headerSec__Outer">
+    <app-Before_login_header_N_Home></app-Before_login_header_N_Home>
+    </div>
+</ng-container>
+
+<ng-template #otherPages>
+    <app-Before_login_header_N_Home></app-Before_login_header_N_Home>
+</ng-template> -->
+
+<div [class]="getHeaderClass()">
+<app-Before_login_header_N_Home></app-Before_login_header_N_Home>
+</div>
+
+<router-outlet></router-outlet>
+
+
+

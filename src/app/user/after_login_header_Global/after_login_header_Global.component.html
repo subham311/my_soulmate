@@ -1,0 +1,153 @@
+<span class="loader smallLoader" *ngIf="is_loader;else showMatches"></span>
+        <ng-template #showMatches>
+			<ng-container *ngIf="paymentDetails?.length > 0 ? (paymentDetails[0]?.discount > 0 && paymentDetails[1]?.discount > 0 && paymentDetails[2]?.discount > 0) : false;">
+		<!-- <ng-container *ngIf="paymentDetails?.length > 0 ? (paymentDetails[0]?.discount > 0 && paymentDetails[1]?.discount > 0 && paymentDetails[2]?.discount > 0) : false;"> -->
+		<div class="offerShow">
+		<a routerLink="/user/paymentGetway"> 
+			<div [innerHTML]="offet_text"></div>  
+			<!-- Don't miss our 15th August Offer:    <span>{{paymentDetails[0]?.discount}}% OFF</span>    subscriptions Aug 14th - 31st. Grab it now! -->
+		</a></div>
+		</ng-container>
+
+
+<div class="header_top">
+	<div class="wrapper header_topSub">
+		<div class="logoSec"><a routerLink="/user/user_dashboard"><img src="assets/images/logo_new.png" alt=""/></a>
+		
+		
+
+		</div>
+		<div class="topNavSec">
+		<ul class="afterLogin_left">
+		<li>  <a routerLink="/user/user_dashboard">My Dashboard</a></li>
+
+<!-- <li>{{this.userData_1?.file_path | json}}</li> -->
+
+		<div *ngIf="memberShipStatus.payStatus > '0';then paidMember_header else nonePaidMember_header">
+		here is ignored</div>
+		<ng-template #paidMember_header> <li class="upgrade">  <a routerLink="/user/paymentGetway">Upgrade Now</a></li> </ng-template>
+		<ng-template #nonePaidMember_header><li class="upgrade">  <a routerLink="/user/paymentGetway">Upgrade Now</a></li></ng-template>
+				
+		</ul>
+			
+		<ul class="afterLogin_right">
+		<!-- <li>  <a matTooltip="Notice"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li> -->
+			<li><a class="user btn btn-secondary dropdown-toggle" matTooltip="{{this.userData_1?.u_name}}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
+
+				<span class="loader smallLoader" *ngIf="is_loader_Thum; else userThumLeft"></span>
+    			<ng-template #userThumLeft>
+
+				<ng-container *ngIf="this.userData_1?.file_path  !==  null; else noThumbnail">
+				<!-- <img [src]="imageBaseUrl+this.listOfFiles_single[0].filePath" alt="" srcset=""> -->
+				<div *ngIf="afterLoginUserThumGet == '';"><img [src]="imageBaseUrl+this.userData_1?.file_path" alt="" srcset=""></div>
+				<div *ngIf="afterLoginUserThumGet;"><img [src]="imageBaseUrl+afterLoginUserThumGet" alt="" srcset=""></div>
+				</ng-container>
+
+				<ng-template #noThumbnail>
+				<div *ngIf="userData_1?.gender == 'M';then his_cont else her_cont"> here is ignored</div>
+				<ng-template #his_cont><img src="assets/images/male_pro_big.png" alt=""/></ng-template>
+				<ng-template #her_cont><img src="assets/images/Fem_pro_big.png" alt=""/></ng-template>
+
+				</ng-template>
+
+			</ng-template>
+			</a>
+			<div class="dropdown-menu dropdown_menu_cus" aria-labelledby="dropdownMenuLink">
+    		<div class="user_first_sec">
+				 <h3>{{userData_1?.u_name}} <span> ID: {{userData_1?.profile_id}}</span></h3>
+				 
+
+				 <!-- <div *ngIf="memberShipStatus?.payStatus > '0';then paidMember else nonePaidMember">
+					here is ignored</div> -->
+
+					<!-- <ng-template #paidMember> </ng-template> -->
+
+					<!-- <ng-template #nonePaidMember>
+						<p>Account Type: 
+							<ng-container *ngIf="pay_nameSubscrip == '';">
+								{{memberShipStatus?.pay_name}}
+							</ng-container>
+
+							<ng-container *ngIf="pay_nameSubscrip !== '';">
+								{{memberShipStatus?.pay_name}}
+							</ng-container>
+							<span>|</span> <a routerLink="/paymentGetway">Upgrade Account</a>
+						</p>
+				</ng-template> -->
+
+						<p>Account Type: <span class="memberShipName"> 
+							<ng-container *ngIf="accountType == ''">
+								{{memberShipStatus?.pay_name}}
+							</ng-container>
+
+							<ng-container *ngIf="accountType">
+								{{accountType}}
+							</ng-container>
+
+
+							<!-- {{memberShipStatus?.pay_name}} -->
+							<!-- <ng-container *ngIf="pay_nameSubscrip == '';">
+								{{memberShipStatus?.pay_name}}
+							</ng-container>
+
+							<ng-container *ngIf="pay_nameSubscrip !== '';">
+								{{pay_nameSubscrip}}
+							</ng-container> -->
+							
+						 </span> 
+							<span>|</span> <a routerLink="/user/paymentGetway" class="paidUser">Upgrade Account</a>
+						</p>
+					
+					
+
+			</div>
+			
+			<div class="user_secound_sec">
+			<ul>
+			<li><a routerLink="/user/user_profile_edit"><img src="assets/images/edit.png" alt=""/> Edit Profile</a></li>
+        <!-- <li><a routerLink="/partner_preferences"><img src="assets/images/profil.png" alt=""/> Edit Preferences</a></li> -->
+    <li><a routerLink="/user/id_verification"><img src="assets/images/id_veri.png" alt=""/> Verify Your Profile</a></li>
+    <!-- <li><a routerLink="/settings"><img src="assets/images/setting.png" alt=""/> Reset Password</a></li> -->
+  <!-- <li><a href="#"> <img src="assets/images/love.png" alt=""/> Success Stories</a></li> -->
+  <li><a (click)="logout_Fnc()"><img src="assets/images/logout.png" alt=""/> Logout</a></li>	
+  <!-- <li><a routerLink="/user/privacypolicy"><img src="assets/images/deactivat.png" alt=""/> Deactivate Account</a></li>	 -->
+			</ul>	
+			</div>
+				
+  			</div>
+			</li>
+			
+    
+
+  
+			
+		</ul>
+			
+		</div>
+		
+	</div>
+	</div>
+<!-- {{this.userData_1.profile_verify_flag != 'Y'}} -->
+<!-- {{this.userData_1.profile_verify_flag != 'N'}} -->
+<!-- {{this.profile_UserId}}
+{{this.localstorageDT.id == this.profile_UserId }}
+{{this.profileVerification.profile_flag != 'Y'}} -->
+
+<!-- <ng-container *ngIf="profileVerification.profile_flag != 'Y' && isVisible"> -->
+<ng-container *ngIf="profileVerification.profile_flag != 'Y'">
+<!-- <ng-container *ngIf="this.userData_1.kyc_flag != 'Y' || this.localstorageDT.id == this.profile_UserId"> -->
+<div class="wrapper">
+	<div class="col-sm-12">
+	<div class="portfolio_form_fill_Top">
+		<div class="title_sec"> 
+			
+				<h2>Your profile is pending ID Verification</h2>
+			</div>
+
+			<a routerLink="/user/id_verification" class="link">Get your profile verified</a>
+		</div>
+	</div>
+	</div>
+</ng-container>
+
+</ng-template>

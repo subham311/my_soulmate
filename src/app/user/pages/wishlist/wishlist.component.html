@@ -1,0 +1,202 @@
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+    <!-- <div class="col-sm-3 float-left portfolio_left">
+      <app-leftBar_after_login></app-leftBar_after_login>
+    </div> -->
+
+    <div class="col-sm-9 float-left portfolio_right_wish">
+      <div *ngIf="inProgressShort; else sowData" style="text-align:center; margin-top:20px;">
+				<div class="spinner-border"></div>
+			</div>
+      <!-- <div class="portfolio_right"> -->
+        <ng-template #sowData>
+        <div *ngIf="dataArray?.length > 0; else noData">
+          <!-- <div class="row"> -->
+            <!-- <div class="col-sm-3" > -->
+              
+              <div class="portfolio_Search_list_wish" *ngFor="let item of dataArray;let i=index">
+                <!-- <div class="portfolio_Search_list_thum_wish">
+                  <ng-container
+                    *ngIf="item.basic_information.value[0]?.file_path !==  null; else noThumbnailLoginUser ">
+                    <img src="{{imageBaseUrl+item.basic_information.value[0]?.file_path}}" alt="" />
+                  </ng-container>
+                  <ng-template #noThumbnailLoginUser>
+                    <div
+                      *ngIf="this.dataArray[0].basic_information.value[0]?.gender == 'M';then his_cont_match else her_cont_match">
+                      here is ignored</div>
+                    <ng-template #his_cont_match><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+                    <ng-template #her_cont_match><img src="assets/images/Fem_pro_big.png" alt="" /> </ng-template>
+                  </ng-template>
+                  <br>
+                  <div class="portfolio_Search_list_descrip_details_wish">
+                  <h4>
+                    {{item.basic_information.value[0]?.u_name}}
+                    <ng-container *ngIf="item.basic_information.value[0]?.profile_id != null">
+                      <span>(ID: {{item.basic_information.value[0]?.profile_id}})</span>
+                    </ng-container>
+                  </h4>
+                  <a class="detailsLink_wish" (click)="memberCheckFn(item.basic_information.value[0]?.id +'&'+ item.freetoSee)">Details </a>
+                </div>
+                </div> -->
+                <div class="portfolio_Search_list_thum_wish">
+                  <ng-container
+                    *ngIf="item.basic_information.value[0]?.file_path !==  null; else noThumbnail">
+                    <img src="{{imageBaseUrl+item.basic_information.value[0]?.file_path}}" alt="" />
+                  </ng-container>
+  
+                  <ng-template #noThumbnail>
+                    <div
+                      *ngIf="item.basic_information.value[0]?.gender == 'M';then his_cont else her_cont">
+                      here is ignored</div>
+                    <ng-template #his_cont><img src="assets/images/male_pro_big_list.png"
+                        alt="" /></ng-template>
+                    <ng-template #her_cont><img src="assets/images/Fem_pro_big_list.png"
+                        alt="" /></ng-template>
+  
+                  </ng-template>
+                  <!-- <img src="assets/images/profil_a.png" alt=""/> -->
+                </div>
+                <div class="portfolio_Search_list_descrip_wish">
+                  <div class="portfolio_Search_list_descrip_top_wish">
+  
+                    <ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">
+                      <button mat-mini-fab matTooltip="Remove From Wishlist"  class="astro_link_wish" color="warn"  (click)="enableButton(item.basic_information.value[0]?.id,i)" aria-label="Example icon button with a heart icon">
+                              <mat-icon>favorite</mat-icon>
+                            </button>
+                      </ng-container>
+  
+                    <!-- <ul [class.noBlurStyle]="newData.blurr_content < minListShowData_withoutLog"> -->
+                      <ul>
+                      
+                        <li class="verify" *ngIf="item.basic_information.value[0]?.profile_verify_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</li>
+                      
+                        
+                        <li class="verify_not" *ngIf="item.basic_information.value[0]?.profile_verify_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not
+                          Verified</li>
+                      
+                         
+  
+  
+                      <!-- <li class="match tooltip_Popup"><span> {{newData.astro_match_marks}} %</span>Astro Numerical Match  -->
+                        <!-- {{elementory_Marks}} -->
+  
+          <!-- <div class="percentage_bar_inner_green" [style.width]="partnersRasi_get?.total_marks+'%'">&nbsp;</div> -->
+  
+          <!-- <span class="tooltiptext_Popup tooltip-bottom_Popup">
+            <p>Elementory: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.elementMarks+'%'"></span></span></p>
+            <p>Numerology: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.numeric_match+'%'"></span></span></p> 
+            <p>Osto Kut: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.jotok_marks+'%'"></span></span></p>
+            <p>Mongal Dosha: <span class="percentageBarMain"><span class="percentageBar" [style.width]="newData.mongal_marks+'%'"></span></span></p>
+          
+          </span> -->
+                      <!-- </li> -->
+                      <!-- <li class="profiMatch"><span> {{addProfileMatchpercentage(newData,i)}}
+                          %</span>Profile Match </li> -->
+                      <li class="accept"> 
+      <!-- <button type="button" class="favour_btn"><i class="fa fa-heart" aria-hidden="true"></i>  My Favourite</button> -->
+      <!-- {{newData.freetoSee}} -->
+      <!-- <button type="button"  data-toggle="modal" data-target="#sendMsgPopup" (click)="showAstroPopup(newData.basic_information.value[0]?.id, this.ownProfileMatchDt2?.id)"><img src="assets/images/astrology.png" alt="" /> Astro Numerical Match </button> -->
+      
+      </li>
+                    </ul>
+  
+                    <!-- <div class="tooltip_Popup">Hover over me
+                      <span class="tooltiptext_Popup tooltip-bottom_Popup">Tooltip xcvbcvbcvbtext</span>
+                      </div> -->
+                  </div>
+  
+                  <div class="portfolio_Search_list_descrip_details_wish">
+  
+                    <!-- <h3 [class.noBlurStyle]="newData.blurr_content < minListShowData_withoutLog"> -->
+                      <h3> 
+                        <!-- {{nameShort(newData.basic_information.value[0]?.u_name)}} -->
+                        {{item.basic_information.value[0]?.u_name}}
+                      <!-- kk {{newData.basic_information.value[0].u_name.split(' ').length-1}} pp
+      sssss	{{newData.basic_information.value[0].u_name.split(' ')[1].substr(0, 2)}} hhh -->
+                      <ng-container *ngIf="item.basic_information.value[0]?.profile_id != null">
+                        <span>(ID: {{item.basic_information.value[0]?.profile_id}})</span>
+                      </ng-container>
+                    </h3>
+  
+                    <!-- <p [class.noBlurStyle]="newData.blurr_content < minListShowData_withoutLog"> -->
+                      <p>
+                      <strong class="title">Age:
+                      </strong>{{ageCalculat(item.basic_information.value[0]?.dob |
+                      date:'yyyy-MM-dd')}} Years, <strong class="title">Height:</strong>
+                      {{this.field_height_OBJ[item.basic_information.value[0]?.height]}}
+  
+                      , {{item.basic_information.value[0]?.mother_tong}}, <br>
+  
+                      <strong class="title">Cast:</strong>
+                      {{item.basic_information.value[0]?.caste_name}} <br>
+                      <strong class="title">Occupation:
+                      </strong>{{item.groom_location.value[0]?.occu_name}}, <strong
+                        class="title">Lives In</strong> {{item.basic_information.value[0]?.state_name}},{{item.basic_information.value[0]?.country_name}}
+                      <!-- <a routerLink="/portfolio_view{{newData.basic_information.value[0]?.id}}">Details</a> -->
+  
+                    </p>
+                    <!-- <a [routerLink]="['/portfolio_view', newData.basic_information.value[0]?.user_id]" class="detailsLink">Details </a> -->
+  
+  
+                    <div class="profileListBlock_wish">
+                      <!-- <div class="rashiDetails" [class.noBlurStyle]="newData.blurr_content < 9"> -->
+                      <div class="rashiDetails_wish">
+                        <ul>
+                          <li>Mongal Dosha:
+                            <ng-container *ngIf="item.mongal_dasha == '100'"> <span
+                                style="color: red;">High</span></ng-container>
+                            <ng-container *ngIf="item.mongal_dasha == '80'">
+                              Medium</ng-container>
+                            <ng-container *ngIf="item.mongal_dasha == '20'">
+                              Low</ng-container>
+                            <ng-container *ngIf="item.mongal_dasha == '0'">
+                              None</ng-container>
+                          </li>
+                          <!-- <li>Sun Shine: {{newData.sun_shine_rashi_match}}</li>
+      <li>Moon Shine:</li>
+      <li>Jotok Marks: {{newData.jotok_marks}}</li>
+      <li>Numeric Match: {{newData.numeric_match}}</li> -->
+                        </ul>
+              
+                      </div>
+                      <!-- <button mat-mini-fab color="warn" (click)="enableButton()" [ngStyle]="{'background-color': buttonColor}" aria-label="Example icon button with a heart icon">
+                        <mat-icon>favorite</mat-icon>
+                      </button>	 -->
+                      <!-- <ng-container >
+      
+                        <span class="upgrade_Lock">
+                        <div class="lockPopupHover">
+                        <button type="button" routerLink="/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+                        </div>
+                        </span>
+                      </ng-container>		 -->
+                      
+  <!-- <a data-toggle="modal" data-target="#sendMsgPopup" class="sendMsg" (click)="sendMsg(this.ownProfileMatchDt2?.id, this.ownProfileMatchDt2?.profile_id, ownProfileMatchDt2?.u_name, this.ownProfileMatchDt2?.email_id, newData.basic_information.value[0].email_id)">Send Message </a> -->
+  
+                      <a (click)="memberCheckFn(item.basic_information.value[0]?.id +'&'+ item.freetoSee)"
+                        class="detailsLink_wish">Details </a>
+                    </div>
+  
+                    <!-- <p><strong>Elementor Match </strong></p>
+      <p>{{newData.groom_location.value[0] | json}}</p>
+      <p>{{newData.basic_information.value[0] | json}}</p> -->
+  
+                  </div>
+  
+                </div>
+              </div>
+            <!-- </div> -->
+          <!-- </div> -->
+        </div>
+      
+        <ng-template #noData class="noDataDiv_wish" > 
+          <p class="noData_wish">Wishlist is empty...!</p>
+          <img src="assets/images/no_data_wishlist.png" alt="" />              
+          <!-- <img src="assets/images/no_data_wish_male.png" alt="" /> -->
+        </ng-template>
+      </ng-template>
+      <!-- </div> -->
+    </div>
+
+    
+

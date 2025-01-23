@@ -1,0 +1,2322 @@
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+
+    <div class="col-sm-9 float-left portfolio_edit_left">
+
+      <div class="inner_wraper_sub_popup popupAnimated_Edite" id="popup_Id">
+      <div class="inner_wraper_sub_popup_sub registration">
+        <button (click)="closeEditePopup()" class="closeEditReview"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+        <p>
+          <img src="assets/images/important.png" alt="My Soul Mate"/> <br>
+          
+          Thrilling update! Your profile is live, and currently under careful review for a secure community. In the next 48 hours, our team will ensure it aligns 
+          with the guidelines. During this period, exploration of the search list is temporarily unavailable. Thank you!</p>
+      </div>
+    </div>
+
+      <div class="personal_sumary">
+        <div class="row">
+          <div class="loader_outer" *ngIf="inProgressShort; else mySelf">
+            <div class="spinner-border"></div>
+          </div>
+          <ng-template #mySelf>
+
+            
+            
+            <div class="col-sm-2 float-left">
+              <div class="profil_img_main">
+                <div class="profil_img">
+                  
+
+                  <!-- <ng-container *ngIf=" listOfFiles_single[0]?.filePath !== null; else noThumbnail"> -->
+                  <ng-container *ngIf=" user_basic_info_New?.file_path !== null; else noThumbnail">
+                    
+                    <!-- <img [src]="imageBaseUrl + listOfFiles_single[0]?.filePath" alt="" srcset="" /> -->
+                    <img [src]="imageBaseUrl + user_basic_info_New?.file_path" alt="" srcset="" />
+                  </ng-container>
+
+                  <ng-template #noThumbnail>
+                    <div *ngIf="
+                        user_basic_info_New?.gender == 'M';
+                        then his_cont;
+                        else her_cont
+                      ">
+                      here is ignored
+                    </div>
+                    <ng-template #his_cont><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+                    <ng-template #her_cont><img src="assets/images/Fem_pro_big.png" alt="" /></ng-template>
+                  </ng-template>
+                </div>
+
+                <!-- <a routerLink="/upload_photo">Add/Edit Photos</a> -->
+              </div>
+            </div>
+            <div class="col-sm-10 personal_sumary_right float-left">
+
+<!-- {{this.user_basic_info_New?.file_path | json}} -->
+              
+
+
+              <h3>
+                <ng-container *ngIf="user_basic_info_New?.u_name?.length > 0">
+                  {{ user_basic_info_New?.u_name }}
+                </ng-container>
+                <span>Profile created for
+                  {{ this.ac_for_OBJ[user_basic_info_New?.ac_for] }}</span>
+                <!-- <a [routerLink]="['/portfolio_view', localstorageDT.id]"> -->
+                <a class="viewProlink" (click)="gotoViewProfile(localstorageDT.id)">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                  Profile Preview
+                </a>
+              </h3>
+
+              <p>
+                {{ showAge }} Yrs,
+                <ng-container *ngIf="user_basic_info?.length > 0">
+                  Height:
+                  {{
+                  this.field_height_OBJ[user_basic_info_New?.height]
+                  }} </ng-container><br />
+
+                {{ this.field_Religion_OBJ[user_basic_info_New?.religion] }},
+                {{ user_basic_info_New?.caste_name }} ({{
+                user_basic_info_New?.mother_tong
+                }})<br />
+
+                <!-- {{ user_basic_info_New?.city_name }}, -->
+                {{ user_basic_info_New?.state_name }},
+                {{ user_basic_info_New?.country_name }}
+                <!-- {{this.field_country_OBJ[groomLoc_ProfInfo_New?.length > 0 ? groomLoc_ProfInfo_New?.country : '']}} -->
+                <br />
+
+                <ng-container *ngIf="groomLoc_ProfInfo_New?.education_name">
+                  Education:
+                  {{
+                  groomLoc_ProfInfo_New?.education_name.length > 0
+                  ? groomLoc_ProfInfo_New?.education_name
+                  : ""
+                  }} </ng-container> <br />
+                  <!-- {{verifyBtn}} -->
+                Email ID: <strong>{{ user_basic_info_New?.email_id }}</strong>
+                <a (click)="verifyEmail()" class="verifyEmail" *ngIf="!verifyBtn" >Verify Email</a>
+                <span  class="verifiedObj" *ngIf="verifyBtn" ><img src="assets/images/verifi_icon.png" alt="" /></span>
+
+                
+
+              </p>
+
+              <p class="mobile_verifi">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                {{
+                user_basic_info?.length > 0
+                ? user_basic_info_New?.phone_no
+                : ""
+                }}
+                <!-- {{store_mobileNumber.field_mobile_update}} -->
+                <!-- ( <span class="verifiedEmail">Verified</span> ) -->
+                <span class="verifiedObj"><img src="assets/images/verifi_icon.png" alt="" /></span>
+              </p>
+              
+                
+              <div class="otpField_Edite">
+              <div class="row">
+              <div class="otpMain otpMain_registration" *ngIf="generateOTP_btn" >
+
+
+              <label class="otp">
+              <!-- <div class="field_outer_label" *ngIf="showOtpdiv"> -->
+              <div class="field_outer_label" >
+
+              <p class="title">Enter verification code</p>
+              <ng-otp-input #ngOtpInput  *ngIf="showOtpComponent"(onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+              <!-- <ng-otp-input type=" number" #ngOtpInput (onInputChange)="onOtpChange($event)" *ngIf="showOtpComponent" [config]="config"></ng-otp-input> -->
+              </div>
+              </label>
+
+              <!-- <label class="resendOtp" *ngIf="showOtpdiv">  -->
+              <label class="resendOtp" > 
+
+              <button (click)="resendOTP()"><i class="fa fa-refresh" aria-hidden="true"></i> Resend OTP</button>  <span>{{display_new}}</span>
+
+              </label>
+              <div class="field_outer_label verifyBtn" >
+              <!-- .portfolio_edit_Form_btn -->
+             
+              <button class="verifyEmailBtn" type="button" (click)="onclickcheck($event)">Submit</button>
+             
+
+              </div>
+
+              <div class="otpExpair" [hidden]="showExpairMsg"> <span> Your Otp has Expired</span></div>
+              </div>
+            </div>
+              </div>
+              
+                <!-- <label class="full"><input type="submit" value="Register Free" (click)="get_form_data_home()" [disabled]="!form_user_phone_send.valid || !verifyBtnActive"></label> -->
+              
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else ownWord">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #ownWord>
+          <div class="title_sec">
+            <h2>
+              In my own words
+              <button (click)="toggleDisplayForm(1)">Edit</button>
+            </h2>
+          </div>
+          <!-- <p>{{user_basic_info_New.about_us}}</p> -->
+          <ng-container *ngIf="user_basic_info?.length > 0">
+            <p class="textWrapper">{{ user_basic_info_New?.about_us }}</p>
+          </ng-container>
+          <!-- I completed my bachelor's degree and am now working as a software professional. I belong to a middle class, joint family with moderate values, currently settled in Howrah.  -->
+        </ng-template>
+
+        <div class="portfolio_edit_Form portfolio_edit_Form_1" [formGroup]="form_step_1" [hidden]="isShowForm_1">
+          <!-- <textarea class="form-control"></textarea> -->
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group row">
+              <div class="col-sm-8">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>About You (Word limit maximum: 250)</mat-label>
+                    <textarea matInput formControlName="field_About_us"
+                      (keyup)="wordCounter_250('about_you_text')"></textarea>
+                  </mat-form-field><br>
+                  ({{ count_AboutYou }}/250)
+                </div>
+                <div class="validation_div" *ngIf="
+                    !form_step_1.controls.field_About_us?.valid &&
+                    (form_step_1.controls.field_About_us?.dirty ||
+                      form_step_1.controls.field_About_us?.touched)
+                  ">
+                  Please write about you within 250 words.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_1()" [disabled]="!form_step_1.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else birth">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #birth>
+          <div class="title_sec">
+            <h2>Birth Details
+              <button (click)="toggleDisplayForm(9)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group float-left">
+            <div class="edit_portfolio_field_group_left">Date Of Birth</div>
+            <div class="edit_portfolio_field_group_right colonEnd">
+              <ng-container *ngIf="user_basic_info_New?.dob">
+
+                <!-- {{user_basic_info_New?.dob | date:'mediumDate'}} -->
+                {{user_basic_info_New?.dob_date}}
+                <!-- , Time: {{user_basic_info_New?.dob | date:"HH:mm"}}   -->
+                , Time: {{user_basic_info_New?.dob_time}}  
+                <strong class="notEdit">(Not Editable)</strong>
+                <strong> </strong>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="edit_portfolio_field_group float-left">
+            <div class="edit_portfolio_field_group_left">Age</div>
+            <div class="edit_portfolio_field_group_right colonEnd">
+              <ng-container *ngIf="user_basic_info_New?.dob">
+                {{showAge}}  <strong class="notEdit">(Not Editable)</strong>
+              </ng-container>
+            </div>
+          </div>
+          <!-- <div class="edit_portfolio_field_group float-left">
+				<div class="edit_portfolio_field_group_left">Age</div>
+				<div class="edit_portfolio_field_group_right colonEnd">
+					<mat-form-field class="example-full-width">
+						<mat-label>Age</mat-label>
+						<input matInput readonly="" formControlName="field_age" />
+					  </mat-form-field>
+				</div>
+			  </div> -->
+
+          <div class="edit_portfolio_field_group float-left">
+            <div class="edit_portfolio_field_group_left">Place of Birth</div>
+            <div class="edit_portfolio_field_group_right colonEnd">
+              <ng-container *ngIf="user_basic_info_New?.location_id">
+                {{ user_basic_info_New?.location_id }}
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form portfolio_edit_Form_9" [formGroup]="form_step_9" [hidden]="isShowForm_9">
+            <div class="edit_portfolio_field_group_main">
+              <div class="form-group form_group_custome row">
+
+                <!-- <div class="col-sm-4">
+                  <div class="field_outer_label">
+                      <input class="form-control date_BotsTrap"  type="datetime-local" formControlName="field_birth_date" value="{{
+                        user_basic_info_New?.dob | date : 'shortTime'
+                        }}" (change)="calculateAge()" />
+                      <ng-container *ngIf="showAge < 18; else adult">
+                        <div class="validation_div">
+                          Your Age is Below 18
+                        </div>
+                      </ng-container>
+        
+                      <ng-template #adult>
+                        <div class="validation_div"
+                          *ngIf="!form_step_9.controls.field_birth_date?.valid && (form_step_9.controls.field_birth_date?.dirty ||form_step_9.controls.field_birth_date?.touched)">
+                          Please put your 'Actual Date Of Birth'
+                        </div>
+                      </ng-template>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="field_outer_label">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Age</mat-label>
+                      <input matInput readonly="" formControlName="field_age" value="{{
+							showAge
+						  }}" />
+                    </mat-form-field>
+                  </div>
+                </div> -->
+
+                <div class="col-sm-6">
+                  <div class="field_outer_label">
+                    <!-- <mat-form-field class="example-full-width">
+						<mat-label>Place of Birth</mat-label>
+						<input matInput type="text" id="location" formControlName="field_birth_loca">
+						</mat-form-field> -->
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Actual Birth Location</mat-label>
+                      <input matInput type="text" id="location" formControlName="field_birth_loca">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="portfolio_edit_Form_btn">
+              <button type="button" (click)="edit_saveForm_9()" [disabled]="!form_step_9.valid || isButtonDisabled">
+                Save
+              </button>
+            </div>
+          </div>
+
+        </ng-template>
+      </div>
+
+
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else basic">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #basic>
+          <div class="title_sec">
+            <h2>
+              Basic Details <button (click)="toggleDisplayForm(2)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group_main">
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Profile Create for
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info_New?.ac_for">
+                  {{ this.ac_for_OBJ[user_basic_info_New?.ac_for] }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Name</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info_New?.u_name">
+                  {{ user_basic_info_New?.u_name }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Gender</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info_New?.gender">
+                  {{ this.field_gender_OBJ[user_basic_info_New?.gender] }} <strong class="notEdit">(Not Editable)</strong>
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Body Type</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.body_type &&
+                      user_basic_info_New?.body_type != 'null' &&
+                      user_basic_info_New?.body_type != 'none';
+                    then bodyType_yes;
+                    else bodyType_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #bodyType_yes>{{
+                  this.field_body_type_OBJ[user_basic_info_New?.body_type]
+                  }}</ng-template>
+                <ng-template #bodyType_no>Not Specified</ng-template>
+
+                <!-- <ng-container *ngIf="user_basic_info_New?.body_type">
+					{{this.field_body_type_OBJ[user_basic_info_New?.body_type]}}
+			</ng-container> -->
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Physical Status</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info_New?.disability_flag">
+                  {{
+                  this.field_disability_OBJ[
+                  user_basic_info_New?.disability_flag
+                  ]
+                  }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Height</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.height &&
+                      user_basic_info_New?.height != 'none';
+                    then height_yes;
+                    else height_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #height_yes>{{
+                  this.field_height_OBJ[user_basic_info_New?.height]
+                  }}</ng-template>
+                <ng-template #height_no>Not Specified</ng-template>
+
+                <!-- <ng-container *ngIf="user_basic_info_New?.height">
+					{{this.field_height_OBJ[user_basic_info_New?.height]}}
+			</ng-container> -->
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Weight</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.weight &&
+                      user_basic_info_New?.weight != 'null' &&
+                      user_basic_info_New?.weight != 'none';
+                    then weight_yes;
+                    else weight_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #weight_yes>{{
+                  this.field_weight_OBJ[user_basic_info_New?.weight]
+                  }}</ng-template>
+                <ng-template #weight_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Mother Tongue</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info_New?.mother_tong">
+                  {{ user_basic_info_New?.mother_tong }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Marital Status</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info_New?.marital_status">
+                  {{
+                  this.field_marital_status_OBJ[
+                  user_basic_info_New?.marital_status
+                  ]
+                  }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Eating Habits</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.eating_habbits &&
+                      user_basic_info_New?.eating_habbits != 'null';
+                    then habits_yes;
+                    else habits_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #habits_yes>{{
+                  this.field_Eating_Habits_OBJ[
+                  user_basic_info_New?.eating_habbits
+                  ]
+                  }}</ng-template>
+                <ng-template #habits_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Drinking Habits</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.drinking_habbits &&
+                      user_basic_info_New?.drinking_habbits != 'null';
+                    then drinks_yes;
+                    else drinks_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #drinks_yes>{{
+                  this.field_Drinking_Habits_OBJ[
+                  user_basic_info_New?.drinking_habbits
+                  ]
+                  }}</ng-template>
+                <ng-template #drinks_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Smoking Habits</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.smoking_habbits &&
+                      user_basic_info_New?.smoking_habbits != 'null';
+                    then smoking_yes;
+                    else smoking_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #smoking_yes>{{
+                  this.field_Smoking_Habits_OBJ[
+                  user_basic_info_New?.smoking_habbits
+                  ]
+                  }}</ng-template>
+                <ng-template #smoking_no>Not Specified</ng-template>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <div class="portfolio_edit_Form portfolio_edit_Form_2" [formGroup]="form_step_2" [hidden]="isShowForm_2">
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <!-- <label for="exampleInputEmail1">Who Create This Profile</label> -->
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Profile Create for</mat-label>
+                    <mat-select formControlName="field_who_creat_profile">
+                      <mat-option value="M">Myself</mat-option>
+                      <mat-option value="D">Daughter</mat-option>
+                      <mat-option value="S">Son</mat-option>
+                      <mat-option value="S">Sister</mat-option>
+                      <mat-option value="B">Brother</mat-option>
+                      <mat-option value="R">Relative</mat-option>
+                      <mat-option value="F">Friend</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input value="" matInput
+                      formControlName="field_name" [readonly]="true"/>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <!-- <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="field_gender">
+                      <mat-option value="M">Male</mat-option>
+                      <mat-option value="F">Female</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div> -->
+
+              <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Body Type</mat-label>
+                    <mat-select formControlName="field_body_type">
+                      <mat-option value="none">Select</mat-option>
+                      <mat-option value="S">Slim</mat-option>
+                      <mat-option value="A">Athletic</mat-option>
+                      <mat-option value="Aver">Average </mat-option>
+                      <mat-option value="H">Heavy </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <!-- <label for="exampleInputEmail1">Who Create This Profile</label> -->
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Physical Status</mat-label>
+                    <mat-select formControlName="field_disability">
+                      <mat-option value="N">Normal </mat-option>
+                      <mat-option value="P">Physically Challenged</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              
+            </div>
+            <div class="form-group form_group_custome row">
+               
+
+              <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Height</mat-label>
+                    <mat-select formControlName="field_height">
+                      <mat-option value="none">--Feet/Inches--</mat-option>
+                      <mat-option value="4-6">4ft 6in</mat-option>
+                      <mat-option value="4-7">4ft 7in</mat-option>
+                      <mat-option value="4-8">4ft 8in</mat-option>
+                      <mat-option value="4-9">4ft 9in</mat-option>
+                      <mat-option value="4-10">4ft 10in</mat-option>
+                      <mat-option value="4-11">4ft 11in</mat-option>
+                      <mat-option value="5">5ft</mat-option>
+                      <mat-option value="5-1">5ft 1in</mat-option>
+                      <mat-option value="5-2">5ft 2in</mat-option>
+                      <mat-option value="5-3">5ft 3in</mat-option>
+                      <mat-option value="5-4">5ft 4in</mat-option>
+                      <mat-option value="5-5">5ft 5in</mat-option>
+                      <mat-option value="5-6">5ft 6in</mat-option>
+                      <mat-option value="5-7">5ft 7in</mat-option>
+                      <mat-option value="5-8">5ft 8in</mat-option>
+                      <mat-option value="5-9">5ft 9in</mat-option>
+                      <mat-option value="5-10">5ft 10in</mat-option>
+                      <mat-option value="5-11">5ft 11in</mat-option>
+                      <mat-option value="6">6ft</mat-option>
+                      <mat-option value="6-1">6ft 1in</mat-option>
+                      <mat-option value="6-2">6ft 2in</mat-option>
+                      <mat-option value="6-3">6ft 3in</mat-option>
+                      <mat-option value="6-4">6ft 4in</mat-option>
+                      <mat-option value="6-5">6ft 5in</mat-option>
+                      <mat-option value="6-6">6ft 6in</mat-option>
+                      <mat-option value="6-7">6ft 7in</mat-option>
+                      <mat-option value="6-8">6ft 8in</mat-option>
+                      <mat-option value="6-9">6ft 9in</mat-option>
+                      <mat-option value="6-10">6ft 10in</mat-option>
+                      <mat-option value="6-11">6ft 11in</mat-option>
+                      <mat-option value="7">7ft</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Weight</mat-label>
+                    <mat-select formControlName="field_weight">
+                      <mat-option value="none">--Kgs--</mat-option>
+                      <mat-option value="41">41 Kg</mat-option>
+                      <mat-option value="42">42 Kg</mat-option>
+                      <mat-option value="43">43 Kg</mat-option>
+                      <mat-option value="44">44 Kg</mat-option>
+                      <mat-option value="45">45 Kg</mat-option>
+                      <mat-option value="46">46 Kg</mat-option>
+                      <mat-option value="47">47 Kg</mat-option>
+                      <mat-option value="48">48 Kg</mat-option>
+                      <mat-option value="49">49 Kg</mat-option>
+                      <mat-option value="50">50 Kg</mat-option>
+                      <mat-option value="51">51 Kg</mat-option>
+                      <mat-option value="52">52 Kg</mat-option>
+                      <mat-option value="53">53 Kg</mat-option>
+                      <mat-option value="54">54 Kg</mat-option>
+                      <mat-option value="55">55 Kg</mat-option>
+                      <mat-option value="56">56 Kg</mat-option>
+                      <mat-option value="57">57 Kg</mat-option>
+                      <mat-option value="58">58 Kg</mat-option>
+                      <mat-option value="59">59 Kg</mat-option>
+                      <mat-option value="60">60 Kg</mat-option>
+                      <mat-option value="61">61 Kg</mat-option>
+                      <mat-option value="62">62 Kg</mat-option>
+                      <mat-option value="63">63 Kg</mat-option>
+                      <mat-option value="64">64 Kg</mat-option>
+                      <mat-option value="65">65 Kg</mat-option>
+                      <mat-option value="66">66 Kg</mat-option>
+                      <mat-option value="67">67 Kg</mat-option>
+                      <mat-option value="68">68 Kg</mat-option>
+                      <mat-option value="69">69 Kg</mat-option>
+                      <mat-option value="70">70 Kg</mat-option>
+                      <mat-option value="71">71 Kg</mat-option>
+                      <mat-option value="72">72 Kg</mat-option>
+                      <mat-option value="73">73 Kg</mat-option>
+                      <mat-option value="74">74 Kg</mat-option>
+                      <mat-option value="75">75 Kg</mat-option>
+                      <mat-option value="76">76 Kg</mat-option>
+                      <mat-option value="77">77 Kg</mat-option>
+                      <mat-option value="78">78 Kg</mat-option>
+                      <mat-option value="79">79 Kg</mat-option>
+                      <mat-option value="80">80 Kg</mat-option>
+                      <mat-option value="81">81 Kg</mat-option>
+                      <mat-option value="82">82 Kg</mat-option>
+                      <mat-option value="83">83 Kg</mat-option>
+                      <mat-option value="84">84 Kg</mat-option>
+                      <mat-option value="85">85 Kg</mat-option>
+                      <mat-option value="86">86 Kg</mat-option>
+                      <mat-option value="87">87 Kg</mat-option>
+                      <mat-option value="88">88 Kg</mat-option>
+                      <mat-option value="89">89 Kg</mat-option>
+                      <mat-option value="90">90 Kg</mat-option>
+                      <mat-option value="91">91 Kg</mat-option>
+                      <mat-option value="92">92 Kg</mat-option>
+                      <mat-option value="93">93 Kg</mat-option>
+                      <mat-option value="94">94 Kg</mat-option>
+                      <mat-option value="95">95 Kg</mat-option>
+                      <mat-option value="96">96 Kg</mat-option>
+                      <mat-option value="97">97 Kg</mat-option>
+                      <mat-option value="98">98 Kg</mat-option>
+                      <mat-option value="99">99 Kg</mat-option>
+                      <mat-option value="100">100 Kg</mat-option>
+                      <mat-option value="101">101 Kg</mat-option>
+                      <mat-option value="102">102 Kg</mat-option>
+                      <mat-option value="103">103 Kg</mat-option>
+                      <mat-option value="104">104 Kg</mat-option>
+                      <mat-option value="105">105 Kg</mat-option>
+                      <mat-option value="106">106 Kg</mat-option>
+                      <mat-option value="107">107 Kg</mat-option>
+                      <mat-option value="108">108 Kg</mat-option>
+                      <mat-option value="109">109 Kg</mat-option>
+                      <mat-option value="110">110 Kg</mat-option>
+                      <mat-option value="111">111 Kg</mat-option>
+                      <mat-option value="112">112 Kg</mat-option>
+                      <mat-option value="113">113 Kg</mat-option>
+                      <mat-option value="114">114 Kg</mat-option>
+                      <mat-option value="115">115 Kg</mat-option>
+                      <mat-option value="116">116 Kg</mat-option>
+                      <mat-option value="117">117 Kg</mat-option>
+                      <mat-option value="118">118 Kg</mat-option>
+                      <mat-option value="119">119 Kg</mat-option>
+                      <mat-option value="120">120 Kg</mat-option>
+                      <mat-option value="121">121 Kg</mat-option>
+                      <mat-option value="122">122 Kg</mat-option>
+                      <mat-option value="123">123 Kg</mat-option>
+                      <mat-option value="124">124 Kg</mat-option>
+                      <mat-option value="125">125 Kg</mat-option>
+                      <mat-option value="126">126 Kg</mat-option>
+                      <mat-option value="127">127 Kg</mat-option>
+                      <mat-option value="128">128 Kg</mat-option>
+                      <mat-option value="129">129 Kg</mat-option>
+                      <mat-option value="130">130 Kg</mat-option>
+                      <mat-option value="131">131 Kg</mat-option>
+                      <mat-option value="132">132 Kg</mat-option>
+                      <mat-option value="133">133 Kg</mat-option>
+                      <mat-option value="134">134 Kg</mat-option>
+                      <mat-option value="135">135 Kg</mat-option>
+                      <mat-option value="136">136 Kg</mat-option>
+                      <mat-option value="137">137 Kg</mat-option>
+                      <mat-option value="138">138 Kg</mat-option>
+                      <mat-option value="139">139 Kg</mat-option>
+                      <mat-option value="140">140 Kg</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Mother Tongue </mat-label>
+                    <mat-select formControlName="field_mother_tong">
+                      <mat-option *ngFor="let newData of lang_list" [value]="newData.id.toString()">
+                        {{ newData.lang_name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-12 marital_Status">
+                <div class="field_outer_label">
+                  <label class="radio_title">Marital Status</label>
+
+                  <mat-radio-group aria-label="Select an option" formControlName="field_marital_status">
+                    <mat-radio-button value="N">Never Married</mat-radio-button>
+                    <mat-radio-button value="W">Widowed</mat-radio-button>
+                    <mat-radio-button value="D">Divorced Awaiting divorce</mat-radio-button>
+                    <mat-radio-button value="A">Awaiting divorce</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-6 eating_habi">
+                <div class="field_outer_label">
+                  <div class="field_outer_label">
+                    <label class="radio_title">Eating Habits </label>
+
+                    <mat-radio-group aria-label="Select an option" formControlName="field_Eating_Habits">
+                      <mat-radio-button value="V">Vegetarian</mat-radio-button>
+                      <mat-radio-button value="N">Non Vegetarian
+                      </mat-radio-button>
+                      <mat-radio-button value="E">Eggetarian</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 drinking_habi">
+                <div class="field_outer_label">
+                  <label class="radio_title">Drinking Habits </label>
+
+                  <mat-radio-group aria-label="Select an option" formControlName="field_Drinking_Habits">
+                    <mat-radio-button value="N">No </mat-radio-button>
+                    <mat-radio-button value="D">Drinks Socially</mat-radio-button>
+                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-12 smoking_habi">
+                <div class="field_outer_label">
+                  <label class="radio_title">Smoking Habits </label>
+
+                  <mat-radio-group aria-label="Select an option" formControlName="field_Smoking_Habits">
+                    <mat-radio-button value="N">No</mat-radio-button>
+                    <mat-radio-button value="O">Occasionally </mat-radio-button>
+                    <mat-radio-button value="Y">Yes</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_2()" [disabled]="!form_step_2.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else contact">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #contact>
+          <div class="title_sec">
+            <h2>Contact Details
+              <button (click)="toggleDisplayForm(10)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group float-left">
+            <div class="edit_portfolio_field_group_left">Phone No</div>
+            <div class="edit_portfolio_field_group_right colonEnd">
+              <ng-container *ngIf="user_basic_info_New?.phone_no">
+                {{user_basic_info_New?.phone_no}}
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="edit_portfolio_field_group float-left">
+            <div class="edit_portfolio_field_group_left">Email Id</div>
+            <div class="edit_portfolio_field_group_right colonEnd">
+              <ng-container *ngIf="user_basic_info_New?.email_id">
+                {{user_basic_info_New?.email_id}}
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form portfolio_edit_Form_10" [formGroup]="form_step_10" [hidden]="isShowForm_10">
+            <div class="edit_portfolio_field_group_main">
+              <div class="form-group form_group_custome row">
+                <div class="col-sm-6">
+                  <div class="field_outer_label">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Phone No</mat-label>
+                      <!-- <input readonly matInput type="text" formControlName="field_mobile" value="{{user_basic_info_New[0]?.phone_no}}" />-->
+                      <input readonly matInput type="text" formControlName="field_mobile"  />
+                                             
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="field_outer_label">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Email Id</mat-label>
+                      <!-- <input matInput formControlName="field_email_id" (input)="email_verify($event)"value="" /> -->
+                      <input matInput formControlName="field_email_id" value="" />
+
+                    </mat-form-field>
+                    <div class="validation_div">{{isEmaiAlrtTxt}} </div>
+                    <div class="validation_div"
+							*ngIf="!form_step_10.controls.field_email_id?.valid">
+							Email is not valid
+							</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="portfolio_edit_Form_btn">
+              <button type="button" (click)="edit_saveForm_10()" [disabled]="!form_step_10.valid">
+                Save
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else religion">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #religion>
+          <div class="title_sec">
+            <h2>
+              Religion Information
+              <button (click)="toggleDisplayForm(3)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group_main">
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Religion</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.religion != undefined &&
+                      user_basic_info_New?.religion != '0';
+                    then religion_yes;
+                    else religion_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #religion_yes>{{
+                  this.field_Religion_OBJ[user_basic_info_New?.religion]
+                  }}</ng-template>
+                <ng-template #religion_no>Not Specified</ng-template>
+              </div>
+            </div>
+          </div>
+          <div class="edit_portfolio_field_group float-left">
+            <div class="edit_portfolio_field_group_left">Caste</div>
+            <div class="edit_portfolio_field_group_right colonEnd">
+              <ng-container *ngIf="user_basic_info?.length > 0">
+                {{ user_basic_info_New?.caste_name }}
+              </ng-container>
+            </div>
+          </div>
+
+          <!-- <div class="edit_portfolio_field_group float-left">
+			<div class="edit_portfolio_field_group_left">Willing to marry from other communities also</div>
+			<div class="edit_portfolio_field_group_right colonEnd">
+			<div *ngIf="user_basic_info_New?.oth_comm_marry_flag == 'Y';then content else other_content">here is ignored</div>
+			<ng-template #content>Yes</ng-template>
+			<ng-template #other_content>No</ng-template>
+			</div>
+		</div> -->
+
+        </ng-template>
+
+        <div class="portfolio_edit_Form portfolio_edit_Form_3" [formGroup]="form_step_3" [hidden]="isShowForm_3">
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Religion</mat-label>
+                    <mat-select formControlName="field_ur_religion">
+                      <mat-option value="0">Select</mat-option>
+                      <mat-option value="Hin-Beng">Hindu - Bengali</mat-option>
+                      <mat-option value="Hin-Mar">Hindu - Marwari </mat-option>
+                      <mat-option value="Hin-Tam">Hindu - Tamil </mat-option>
+                      <mat-option value="Hin-Pun">Hindu - Punjabi </mat-option>
+                      <mat-option value="Hin-Guj">Hindu - Gujarati </mat-option>
+                      <mat-option value="Hin-Nep">Hindu - Nepali </mat-option>
+                      <mat-option value="Hin-Bali">Hindu - Balinese
+                      </mat-option>
+                      <mat-option value="Hin-Sind">Hindu - Sindhi </mat-option>
+                      <mat-option value="Hin-Oth">Hindu - Others </mat-option>
+                      <mat-option value="Mu_Shi">Muslim - Shia</mat-option>
+                      <mat-option value="Mu_Sun">Muslim - Sunni</mat-option>
+                      <mat-option value="Mu_Oth">Muslim - Others</mat-option>
+                      <mat-option value="Chr">Christian</mat-option>
+                      <mat-option value="Sik">Sikh</mat-option>
+                      <mat-option value="Ja_Dig">Jain - Digambar</mat-option>
+                      <mat-option value="Ja_Shw">Jain - Shwetambar</mat-option>
+                      <mat-option value="Ja_Oth">Jain - Others</mat-option>
+                      <mat-option value="Par">Parsi</mat-option>
+                      <mat-option value="Bud">Buddhist</mat-option>
+                      <mat-option value="Int-Rel">Inter-Religion</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_3.controls.field_ur_religion?.valid &&
+                      (form_step_3.controls.field_ur_religion?.dirty ||
+                        form_step_3.controls.field_ur_religion?.touched)
+                    ">
+                    Please Select 'Religion'
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Caste</mat-label>
+                    <mat-select formControlName="field_cast">
+                      <mat-option value="">Select</mat-option>
+                      <mat-option *ngFor="let newData of caste_list" [value]="newData.id">
+                        {{ newData.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_3.controls.field_cast?.valid &&
+                      (form_step_3.controls.field_cast?.dirty ||
+                        form_step_3.controls.field_cast?.touched)
+                    ">
+                    Please Select 'Caste'
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-sm-6">
+						
+
+						<div class="field_outer_label">
+							
+						<section class="example-section">
+							<mat-checkbox formControlName="field_willing_marry_other_commun" value="true">Willing to marry from other communities also</mat-checkbox>
+						  </section>
+						  </div>
+
+						
+					</div>	 -->
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_3()" [disabled]="!form_step_3.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else location">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #location>
+          <div class="title_sec">
+            <h2>
+              <div *ngIf="
+                  user_basic_info_New?.gender == 'M';
+                  then groom_cont;
+                  else brid_cont
+                ">
+                here is ignored
+              </div>
+              <ng-template #groom_cont>Groom's</ng-template>
+              <ng-template #brid_cont>Bride's</ng-template> Location
+              <button (click)="toggleDisplayForm(4)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group_main">
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Country</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info_New?.country_name">
+                  {{ user_basic_info_New?.country_name }}
+                  <!-- {{this.ac_for_OBJ[groomLoc_ProfInfo_New.ac_for]}} -->
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">State</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <!-- <ng-container *ngIf="user_basic_info_New?.state_name">
+					{{user_basic_info_New?.state_name}}
+			</ng-container>	 -->
+
+                <!-- <ng-container *ngIf="user_basic_info_New?.state_name == null; then spoken_yes else spoken_no"> -->
+
+                <div *ngIf="
+                    user_basic_info_New?.state_name;
+                    then getState;
+                    else notState
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #getState>
+                  {{ user_basic_info_New?.state_name }}
+                </ng-template>
+                <ng-template #notState>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <!-- <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">City</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.city_name;
+                    then getCity;
+                    else notCity
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #getCity>
+                  {{ user_basic_info_New?.city_name }}
+                </ng-template>
+                <ng-template #notCity>Not Specified</ng-template>
+              </div>
+            </div> -->
+          </div>
+        </ng-template>
+
+        <div class="portfolio_edit_Form portfolio_edit_Form_4" [formGroup]="form_step_4" [hidden]="isShowForm_4">
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Country</mat-label>
+                    <mat-select formControlName="field_Country" (selectionChange)="stateChange_ByCountry($event)">
+                      <mat-option value="0">Select</mat-option>
+                      <mat-option *ngFor="let newData of countryList" [value]="newData.id">
+                        {{ newData.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_4.controls.field_Country?.valid &&
+                      (form_step_4.controls.field_Country?.dirty ||
+                        form_step_4.controls.field_Country?.touched)
+                    ">
+                    Please Select 'Country'
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>State</mat-label>
+                    <mat-select formControlName="field_State" (selectionChange)="cityChange_ByState($event)">
+                      <mat-option value="0">Select</mat-option>
+                      <mat-option *ngFor="let newData of stateList" [value]="newData.id">
+                        {{ newData.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_4.controls.field_State?.valid &&
+                      (form_step_4.controls.field_State?.dirty ||
+                        form_step_4.controls.field_State?.touched)
+                    ">
+                    Please Select 'State'
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-sm-4">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>City</mat-label>
+                    <mat-select formControlName="field_City">
+                      <mat-option value="0">Select</mat-option>
+                      <mat-option *ngFor="let newData of cityList" [value]="newData.id">
+                        {{ newData.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_4.controls.field_City?.valid &&
+                      (form_step_4.controls.field_City?.dirty ||
+                        form_step_4.controls.field_City?.touched)
+                    ">
+                    Please Select 'City'
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- <div class="col-sm-3">
+				<div class="field_outer_label">
+					
+					<mat-form-field class="example-full-width">
+						<mat-label>Citizenship</mat-label>
+						<mat-select formControlName="field_Citizenship">
+							<mat-option value="">Select</mat-option>
+							<mat-option value="Ind">India</mat-option>
+							<mat-option value="uk">U.K.</mat-option>
+						</mat-select>
+						</mat-form-field>
+<div class="validation_div" *ngIf="!form_step_4.controls.field_Citizenship?.valid && (form_step_4.controls.field_Citizenship?.dirty ||form_step_4.controls.field_Citizenship?.touched)">
+Please Select 'Citizenship'
+</div>						
+				</div>
+				</div> -->
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_4()" [disabled]="!form_step_4.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else professional_Info">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #professional_Info>
+          <div class="title_sec">
+            <h2>
+              Professional Information
+              <button (click)="toggleDisplayForm(5)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group_main">
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Education</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="groomLoc_ProfInfo?.length > 0">
+                  {{ groomLoc_ProfInfo_New?.education_name }}
+                  <!-- {{this.ac_for_OBJ[groomLoc_ProfInfo_New.heigh_education]}} -->
+                </ng-container>
+              </div>
+            </div>
+
+            <!-- <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Education in Detail
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    groomLoc_ProfInfo_New?.edu_in_dtls &&
+                      groomLoc_ProfInfo_New?.edu_in_dtls != 'null';
+                    then content_edu;
+                    else other_content_edu
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #content_edu>{{
+                  groomLoc_ProfInfo_New?.edu_in_dtls
+                  }}</ng-template>
+                <ng-template #other_content_edu>Not Specified</ng-template>
+              </div>
+            </div> -->
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                College / Institution
+              </div>
+             
+                <!-- <div *ngIf="
+                    groomLoc_ProfInfo_New?.collage &&
+                      groomLoc_ProfInfo_New?.collage != 'null';
+                    then content_collage;
+                    else other_content_collage
+                  ">
+                  here is ignored
+                </div> -->
+                <!-- <ng-template #content_collage>{{
+                  groomLoc_ProfInfo_New?.collage
+                  }}</ng-template>
+                <ng-template #other_content_collage>Not Specified</ng-template> -->
+                <div class="edit_portfolio_field_group_right colonEnd">
+                  <!-- <ng-container *ngIf="groomLoc_ProfInfo?.work_location != null"> -->
+                    <div *ngIf="
+                      groomLoc_ProfInfo_New?.collage &&
+                        groomLoc_ProfInfo_New?.collage != 'null';
+                      then col_yes;
+                      else col_no;
+                    ">
+                    here is ignored
+                    </div>
+                    <ng-template #col_yes>{{
+                      groomLoc_ProfInfo_New?.collage
+                      }}</ng-template>
+                    <ng-template #col_no>Not Specified</ng-template>
+                  </div>
+              </div>
+          
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Employed in</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="groomLoc_ProfInfo?.length > 0">
+                  {{ field_Employed_in_OBJ[groomLoc_ProfInfo_New?.emp_type] }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Occupation</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    groomLoc_ProfInfo_New?.occu_name;
+                    then occu_yes;
+                    else occu_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #occu_yes>{{
+                  groomLoc_ProfInfo_New?.occu_name
+                  }}</ng-template>
+                <ng-template #occu_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <!-- <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Occupation in Detail
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    groomLoc_ProfInfo_New?.occup_in_dtls &&
+                      groomLoc_ProfInfo_New?.occup_in_dtls != 'null';
+                    then content_occu;
+                    else other_content_occu
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #content_occu>{{
+                  groomLoc_ProfInfo_New?.occup_in_dtls
+                  }}</ng-template>
+                <ng-template #other_content_occu>Not Specified</ng-template>
+              </div>
+            </div> -->
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Organization</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    groomLoc_ProfInfo_New?.org_name &&
+                      groomLoc_ProfInfo_New?.org_name != 'null';
+                    then content_orga;
+                    else other_content_orga
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #content_orga>{{
+                  groomLoc_ProfInfo_New?.org_name
+                  }}</ng-template>
+                <ng-template #other_content_orga>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Annual Income</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="groomLoc_ProfInfo?.length > 0">
+                  {{ groomLoc_ProfInfo_New?.income_name }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Work Location</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <!-- <ng-container *ngIf="groomLoc_ProfInfo?.work_location != null"> -->
+                  <div *ngIf="
+                    groomLoc_ProfInfo_New?.work_location &&
+                      groomLoc_ProfInfo_New?.work_location != 'null';
+                    then work_loc_yes;
+                    else work_loc_no;
+                  ">
+                  here is ignored
+                  </div>
+                  <ng-template #work_loc_yes>{{
+                    groomLoc_ProfInfo_New?.work_location
+                    }}</ng-template>
+                  <ng-template #work_loc_no>Not Specified</ng-template>
+                </div>
+                <!-- {{ groomLoc_ProfInfo_New?.work_location }} -->
+                <!-- </ng-container> -->
+             
+            </div>
+          </div>
+        </ng-template>
+
+        <div class="portfolio_edit_Form portfolio_edit_Form_5" [formGroup]="form_step_5" [hidden]="isShowForm_5">
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-4">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Highest Education</mat-label>
+                    <mat-select formControlName="field_highest_education">
+                      <!-- <mat-option value="">Select</mat-option> -->
+                      <mat-optgroup *ngFor="let key of getKeys(education)" [label]="key">
+                        <mat-option *ngFor="let educa of education[key]" [value]="educa.id">
+                          {{ educa.name }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_5.controls.field_highest_education?.valid &&
+                      (form_step_5.controls.field_highest_education?.dirty ||
+                        form_step_5.controls.field_highest_education?.touched)
+                    ">
+                    Please Select 'Highest Education'
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Education in Detail</mat-label>
+                    <input matInput type="text" formControlName="field_Education_Detail" #cpw />
+                  </mat-form-field>
+                </div>
+              </div> -->
+
+              <div class="col-sm-4">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>College / Institution</mat-label>
+                    <input matInput type="text" formControlName="field_College" #cpw />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Occupation</mat-label>
+                    <mat-select formControlName="field_Occupation">
+                      <mat-option value="">Select</mat-option>
+                      <mat-optgroup *ngFor="let key of getKeys(occupation_list)" [label]="key">
+                        <mat-option *ngFor="let occu of occupation_list[key]" [value]="occu.id">
+                          {{ occu.name }}
+                        </mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <div class="validation_div" *ngIf="
+                      !form_step_5.controls.field_Occupation?.valid &&
+                      (form_step_5.controls.field_Occupation?.dirty ||
+                        form_step_5.controls.field_Occupation?.touched)
+                    ">
+                    Please Select 'Occupation'
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <!-- <div class="col-sm-3">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Occupation in Detail</mat-label>
+                    <input matInput type="text" formControlName="field_Occupation_Detail" #cpw />
+                  </mat-form-field>
+                </div>
+              </div> -->
+
+              <div class="col-sm-4">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Organization</mat-label>
+                    <input matInput type="text" formControlName="field_Organization" #cpw />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Annual Income</mat-label>
+                    <mat-select formControlName="field_Annual_Income">
+                      <mat-option value="">Select</mat-option>
+                      <!-- <mat-optgroup *ngFor="let key of getKeys(occupation_list)" [label]="key"> -->
+                      <mat-option *ngFor="let key_incom of income_list" [value]="key_incom.id.toString()">
+                        {{ key_incom.income }}
+                      </mat-option>
+                      <!-- </mat-optgroup> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_5.controls.field_Annual_Income?.valid &&
+                      (form_step_5.controls.field_Annual_Income?.dirty ||
+                        form_step_5.controls.field_Annual_Income?.touched)
+                    ">
+                    Please Select 'Annual Income'
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="field_outer_label">
+                  <!-- <mat-form-field class="example-full-width">
+								<mat-label>Work Location</mat-label>
+								<mat-select formControlName="field_Work_Locatio">
+								<mat-option value="">Select</mat-option>
+								<mat-option *ngFor="let newData of Work_LocatioList" [value]="newData.id +'/'+ newData.lat +','+ newData.lon">
+								{{newData.name}} ({{newData.state}})
+								</mat-option>
+								</mat-select>
+								</mat-form-field> -->
+
+                  <!-- <mat-form-field class="example-full-width">
+									<mat-label>Organization</mat-label>
+									<input matInput type="text" formControlName="field_Organization" #cpw>
+									</mat-form-field> -->
+
+                  <mat-form-field>
+                    <mat-label>Work Location</mat-label>
+                    <input type="text" [formControl]="form_step_5.controls.work_location" matInput
+                      [matAutocomplete]="manku" />
+                    <mat-autocomplete #manku="matAutocomplete">
+                      <cdk-virtual-scroll-viewport [ngStyle]="{ height: '200px' }" itemSize="25">
+                        <mat-option *cdkVirtualFor="let newData of workLocation | async" [value]="newData.id">
+                          {{ newData.name }}
+                        </mat-option>
+                      </cdk-virtual-scroll-viewport>
+                    </mat-autocomplete>
+                  </mat-form-field>
+
+                  <!-- <div *ngFor="let newData of locationData_dropdown">
+									{{newData | json}}
+								</div> -->
+                  <!-- <div class="validation_div" *ngIf="!form_step_5.controls.field_Annual_Income?.valid && (form_step_5.controls.field_Annual_Income?.dirty ||form_step_5.controls.field_Annual_Income?.touched)">
+	Please Select 'Annual Income'
+	</div> -->
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-12 employed_in">
+                <div class="field_outer_label">
+                  <label class="radio_title">Employed in</label>
+                  <mat-radio-group aria-label="Select an option" formControlName="field_employed">
+                    <mat-radio-button value="G">Government/PSU</mat-radio-button>
+                    <mat-radio-button value="P">Private</mat-radio-button>
+                    <mat-radio-button value="B">Business</mat-radio-button>
+                    <mat-radio-button value="D">Defence</mat-radio-button>
+                    <mat-radio-button value="S">Self Employed</mat-radio-button>
+                    <mat-radio-button value="N">Not working</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_5()" [disabled]="!form_step_5.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else familyDet">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #familyDet>
+          <div class="title_sec">
+            <h2>
+              Family Details
+              <button (click)="toggleDisplayForm(6)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group_main">
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Family Values</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.family_values;
+                    then family_yes;
+                    else family_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #family_yes>{{
+                  this.field_family_value_OBJ[
+                  user_basic_info_New?.family_values
+                  ]
+                  }}</ng-template>
+                <ng-template #family_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Father's Occupation
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <!-- <div *ngIf="
+                   
+                   user_basic_info_New?.father_occupation &&
+                      user_basic_info_New?.father_occupation != 'null';
+                    then father_occ_yes;
+                    else father_occ_yes
+                  ">
+                  here is ignored
+                </div> -->
+                <div *ngIf="
+                  user_basic_info_New?.father_occupation &&
+                  user_basic_info_New?.father_occupation != 'null' &&
+                  user_basic_info_New?.father_occupation != 'none';
+
+
+                  
+                    then father_occ_yes;
+                    else father_occ_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #father_occ_yes>{{
+                  this.field_Father_Occupation_OBJ[
+                  user_basic_info_New?.father_occupation
+                  ]
+                  }}</ng-template>
+                <ng-template #father_occ_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Family Type</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.family_type;
+                    then family_type_yes;
+                    else family_type_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #family_type_yes>{{
+                  this.field_family_type_OBJ[user_basic_info_New?.family_type]
+                  }}</ng-template>
+                <ng-template #family_type_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Mother's Occupation
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                 user_basic_info_New?.mother_occupation &&
+                  user_basic_info_New?.mother_occupation != 'null' &&
+                  user_basic_info_New?.mother_occupation != 'none';
+
+                    then mother_occu_yes;
+                    else mother_occu_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #mother_occu_yes>{{
+                  this.field_Mother_Occupation_OBJ[
+                  user_basic_info_New?.mother_occupation
+                  ]
+                  }}</ng-template>
+                <ng-template #mother_occu_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Family Status</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <ng-container *ngIf="user_basic_info?.length > 0">
+                  {{
+                  this.field_family_status_OBJ[
+                  user_basic_info_New?.family_status
+                  ]
+                  }}
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                No of Brother(s)
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.no_brother;
+                    then no_brother_yes;
+                    else no_brother_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #no_brother_yes>{{
+                  this.field_No_Brother_OBJ[user_basic_info_New?.no_brother]
+                  }}</ng-template>
+                <ng-template #no_brother_no>Have No Brother</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">No of Sister(s)</div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.no_sister;
+                    then no_sister_yes;
+                    else no_sister_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #no_sister_yes>{{
+                  this.field_No_Sister_OBJ[user_basic_info_New?.no_sister]
+                  }}</ng-template>
+                <ng-template #no_sister_no>Have No Sister</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">Family Location</div>
+
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_basic_info_New?.family_location &&
+                      user_basic_info_New?.family_location != 'null';
+                   
+                    then family_loca_yes;
+                    else family_loca_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #family_loca_yes>{{
+                  this.field_Family_Location_OBJ[
+                  user_basic_info_New?.family_location
+                  ]
+                  }}</ng-template>
+                <ng-template #family_loca_no>Not Specified</ng-template>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <div class="portfolio_edit_Form portfolio_edit_Form_6" [formGroup]="form_step_6" [hidden]="isShowForm_6">
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-6 family_values">
+                <div class="field_outer_label">
+                  <label class="radio_title">Family Values </label>
+                  <mat-radio-group aria-label="Select an option" formControlName="field_family_value">
+                    <mat-radio-button value="O">Orthodox</mat-radio-button>
+                    <mat-radio-button value="T">Traditional</mat-radio-button>
+                    <mat-radio-button value="M">Moderate</mat-radio-button>
+                    <mat-radio-button value="L">Liberal</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="col-sm-6 family_type">
+                <div class="field_outer_label">
+                  <label class="radio_title">Family Type </label>
+                  <mat-radio-group aria-label="Select an option" formControlName="field_family_type">
+                    <mat-radio-button value="J">Joint</mat-radio-button>
+                    <mat-radio-button value="N">Nuclear</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-6 family_stat">
+                <div class="field_outer_label">
+                  <label class="radio_title">Family Status</label>
+                  <mat-radio-group aria-label="Select an option" formControlName="field_family_status">
+                    <mat-radio-button value="M">Middle class</mat-radio-button>
+                    <mat-radio-button value="U">Upper middle class</mat-radio-button>
+                    <mat-radio-button value="R">Rich</mat-radio-button>
+                    <mat-radio-button value="A">Affluent</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="col-sm-3 father_occup">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Father's Occupation</mat-label>
+                    <mat-select formControlName="field_Father_Occupation">
+                      <mat-option value="none">None</mat-option>
+                      <mat-option value="E">Employed</mat-option>
+                      <mat-option value="B">Business Man</mat-option>
+                      <mat-option value="P">Professional</mat-option>
+                      <mat-option value="R">Retired</mat-option>
+                      <mat-option value="N">Not Employed</mat-option>
+                      <mat-option value="Passed">Passed Away</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_6.controls.field_Father_Occupation?.valid &&
+                      (form_step_6.controls.field_Father_Occupation?.dirty ||
+                        form_step_6.controls.field_Father_Occupation?.touched)
+                    ">
+                    Please Select 'Father's Occupation'
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-3 father_occup">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Mother's Occupation</mat-label>
+                    <mat-select formControlName="field_Mother_Occupation">
+                      <mat-option value="none">None</mat-option>
+                      <mat-option value="H">Homemaker</mat-option>
+                      <mat-option value="E">Employed</mat-option>
+                      <mat-option value="B">Business Woman</mat-option>
+                      <mat-option value="P">Professional</mat-option>
+                      <mat-option value="R">Retired</mat-option>
+                      <mat-option value="Passed">Passed Away</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="validation_div" *ngIf="
+                      !form_step_6.controls.field_Mother_Occupation?.valid &&
+                      (form_step_6.controls.field_Mother_Occupation?.dirty ||
+                        form_step_6.controls.field_Mother_Occupation?.touched)
+                    ">
+                    Please Select 'Mother's Occupation'
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-3 no_of_broth">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>No of Brother(s)</mat-label>
+                    <mat-select formControlName="field_No_Brother">
+                      <!-- <mat-option value="">Select</mat-option> -->
+                      <mat-option value="0" select>none</mat-option>
+                      <mat-option value="1">1</mat-option>
+                      <mat-option value="2">2</mat-option>
+                      <mat-option value="3">3</mat-option>
+                      <mat-option value="4">4</mat-option>
+                      <mat-option value="5">5</mat-option>
+                      <mat-option value="6">5+</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- <div class="validation_div" *ngIf="
+                      !form_step_6.controls.field_No_Brother?.valid &&
+                      (form_step_6.controls.field_No_Brother?.dirty ||
+                        form_step_6.controls.field_No_Brother?.touched)
+                    ">
+                    Please Select 'No of Brother'
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="col-sm-3 no_of_sis">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>No of Sister(s) </mat-label>
+                    <mat-select formControlName="field_No_Sister">
+                      <!-- <mat-option value="">Select</mat-option> -->
+                      <mat-option value="0" selected>none</mat-option>
+                      <mat-option value="1">1</mat-option>
+                      <mat-option value="2">2</mat-option>
+                      <mat-option value="3">3</mat-option>
+                      <mat-option value="4">4</mat-option>
+                      <mat-option value="5">5</mat-option>
+                      <mat-option value="6">5+</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- <div class="validation_div" *ngIf="
+                      !form_step_6.controls.field_No_Sister?.valid &&
+                      (form_step_6.controls.field_No_Sister?.dirty ||
+                        form_step_6.controls.field_No_Sister?.touched)
+                    ">
+                    Please Select 'No of Sister'
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="col-sm-6 family_locat">
+                <div class="field_outer_label">
+                  <label class="radio_title">Family Location</label>
+                  <mat-radio-group aria-label="Select an option" formControlName="field_Family_Location">
+                    <mat-radio-button value="S">Same as my Location
+                    </mat-radio-button>
+                    <mat-radio-button value="D">Different Location</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_6()" [disabled]="!form_step_6.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else hobbies">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #hobbies>
+          <div class="title_sec">
+            <h2>
+              Add Your Hobbies
+              <button (click)="toggleDisplayForm(7)">Edit</button>
+            </h2>
+          </div>
+
+          <div class="edit_portfolio_field_group_main">
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Hobbies &amp; Interests
+                <!-- {{user_hobbi | json}} -->
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <!-- {{[...item.hobbies_interest.map(dt=>dt.hobby)].join('')}} -->
+                <!-- user_basic_info_New?.body_type &&
+                user_basic_info_New?.body_type != 'null' &&
+                      user_basic_info_New?.body_type != 'none'; -->
+ <div *ngIf="user_hobbi?.hobbies_interest && user_hobbi?.hobbies_interest != 'null' && user_hobbi?.hobbies_interest != 'none' && user_hobbi?.hobbies_interest != 'undefined' ; then hobbies_Inter_yes; else hobbies_Inter_no">
+                  here is ignored
+                </div>
+                <ng-template #hobbies_Inter_yes>
+                  {{user_hobbi?.hobbies_interest}}
+                  </ng-template>
+                <!-- <ng-template #hobbies_Inter_yes>
+                  <ng-container *ngFor="
+                      let item of user_hobbi?.field_Hobbies_Interests;
+                      let i = index
+                    ">
+                    {{ item.hobby}}<ng-container *ngIf="
+                        user_hobbi?.field_Hobbies_Interests.length - 1 != i
+                      ">,
+                    </ng-container>
+                  </ng-container>
+                </ng-template> -->
+                <ng-template #hobbies_Inter_no>Not Specified</ng-template>
+               
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Favourite Music Genre
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                 user_hobbi?.fav_music &&
+                 user_hobbi?.fav_music != 'null' &&
+                 user_hobbi?.fav_music != 'none' &&
+                 user_hobbi?.fav_music != 'undefined'
+                    then field_Music_yes;
+                    else field_Music_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #field_Music_yes>
+                  {{user_hobbi?.fav_music}}
+                  </ng-template>
+                <ng-template #field_Music_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Sports/Fitness Activities
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                 user_hobbi?.sports &&
+                 user_hobbi?.sports != 'null' &&
+                 user_hobbi?.sports != 'none' &&
+                 user_hobbi?.sports != 'undefined';
+
+                   
+                    then field_Sports_yes;
+                    else field_Sports_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #field_Sports_yes>
+                  {{user_hobbi?.sports}}
+                  </ng-template>
+                <ng-template #field_Sports_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Preferred Movies
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                 user_hobbi?.movie &&
+                 user_hobbi?.movie != 'null' &&
+                 user_hobbi?.movie != 'none' &&
+                 user_hobbi?.movie != 'undefined';
+
+                  
+                    then Prefe_Mov_yes;
+                    else Prefe_Mov_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #Prefe_Mov_yes>
+                  {{user_hobbi?.movie}}
+                  </ng-template>
+                <ng-template #Prefe_Mov_no>Not Specified</ng-template>
+              </div>
+            </div>
+
+            <!-- <div class="edit_portfolio_field_group float-left">
+              <div class="edit_portfolio_field_group_left">
+                Spoken Languages
+              </div>
+              <div class="edit_portfolio_field_group_right colonEnd">
+                <div *ngIf="
+                    user_hobbi?.field_Spoken_Languages.length > 0;
+                    then spoken_yes;
+                    else spoken_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #spoken_yes>
+                  <ng-container *ngFor="
+                      let item of user_hobbi?.field_Spoken_Languages;
+                      let i = index
+                    ">
+                    {{item[0].lang_name+', '}}
+                    {{ item.lang_name
+                    }}<ng-container *ngIf="user_hobbi?.field_Spoken_Languages.length - 1 != i">,
+                    </ng-container>
+                  </ng-container>
+                </ng-template>
+                <ng-template #spoken_no>Not Specified</ng-template>
+              </div>
+            </div> -->
+          </div>
+        </ng-template>
+        <div class="portfolio_edit_Form portfolio_edit_Form_7" [formGroup]="form_step_7" [hidden]="isShowForm_7">
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  
+                  <!-- <mat-form-field class="example-full-width">
+                  <mat-chip-list #chipList>
+                    <mat-label>Hobbies & Interests </mat-label>
+                    <mat-chip
+                    *ngFor="let fruit of fruits"
+                    
+                    (removed)="remove(fruit)">
+                    {{fruit}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + fruit"></button>
+                    <mat-icon matChipRemove >cancel</mat-icon>
+                    </mat-chip>
+                    <input type="text"
+                      placeholder="Select"
+           						matInput
+								      formControlName="field_Hobbies_Interests1"
+                      #autocompleteTrigger="matAutocompleteTrigger"
+           						[matAutocomplete]="hobby"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       >
+                    </mat-chip-list>
+                       <mat-autocomplete #hobby="matAutocomplete" (optionSelected)="hobbies_interest($event)"  >
+                   
+                      <cdk-virtual-scroll-viewport 
+						          [ngStyle]="{height: '200px'}"
+						          itemSize="25" >
+                      
+                      <mat-option [disabled]="" *ngFor="let newData of filteredHobby" [value]="newData.hobby" multiple>
+                       
+                        {{ newData.hobby }}
+                       
+                      </mat-option>
+                      </cdk-virtual-scroll-viewport>
+                    </mat-autocomplete>
+                  
+                  </mat-form-field> -->
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Hobbies & Interests</mat-label>
+                    <!-- <textarea matInput formControlName="field_About_My_Family" (keyup)="aboutFamilyWordCount($event)"></textarea> -->
+                    <textarea matInput formControlName="field_Hobbies_Interests"
+                      (keyup)="wordCounter_250('hobbies')"></textarea>
+                  </mat-form-field><br>
+                  ({{ count_hobbies }}/250)
+
+
+                  <div class="validation_div" *ngIf="
+                      !form_step_7.controls.field_Hobbies_Interests?.valid &&
+                      (form_step_7.controls.field_Hobbies_Interests?.dirty ||
+                        form_step_7.controls.field_Hobbies_Interests?.touched)
+                    ">
+                    *Please write about your "Hobbies & Interests" within 250 words.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Favourite Music </mat-label>
+              <!-- <textarea matInput formControlName="field_About_My_Family" (keyup)="aboutFamilyWordCount($event)"></textarea> -->
+              <textarea matInput formControlName="field_Music"
+                (keyup)="wordCounter_250('fav_music')"></textarea>
+            </mat-form-field><br>
+            ({{ count_music }}/250)
+
+                  <div class="validation_div" *ngIf="
+                      !form_step_7.controls.field_Music?.valid &&
+                      (form_step_7.controls.field_Music?.dirty ||
+                        form_step_7.controls.field_Music?.touched)
+                    ">
+                    *Please write about your "Favourite Music" within 250 words.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Sports & Fitness</mat-label>
+                    <!-- <textarea matInput formControlName="field_About_My_Family" (keyup)="aboutFamilyWordCount($event)"></textarea> -->
+                    <textarea matInput formControlName="field_Sports"
+                      (keyup)="wordCounter_250('sports_fit')"></textarea>
+                  </mat-form-field><br>
+                  ({{ count_sports }}/250)
+                  
+                  <div class="validation_div" *ngIf="
+                      !form_step_7.controls.field_Sports?.valid &&
+                      (form_step_7.controls.field_Sports?.dirty ||
+                        form_step_7.controls.field_Sports?.touched)
+                    ">
+                    *Please write about your "Sports & Fitness" within 250 words.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Preferred Movies</mat-label>
+                    <!-- <textarea matInput formControlName="field_About_My_Family" (keyup)="aboutFamilyWordCount($event)"></textarea> -->
+                    <textarea matInput formControlName="field_Preferred_Movies"
+                      (keyup)="wordCounter_250('pref_movies')"></textarea>
+                  </mat-form-field><br>
+                  ({{ count_movies }}/250)
+                  <!-- <mat-form-field class="example-full-width">
+                    <mat-label>Preferred Movies </mat-label>
+                    <mat-select formControlName="field_Preferred_Movies" multiple>
+                      <cdk-virtual-scroll-viewport 
+						          [ngStyle]="{height: '200px'}"
+						          itemSize="25" >
+                      <mat-option [disabled]="
+                          isOptionDisabled_min5(
+                            newData.id,
+                            'field_Preferred_Movies'
+                          )
+                        " *cdkVirtualFor="let newData of preferedMovieList" [value]="newData.id.toString()">
+                        <mat-option *ngFor="let newData of preferedMovieList" [value]="newData.id.toString()">
+
+                        {{ newData.movie }}
+                      </mat-option>
+                    </cdk-virtual-scroll-viewport>
+                    </mat-select>
+                  </mat-form-field> -->
+
+                  <div class="validation_div" *ngIf="
+                      !form_step_7.controls.field_Preferred_Movies?.valid &&
+                      (form_step_7.controls.field_Preferred_Movies?.dirty ||
+                        form_step_7.controls.field_Preferred_Movies?.touched)
+                    ">
+                     *Please write about your "Preferred Movies" within 250 words.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form_group_custome row">
+              <div class="col-sm-6">
+                <div class="field_outer_label">
+                  <!-- <mat-form-field class="example-full-width">
+                    <mat-label>Spoken Languages</mat-label>
+                    <mat-select formControlName="field_Spoken_Languages" multiple >
+                      <mat-option [disabled]="
+                          isOptionDisabled_min5(
+                            newData.id,
+                            'field_Spoken_Languages'
+                          )
+                        " *ngFor="let newData of langList" [value]="newData.id.toString()">
+                        <mat-option  *ngFor="let newData of langList" [value]="newData.id.toString()">
+
+                        {{ newData.lang_name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+
+                  <!-- <mat-form-field class="example-full-width">
+						<mat-label>Spoken Languages  </mat-label>
+					<mat-select formControlName="field_Spoken_Languages" multiple>
+					<mat-option value="Ben">Bengali</mat-option>
+					<mat-option value="Eng">English</mat-option>
+					<mat-option value="Hin">Hindi</mat-option>
+					</mat-select>
+					</mat-form-field> -->
+
+                  <div class="validation_div" *ngIf="
+                      !form_step_7.controls.field_Spoken_Languages?.valid &&
+                      (form_step_7.controls.field_Spoken_Languages?.dirty ||
+                        form_step_7.controls.field_Spoken_Languages?.touched)
+                    ">
+                    Please Select 'Languages'
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_7()" [disabled]="!form_step_7.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio_details_block">
+        <div class="loader_outer" *ngIf="inProgressShort; else aboutMyFam">
+          <div class="spinner-border"></div>
+        </div>
+        <ng-template #aboutMyFam>
+          <div class="title_sec">
+            <h2>
+              About My Family
+              <button (click)="toggleDisplayForm(8)">Add</button>
+            </h2>
+          </div>
+
+          <div *ngIf="
+              user_basic_info_New?.about_my_family != null &&
+                user_basic_info_New?.about_my_family !== 'null' &&
+                user_basic_info_New?.about_my_family.length != 0;
+                
+              then about_my_yes;
+              else about_my_no
+            ">
+            here is ignored
+          </div>
+          <ng-template #about_my_yes>
+            <p>
+              {{ user_basic_info_New?.about_my_family }}
+            </p>
+          </ng-template>
+          <ng-template #about_my_no>Not Specified</ng-template>
+        </ng-template>
+
+        <div class="portfolio_edit_Form" [formGroup]="form_step_8" [hidden]="isShowForm_8">
+          <div class="edit_portfolio_field_group_main">
+            <div class="form-group row">
+              <div class="col-sm-8">
+                <div class="field_outer_label">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>About My Family (Word limit maximum: 250)</mat-label>
+                    <!-- <textarea matInput formControlName="field_About_My_Family" (keyup)="aboutFamilyWordCount($event)"></textarea> -->
+                    <textarea matInput formControlName="field_About_My_Family"
+                      (keyup)="wordCounter_250('about_MyFamily_text')"></textarea>
+                  </mat-form-field><br>
+                  ({{ count_AboutMyFamily }}/250)
+                </div>
+                <div class="validation_div" *ngIf="
+                    !form_step_8.controls.field_About_My_Family?.valid &&
+                    (form_step_8.controls.field_About_My_Family?.dirty ||
+                      form_step_8.controls.field_About_My_Family?.touched)
+                  ">
+                  Please write about your family within 250 words.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio_edit_Form_btn">
+            <button type="button" (click)="edit_saveForm_8()" [disabled]="!form_step_8.valid">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="portfolio_details_block">
+        <div class="title_sec">
+          <h2>Edit your partner preference to get relevant Matches</h2>
+        </div>
+
+        <a class="yellow_link" routerLink="/partner_preferences">Edit Preference</a>
+      </div> -->
+
+    </div>
+
+    <div class="col-sm-3 float-left portfolio_edit_right">
+      <div class="white_block">
+        <div class="photoUpload_main">
+          <div class="photoUpload_main_img">
+            <img src="assets/images/icon_upload.png" alt="" />
+          </div>
+          <h2>Add More Photos</h2>
+          <p>
+            Adding three or more photos might increase your chances of getting
+            more responses.
+          </p>
+
+          <a routerLink="/user/upload_photo" class="yellow_link">Add More Photo</a>
+        </div>
+      </div>
+    </div>

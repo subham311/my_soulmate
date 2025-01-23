@@ -1,0 +1,174 @@
+<!-- <app-after_login_header_Global></app-after_login_header_Global> -->
+
+<!-- <div class="innerMain_wraper">
+	<div class="wrapper"> -->
+
+    
+
+		
+	<div class="col-sm-12 float-left portfolio_right">
+		<div class="portfolio_right_sub">
+		  
+			<div class="portfolio_form_fill">
+			<div class="title_sec">
+					<h2><img src="assets/images/package.png" alt="">Our Packages </h2>
+				</div>
+			
+			<div class="id_verify_main">
+			
+				<div class="wrapper">
+					<div class="planeSec planeSec_afterLog">
+
+						<!-- <div *ngFor="let item of paymentDetails">
+						<p>{{item.pay_name}} </p>
+
+						<div style="border: red solid 1px;">
+						{{item.actual_price}}
+						{{item.amount}}
+						{{item.discount}}
+						</div>
+						<div style="border: rgb(255, 174, 0) solid 1px;">
+						{{item.tennure_period}}
+						</div>
+						<ul>
+							<li *ngFor="let item_List of item.dtls">
+							{{item_List.subscription_dtls}}
+							</li>
+						</ul>
+						</div> -->
+						
+					  
+					  <div class="planeBox planeBox_afterLog package_{{item.pay_name}}" *ngFor="let item of paymentDetails">
+						<!-- {{item.id}}
+						{{item.id +''+ item.amount + item.pay_name}} -->
+					  <div class="planeBox_subBox {{item.pay_name}}">
+
+						<ng-container *ngIf="item.discount > 0">
+						<div class="offerPriceDIv">
+							<div class="percent">
+								{{item.discount}}% <span>OFF</span>
+							</div>
+						<!-- <img src="assets/images/offer_price.png" alt="" class="offerImg" /> -->
+						</div>	
+						</ng-container>
+
+						<h3>{{item.pay_name}}</h3>
+						<div class="priceSec">
+						<div class="priceSec_Sub">
+							 
+							<!-- <ng-container *ngIf="this.offerForValentine_start_ <= this.todays_date_Offer_ && this.offerForValentine_Exp_ >= this.todays_date_Offer_; else offerClosePrice"> -->
+							<ng-container *ngIf="item.discount > 0; else offerClosePrice">
+							<span class="lineThrough"><i class="fa fa-inr" aria-hidden="true"></i>  {{item.actual_price}} </span>
+							<span> <i class="fa fa-inr" aria-hidden="true"></i>  {{item.amount}}</span> 
+							</ng-container>
+
+							<ng-template #offerClosePrice>
+							<span><i class="fa fa-inr" aria-hidden="true"></i>  {{item.actual_price}} </span>
+							</ng-template>
+							
+							For {{item.tennure_period}} Month's 
+
+							
+							<ng-container *ngIf="item.pay_name == 'Premium'">
+							<!-- Premium --> <img src="assets/images/arow_yello_top.png" alt="" class="sade" />
+							</ng-container>
+
+							<ng-container *ngIf="item.pay_name == 'Basic'">
+							<!-- basic --> <img src="assets/images/arow.png" alt="" class="sade" />
+							</ng-container>
+							<ng-container *ngIf="item.pay_name == 'Standard'">
+							<!-- standar --> <img src="assets/images/arow_red_top.png" alt="" class="sade" /> 
+							</ng-container>
+							 
+							
+							
+						</div>
+						 </div>
+						
+						<div class="listSec">
+						<ul>
+						<li *ngFor="let item_List of item.dtls">
+						{{item_List.subscription_dtls}}
+						</li>
+						</ul>
+						</div>
+						
+						<div class="selectBtn">
+							<!-- *ngIf="expression; else templateName" -->
+						<ng-container *ngIf="item.discount > 0; else offerCloseBtn">
+						<a (click)="membership(item.id +'&'+ item.amount +'&'+ item.pay_name +'&'+ item.tennure_period)">Continue 
+
+						<ng-container *ngIf="item.pay_name == 'Premium'">
+						<!-- Premium --> <img src="assets/images/arow_yello_bot.png" alt="" class="sade" />
+						</ng-container>
+						<ng-container *ngIf="item.pay_name == 'Basic'">
+						<!-- basic --> <img src="assets/images/sadow.png" alt="" class="sade" />
+						</ng-container>
+						<ng-container *ngIf="item.pay_name == 'Standard'">
+						<!-- standard --> <img src="assets/images/arow_red_down.png" alt="" class="sade" />
+						</ng-container>
+
+						</a>
+						</ng-container>
+
+						<ng-template #offerCloseBtn>
+						<a (click)="membership(item.id +'&'+ item.actual_price +'&'+ item.pay_name +'&'+ item.tennure_period)">Continue 
+
+						<ng-container *ngIf="item.pay_name == 'Premium'">
+						<!-- Premium --> <img src="assets/images/arow_yello_bot.png" alt="" class="sade" />
+						</ng-container>
+						<ng-container *ngIf="item.pay_name == 'Basic'">
+						<!-- basic --> <img src="assets/images/sadow.png" alt="" class="sade" />
+						</ng-container>
+						<ng-container *ngIf="item.pay_name == 'Standard'">
+						<!-- standard --> <img src="assets/images/arow_red_down.png" alt="" class="sade" />
+						</ng-container>
+
+						</a>
+						</ng-template>
+
+						 </div>
+						
+						
+					  </div>
+					  </div>
+
+					
+					  
+					</div>
+					</div>
+				
+			
+		
+			</div>
+				
+			</div>
+					
+			
+				  
+			
+			
+				  
+				  
+			
+				  
+			</div>
+	</div>
+		
+	<!-- </div>
+	</div> -->
+
+	<!-- <ng-container *ngIf="paymentDetails[0].discount > 0 && paymentDetails[1].discount > 0 && paymentDetails[2].discount > 0">
+	<div class="inner_wraper_OfferBox offerPopup_Default offerPopup_Active" id="popup_Id">
+		<div class="offerPopupBox">
+		  <button (click)="closeEditePopup()" class="closeEditReview"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+
+		  <div class="titleSec"><img src="assets/images/percentage_off.png" alt=""/> For Valentine’s Day</div>
+		  <p>Fall head over heels with the 
+		 <span class="bigFont">	Valentine’s Day</span> <br> special offer! <span class="bigFont">20%</span> off all subscription plans from <br>  <span class="yellowTxt">Feb 10th to Feb 15th</span>. Don't miss out on this <br> love-filled extravaganza!</p>
+		</div>
+	  </div>
+	  <div class="offerPopupBox_Background offerPopup_background_Default offerPopup_background_Active" id="popup_Background"> &nbsp; </div>
+	</ng-container> -->
+
+

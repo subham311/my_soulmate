@@ -1,0 +1,96 @@
+<!-- <app-after_login_header_Global [accountType]="accTypeAftPay"></app-after_login_header_Global> -->
+
+<!-- <div class="innerMain_wraper">
+	<div class="wrapper"> -->
+
+    
+	
+		
+	<div class="col-sm-9 float-left portfolio_right">
+		<!-- {{order_Response__ | json}} -->
+		<!-- {{order_Response?.tnx_date | json}} -->
+
+		
+		<!-- {{order_Response__?.order_status}} -->
+		<div class="alert alert-success successMsg" role="alert" *ngIf="paymentStatusSuc"> <img src="assets/images/check_success.png" alt=""> Payment {{order_Response?.order_status}}</div>
+		<div class="alert alert-danger failedMsg" role="alert" *ngIf="paymentStatusFauil"> <img src="assets/images/close_failure.png" alt=""> Payment Failed, {{order_Response?.failure_message}}</div>
+
+		<div class="invoiceSecAfterPay p-3 mb-3" *ngIf="paymentStatusSuc">
+           
+          <div id="couponPage" #couponPage>
+            <div class="row invoice-info">
+              <!-- /.col -->
+			  <div class="col-sm-12 float-left invoice-col address_sec">
+				
+			  </div>
+              <div class="col-sm-6 float-left invoice-col address_sec">
+                <address>
+					<h2>{{order_Response?.billing_name}},</h2>
+				  {{order_Response?.billing_address}},<br>
+				  {{order_Response?.billing_city}}- {{order_Response?.billing_zip}},<br>
+				  {{order_Response?.billing_country}}, {{order_Response?.billing_state}},<br>
+                     Phone: {{order_Response?.billing_tel}},<br>
+                     Email: {{order_Response?.billing_email}}
+                </address>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-6 float-left invoice-col address_sec">
+                <b>Reference ID:</b> {{order_Response?.tracking_id}}<br>
+				<b>Bank Ref ID:</b> {{order_Response?.bank_ref_no}}<br>
+				<b>Invoice Date:</b> {{order_Response?.trans_rec_date | date:'mediumDate'}}, Time: {{order_Response?.trans_rec_date | date:"HH:mm"}}<br>
+                <b>Order Date: </b> {{order_Response?.tnx_date | date:'mediumDate'}}, Time: {{order_Response?.tnx_date | date:"HH:mm"}}<br>
+                <b>Order ID:</b> {{order_Response?.order_id}}<br>
+                <b>Payment Mode: </b> {{order_Response?.payment_mode}}<br>
+              </div>
+              <!-- /.col -->
+            </div>
+
+            <div class="row">
+              <div class="col-12 table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+					<th>Qty</th>
+                    <th>Product</th>
+                    <th>Tennure(In Month)</th>
+                    <th>Total</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+					<td>{{order_Response?.qty}}</td>
+                    <td>{{order_Response?.pack_name}}</td>
+                    <td>{{order_Response?.tennure_period}} months</td>
+                    <td>₹ {{order_Response?.amount}}</td>
+                  </tr>
+                  <tr>
+					<td><b>Total QTY: {{order_Response?.qty}}</b></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>Total Price: &nbsp; ₹{{order_Response?.qty * order_Response?.amount}}</b><br>
+                        All values are in {{order_Response?.currency}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+            <div class="row no-print">
+              <div class="col-12">
+                <a rel="noopener" target="_blank" class="btn btn-dark invoi_printBtn" (click)="openPDF(this.order_Response?.order_id)"><i class="fa fa-print" aria-hidden="true"></i> Print</a>
+                <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                  Payment
+                </button> -->
+                <button type="button" class="btn btn-info invoi_DownloadBtn float-right" style="margin-right: 5px;" (click)="openPDF(this.order_Response?.order_id)">
+					<i class="fa fa-download" aria-hidden="true"></i> Download PDF
+                </button>
+              </div>
+            </div>
+          </div>
+
+	
+	</div>
+		
+	<!-- </div>
+	</div> -->

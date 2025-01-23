@@ -1,0 +1,1849 @@
+<!-- <app-after_login_header_Global [isVisible]="isVisible"></app-after_login_header_Global> -->
+<!-- <app-after_login_header_Global [item]="currentItem"></app-after_login_header_Global> -->
+
+
+		<div class="col-sm-12">
+
+			<div class="profile_view_Sumary">
+				<ng-container *ngIf="this.localstorageDT.id == this.profile_UserId">
+					<div class="edit_topViewPage">
+						
+				<button [routerLink]="['/user/user_profile_edit']" class="editeBtnView"><i class="fa fa-edit" aria-hidden="true"></i>Edit your profile</button>
+						
+						</div>
+					</ng-container>
+				<div class="profile_view_Sumary_left">
+					<div class="thum">
+						<!-- <img src="{{listOfFiles_single[0]?.filePath}}" alt="" /> -->
+
+
+
+						<ng-container *ngIf="listOfFiles_single[0]?.filePath !== null; else noThumbnail">
+							<img [src]="imageBaseUrl+listOfFiles_single[0]?.filePath" alt="" srcset="">
+						</ng-container>
+
+						<ng-template #noThumbnail>
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is ignored
+							</div>
+							<ng-template #his_cont><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+							<ng-template #her_cont><img src="assets/images/Fem_pro_big.png" alt="" /></ng-template>
+
+						</ng-template>
+
+					</div>
+					<div class="thum_details">
+   
+						<h3>{{user_basic_info_New?.u_name}}</h3>
+						<p>ID: {{user_basic_info_New?.profile_id}} | Profile created for
+							{{this.ac_for_OBJ[user_basic_info_New?.ac_for]}}</p>
+
+							
+<!-- {{verifyDivPause}} -->
+
+<span class="loader_white smallLoader" *ngIf="verifyDivPause; else showVerifyData"></span>
+
+<ng-template #showVerifyData> 
+	<ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">
+		<!-- {{this.localstorageDT.id}} => {{this.profile_UserId}} -->
+	<p class="notVerify_kyc" *ngIf="singlePartnDetailsPop_newAray.partner.basic_information.value[0].profile_verify_flag != 'Y'"><span class="verify_not"><img src="assets/images/verify_not.png" alt="" />Not Verified</span></p>
+	<p class="verify_kyc" *ngIf="singlePartnDetailsPop_newAray.partner.basic_information.value[0].profile_verify_flag != 'N'"> <span class="verify"><img src="assets/images/verify_blue.png" alt="" />Verified</span></p>
+	</ng-container>
+
+	<ng-container *ngIf="this.localstorageDT.id == this.profile_UserId">
+		<!-- {{this.localstorageDT.id}} => {{this.profile_UserId}} -->
+	<p class="notVerify_kyc"><span class="verify_not" *ngIf="profile_flag != 'Y'"><img src="assets/images/verify_not.png" alt="" />Not Verified</span></p>
+	<p class="verify_kyc"> <span class="verify" *ngIf="profile_flag != 'N'"><img src="assets/images/verify_blue.png" alt="" />Verified</span></p>
+	</ng-container>
+</ng-template>
+
+
+
+
+						
+
+					</div>
+				</div>
+
+				<div class="profile_view_Sumary_right">
+					
+					<ul>
+						<li>{{showAge}} years,<span *ngIf="user_basic_info_New?.gender=='F'"> Female</span><span *ngIf="user_basic_info_New?.gender=='M'">Male</span>
+						</li>
+						<li>Lives in {{user_basic_info_New?.country_name}},
+							{{user_basic_info_New?.state_name}},{{user_basic_info_New?.city_name}}
+						</li>
+
+						<li>Mother Tongue is {{user_basic_info_New?.mother_tong}} </li>
+						<li>Studied <ng-container *ngIf="groomLoc_ProfInfo?.education_name?.length > 0">
+								{{groomLoc_ProfInfo.education_name}} </ng-container></li>
+
+						<li>{{user_basic_info_New?.caste_name}} ({{user_basic_info_New?.mother_tong}})</li>
+						<li>Professional: <ng-container *ngIf="groomLoc_ProfInfo?.occu_name?.length > 0">
+								{{groomLoc_ProfInfo.occu_name}} </ng-container> </li>
+
+						<li>Religion: {{this.field_Religion_OBJ[user_basic_info_New?.religion]}} </li>
+						<li>Earns <ng-container *ngIf="groomLoc_ProfInfo?.income_name?.length > 0">
+								{{groomLoc_ProfInfo.income_name}} </ng-container> </li>
+						<li>
+						
+							<!-- <button mat-mini-fab class="favbtn"  (click)="enableButton()" [ngStyle]="{'background-color': buttonColor}" aria-label="Example icon button with a heart icon">
+								<mat-icon>favorite</mat-icon>
+							</button> -->
+
+							
+							
+							
+
+
+							<ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">	
+							<button   mat-mini-fab [matTooltip]="flag ? 'Remove From Wishlist':'Add To Wishlist'"  (click)="enableButton(!flag)"
+							[ngStyle]="{'background-color': flag ? 'red' : '#B2BEB5'}"
+							 aria-label="Example icon button with a heart icon">
+								<mat-icon>favorite</mat-icon>
+							</button>
+							</ng-container>
+							<!-- <span class="upgrade_btn" *ngIf="updradebtn">
+							<div class="lockPopupHover" >
+								<button type="button" routerLink="/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+								</div>
+							</span>			 -->
+						</li>
+
+					</ul>
+				</div>
+
+			</div>
+			
+
+			<ng-container *ngIf="this.localstorageDT.id == this.profile_UserId">
+				<div class="portfolio_view_block">
+					<div class="portfolio_view_block_sub">
+						<div class="title_sec">
+							<h2> {{user_basic_info_New?.u_name}} <span> Horoscope Details</span></h2>
+						</div>
+
+						<ul class="details_list">
+						
+							
+								<div class="edit_portfolio_field_group float-left">
+							
+									  
+									<div class="edit_portfolio_field_group_left">Mongal Dosh</div>
+									<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container *ngIf="partnersRasi_get?.own.mongal_dasha == '100'"> <span
+										style="color: red;">High</span></ng-container>
+								<ng-container *ngIf="partnersRasi_get?.own.mongal_dasha == '80'"> Medium</ng-container>
+								<ng-container *ngIf="partnersRasi_get?.own.mongal_dasha == '20'"> Low</ng-container>
+								<ng-container *ngIf="partnersRasi_get?.own.mongal_dasha == '0'"> None</ng-container>
+							</div>
+						    </div>
+							
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">Sun Sign </div> 
+								<div class="edit_portfolio_field_group_right colonEnd">
+
+								{{partnersRasi_get?.own.rashi}}
+								</div>
+							</div>
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">Moon Sign </div> 
+								<div class="edit_portfolio_field_group_right colonEnd">
+									{{partnersRasi_get?.own.moon_shine_name}}
+								</div>
+							</div>
+						</ul>
+
+
+
+					</div>
+				</div>
+			</ng-container>
+
+
+			<ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">
+				<div class="portfolio_view_block">
+					<div class="portfolio_view_block_sub">
+						<div class="title_sec">
+							<h2> {{user_basic_info_New?.u_name}} <span> Horoscope Details</span></h2>
+						</div>
+
+						<ul class="details_list">
+							<!-- <li>Element Name: {{partnersRasi_get?.partner?.element_name}}</li> -->
+							<li>Mongal Dosh:
+								<ng-container *ngIf="partnersRasi_get?.partner?.mongal_dasha == '100'"> <span
+										style="color: red;"> &nbsp;High</span></ng-container>
+								<ng-container *ngIf="partnersRasi_get?.partner?.mongal_dasha == '80'">
+									Medium</ng-container>
+								<ng-container *ngIf="partnersRasi_get?.partner?.mongal_dasha == '20'">
+									Low</ng-container>
+								<ng-container *ngIf="partnersRasi_get?.partner?.mongal_dasha == '0'">
+									None</ng-container>
+							</li>
+							<li>Sun Sign: {{partnersRasi_get?.partner?.rashi}}</li>
+							<li>Moon Sign: {{partnersRasi_get?.partner?.moon_shine_name}}</li>
+						</ul>
+
+
+
+					</div>
+				</div>
+			</ng-container>
+
+			
+
+			<ng-container *ngIf="this.localstorageDT.id != this.profile_UserId">
+				<div class="portfolio_view_block">
+					<div class="title_sec">
+						<h2> See how well your profile matches with her <span> Horoscope</span></h2>
+					</div>
+					<div class="profile_match_main">
+					<div class="profile_match">
+						<div class="profile_match_left_thum">
+							
+							<ng-container *ngIf="listOfFiles_single[0]?.filePath !== null; else noThumbnail">
+								<img [src]="imageBaseUrl+listOfFiles_single[0]?.filePath" alt="" srcset="">
+							</ng-container>
+
+							<ng-template #noThumbnail>
+								<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont_Thum else her_cont_Thum">
+									here is ignored</div>
+								<ng-template #his_cont_Thum><img src="assets/images/male_pro_big.png"
+										alt="" /></ng-template>
+								<ng-template #her_cont_Thum><img src="assets/images/Fem_pro_big.png"
+										alt="" /></ng-template>
+
+							</ng-template>
+						</div>
+
+						<div class="profile_match_percentage">
+							<p>Astro Numerical Match {{partnersRasi_get?.total_marks}}%</p>
+
+							<div class="percentage_bar">
+								<!-- <div class="percentage_bar_inner_green" style="width: {{partnersRasi_get}}">&nbsp;</div> -->
+								<div class="percentage_bar_inner_green"
+									[style.width]="partnersRasi_get?.total_marks+'%'">&nbsp;</div>
+							</div>
+
+						</div>
+						
+						<div class="profile_match_right_thum">
+
+							<ng-container
+								*ngIf="listOfFiles_single_login_user[0]?.filePath !==  null; else noThumbnailLoginUser">
+								<img [src]="this.imageBaseUrl +listOfFiles_single_login_user[0]?.filePath" alt=""
+									srcset="">
+							</ng-container>
+
+							<ng-template #noThumbnailLoginUser>
+								<!-- <div *ngIf="userData_1_LoginUser[0]?.gender == 'M';then his_cont_match else her_cont_match"> here is ignored</div> -->
+								<!-- Eshita -->
+								<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont_match else her_cont_match"> here is ignored</div> 
+								<ng-template #his_cont_match><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+								<ng-template #her_cont_match><img src="assets/images/Fem_pro_big.png" alt="" /> </ng-template>
+
+
+							</ng-template>
+
+						</div>
+					</div>
+
+					<div class="profile_match_right">
+						<button type="button" class="astro_link" data-toggle="modal" data-target="#sendMsgPopup" (click)="showAstroPopup()"><img src="assets/images/astrology.png" alt="" /> Astro Numerical Match </button>
+					</div>
+					</div>
+
+					
+
+
+				</div>
+			</ng-container>
+
+
+			<div class="portfolio_view_block">
+				<div class="portfolio_view_block_sub">
+					<div class="title_sec">
+						<h2> Photo Gallery  
+							<!-- {{this.localstorageDT.id}} ++ {{profile_UserId;}} -->
+						</h2> 
+
+						<!-- <ng-container *ngIf="this.canViewProf > '0'">
+							<h2>Can View All </h2>
+							this.canViewProf > '0'
+						</ng-container> -->
+
+						
+					</div>
+
+					<div class="profile_slide_img">
+						
+
+						<ng-container *ngIf="this.localstorageDT.id.toString() === this.profile_UserId.toString();">
+							<div class="viewProfileImgGal">
+								<div class="form-group row mb-0">
+									<ng-container *ngIf="galleryPhoto?.length < 1">
+										<div class="col-sm-12">
+											<p>Please Upload Your Photo</p>
+	
+										</div>
+									</ng-container>
+									<div class="col-sm-3" *ngFor="let item of galleryPhoto; let index = index">
+										<div class="galaryImg_view">
+											<img src="{{this.imageBaseUrl+item.file_path}}" alt="" srcset=""
+												(click)="onClick($event)" class="modal-hover-opacity" data-toggle="modal"
+												data-target="#myModal">
+										</div>
+									</div>
+	
+								</div>
+	
+	
+	
+								<!-- <owl-carousel-o [options]="customOptions">
+									<ng-template carouselSlide *ngFor="let item of galleryPhoto; let index = index">
+										<img src="{{this.imageBaseUrl+item.file_path}}" alt="" srcset="" (click)="onClick($event)" class="modal-hover-opacity" data-toggle="modal" data-target="#myModal">
+									</ng-template>  
+								</owl-carousel-o> -->
+							</div>
+						</ng-container>
+							
+							<ng-container *ngIf="this.localstorageDT.id.toString() != this.profile_UserId.toString();">
+							
+							
+							<ng-container *ngIf="memberShipStatus?.payStatus > '0';">
+							<div class="viewProfileImgGal">
+							<div class="form-group row mb-0">
+							<ng-container *ngIf="galleryPhoto?.length < 1">
+							<div class="col-sm-12">
+							<p>Please Upload Your Photo</p>
+
+							</div>
+							</ng-container>
+							<div class="col-sm-3" *ngFor="let item of galleryPhoto; let index = index">
+							<div class="galaryImg_view">
+							<img src="{{this.imageBaseUrl+item.file_path}}" alt="" srcset=""
+							(click)="onClick($event)" class="modal-hover-opacity" data-toggle="modal"
+							data-target="#myModal">
+							</div>
+							</div>
+
+							</div>
+
+
+
+							<!-- <owl-carousel-o [options]="customOptions">
+							<ng-template carouselSlide *ngFor="let item of galleryPhoto; let index = index">
+							<img src="{{this.imageBaseUrl+item.file_path}}" alt="" srcset="" (click)="onClick($event)" class="modal-hover-opacity" data-toggle="modal" data-target="#myModal">
+							</ng-template>  
+							</owl-carousel-o> -->
+							</div>
+							</ng-container>
+							<ng-container *ngIf="memberShipStatus?.payStatus < '1'">
+							<ng-container *ngIf="this.canViewProf == '0'">
+							<div class="upgradeNowSec">
+							<div class="upgreadeIcon">&nbsp;</div>
+							<div class="upgreadetitle">
+							<button type="button" routerLink="/user/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+							</div>
+							</div>
+							</ng-container>
+
+							<ng-container *ngIf="this.canViewProf == '1'">
+							<div class="viewProfileImgGal">
+							<div class="form-group row mb-0">
+							<ng-container *ngIf="galleryPhoto?.length < 1">
+							<div class="col-sm-12">
+							<p>Please Upload Your Photo</p>
+
+							</div>
+							</ng-container>
+							<div class="col-sm-3" *ngFor="let item of galleryPhoto; let index = index">
+							<div class="galaryImg_view">
+							<img src="{{this.imageBaseUrl+item.file_path}}" alt="" srcset=""
+							(click)="onClick($event)" class="modal-hover-opacity" data-toggle="modal"
+							data-target="#myModal">
+							</div>
+							</div>
+
+							</div>
+
+
+
+							<!-- <owl-carousel-o [options]="customOptions">
+							<ng-template carouselSlide *ngFor="let item of galleryPhoto; let index = index">
+							<img src="{{this.imageBaseUrl+item.file_path}}" alt="" srcset="" (click)="onClick($event)" class="modal-hover-opacity" data-toggle="modal" data-target="#myModal">
+							</ng-template>  
+							</owl-carousel-o> -->
+							</div>
+							</ng-container>
+
+								
+							</ng-container>
+
+							<!-- <ng-container *ngIf="memberShipStatus?.payStatus.toString() < '1';">
+							<div class="upgradeNowSec">
+							<div class="upgreadeIcon">&nbsp;</div>
+							<div class="upgreadetitle">
+							<button type="button" routerLink="/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+							</div>
+							</div>
+							</ng-container> -->
+								
+							</ng-container>
+
+						<!-- <div class="upgradeNowSec">
+							<div class="upgreadeIcon">&nbsp;</div>
+							<div class="upgreadetitle">
+								<button type="button" routerLink="/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+							</div>
+						</div> -->
+
+						
+
+
+
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+			<div class="portfolio_view_block">
+				<div class="portfolio_view_block_sub">
+					<div class="title_sec">
+						<h2>About 
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont">
+								here is ignored</div>
+							<ng-template #his_cont>His</ng-template>
+							<ng-template #her_cont>Her</ng-template>
+						</h2>
+						<p>{{user_basic_info_New?.about_us}}</p>
+					</div>
+
+					<ul class="details_list">
+
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+									<img src="assets/images/list_d.png" alt="" /> 
+								
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is ignored
+							</div> Mobile No
+							</div> 
+
+						<ng-container *ngIf="this.localstorageDT.id == this.profile_UserId;">
+						<div class="edit_portfolio_field_group_right colonEnd">{{user_basic_info_New?.phone_no}}</div>
+						</ng-container>
+						<ng-container *ngIf="this.localstorageDT.id != this.profile_UserId;">
+						<div class="edit_portfolio_field_group_right colonEnd" *ngIf="memberShipStatus?.payStatus > '0';">{{user_basic_info_New?.phone_no}}</div>
+
+						<div class="edit_portfolio_field_group_right colonEnd upgrade_area" *ngIf="memberShipStatus?.payStatus < '1';">
+							
+						<ng-container *ngIf="this.canViewProf == '0'">
+							{{nameShort(user_basic_info_New?.phone_no.toString())}}
+
+						<span class="upgrade_Lock">
+						<div class="lockPopupHover">
+						<button type="button" routerLink="/user/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+						</div>
+						</span>
+						</ng-container>
+
+						<ng-container *ngIf="this.canViewProf == '1'">
+							{{user_basic_info_New?.phone_no}}
+						</ng-container>
+
+						
+
+						</div>
+
+
+						</ng-container>
+
+								
+						</div>
+						
+
+					
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_d.png" alt="" />
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is ignored
+							</div> Email Id </div> 
+
+							<ng-container *ngIf="this.localstorageDT.id == this.profile_UserId;">
+							<div class="edit_portfolio_field_group_right colonEnd">{{user_basic_info_New?.email_id}}</div>
+							</ng-container>
+							<ng-container *ngIf="this.localstorageDT.id != this.profile_UserId;">
+
+							<!-- <div class="edit_portfolio_field_group_right colonEnd upgrade_area">{{emailShort(user_basic_info_New?.email_id)}} 
+							<span class="upgrade_Lock">
+							<div class="lockPopupHover">
+							<button type="button" routerLink="/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+							</div>
+							</span>
+							</div> -->
+
+							<div class="edit_portfolio_field_group_right colonEnd" *ngIf="memberShipStatus?.payStatus > '0';">{{user_basic_info_New?.email_id}}</div>
+
+							<div class="edit_portfolio_field_group_right colonEnd upgrade_area" *ngIf="memberShipStatus?.payStatus < '1';">
+
+								<ng-container *ngIf="this.canViewProf == '0'">
+									{{this.userEmail_Short}}
+
+									<span class="upgrade_Lock">
+									<div class="lockPopupHover">
+									<button type="button" routerLink="/user/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+									</div>
+									</span>
+								</ng-container>
+								
+								<ng-container *ngIf="this.canViewProf == '1'">
+								{{user_basic_info_New?.email_id}}
+								</ng-container>
+
+
+							
+
+							</div>
+
+
+
+							</ng-container>
+
+							
+
+						    </div>
+						
+
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+							<img src="assets/images/list_f.png" alt="" /> Country 
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+							<ng-container
+								*ngIf="user_basic_info_New?.country_name?.length > 0">
+								{{user_basic_info_New?.country_name}}
+							</ng-container>
+						</div> 
+						</div>
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_e.png" alt="" /> State 
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container
+								*ngIf="user_basic_info_New?.state_name?.length > 0">
+								{{user_basic_info_New?.state_name}}
+							</ng-container> 
+							</div>
+						</div>
+						<!-- <li><img src="assets/images/list_e.png" alt="" /> City: <ng-container
+								*ngIf="user_basic_info_New?.city_name?.length > 0">
+								{{user_basic_info_New?.city_name}}
+							</ng-container> </li> -->
+						<!-- <li><img src="assets/images/list_e.png" alt="" /> State: <ng-container *ngIf="user_basic_info_New?.state_name?.length > 0">
+							{{user_basic_info_New?.state_name}}
+					</ng-container>	</li> -->
+						
+							<!-- <div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/cetezen.png" alt="" /> Citizenship
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+
+								 <ng-container
+								*ngIf="user_basic_info_New?.country_name?.length > 0">
+								{{user_basic_info_New?.country_name}}
+							</ng-container>
+							</div>
+						</div> -->
+
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/calen.png" alt="" /> Date Of Birth </div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+								
+								<!-- {{user_basic_info_New?.dob | date:'mediumDate'}},  -->
+								{{this.user_basic_info_New?.dob_date}},
+
+							<!-- Time: {{user_basic_info_New?.dob | date:"HH:mm"}} -->
+							Time: {{this.user_basic_info_New?.dob_time}}
+							</div></div>
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_e.png" alt="" /> Place Of Birth </div> 
+							<div class="edit_portfolio_field_group_right colonEnd">	
+								{{user_basic_info_New?.location_id}}
+							</div></div>
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_a.png" alt="" /> Age</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+
+							{{showAge}}
+							</div>
+                        </div>
+						
+						
+							<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"><img src="assets/images/list_b.png" alt="" /> Body Type
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+
+							<div
+								*ngIf="user_basic_info_New?.body_type && user_basic_info_New?.body_type != 'null' && user_basic_info_New?.body_type != 'none'; then bodyType_yes else bodyType_no">
+								here is ignored</div>
+							<ng-template
+								#bodyType_yes>{{this.field_body_type_OBJ[user_basic_info_New?.body_type]}}</ng-template>
+							<ng-template #bodyType_no>Not Specified</ng-template>
+							</div>
+							</div>
+						
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_b.png" alt="" /> Physical Status
+								</div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container
+								*ngIf="user_basic_info?.length > 0">
+								{{this.field_disability_OBJ[user_basic_info_New?.disability_flag]}}
+							</ng-container>
+							</div>
+						</div>
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_b.png" alt="" /> Height
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+							<div
+								*ngIf="user_basic_info_New?.height && user_basic_info_New?.height != 'none'; then height_yes else height_no">
+								here is ignored</div>
+							<ng-template
+								#height_yes>{{this.field_height_OBJ[user_basic_info_New?.height]}}</ng-template>
+							<ng-template #height_no>Not Specified</ng-template>
+							</div>
+							</div>
+						
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/waight.png" alt="" /> Weight
+									</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								
+							<div
+								*ngIf="user_basic_info_New?.weight && user_basic_info_New?.weight != 'null' && user_basic_info_New?.weight != 'none'; then weight_yes else weight_no">
+								here is ignored</div>
+							<ng-template
+								#weight_yes>{{this.field_weight_OBJ[user_basic_info_New?.weight]}}</ng-template>
+							<ng-template #weight_no>Not Specified</ng-template>
+							</div>
+							</div>
+						
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/lang.png" alt="" /> Mother Tongue
+									</div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container
+								*ngIf="user_basic_info?.length > 0">
+								{{user_basic_info_New?.mother_tong}}
+							</ng-container> 
+						</div>
+					</div>
+
+					
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_c.png" alt="" /> Marital Status 
+									</div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container
+								*ngIf="user_basic_info?.length > 0">
+								{{this.field_marital_status_OBJ[user_basic_info_New?.marital_status]}}
+							</ng-container> 
+							</div>
+						</div>
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/eat.png" alt="" /> Eating Habits
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+							<div
+								*ngIf="user_basic_info_New?.eating_habbits && user_basic_info_New?.eating_habbits != 'null'; then habits_yes else habits_no">
+								here is ignored</div>
+							<ng-template
+								#habits_yes>{{this.field_Eating_Habits_OBJ[user_basic_info_New?.eating_habbits]}}</ng-template>
+							<ng-template #habits_no>Not Specified</ng-template>
+							</div>
+							</div>
+						
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/drink.png" alt="" /> Drinking Habits 
+									</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+
+							<div
+								*ngIf="user_basic_info_New?.drinking_habbits && user_basic_info_New?.drinking_habbits != 'null'; then drinks_yes else drinks_no">
+								here is ignored</div>
+							<ng-template
+								#drinks_yes>{{this.field_Drinking_Habits_OBJ[user_basic_info_New?.drinking_habbits]}}</ng-template>
+							<ng-template #drinks_no>Not Specified</ng-template>
+							</div>
+						</div>
+						
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/smok.png" alt="" /> Smoking Habits 
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+							<div *ngIf="user_basic_info_New?.smoking_habbits && user_basic_info_New?.smoking_habbits != 'null'; then smoking_yes else smoking_no">here is ignored</div>
+							<ng-template #smoking_yes>{{this.field_Smoking_Habits_OBJ[user_basic_info_New?.smoking_habbits]}}</ng-template>
+							<ng-template #smoking_no>Not Specified</ng-template>
+							</div>
+							</div>
+						
+
+
+
+
+
+
+
+					</ul>
+
+
+
+				</div>
+				</div>
+				<div class="portfolio_view_block">
+				<div class="portfolio_view_block_sub">
+					<div class="title_sec">
+						<h2>
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is ignored
+							</div> Religious Background
+						</h2>
+					</div>
+
+					<ul class="details_list">
+						<!-- <li><img src="assets/images/list_g.png"
+								alt="" />{{this.field_Religion_OBJ[user_basic_info_New.religion]}}</li>
+						<li><img src="assets/images/list_h.png" alt="" />{{user_basic_info_New.caste_name}}
+							({{user_basic_info_New.mother_tong}}) </li>
+						<li><img src="assets/images/list_i.png" alt="" />Does not know dosh details </li>
+						<li><img src="assets/images/list_j.png" alt="" />Star is Kruthiga, Raasi is Vrishabh (Taurus)
+						</li> -->
+
+
+						
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"><img src="assets/images/list_g.png" alt="" />Religion:
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container
+								*ngIf="user_basic_info?.length > 0">
+								{{this.field_Religion_OBJ[user_basic_info_New?.religion]}}
+							</ng-container>
+							</div>
+						</div>
+					
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_h.png" alt="" />Caste: 
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+									<ng-container
+								*ngIf="user_basic_info?.length > 0">
+								{{user_basic_info_New?.caste_name}}
+							</ng-container> 
+							</div>
+						</div>
+						<!-- <li><img src="assets/images/list_c.png" alt="" />Willing to marry from other communities also: <div *ngIf="user_basic_info_New?.oth_comm_marry_flag == 'Y';then content else other_content">here is ignored</div>
+							<ng-template #content>Yes</ng-template>
+							<ng-template #other_content>No</ng-template></li> -->
+
+
+					</ul>
+
+
+
+				</div>
+                </div>
+				<div class="portfolio_view_block">
+				<div class="portfolio_view_block_sub">
+					<div class="title_sec">
+						<h2>
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is ignored
+							</div> Professional Details
+						</h2>
+					</div>
+
+					<ul class="details_list">
+
+
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/edu.png" alt="" />Education 
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+
+								<ng-container
+								*ngIf="groomLoc_ProfInfo?.education_name?.length > 0">
+								{{groomLoc_ProfInfo?.education_name}}
+							</ng-container>
+							</div>
+						</div>
+					
+						<!-- <div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"><img src="assets/images/edu.png" alt="" />Education in Detail 
+							</div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+							
+							<div *ngIf="groomLoc_ProfInfo?.edu_in_dtls && groomLoc_ProfInfo?.edu_in_dtls != 'null'; then content_edu else other_content_edu">here is ignored</div>
+			<ng-template #content_edu>{{groomLoc_ProfInfo?.edu_in_dtls}}</ng-template>
+			<ng-template #other_content_edu>Not Specified</ng-template>
+			            </div>
+						</div> -->
+						
+						
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">	
+							<img src="assets/images/colag.png" alt="" />College / Institution 
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+
+							<div *ngIf="groomLoc_ProfInfo?.collage && groomLoc_ProfInfo?.collage != 'null'; then content_collage else other_content_collage">here is ignored</div>
+			<ng-template #content_collage>{{groomLoc_ProfInfo?.collage}}</ng-template>
+			<ng-template #other_content_collage>Not Specified</ng-template>
+			            </div>
+			            </div>
+						
+						
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">	
+							<img src="assets/images/emplo.png" alt="" />Employed in 
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+							<ng-container
+								*ngIf="groomLoc_ProfInfo?.emp_type?.length > 0">
+								{{field_Employed_in_OBJ[groomLoc_ProfInfo?.emp_type]}}
+							</ng-container>
+							</div>
+
+						</div>
+						
+						
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"><img src="assets/images/oco.png" alt="" />Occupation 
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+
+								<ng-container
+								*ngIf="groomLoc_ProfInfo?.occu_name?.length > 0">
+								{{groomLoc_ProfInfo?.occu_name}}
+							</ng-container> 
+							</div>
+						</div>
+						
+						
+						<!-- <div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"><img src="assets/images/oco.png" alt="" />Occupation in Detail 
+							</div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+							
+							<div *ngIf="groomLoc_ProfInfo?.occup_in_dtls && groomLoc_ProfInfo?.occup_in_dtls != 'null'; then content_occu else other_content_occu">here is ignored</div>
+			<ng-template #content_occu>{{groomLoc_ProfInfo?.occup_in_dtls}}</ng-template>
+			<ng-template #other_content_occu>Not Specified</ng-template>
+			</div>
+			           </div> -->
+						
+					   <div class="edit_portfolio_field_group float-left">
+						<div class="edit_portfolio_field_group_left"><img src="assets/images/orga.png" alt="" />Organization 
+							</div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<div
+								*ngIf="groomLoc_ProfInfo?.org_name; then content_orga else other_content_orga">here is
+								ignored</div>
+							<ng-template #content_orga>{{groomLoc_ProfInfo?.org_name}}</ng-template>
+							<ng-template #other_content_orga>Not Specified</ng-template>
+							</div>
+						</div>
+						
+						
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"><img src="assets/images/anual.png" alt="" />Annual Income 
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container
+								*ngIf="groomLoc_ProfInfo?.income_name?.length > 0">
+								{{groomLoc_ProfInfo?.income_name}}
+							</ng-container>
+						</div>
+					</div>
+
+					<div class="edit_portfolio_field_group float-left">
+						<div class="edit_portfolio_field_group_left"><img src="assets/images/list_e.png" alt="" />Work Location
+							</div> 
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<div
+								*ngIf="groomLoc_ProfInfo?.work_location; then content_work else other_content_work">here is
+								ignored</div>
+							<ng-template #content_work>{{groomLoc_ProfInfo?.work_location}}</ng-template>
+							<ng-template #other_content_work>Not Specified</ng-template>
+							</div>
+						</div>
+					</ul>
+
+				</div>
+                </div>
+				<div class="portfolio_view_block">
+				<div class="portfolio_view_block_sub">
+					<div class="title_sec">
+						<h2>About Family </h2> 
+						<!-- <span *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is
+								ignored</span>  -->
+					</div>
+
+					<ng-container *ngIf="this.localstorageDT.id == this.profile_UserId;">
+						<ul class="details_list">
+
+
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+									<img src="assets/images/list_m.png" alt="" /> Father's Occupation </div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+	
+								<div
+									*ngIf="user_basic_info_New?.father_occupation && user_basic_info_New?.father_occupation != 'null' && user_basic_info_New?.father_occupation != 'none'; then father_occ_yes else father_occ_no">
+									here is ignored</div>
+								<ng-template
+									#father_occ_yes>{{this.field_Father_Occupation_OBJ[user_basic_info_New?.father_occupation]}}</ng-template>
+								<ng-template #father_occ_no>Not Specified</ng-template>
+								</div>
+							</div>
+							
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left"><img src="assets/images/list_m.png" alt="" /> Mother's Occupation 
+									</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+									
+								<div
+									*ngIf="user_basic_info_New?.mother_occupation && user_basic_info_New?.mother_occupation != 'null' && user_basic_info_New?.mother_occupation != 'none'; then mother_occu_yes else mother_occu_no">
+									here is ignored</div>
+								<ng-template
+									#mother_occu_yes>{{this.field_Mother_Occupation_OBJ[user_basic_info_New?.mother_occupation]}}</ng-template>
+								<ng-template #mother_occu_no>Not Specified</ng-template>
+								</div>
+							</div>
+							
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left"><img src="assets/images/list_k.png" alt="" /> Family Values 
+									</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+									<ng-container
+									*ngIf="user_basic_info?.length > 0">
+									{{this.field_family_value_OBJ[user_basic_info_New?.family_values]}}
+								</ng-container>
+								</div>
+								</div>
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_k.png" alt="" /> Family Type </div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+									<ng-container
+									*ngIf="user_basic_info?.length > 0">
+									{{this.field_family_type_OBJ[user_basic_info_New?.family_type]}}
+								</ng-container> </div></div>
+							
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left"><img src="assets/images/list_k.png" alt="" /> Family Status </div> 
+								<div class="edit_portfolio_field_group_right colonEnd">
+									
+									<ng-container
+									*ngIf="user_basic_info?.length > 0">
+									{{this.field_family_status_OBJ[user_basic_info_New?.family_status]}}
+								</ng-container>
+								</div>
+								</div>
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_l.png" alt="" /> No of Brother(s) 
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+	
+								<div *ngIf="user_basic_info_New?.no_brother; then no_brother_yes else no_brother_no">here is
+									ignored</div>
+								<ng-template
+									#no_brother_yes>{{this.field_No_Brother_OBJ[user_basic_info_New?.no_brother]}}</ng-template>
+								<ng-template #no_brother_no>Have No Brother</ng-template>
+								</div>
+							</div>
+						
+								<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_n.png" alt="" /> No of Sister(s) 
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+								
+								<div *ngIf="user_basic_info_New?.no_sister; then no_sister_yes else no_sister_no">here is
+									ignored</div>
+								<ng-template
+									#no_sister_yes>{{this.field_No_Sister_OBJ[user_basic_info_New?.no_sister]}}</ng-template>
+								<ng-template #no_sister_no>Have No Sister</ng-template>
+								</div>
+								</div>
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+							<img src="assets/images/loca.png" alt="" /> Family Location 
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+	
+								<div *ngIf="user_basic_info_New?.family_location && user_basic_info_New?.family_location != 'null' && user_basic_info_New?.family_location != 'none'; then family_loca_yes else family_loca_no">
+									here is ignored</div>
+								<ng-template
+									#family_loca_yes>{{this.field_Family_Location_OBJ[user_basic_info_New?.family_location]}}</ng-template>
+								<ng-template #family_loca_no>Not Specified</ng-template>
+							</div>
+							</div>
+
+							<div class="edit_portfolio_field_group_full float-left">
+								<div class="edit_portfolio_field_group_left_full">
+							<img src="assets/images/loca.png" alt="" /> About My Family
+							</div>
+							<div class="edit_portfolio_field_group_right_full colonEnd">
+
+								<ng-container *ngIf="user_basic_info_New?.about_my_family == null">
+								Not Specified
+								</ng-container>
+
+								<ng-container *ngIf="user_basic_info_New?.about_my_family != null">
+									{{user_basic_info_New?.about_my_family}}
+									</ng-container>
+
+								<!-- {{user_basic_info_New?.about_my_family}} {{user_basic_info_New?.about_my_family == null}} -->
+	
+								<!-- <div *ngIf="user_basic_info_New?.family_location; then family_loca_yes else family_loca_no">
+									here is ignored</div>
+								<ng-template #family_loca_yes>{{this.field_Family_Location_OBJ[user_basic_info_New?.family_location]}}</ng-template>
+								<ng-template #family_loca_no>Not Specified</ng-template> -->
+							</div>
+							</div>
+	
+	
+	
+	
+	
+						</ul>
+					</ng-container>
+
+					<ng-container *ngIf="this.localstorageDT.id != this.profile_UserId;">
+
+					<ng-container *ngIf="memberShipStatus?.payStatus > '0';">
+						<ul class="details_list">
+
+
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+									<img src="assets/images/list_m.png" alt="" /> Father's Occupation </div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+	
+								<div
+									*ngIf="user_basic_info_New?.father_occupation != null && user_basic_info_New?.father_occupation != 'none'; then father_occ_yes else father_occ_no">
+									here is ignored</div>
+								<ng-template
+									#father_occ_yes>{{this.field_Father_Occupation_OBJ[user_basic_info_New?.father_occupation]}}</ng-template>
+								<ng-template #father_occ_no>Not Specified</ng-template>
+								</div>
+							</div>
+							
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left"><img src="assets/images/list_m.png" alt="" /> Mother's Occupation 
+									</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+	
+								<div
+									*ngIf="user_basic_info_New?.mother_occupation != null && user_basic_info_New?.mother_occupation != 'none'; then mother_occu_yes else mother_occu_no">
+									here is ignored</div>
+								<ng-template
+									#mother_occu_yes>{{this.field_Mother_Occupation_OBJ[user_basic_info_New?.mother_occupation]}}</ng-template>
+								<ng-template #mother_occu_no>Not Specified</ng-template>
+								</div>
+							</div>
+							
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left"><img src="assets/images/list_k.png" alt="" /> Family Values 
+									</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+									<ng-container
+									*ngIf="user_basic_info?.length > 0">
+									{{this.field_family_value_OBJ[user_basic_info_New?.family_values]}}
+								</ng-container>
+								</div>
+								</div>
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_k.png" alt="" /> Family Type </div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+									<ng-container
+									*ngIf="user_basic_info?.length > 0">
+									{{this.field_family_type_OBJ[user_basic_info_New?.family_type]}}
+								</ng-container> </div></div>
+							
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left"><img src="assets/images/list_k.png" alt="" /> Family Status </div> 
+								<div class="edit_portfolio_field_group_right colonEnd">
+									
+									<ng-container
+									*ngIf="user_basic_info?.length > 0">
+									{{this.field_family_status_OBJ[user_basic_info_New?.family_status]}}
+								</ng-container>
+								</div>
+								</div>
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_l.png" alt="" /> No of Brother(s) 
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+	
+								<div *ngIf="user_basic_info_New?.no_brother; then no_brother_yes else no_brother_no">here is
+									ignored</div>
+								<ng-template
+									#no_brother_yes>{{this.field_No_Brother_OBJ[user_basic_info_New?.no_brother]}}</ng-template>
+								<ng-template #no_brother_no>Have No Brother</ng-template>
+								</div>
+							</div>
+						
+								<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_n.png" alt="" /> No of Sister(s) 
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+								
+								<div *ngIf="user_basic_info_New?.no_sister; then no_sister_yes else no_sister_no">here is
+									ignored</div>
+								<ng-template
+									#no_sister_yes>{{this.field_No_Sister_OBJ[user_basic_info_New?.no_sister]}}</ng-template>
+								<ng-template #no_sister_no>Have No Sister</ng-template>
+								</div>
+								</div>
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+							<img src="assets/images/loca.png" alt="" /> Family Location 
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+	
+								<div *ngIf="user_basic_info_New?.family_location; then family_loca_yes else family_loca_no">
+									here is ignored</div>
+								<ng-template
+									#family_loca_yes>{{this.field_Family_Location_OBJ[user_basic_info_New?.family_location]}}</ng-template>
+								<ng-template #family_loca_no>Not Specified</ng-template>
+							</div>
+							</div>
+	
+	
+	
+	
+	
+						</ul>
+					</ng-container>
+
+					<ng-container *ngIf="memberShipStatus?.payStatus < '1';">
+						
+
+
+						<ng-container *ngIf="this.canViewProf == '0'">
+							<div class="upgradeNowSec_wrapper">
+								<div class="upgradeNowSec">
+									<div class="upgreadeIcon">&nbsp;</div>
+									<div class="upgreadetitle">
+										<button type="button" routerLink="/user/paymentGetway" class="lockPopupHoverLink">Upgrade Now </button>
+									</div>
+								</div>
+								</div>
+						</ng-container>
+						
+						<ng-container *ngIf="this.canViewProf == '1'">
+							<ul class="details_list">
+
+
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left">
+										<img src="assets/images/list_m.png" alt="" /> Father's Occupation </div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+		
+									<div
+										*ngIf="user_basic_info_New?.father_occupation != null && user_basic_info_New?.father_occupation != 'none'; then father_occ_yes else father_occ_no">
+										here is ignored</div>
+									<ng-template
+										#father_occ_yes>{{this.field_Father_Occupation_OBJ[user_basic_info_New?.father_occupation]}}</ng-template>
+									<ng-template #father_occ_no>Not Specified</ng-template>
+									</div>
+								</div>
+								
+									<div class="edit_portfolio_field_group float-left">
+										<div class="edit_portfolio_field_group_left"><img src="assets/images/list_m.png" alt="" /> Mother's Occupation 
+										</div>
+									<div class="edit_portfolio_field_group_right colonEnd">
+		
+									<div
+										*ngIf="user_basic_info_New?.mother_occupation != null && user_basic_info_New?.mother_occupation != 'none'; then mother_occu_yes else mother_occu_no">
+										here is ignored</div>
+									<ng-template
+										#mother_occu_yes>{{this.field_Mother_Occupation_OBJ[user_basic_info_New?.mother_occupation]}}</ng-template>
+									<ng-template #mother_occu_no>Not Specified</ng-template>
+									</div>
+								</div>
+								
+									<div class="edit_portfolio_field_group float-left">
+										<div class="edit_portfolio_field_group_left"><img src="assets/images/list_k.png" alt="" /> Family Values 
+										</div>
+									<div class="edit_portfolio_field_group_right colonEnd">
+										<ng-container
+										*ngIf="user_basic_info?.length > 0">
+										{{this.field_family_value_OBJ[user_basic_info_New?.family_values]}}
+									</ng-container>
+									</div>
+									</div>
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left">
+									<img src="assets/images/list_k.png" alt="" /> Family Type </div>
+									<div class="edit_portfolio_field_group_right colonEnd">
+										<ng-container
+										*ngIf="user_basic_info?.length > 0">
+										{{this.field_family_type_OBJ[user_basic_info_New?.family_type]}}
+									</ng-container> </div></div>
+								
+									<div class="edit_portfolio_field_group float-left">
+										<div class="edit_portfolio_field_group_left"><img src="assets/images/list_k.png" alt="" /> Family Status </div> 
+									<div class="edit_portfolio_field_group_right colonEnd">
+										
+										<ng-container
+										*ngIf="user_basic_info?.length > 0">
+										{{this.field_family_status_OBJ[user_basic_info_New?.family_status]}}
+									</ng-container>
+									</div>
+									</div>
+									<div class="edit_portfolio_field_group float-left">
+										<div class="edit_portfolio_field_group_left">
+									<img src="assets/images/list_l.png" alt="" /> No of Brother(s) 
+									</div>
+									<div class="edit_portfolio_field_group_right colonEnd">
+		
+									<div *ngIf="user_basic_info_New?.no_brother; then no_brother_yes else no_brother_no">here is
+										ignored</div>
+									<ng-template
+										#no_brother_yes>{{this.field_No_Brother_OBJ[user_basic_info_New?.no_brother]}}</ng-template>
+									<ng-template #no_brother_no>Have No Brother</ng-template>
+									</div>
+								</div>
+							
+									<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left">
+									<img src="assets/images/list_n.png" alt="" /> No of Sister(s) 
+									</div>
+									<div class="edit_portfolio_field_group_right colonEnd">
+									
+									<div *ngIf="user_basic_info_New?.no_sister; then no_sister_yes else no_sister_no">here is
+										ignored</div>
+									<ng-template
+										#no_sister_yes>{{this.field_No_Sister_OBJ[user_basic_info_New?.no_sister]}}</ng-template>
+									<ng-template #no_sister_no>Have No Sister</ng-template>
+									</div>
+									</div>
+							
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/loca.png" alt="" /> Family Location 
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+		
+									<div *ngIf="user_basic_info_New?.family_location; then family_loca_yes else family_loca_no">
+										here is ignored</div>
+									<ng-template
+										#family_loca_yes>{{this.field_Family_Location_OBJ[user_basic_info_New?.family_location]}}</ng-template>
+									<ng-template #family_loca_no>Not Specified</ng-template>
+								</div>
+								</div>
+		
+		
+		
+		
+		
+							</ul>
+						</ng-container>
+					</ng-container>
+
+					</ng-container>
+
+					
+
+				</div>
+                </div>
+
+				<div class="portfolio_view_block">
+					<div class="portfolio_view_block_sub">
+						<div class="title_sec">
+							<h2><span *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is
+									ignored</span> Hobbies</h2>
+						</div>
+	
+						<ul class="details_list">
+	
+							<!-- <li> -->
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left">
+										<img src="assets/images/list_p.png" alt="" /> Hobbies &amp; Interests 
+								<!-- <ng-container *ngFor="let item of user_hobbi?.field_Hobbies_Interests; let i = index">
+									{{item.hobby}}<ng-container *ngIf="user_hobbi?.field_Hobbies_Interests.length -1 != i">,
+									</ng-container>
+								</ng-container> -->
+								</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+	
+					<!-- <ng-container *ngIf="user_hobbi[0].hobbies_interest == ''">
+						Not Specified gggg
+					</ng-container>
+	
+					<ng-container *ngIf="user_hobbi[0].hobbies_interest != ''">
+						{{user_hobbi[0]?.hobbies_interest}}
+					</ng-container> -->
+	
+	<!-- <div *ngIf="user_hobbi?.hobbies_interest != ''; then hobbies_Inter_yes; else hobbies_Inter_no"> -->
+	
+	<div *ngIf="user_hobbi?.hobbies_interest && user_hobbi?.hobbies_interest != 'undefined' && user_hobbi?.hobbies_interest != 'null' && user_hobbi?.hobbies_interest != 'none' && user_hobbi?.hobbies_interest != ''; then hobbies_Inter_yes; else hobbies_Inter_no">
+									here is ignored
+								  </div>
+								  <ng-template #hobbies_Inter_yes>{{user_hobbi?.hobbies_interest}}</ng-template>
+								<ng-template #hobbies_Inter_no>Not Specified</ng-template>
+								</div>
+								</div>
+							<!-- </li> -->
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_r.png" alt="" /> Favourite Music Genre 
+								<!-- <ng-container *ngFor="let item of user_hobbi?.field_Music; let i = index"> -->
+								<!-- {{item.music_name+', '}} -->
+								<!-- {{item.music}}<ng-container *ngIf="user_hobbi?.field_Music.length -1 != i">, -->
+								<!-- </ng-container> -->
+								<!-- {{this.field_Music_OBJ[item]+', '}} -->
+								</div>
+								<div class="edit_portfolio_field_group_right colonEnd">
+		<!-- <div *ngIf="user_hobbi?.fav_music != ''; then field_Music_yes; else field_Music_no"> -->
+				
+					<div *ngIf="user_hobbi?.fav_music && user_hobbi?.fav_music != 'undefined' && user_hobbi?.fav_music != 'null' && user_hobbi?.fav_music != 'none'; then field_Music_yes; else field_Music_no">
+									 here is ignored
+								   </div>
+								   <ng-template #field_Music_yes>{{user_hobbi?.fav_music}}</ng-template>
+								<ng-template #field_Music_no>Not Specified</ng-template>
+							</div>
+							</div>
+							<!-- <li> -->
+								<div class="edit_portfolio_field_group float-left">
+									<div class="edit_portfolio_field_group_left"><img src="assets/images/list_t.png" alt="" /> Sports/Fitness Activities 
+								<!-- <ng-container *ngFor="let item of user_hobbi?.field_Sports; let i = index">
+								{{item.sports}} <ng-container *ngIf="user_hobbi?.field_Sports.length -1 != i">, </ng-container>
+							</ng-container>	 -->
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+	                        <div *ngIf="
+							    user_hobbi?.sports &&
+								user_hobbi?.sports != 'undefined' &&
+								user_hobbi?.sports != 'null' &&
+								user_hobbi?.sports != 'none';
+	
+	then field_Sports_yes; else field_Sports_no">
+					  here is ignored
+					</div>
+					<ng-template #field_Sports_yes>{{user_hobbi?.sports}}</ng-template>
+								<ng-template #field_Sports_no>Not Specified</ng-template>
+							</div>
+								</div>
+							<!-- </li> -->
+	
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_s.png" alt="" /> Preferred Movies 
+								<!-- <ng-container *ngFor="let item of user_hobbi?.field_Preferred_Movies; let i = index">
+								{{item.movie}} <ng-container *ngIf="user_hobbi?.field_Preferred_Movies.length -1 != i">, </ng-container>
+							</ng-container>	 -->
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<div *ngIf="
+								user_hobbi?.movie &&
+								user_hobbi?.movie != 'undefined' &&
+								user_hobbi?.movie != 'null' &&
+								user_hobbi?.movie != 'none';
+								 
+								   then Prefe_Mov_yes;
+								   else Prefe_Mov_no
+								 ">
+								 <!-- <div *ngIf="user_hobbi?.movie != ''; then Prefe_Mov_yes; else Prefe_Mov_no "> -->
+								 here is ignored
+							   </div>
+							   <ng-template #Prefe_Mov_yes>{{user_hobbi?.movie}}</ng-template>
+								<ng-template #Prefe_Mov_no>Not Specified</ng-template>
+							</div>
+							</div>
+	
+							<!-- <div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+								<img src="assets/images/list_u.png" alt="" /> Spoken Languages :
+								
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<div *ngIf="user_hobbi?.field_Spoken_Languages.length > 0; then spoken_yes else spoken_no">
+									here is ignored</div>
+								<ng-template #spoken_yes>
+	
+									<ng-container *ngFor="let item of user_hobbi?.field_Spoken_Languages; let i = index">
+									
+										{{item.lang_name}}<ng-container
+											*ngIf="user_hobbi?.field_Spoken_Languages.length -1 != i">, </ng-container>
+									</ng-container>
+								</ng-template>
+								<ng-template #spoken_no>Not Specified</ng-template>
+							</div>
+							</div> -->
+	
+						</ul>
+	
+					</div>
+				</div>
+
+				<!-- <div class="portfolio_view_block">
+				<div class="portfolio_view_block_sub">
+					<div class="title_sec">
+						<h2><span *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is
+								ignored</span> Hobbies</h2>
+					</div>
+
+					<ul class="details_list">
+
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left">
+									<img src="assets/images/list_p.png" alt="" /> Hobbies &amp; Interests 
+							
+							</div>
+						<div class="edit_portfolio_field_group_right colonEnd">
+
+<div *ngIf="user_hobbi[0]?.hobbies_interest && user_hobbi[0]?.hobbies_interest != 'null' && user_hobbi[0]?.hobbies_interest != 'none'; then hobbies_Inter_yes; else hobbies_Inter_no">
+								here is ignored
+							  </div>
+							  <ng-template #hobbies_Inter_yes>
+								{{user_hobbi[0]?.hobbies_interest}}
+								</ng-template>
+							<ng-template #hobbies_Inter_no>Not Specified</ng-template>
+							</div>
+							</div>
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"><img src="assets/images/list_r.png" alt="" /> Favourite Music Genre 
+							
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<div *ngIf="
+								user_hobbi[0]?.fav_music &&
+								user_hobbi[0]?.fav_music != 'null' &&
+								user_hobbi[0]?.fav_music != 'none';
+								   then field_Music_yes;
+								   else field_Music_no
+								 ">
+								 here is ignored
+							   </div>
+							   <ng-template #field_Music_yes>
+								 {{user_hobbi[0]?.fav_music}}
+								 </ng-template>
+							<ng-template #field_Music_no>Not Specified</ng-template>
+						</div>
+						</div>
+						
+							<div class="edit_portfolio_field_group float-left">
+								<div class="edit_portfolio_field_group_left"><img src="assets/images/list_t.png" alt="" /> Sports/Fitness Activities 
+							
+						</div>
+						<div class="edit_portfolio_field_group_right colonEnd">
+							<div *ngIf="
+                 user_hobbi[0]?.sports &&
+                 user_hobbi[0]?.sports != 'null' &&
+                 user_hobbi[0]?.sports != 'none';
+                   
+                    then field_Sports_yes;
+                    else field_Sports_no
+                  ">
+                  here is ignored
+                </div>
+                <ng-template #field_Sports_yes>
+                  {{user_hobbi[0]?.sports}}
+                  </ng-template>
+							<ng-template #field_Sports_no>Not Specified</ng-template>
+						</div>
+							</div>
+						
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">
+							<img src="assets/images/list_s.png" alt="" /> Preferred Movies 
+							
+						</div>
+						<div class="edit_portfolio_field_group_right colonEnd">
+							<div *ngIf="
+							user_hobbi[0]?.movie &&
+							user_hobbi[0]?.movie != 'null' &&
+							user_hobbi[0]?.movie != 'none';
+							 
+							   then Prefe_Mov_yes;
+							   else Prefe_Mov_no
+							 ">
+							 here is ignored
+						   </div>
+						   <ng-template #Prefe_Mov_yes>
+							 {{user_hobbi[0]?.movie}}
+							 </ng-template>
+							<ng-template #Prefe_Mov_no>Not Specified</ng-template>
+						</div>
+						</div>
+
+						
+
+					</ul>
+
+				</div>
+            </div> -->
+			
+
+
+			<!-- <div class="portfolio_view_block">
+
+				<div class="portfolio_view_block_sub">
+					<div class="title_sec">
+						<h2>
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont else her_cont"> here is ignored
+							</div> Basic Preferences
+						</h2>
+					</div>
+
+					<div class="edit_portfolio_field_group_main">
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">
+								<div *ngIf="user_basic_info_New?.gender !== 'M';then groom_cont else brid_cont">
+									here is ignored</div>
+								<ng-template #groom_cont>Groom's</ng-template>
+								<ng-template #brid_cont>Bride's</ng-template> Age
+							</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container *ngIf="partners_info[0]?.age_frm; else nobride_age">
+									{{partners_info[0].age_frm}} - {{partners_info[0].age_to}} years
+								</ng-container>
+								<ng-template #nobride_age>
+									Not Specified
+								</ng-template>
+							</div>
+						</div>
+
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left"> Marital Status </div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container *ngIf="partners_info[0]?.marital_status;else nomarital_status">
+
+									{{this.field_marital_status_OBJ[partners_info[0].marital_status]}}
+								</ng-container>
+								<ng-template #nomarital_status>
+									Not Specified
+								</ng-template>
+							</div>
+						</div>
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">Mother Tongue</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container *ngIf="partners_info[0]?.mother_tounge; else no_mother_tongue">
+									{{partners_info[0].mother_tounge}}
+								</ng-container>
+								<ng-template #no_mother_tongue>
+									Not Specified
+								</ng-template>
+							</div>
+						</div>
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">Religion</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container
+									*ngIf="partners_info[0]?.religion && partners_info[0]?.religion != '0'; else no_religion">
+									{{this.field_Religion_OBJ[partners_info[0].religion]}}
+								</ng-container>
+								<ng-template #no_religion>
+									Not Specified
+								</ng-template>
+							</div>
+						</div>
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">Country</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container *ngIf="partners_info[0]?.country_name; else no_country">
+
+									{{partners_info[0].country_name}}
+								</ng-container>
+								<ng-template #no_country>
+									Not Specified
+								</ng-template>
+							</div>
+						</div>
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">State</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container *ngIf="partners_info[0]?.state_name; else no_state">
+									{{partners_info[0].state_name}}
+								</ng-container>
+								<ng-template #no_state>
+									Not Specified
+								</ng-template>
+							</div>
+						</div>
+
+						<div class="edit_portfolio_field_group float-left">
+							<div class="edit_portfolio_field_group_left">City</div>
+							<div class="edit_portfolio_field_group_right colonEnd">
+								<ng-container *ngIf="partners_info[0]?.city_name; else no_city">
+									{{partners_info[0]?.city_name}}
+								</ng-container>
+								<ng-template #no_city>
+									Not Specified
+								</ng-template>
+							</div>
+						</div>
+
+
+
+
+					</div>
+
+				</div>
+
+
+
+
+			</div> -->
+
+			<div class="disclaimer_sec">
+				<p><img src="assets/images/checkBoxImg.png" alt="" />   I certify that the information I have provided in the registration form to
+					be true and accurate.</p>
+				<p><img src="assets/images/checkBoxImg.png" alt="" /> I understand and agree that any false or misleading information will justify
+					a deactivation of my profile by the Admin.</p>
+			</div>
+
+		</div>
+
+
+
+
+<div class="modal fade" id="sendMsgPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- <div> -->
+		<div class="modal-dialog modal_dialog_AstroPopup" role="document">
+	
+			
+	
+		  <div class="modal-content modal_Astro_cus forget_pass">
+	
+			<div *ngIf="inProgressShortPopup; else sowDataPopup" style="text-align:center; margin-top:20px;">
+				<div class="spinner-border"></div>
+				</div>
+		
+				<ng-template #sowDataPopup>
+	
+			<div class="modal-header">
+			  <!-- <h5>Send Message</h5> -->
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			
+			<div class="loginMainFrame">
+			<div class="modal-body bodyCus">
+	
+				
+				<div class="astro_popup_sec topThumSec">
+				
+					<div class="profile_match profile_match_popup_left">
+						<div class="profile_match_left_thum">
+							
+							<ng-container *ngIf="listOfFiles_single[0]?.filePath !== null; else noThumbnail">
+								<img [src]="imageBaseUrl+listOfFiles_single[0]?.filePath" alt="" srcset="">
+							</ng-container>
+							<!-- partners_Details?.gender -->
+							<!-- singlePartnDetailsPop[0]?.basic_information.value[0]?.gender -->
+							
+							<ng-template #noThumbnail>
+							<div *ngIf="user_basic_info_New?.gender == 'M';then his_cont_Thum else her_cont_Thum">
+							here is ignored</div>
+							<ng-template #his_cont_Thum><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+							<ng-template #her_cont_Thum><img src="assets/images/Fem_pro_big.png" alt="" /></ng-template>
+	
+							</ng-template>
+						</div>
+	
+						<!-- <div class="profile_match_percentage"> -->
+							<!-- <p>Match Score {{singlePartnDetailsPop_newAray?.total_marks}}%</p>
+	
+							<div class="percentage_bar">
+								<div class="percentage_bar_inner_green"
+									[style.width]="singlePartnDetailsPop_newAray?.total_marks+'%'">&nbsp;</div>
+							</div> -->
+	
+						<!-- </div> -->
+						
+						<div class="profile_match_right_thum">
+	
+							<ng-container
+								*ngIf="listOfFiles_single_login_user[0]?.filePath !==  null; else noThumbnailLoginUser">
+								<img [src]="this.imageBaseUrl +listOfFiles_single_login_user[0]?.filePath" alt=""
+									srcset="">
+							</ng-container>
+	
+							<ng-template #noThumbnailLoginUser>
+								<div *ngIf="userData_1_LoginUser[0]?.gender == 'M';then his_cont_match else her_cont_match"> here is ignored</div>
+								<ng-template #his_cont_match><img src="assets/images/male_pro_big.png" alt="" /></ng-template>
+								<ng-template #her_cont_match><img src="assets/images/Fem_pro_big.png" alt="" /> </ng-template>
+							</ng-template>
+	
+						</div>
+					</div>
+
+					<div class="profile_match_popup_right">
+				
+	
+						<div class="astro_popup_sec">
+							<h3 class="rightPercan"><img src="assets/images/astro_pop_icin_1.png" alt="" /> Profile Match</h3>
+							<div class="astro_popup_sec_percent">
+							 <p [ngStyle]="{'color': profileMarks >= 0 && profileMarks <= 29 ? '#eb0c0c' : (profileMarks >= 30 && profileMarks <= 49 ? '#ff7e00' : '#477d12')}">
+								Profile match: {{profileMarks+'%'}} 
+								<span class="percentageBarMain">
+									<span class="percentageBar" [ngStyle]="{'background-color': profileMarks >= 0 && profileMarks <= 29 ? '#eb0c0c' : (profileMarks >= 30 && profileMarks <= 49 ? '#ff7e00' : '#477d12')}" [style.width]="profileMarks+'%'"></span>
+								</span>
+								</p>
+							</div>
+							
+						</div>
+			
+						
+						
+			
+					</div>
+	
+	
+				</div>
+
+				<div class="astro_popup_sec_Full">
+				<div class="astro_popup_sec">
+					<h3 class="rightPercan"><img src="assets/images/astro_pop_icin.png" alt="" /> Astro Numerical Match 
+						
+						<!-- <span [ngStyle]="{'background-color': partner_match_Marks?.total_marks >= 0 && partner_match_Marks?.total_marks <= 29 ? '#eb0c0c' : (partner_match_Marks?.total_marks >= 30 && partner_match_Marks?.total_marks <= 49 ? '#ff7e00' : '#477d12')}">
+							{{partner_match_Marks?.total_marks}}%
+						</span>  -->
+
+						<ng-container *ngIf="partner_match_Marks?.total_marks >= 0 && partner_match_Marks?.total_marks <= 50">
+							<span style="background: #eb0c0c;">{{partner_match_Marks?.total_marks}}% Bad</span>
+						</ng-container>
+
+						<ng-container *ngIf="partner_match_Marks?.total_marks >= 51 && partner_match_Marks?.total_marks <= 59">
+							<span style="background: rgb(250, 63, 6);">{{partner_match_Marks?.total_marks}}% Average</span>
+						</ng-container>
+
+						<ng-container *ngIf="partner_match_Marks?.total_marks >= 60 && partner_match_Marks?.total_marks <= 75">
+							<span style="background:#ff7e00;">{{partner_match_Marks?.total_marks}}% Good</span>
+						</ng-container>
+
+						<ng-container *ngIf="partner_match_Marks?.total_marks >= 76 && partner_match_Marks?.total_marks <= 85">
+							<span style="background: #2bda57;">{{partner_match_Marks?.total_marks}}% Very Good</span>
+						</ng-container>
+
+						<ng-container *ngIf="partner_match_Marks?.total_marks >= 86 && partner_match_Marks?.total_marks <= 100">
+							<span style="background: #477d12;">{{partner_match_Marks?.total_marks}}% Excellent</span>
+						</ng-container>
+					
+					</h3>
+					<div class="astro_popup_sec_percent">
+
+<p [ngStyle]="{'color': partner_match_Marks?.partner?.elementMarks >= 0 && partner_match_Marks?.partner?.elementMarks <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.elementMarks >= 10 && partner_match_Marks?.partner?.elementMarks <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.elementMarks >= 20 && partner_match_Marks?.partner?.elementMarks <= 29 ? '#ff7e00' : '#477d12'))  }">
+
+						Elementary: {{partner_match_Marks?.partner?.elementMarks+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': partner_match_Marks?.partner?.elementMarks >= 0 && partner_match_Marks?.partner?.elementMarks <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.elementMarks >= 10 && partner_match_Marks?.partner?.elementMarks <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.elementMarks >= 20 && partner_match_Marks?.partner?.elementMarks <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="partner_match_Marks?.partner?.elementMarks+'%'"></span>
+					</span>
+					</p>
+	
+<p [ngStyle]="{'color': partner_match_Marks?.partner?.SunShineMatch >= 0 && partner_match_Marks?.partner?.SunShineMatch <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.SunShineMatch >= 10 && partner_match_Marks?.partner?.SunShineMatch <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.SunShineMatch >= 20 && partner_match_Marks?.partner?.SunShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }">
+							
+							Numerology: {{partner_match_Marks?.partner?.SunShineMatch+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': partner_match_Marks?.partner?.SunShineMatch >= 0 && partner_match_Marks?.partner?.SunShineMatch <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.SunShineMatch >= 10 && partner_match_Marks?.partner?.SunShineMatch <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.SunShineMatch >= 20 && partner_match_Marks?.partner?.SunShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="partner_match_Marks?.partner?.SunShineMatch+'%'"></span>
+					</span>
+					</p> 
+
+<p [ngStyle]="{'color': partner_match_Marks?.partner?.jotok_match >= 0 && partner_match_Marks?.partner?.jotok_match <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.jotok_match >= 10 && partner_match_Marks?.partner?.jotok_match <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.jotok_match >= 20 && partner_match_Marks?.partner?.jotok_match <= 29 ? '#ff7e00' : '#477d12'))  }">
+					Osto Kut: {{partner_match_Marks?.partner?.jotok_match+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': partner_match_Marks?.partner?.jotok_match >= 0 && partner_match_Marks?.partner?.jotok_match <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.jotok_match >= 10 && partner_match_Marks?.partner?.jotok_match <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.jotok_match >= 20 && partner_match_Marks?.partner?.jotok_match <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="partner_match_Marks?.partner?.jotok_match+'%'"></span>
+					</span>
+					</p>
+
+<p [ngStyle]="{'color': partner_match_Marks?.partner?.moonShineMatch >= 0 && partner_match_Marks?.partner?.moonShineMatch <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.moonShineMatch >= 10 && partner_match_Marks?.partner?.moonShineMatch <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.moonShineMatch >= 20 && partner_match_Marks?.partner?.moonShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }">
+		Moon Sign: {{partner_match_Marks?.partner?.moonShineMatch+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': partner_match_Marks?.partner?.moonShineMatch >= 0 && partner_match_Marks?.partner?.moonShineMatch <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.moonShineMatch >= 10 && partner_match_Marks?.partner?.moonShineMatch <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.moonShineMatch >= 20 && partner_match_Marks?.partner?.moonShineMatch <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="partner_match_Marks?.partner?.moonShineMatch+'%'"></span>
+					</span>
+					</p>
+					
+
+
+<p [ngStyle]="{'color': partner_match_Marks?.partner?.mongal_marks >= 0 && partner_match_Marks?.partner?.mongal_marks <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.mongal_marks >= 10 && partner_match_Marks?.partner?.mongal_marks <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.mongal_marks >= 20 && partner_match_Marks?.partner?.mongal_marks <= 29 ? '#ff7e00' : '#477d12'))  }">
+					Mongal Dosha: {{partner_match_Marks?.partner?.mongal_marks+'%'}} 
+					<span class="percentageBarMain">
+						<span class="percentageBar" [ngStyle]="{'background-color': partner_match_Marks?.partner?.mongal_marks >= 0 && partner_match_Marks?.partner?.mongal_marks <= 9 ? '#eb0c0c' : (partner_match_Marks?.partner?.mongal_marks >= 10 && partner_match_Marks?.partner?.mongal_marks <= 19 ? '#fa3f06' : (partner_match_Marks?.partner?.mongal_marks >= 20 && partner_match_Marks?.partner?.mongal_marks <= 29 ? '#ff7e00' : '#477d12'))  }" [style.width]="partner_match_Marks?.partner?.mongal_marks+'%'"></span>
+					</span>
+					</p>
+	
+	
+					</div>
+	
+				</div>
+
+			</div>
+	
+	
+			
+	
+	
+	
+			</div>
+			  
+
+	  </div>
+	  
+	</ng-template>
+	  
+	
+		  </div>
+			
+	
+		</div>
+	  </div>
+
+<!-- Modal -->
+<div class="modal fade modal_port_view" id="myModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- <div class="modal-header">
+		  <button class="close" #closebutton class="close" data-dismiss="modal"><span class="material-icons">cancel</span></button>
+		</div> -->
+			<div class="modal-body">
+				<button class="close" #closebutton data-dismiss="modal"><span
+						class="material-icons">cancel</span></button>
+				<img src="{{imgSrc}}" style="max-width:100%;cursor:pointer" class="modal-hover-opacity" />
+			</div>
+		</div>
+	</div>
+</div>

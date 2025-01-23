@@ -1,0 +1,91 @@
+
+.otpField_verify {
+    /* max-width: 600px; */
+  width: 70%;
+  margin: 0;
+  }
+
+  .otpField_verify p.title {
+    color: #0d2048 !important;
+    font-size: 16px !important;
+    margin: 0 0 6px 0 !important;
+    padding: 0;
+    font-weight: 900;
+  }
+
+  .otpField_verify .otpMain .verifyBtn {
+    padding: 0 15px;
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: 17px;
+  }
+
+  .otpField_verify button.verifyEmailBtn {
+    border: none;
+  background: linear-gradient(90deg, rgba(37,105,218,1) 0%, rgba(36,177,184,1) 100%);
+  border-radius: 50px;
+  font-size: 16px;
+  color: #fff;
+  padding: 7px 40px;
+  font-family: 'Cabin', sans-serif;
+  cursor: pointer;
+  line-height: 18px;
+  margin-top: 6px;
+  }
+
+  .otpField_verify .otpMain{width: 100%;
+    display: inline-block;
+    position: relative;
+    background: #f2f1f1;
+    border-radius: 15px;
+    padding-top: 10px;
+    margin-top: 10px !important;}
+  .otpField_verify .otp{padding: 0 15px;
+    float: left;
+    width: 51%;
+    box-sizing: border-box;}
+  .otpField_verify .otp p{margin: 0; text-align: left;}
+  .otpField_verify .timer{padding: 0 15px; float: left; width: 25%; box-sizing: border-box;}
+  .otpField_verify .resendOtp{padding: 36px 15px 0 15px;
+    float: left;
+    width: 49%;
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;}
+    .otpField_verify .resendOtp i{margin-right: 10px;}
+    .otpField_verify .resendOtp button{border: none;
+      background: #bf5e23;
+      border-radius: 3px;
+      margin-right: 6px;
+      font-size: 14px;
+      color: #fff;
+      padding: 4px 11px;
+      font-family: 'Cabin', sans-serif;
+      cursor: pointer;
+      line-height: 20px;}
+   .otpField_verify .resendOtp button:disabled{background: #b8754c;}
+      
+  
+    .otpField_verify .otpExpair{padding: 0 15px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 5px;
+      display: inline-block;
+      left: 0;
+      bottom: -23px;}
+    .otpField_verify .otpExpair span{
+      width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    color: #d9162a;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 700;
+    background: #ffcacf;
+    line-height: 22px;
+    border-radius: 5px;}
+
+    .example-full-width-pan input{
+      text-transform: uppercase;
+    }
