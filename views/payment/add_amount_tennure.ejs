@@ -1,0 +1,98 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <i class='fa fa-plus-circle' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">Add Tennure & Month</span style="font-size: 25px;"></i>&nbsp;
+            <ul class="breadcrumb">
+              <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+              <li><a href="/payment/subscription_amount">Tennure & Month</a></li>&nbsp; / &nbsp;
+              <li>Add Tennure & Month</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/payment/save_amount" class="">
+                <div class="row mb-2">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label style="font-size: 18px;">Select Type</label>
+                    <select class="custom-select" id="dropdown" name="sub_id">
+                      <option selected="" value="">Select Type</option>
+                      <% if(type_list.length > 0){
+                        type_list.forEach(dt => {
+                          var selected = ''
+                          if(id > 0)
+                            if(amountList[0].sub_id == dt.id)
+                              selected = 'selected'
+                           %>
+                            <option value="<%= dt.id %>" <%= selected %>><%= dt.pay_name %></option>
+                        <%})
+                         } %>
+                    </select>
+                  </div> 
+                   </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="exampleSelectBorder">Actual Price</label>
+                      <input class="form-control" id="actual_price_data" name="actual_price" type="number" placeholder="Actual Price" value="<%= id > 0 ? amountList[0].actual_price : 0 %>">
+                    </div> 
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="exampleSelectBorder">Discount</label>
+                        <input class="form-control" id="discount_data" name="discount" type="number" placeholder="Discount" value="<%= id > 0 ? amountList[0].discount : 0 %>">
+                      </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="exampleSelectBorder">Amount</label>
+                      <input class="form-control" id="amount_data" name="amount" type="number" placeholder="Amount" value="<%= id > 0 ? amountList[0].amount : 0 %>">
+                    </div> 
+                    </div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="exampleSelectBorder">Tennue(In Month)</label>
+                        <input class="form-control" id="tennure_data" name="tennure" type="number" placeholder="Tennue" value="<%= id > 0 ? amountList[0].tennure_period : 0 %>">
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                     <div class="col-12">
+                      <input type="hidden" name="id" value="<%= id > 0 ? id : 0 %>">
+                    <button class="btn btn-primary" type="submit" style="margin-left: 35vw;">Submit</button>
+                   </div>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+ $(document).ready(function() {
+            $('#actual_price_data, #discount_data').on('input', function() {
+                // Get the values of the actual price and discount input fields
+                var actualPrice = parseFloat($('#actual_price_data').val()) || 0;
+                var discount = parseFloat($('#discount_data').val()) || 0;
+
+                // Calculate the discounted amount
+                var discountedAmount = actualPrice - (actualPrice * (discount / 100));
+
+                // Populate the discounted amount input field with the result
+                $('#amount_data').val(discountedAmount.toFixed(2));
+            });
+        });
+</script>

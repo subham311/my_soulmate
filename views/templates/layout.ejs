@@ -1,0 +1,18 @@
+<% if(path != '/login'){ %>
+<%- include('header.ejs') %>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <%- include('topbar.ejs') %>
+        <%- include('sidebar.ejs') %>
+        <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <%- body %>
+            </div>
+        <!-- /.content-wrapper -->
+<%- include('footer.ejs') %>
+<% }else{ %>
+    <%- include('login_header.ejs') %>
+    <%- body %>
+    <%- include('login_footer.ejs') %>
+<% } %>
+        

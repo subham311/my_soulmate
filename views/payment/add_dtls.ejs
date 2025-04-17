@@ -1,0 +1,124 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <i class='fa fa-plus-circle' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">Add Details</span style="font-size: 25px;"></i>&nbsp;
+            <ul class="breadcrumb">
+              <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+              <li><a href="/payment/subscription_dtls">Subscription Details</a></li>&nbsp; / &nbsp;
+              <li>Add Details</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/payment/save_dtls" class="">
+                <div class="row mb-2">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label style="font-size: 18px;">Select Type</label>
+                    <select class="custom-select" id="dropdown" name="sub_id">
+                      <option selected="" value="">Select Type</option>
+                      <% if(type_list.length > 0){
+                        type_list.forEach(dt => {
+                          var selected = ''
+                          if(sub_id > 0 && sub_id == dt.id)
+                            selected = 'selected'
+                          %>
+                            <option value="<%= dt.id %>" <%= selected %>><%= dt.pay_name %></option>
+                        <%})
+                         } %>
+                    </select>
+                  </div> 
+                   </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-12">
+                    <table class="table table-bordered table-striped" id="table">
+                      <thead>
+                          <tr>
+                              <th><h4>Subscription Details</h4></th>
+                              <th>
+                                  <button type="button" class="btn btn-success" onclick="add_tb_row()">Add&nbsp;&nbsp;<i class="fa fa-plus-circle"></i></button>
+                              </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <% if(sub_id > 0){
+                          if(res_dt.length > 0){
+                            var i = 1
+                            res_dt.forEach(dt => { %>
+                              <tr id="tr_<%= i %>">
+                                <td>
+                                  <textarea class="form-control" row="3" id="dtls" name="dtls" placeholder="Write something here...."><%= dt.subscription_dtls %></textarea>
+                                </td>
+                                <td>
+                                  <button type="button" class="btn btn-danger" onclick="del_row('<%= i %>')" style ="margin-left:5vw"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                </td>
+                              </tr>
+                            <% i++; })
+                          }else{ %> 
+                            <tr id="tr_1">
+                              <td>
+                                <textarea class="form-control" row="3" id="dtls_1" name="dtls" placeholder="Write something here...."></textarea>
+                              </td>
+                              <td>
+                                <button type="button" class="btn btn-danger" onclick="del_row(1)" style ="margin-left:5vw"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                              </td>
+                            </tr>
+                        <% }
+                        }else{ %> 
+                          <tr id="tr_1">
+                            <td>
+                              <textarea class="form-control" row="3" id="dtls_1" name="dtls" placeholder="Write something here...."></textarea>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-danger" onclick="del_row(1)" style ="margin-left:5vw"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                          </tr>
+                        <% } %>
+                        
+                      </tbody>
+                  </table>
+                  </div>
+                </div>
+                <input type="hidden" name="sub_id_input" value="<%= sub_id %>">
+                <div class="row">
+                     <div class="col-12">
+                    <button class="btn btn-primary" type="submit" style="margin-left: 35vw;">Submit</button>
+                   </div>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  function add_tb_row() {
+    var next_id = $(`#table tbody tr`).length + 1
+    $(`#table tbody:last`).append(`
+    <tr id="tr_${next_id}">
+        <td>
+          <textarea class="form-control" row="3" id="dtls_${next_id}" name="dtls" placeholder="Write something here...."></textarea>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger"
+            onclick="del_row(${next_id})" style ="margin-left:5vw"><i class="fa fa-trash" aria-hidden="true"></i></button>    
+        </td>
+    </tr>
+    `);
+  }
+  function del_row(id){
+    if (confirm('Are you sure you want to delete?')) {
+      $(`#tr_${id}`).remove()
+    }
+  }
+  </script>
+

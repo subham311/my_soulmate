@@ -1,0 +1,457 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+            <i class='fas fa-user-edit' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">User Details</span style="font-size: 25px;"></i>&nbsp;
+          <ul class="breadcrumb">
+            <li><a href="/user/user_list">User Lists</a></li>&nbsp; / &nbsp;
+            <li>User Details</li>
+          </ul>
+        </div>
+        <!-- <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">DataTables</li>
+          </ol>
+        </div> -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <!-- <div class="card-header">
+                  <h3 class="card-title">DataTable with default features</h3>
+                </div> -->
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <!-- <div class="portfolio_details_block"> -->
+                  <div class="row" style="background-color: aliceblue;
+                  width: 76vw;
+                  border: 2px solid #dc3545;
+                  padding: 17px;
+                  border-radius: 18px;">
+                    <h6 style="background-color: #d81b60; width: 141px; color: white; border: 15px;  padding:5px; border-radius: 8px;"><i class='fas fa-address-card'>&nbsp;User Basic Info</i></h6>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Profile ID:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].profile_id : '' %></span>
+                            <input type="hidden" name="pro_id" id="pro_id" value="<%= basic_info.length > 0 ?  basic_info[0].profile_id : '' %>">
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">User Name:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].u_name : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Phone NO:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ? basic_info[0].phone_no : '' %></span>
+                            <input type="hidden" name="phone_no" id="phone_no" value="<%= basic_info.length > 0 ? basic_info[0].phone_no : '' %>">
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Email:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].email_id : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Gender:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].gender ? gender[basic_info[0].gender] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Birth Location:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].location_id : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">DOB:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].dob.toLocaleString() : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6"> 
+                        <p>
+                            <span class="font-weight-bold">Lives In:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].country_name : '' %>,<%= basic_info.length > 0 ?  basic_info[0].state_name : '' %>,<%= basic_info.length > 0 ?  basic_info[0].city_name : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">A/c for:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].ac_for ? ac_for[basic_info[0].ac_for] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Mother Tounge:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].mother_tong : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Religion:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].religion ? religion[basic_info[0].religion] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Cast:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].caste_name : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Maritual Status:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].marital_status ? mari_status[basic_info[0].marital_status] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Height:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ? (basic_info[0].height ? height[basic_info[0].height] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Weight:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ? (basic_info[0].weight ? weight[basic_info[0].weight] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Family Status:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].family_status ? fam_status[basic_info[0].family_status] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Family Type:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].family_type ? fam_type[basic_info[0].family_type] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Family Values:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].family_values ? fam_value[basic_info[0].family_values] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Disability:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].disability_flag ? disable[basic_info[0].disability_flag] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Body Type:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ? ( basic_info[0].body_type ? bod_type[ basic_info[0].body_type] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Drinking Habbit:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].drinking_habbits ? dri_hab[basic_info[0].drinking_habbits] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Eating Habbit:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].eating_habbits ? eat_hab[basic_info[0].eating_habbits] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">smoking Habbit:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].smoking_habbits ? smoke_hab[basic_info[0].smoking_habbits] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">No of Sister(s):</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].no_sister ? no_of_sis[basic_info[0].no_sister] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">No of brother(s):</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].no_brother ? no_of_bro[basic_info[0].no_brother] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Father Occupation:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].father_occupation ? father_occ[basic_info[0].father_occupation] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Mother Occupation:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  (basic_info[0].mother_occupation ? mother_occ[basic_info[0].mother_occupation] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Family Location:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ? ( basic_info[0].family_location ? fam_loc[ basic_info[0].family_location] : '') : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <p>
+                            <span class="font-weight-bold">About my family:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].about_my_family : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-12">
+                        <p>
+                            <span class="font-weight-bold">About us:</span>
+                            <span class="pl-2"><%= basic_info.length > 0 ?  basic_info[0].about_us : '' %></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3" style="background-color: aliceblue;
+            width: 76vw;
+            border: 2px solid #dc3545;
+            padding: 17px;
+            border-radius: 18px;">
+                    <h6 style="background-color: #d81b60; width: 151px; color: white; border: 15px;  padding:5px;border-radius: 8px"><i class='fas fa-user-lock'>&nbsp;Professional Info</i></h6>
+                    <div class="row mt-3">
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Highest Education:</span>
+                            <span class="pl-2"><%= groom_loc.length > 0 ?  groom_loc[0].education_name : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Occupation:</span>
+                            <span class="pl-2"><%= groom_loc.length > 0 ?  groom_loc[0].occu_name : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Annual Income:</span>
+                            <span class="pl-2"><%= groom_loc.length > 0 ?  groom_loc[0].income_name : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Work Location:</span>
+                            <span class="pl-2"><%= groom_loc.length > 0 ?  groom_loc[0].work_location_name : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Employed Type:</span>
+                            <span class="pl-2"><%= groom_loc.length > 0 ?  (groom_loc[0].emp_type ? emp_in[groom_loc[0].emp_type] : '') : '' %></span>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="row mt-3" style="background-color: aliceblue;
+                width: 76vw;
+                border: 2px solid #dc3545;
+                padding: 17px;
+                border-radius: 18px;">
+                <div class="col-md-12">
+                    <h6 style="background-color: #d81b60; width: 167px; color: white; border: 15px;  padding:5px; border-radius: 8px"><i class="fas fa-heart">&nbsp;Hobbies & Interest</i></h6>
+                </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Hobbies & Interests:</span>
+                            <span class="pl-2"><%= hobbies.length > 0 ? hobbies[0].hobbies_interest : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Favourite Music(s):</span>
+                            <span class="pl-2"><%= hobbies.length > 0 ? hobbies[0].fav_music : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Sports/Fitness Activities:</span>
+                            <span class="pl-2"><%= hobbies.length > 0 ? hobbies[0].sports : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Preffered Movie(s):</span>
+                            <span class="pl-2"><%= hobbies.length > 0 ? hobbies[0].movie : '' %></span>
+                        </p>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <p>
+                            <span class="font-weight-bold">Spoken Language(s):</span>
+                            <span class="pl-2"><%# hobbies['field_Spoken_Languages'] ?  hobbies['field_Spoken_Languages'] : '' %></span>
+                        </p>
+                    </div> -->
+                </div>
+                <div class="row mt-3" style="background-color: aliceblue;
+                width: 76vw;
+                border: 2px solid #dc3545;
+                padding: 17px;
+                border-radius: 18px;">
+                    <div class="col-12">
+                        <h6 style="background-color: #d81b60; width: 141px; color: white; border: 15px;  padding:6px; border-radius: 8px"><i class="fas fa-layer-group">&nbsp;Documents Info</i></h6>
+                    </div>
+                    <div class="col-4">
+                        <p>
+                            <span class="font-weight-bold">Document Type:</span>
+                            <span class="pl-2"><%= doc_type.length > 0 ?  doc_type[0].doc_type : '' %></span>
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <span class="font-weight-bold">Document Verification:</span>
+                        <div class="custom-control custom-switch">
+                            <div class="">
+                            <input type="checkbox" class="custom-control-input" id="toggleButton" <%= basic_info.length > 0 ? (basic_info[0].profile_verify_flag != 'N' ? 'checked' : '') : '' %>>
+                            <label class="custom-control-label" for="toggleButton">
+                                <span id="status"><%= basic_info.length > 0 ? (basic_info[0].profile_verify_flag != 'N' ? 'Verified' : 'Not Verified') : '' %></span>
+                            </label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <span class="font-weight-bold">Profile Active:</span>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="ac_active_flag" <%= basic_info.length > 0 ? (basic_info[0].active_flag != 'N' ? 'checked' : '') : '' %>>
+                            <label class="custom-control-label" for="ac_active_flag">
+                                <span id="ac_status"><%= basic_info.length > 0 ? (basic_info[0].active_flag != 'N' ? 'Active' : 'Deactive') : '' %></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-6 row">
+                        <div class="col-md-12 mb-3">
+                            <span class="font-weight-bold">Document:</span>
+                        </div>
+                        <div class="col-md-12">
+                            <% if(doc_file.length > 0){
+                                doc_file.forEach(fdt => {
+                                    var fileType = fdt.file_path.split('.');
+                                    fileType = fileType[fileType.length-1]
+                                    %>
+                                    <!-- <div class="col-md-3"> -->
+                                        <% if (fileType === 'pdf') { %>
+                                            <a href="https://api.mysoulmate.co.in//uploads/<%= fdt.file_path %>" target="_blank"><img src="/img/pdf_logo.png" alt="" width="50" height="50"></a>
+                                            <!-- <iframe src ="https://api.mysoulmate.co.in//uploads/<%= fdt.file_path %>" width="100%" height="400px"></iframe> -->
+                                        <% } else if (fileType == 'png' || fileType == 'jpg' || fileType == 'jpeg') { %>
+                                            <img src="https://api.mysoulmate.co.in//uploads/<%= fdt.file_path %>" alt="" srcset="" width="50" height="50">
+                                        <% } else { %>
+                                            <p>Unsupported file type</p>
+                                        <% } %>
+                                <%})
+                            } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3" style="background-color: aliceblue;
+                width: 76vw;
+                border: 2px solid #dc3545;
+                padding: 17px;
+                border-radius: 18px;">
+                <div class="col-md-12 mb-3">
+                    <h6 style="background-color: #d81b60; width: 83px; color: white; border: 15px;  padding:6px; border-radius: 8px"><i class="fas fa-camera">&nbsp;Images</i></h6>
+                </div>
+                <!-- <div class="row"> -->
+                    <% if(profile_img.length > 0){
+                        profile_img.forEach(dt => {
+                            if(dt.file_path){%>
+                            <div class="col-md-1">
+                                <img src="https://api.mysoulmate.co.in/uploads/<%= dt.file_path %>" alt="" srcset="" width="50" height="50">
+                            </div>
+                        <%}})
+                    }
+                    if(multiple_photo.length > 0){
+                        multiple_photo.forEach(hdt => {
+                            if(hdt.file_path){ %>
+                            <div class="col-md-1">
+                                <img src="https://api.mysoulmate.co.in/uploads/<%= hdt.file_path %>" alt="" srcset="" width="50" height="50">
+                            </div>
+                        <%}})
+                    }
+                    if(!profile_img[0].file_path && multiple_photo.length == 0) { %>
+                        <p>No image uploaded</p>
+                   <% } %>
+                </div>
+                <div class="row mt-3" style="background-color: aliceblue;
+                width: 76vw;
+                border: 2px solid #dc3545;
+                padding: 17px;
+                border-radius: 18px;">
+                    <div class="col-md-12 mb-3">
+                        <h6 style="background-color: #d81b60; width: 108px; color: white; border: 15px;  padding:6px; border-radius: 8px"><i class="fas fa-trash-alt">&nbsp;Delete Info</i></h6>
+                    </div>
+                    <form method="POST" action="/user/delete" class="">
+                        <div class="row">
+                            <div class="col-sm-12">
+                            <!-- select -->
+                                <div class="form-group">
+                                    <label>Reason</label>
+                                    <select class="custom-select" name="resn_id">
+                                        <option value="">Select</option>
+                                        <option value="1">Found my Match on Mysoulmate</option>
+                                        <option value="2">Too many junk calls</option>
+                                        <option value="3">Unable to edit Profile details</option>
+                                        <option value="4">Found my Match elsewhere</option>
+                                        <option value="5">Unhappy with Matches</option>
+                                        <option value="6">Misuse of Profiles</option>
+                                        <option value="7">Other Reason</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <!-- textarea -->
+                            <div class="form-group">
+                            <label>Remarks</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter Remarks Here ....."  name="remarks"></textarea>
+                            </div>
+                        </div>
+                            <div class="col-12">
+                                <input type="hidden" name="id" value="<%= id > 0 ? id : 0 %>">
+                                <button class="btn btn-danger" type="submit" style="margin-left: 30vw;">Delete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <input type="hidden" name="userTableId" id="userTableId" value="<%= id %>">
+                  <!-- </div> -->
+                  <!-- <div class="row mt-3" style="background-color: aliceblue;
+                width: 76vw;
+                border: 2px solid #dc3545;
+                padding: 17px;
+                border-radius: 18px;">
+                  <h6 style="height: 3vw;background-color: #d81b60; width: 283px; color: white; border: 15px;  padding:6px; border-radius: 8px;"><i class="fas fa-paperclip">&nbsp;Documents Verification</i></h6>
+                    <div class="col-md-12">
+                    <div class="col-6">
+                        <span class="font-weight-bold">Document Verify:
+                        </span>
+                            <div class="">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control custom-switch" for="customSwitch1">Not Verified</label>
+                              </div>
+                    </div>
+                </div>
+                  </div> -->
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section> 

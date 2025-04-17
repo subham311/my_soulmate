@@ -1,0 +1,160 @@
+
+<!-- Content Wrapper. Contains page content -->
+<!-- <div class="content-wrapper"> -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <i class='fas fa-users' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">User Lists</span style="font-size: 25px;"></i>&nbsp;
+              <ul class="breadcrumb">
+                <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+                <li>User Lists</li>
+              </ul>
+            </div>
+          <!-- <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
+          </div> -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+     <!-- Main content -->
+     <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <!-- <div class="card-header">
+                      <h3 class="card-title">DataTable with default features</h3>
+                    </div> -->
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <!-- <div class="col-sm-6">
+                        
+                        <div class="form-group clearfix">
+                          <div class="icheck-primary d-inline">
+                            <input type="radio" id="default" name="payflag" value="A"  checked>
+                            <label for="default">
+                              Default
+                            </label>
+                          </div>
+                          <div class="icheck-primary d-inline">
+                            <input type="radio" id="no" name="payflag" value="N">
+                            <label for="no">
+                              Free
+                            </label>
+                          </div>
+                          <div class="icheck-primary d-inline">
+                            <input type="radio" id="basic" name="payflag" value="B">
+                            <label for="basic">Basic</label>
+                          </div>
+                          <div class="icheck-primary d-inline">
+                            <input type="radio" id="standard" name="payflag" value="S">
+                            <label for="standard">Standard</label>
+                          </div>
+                          <div class="icheck-primary d-inline">
+                            <input type="radio" id="premium" name="payflag" value="P">
+                            <label for="premium">Premium</label>
+                          </div>
+                        </div>
+                      </div> -->
+                      <table id="" class="table table-bordered table-striped dataTables">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>User ID</th>
+                          <!-- <th>Profile Image</th> -->
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Phone No</th>
+                          <th>Subscription Status</th>
+                          <th>Active Status</th>
+                          <th>Action</th>
+                          <th>Invoice</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% if(data.length > 0){
+                          var i = 1
+                          data.forEach(dt => { %>
+                            <tr>
+                              <td><%= i %></td>
+                              <td><%= dt.profile_id %></td>
+                              <!-- <td><a href="https://api.mysoulmate.co.in//uploads/<%= dt.file_path %>" target="_blank"><img src="https://api.mysoulmate.co.in//uploads/<%= dt.file_path %>" alt="" srcset="" width="50" height="50"></a></td> -->
+                              <!-- <td><img src="https://api.mysoulmate.co.in/uploads/<%= dt.file_path %>" alt="" srcset="" width="50" height="50" style="cursor: pointer;"></td> -->
+                              <td><%= dt.u_name %></td>
+                              <td><%= dt.email_id %></td>
+                              <td><%= dt.phone_no %></td>
+                              <td><%= dt.pay_flag=='Y' ? dt.plan_id : 'Free' %></td>
+                              <td><%= dt.active_flag == 'Y' ? 'Active' : 'Deactive' %></td>
+                              <td><a class="btn btn-primary view-button" href="/user/view_user?id=<%= dt.id %>"><i class='fas fa-eye'></i</a></td>
+                              <td><a class="btn btn-primary view-button" href="/invoice/invoice_download"><i class="fa fa-download"></i></a></button></td>  
+                            </tr>
+                          <% i++; })
+                        } %>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+  
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script>
+  var columns = [];
+  $(document).ready(function(){
+    $('input[name="payflag"]').on('change',function(){
+      console.log($(this).val());
+      $.ajax({
+        url:'/user/update_pay_flag',
+        method: 'POST',
+        data: {payflag: $(this).val()},
+        success: function(result){
+          console.log(result);
+          var data = result.msg
+          for(let dt of data){
+            
+          }
+          // columnNames = result.suc.msg
+          // for(var i in columnNames){
+          //   columns.push({
+          //     data: columnNames[i],
+          //     title: columnNames[i]
+          //   });
+          // }
+          // $('#dataTables').DataTable({    
+          //               "processing": true, // for show progress bar
+          //               "serverSide": false, // for process server side
+          //               "filter": false, // this is for disable filter (search box)
+          //               "orderMulti": true, // for disable multiple column at once
+
+          //               "data":  result.suc.msg,
+          //               "columns": columns
+          //           });
+        },
+        error: function(err){
+          console.log(err);
+        }
+      });
+    })
+    })
+</script>  -->
+
+<!-- <script>
+$('input[type=radio]').change(function(){
+        var value = $( 'input[name=payflag]:checked' ).val();
+        // alert(value);
+    });
+</script> -->
+    <!-- </div> -->

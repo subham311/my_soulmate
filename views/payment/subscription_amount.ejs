@@ -1,0 +1,73 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <i class='fas fa-rupee-sign' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">Tennure & Amount</span style="font-size: 25px;"></i>&nbsp;
+            <ul class="breadcrumb">
+              <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+              <li>Tennure & Amount</li>
+            </ul>
+          </div>
+        <!-- <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">DataTables</li>
+          </ol>
+        </div> -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <!-- <div class="card-header">
+                  <h3 class="card-title">DataTable with default features</h3>
+                </div> -->
+                <!-- /.card-header -->
+                <div class="row mt-3">
+                      <div class="col-12">
+                        <!-- <button type="button" class="btn btn-light" style="border-radius: 9px; margin-left: 71vw;"><a href="/payment/add_type">Add Type</a></button> -->
+                        <a href="/payment/add_amount" class="btn btn-primary" style="margin-left: 64vw; border-radius: 7px;">Add Tennure & Month</a>
+                      </div>
+                    </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-striped example2">
+                    <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                      <th>Tennure</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>                     
+                      <% if(amount_data.msg.length > 0){
+                        var i = 1
+                        amount_data.msg.forEach(dt => { %>
+                      <tr>
+                        <td><%= i %></td>
+                        <td><%= dt.pay_name %></td>
+                        <td><%= dt.amount %></td>
+                        <td><%= dt.tennure_period %></td>
+                        <td><a class="btn btn-primary view-button" href="/payment/add_amount?id=<%= dt.id %>"><i class='fas fa-eye'></i</a></td>
+                      </tr>
+                    <% i++; })
+                    } %>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>

@@ -1,0 +1,63 @@
+ <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <i class='fas fa-edit' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">Edit User Lists</span style="font-size: 25px;"></i>&nbsp;
+              <ul class="breadcrumb">
+                <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+                <li>Edit User Lists</li>
+              </ul>
+            </div>
+        
+        </div>
+      </div>
+    </section>
+
+     <!-- Main content -->
+     <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <table id="" class="table table-bordered table-striped dataTables">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>User ID</th>
+                          <th>Profile ID</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% if(data.length > 0){
+                          var i = 1
+                          data.forEach(dt => { %>
+                            <tr>
+                              <td><%= i %></td>
+                              <td><%= dt.user_id %></td>
+                              <td><%= dt.profile_id %></td>
+                              <td><%= dt.u_name %></td>
+                              <td><%= dt.email_id %></td>
+                              <td><a class="btn btn-primary view-button" href="/user/edit_user_list?id=<%= dt.user_id %>"><i class='fas fa-eye'></i></a></td>
+                            </tr>
+                          <% i++; })
+                        } %>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+  
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

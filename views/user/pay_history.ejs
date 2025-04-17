@@ -1,0 +1,76 @@
+
+<!-- Content Wrapper. Contains page content -->
+<!-- <div class="content-wrapper"> -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <i class='fas fa-users' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">User Payment History</span style="font-size: 25px;"></i>&nbsp;
+                <ul class="breadcrumb">
+                  <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+                  <li>User Payment History</li>
+                </ul>
+              </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+       <!-- Main content -->
+       <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                  <div class="card">
+                      <div class="card-body">
+                        <table id="payTable" class="table table-bordered table-striped dataTables">
+                          <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Profile ID</th>
+                            <th>Name</th>
+                            <th>Tnx Date</th>
+                            <th>Order ID</th>
+                            <th>Plan</th>
+                            <th>Amount</th>
+                            <th>Expiry Date</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <% var tot_amt = 0; if(data.length > 0){
+                            var i = 1
+                            data.forEach(dt => {
+                              tot_amt += dt.amount; %>
+                              <tr>
+                                <td><%= i %></td>
+                                <td><%= dt.profile_id %></td>
+                                <td><%= dt.u_name %></td>
+                                <td><%= dt.tnx_date.toLocaleString() %></td>
+                                <td><%= dt.order_id %></td>
+                                <td><%= dt.pay_name %></td>
+                                <td><%= dt.amount %></td>
+                                <td><%= dt.expire_dt.toLocaleString() %></td>
+                              </tr>
+                              
+                            <% i++; })
+                          } %>
+                          </tbody>
+                        </table>
+                        <div class="row mb-2">
+                          <div class="col-sm-6">
+                            <h5><b>Total Amount: <%= tot_amt %></amount></b></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+    
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

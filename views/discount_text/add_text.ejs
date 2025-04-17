@@ -1,0 +1,60 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <i class='fas fa-pencil-alt' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">Add Discount Text</span style="font-size: 25px;"></i>&nbsp;
+            <ul class="breadcrumb">
+              <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+              <li><a href="/discount/discount_text_add">Discount Text</a></li>&nbsp; / &nbsp;
+              <li>Add Discount Text</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </section>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/discount/save_text" class="">
+                <div class="row mb-2">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="exampleSelectBorder" style="font-size: 18px;">Add Discount Text</label>
+                    <textarea class="form-control" rows="3" id="dtls" name="dtls" placeholder="Write something here...."><%= data.discount_text %></textarea>
+                </div>
+                
+                   </div>
+                   <div class="col-12">
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input 
+                                type="checkbox" 
+                                class="custom-control-input" 
+                                id="active_flag" 
+                                name="active_flag" 
+                                value="Y" 
+                                <%= data.active_flag == 'Y' ? 'checked' : '' %>>
+                            <label class="custom-control-label" for="active_flag">
+                                <span id="active_flag_status"><%= data.active_flag == 'Y' ? 'Active' : 'Deactive' %></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+                <div class="row">
+                     <div class="col-12">
+                      <input type="hidden" name="id" value="<%= id > 0 ? id : 0 %>">
+                    <button class="btn btn-primary" type="submit" style="margin-left: 40vw;">Submit</button>
+                   </div>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+

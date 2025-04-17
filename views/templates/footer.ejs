@@ -1,0 +1,282 @@
+<div class="modal fade" id="imgPreviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="" alt="" id="imagePreview" width="100%" height="100%">
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="main-footer">
+    <!-- <strong>Copyright &copy; 2023-2024 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> -->
+    <strong>  All rights reserved © 2023-2024 <a href="http://soulmate.opentech4u.co.in/#/home">Soulmate</a>.</strong>
+    <!-- All rights reserved. -->
+    <div class="float-right d-none d-sm-inline-block">
+      <!-- <b>Version</b> 3.1.0-rc -->
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Bootstrap Switch -->
+<script src="/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+<!-- Summernote -->
+<script src="/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/js/pages/dashboard.js"></script>
+<script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js" integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous"></script>
+<!-- Summernote -->
+<script src="/plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    // CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+    //   mode: "htmlmixed",
+    //   theme: "monokai"
+    // });
+  })
+</script>
+<script>
+$("input[data-bootstrap-switch]").each(function(){
+  $(this).bootstrapSwitch('state', $(this).prop('checked'));
+});
+</script>
+<script>
+  $(function () {
+    // $("#example1").DataTable({
+    //   "responsive": true, "lengthChange": false, "autoWidth": false,
+    //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('.dataTables').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+<script>
+  $(function () {
+    // $("#example1").DataTable({
+    //   "responsive": true, "lengthChange": false, "autoWidth": false,
+    //   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+<script>
+  $('img').on('click', function(e) {
+    $('#imgPreviewModal').modal('show')
+    $('#imagePreview').attr('src', e.target.attributes.src.value)
+    // console.log(e.target.attributes.src.value);
+  })
+</script>
+<!-- <script>
+  $('.ac_active_flag').on('change', function(){
+    console.log($(this).attr('data-user-id'));
+    $.ajax({
+      url:'/user/update_active_flag',
+      method: 'POST',
+      data: {flag: $(this).val(), id: $(this).attr('data-user-id')},
+      success: function(result){
+        console.log(result);
+      },
+      error: function(err){
+        console.log(err);
+      }
+    })
+  })
+</script> -->
+<script>
+    $(document).ready(function(){
+        $('#toggleButton').click(function(){
+          // $('.alert').show()
+          if(confirm('Do you want to continue?')){
+            // alert("This is an alert message!"); 
+              // $('#status').toggle();
+              var status = 'N'
+              if ($('#toggleButton').is(':checked')) {
+                  $('#status').text('Verified');
+                  status = 'Y'
+              } else {
+                  $('#status').text('Not Verified');
+                  status = 'N'
+              }
+              
+              $.ajax({
+                    url:'/user/update_profile_verify',
+                    method: 'POST',
+                    data: {flag:status, id: $('#userTableId').val(), phone: $('#phone_no').val(), pro_id: $('#pro_id').val()},
+                    success: function(result){
+                      console.log(result);
+                    },
+                    error: function(err){
+                      console.log(err);
+                    }
+                  })
+                }else{
+                  return false;
+                }
+              });
+      });
+</script>
+<script>
+  $(document).ready(function(){
+      $('#ac_active_flag').click(function(){
+          // $('#status').toggle();
+          if(confirm('Do you want to continue?')){
+
+            var ac_status = 'N'
+            if ($('#ac_active_flag').is(':checked')) {
+                $('#ac_status').text('Active');
+                ac_status = 'Y'
+            } else {
+                $('#ac_status').text('Deactive');
+                ac_status = 'N'
+            }
+            
+            $.ajax({
+                url:'/user/update_active_flag',
+                method: 'POST',
+                  data: {flag:ac_status, id: $('#userTableId').val(), phone: $('#phone_no').val(), pro_id: $('#pro_id').val()},
+                  success: function(result){
+                    console.log(result);
+                  },
+                  error: function(err){
+                    console.log(err);
+                  }
+                })
+          }else{
+            return false;
+          }
+      });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+      $('#active_flag').click(function(){
+          // $('#status').toggle();
+            var ac_status = 'N'
+            if ($('#active_flag').is(':checked')) {
+              $('#active_flag_status').text('Active');
+              ac_status = 'Y'
+            } else {
+              $('#active_flag_status').text('Deactive');
+              ac_status = 'N'
+            }
+            $(this).val(ac_status)
+      });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+      $('#ac_check_flag').click(function(){
+          if(confirm('Do you want to continue?')){
+
+            var ac_status = 'U'
+            if ($('#ac_check_flag').is(':checked')) {
+                $('#ac_status').text('Checked');
+                ac_status = 'C'
+            } else {
+                $('#ac_status').text('Unchecked');
+                ac_status = 'U'
+            } 
+            
+            $.ajax({
+                url:'/user/update_view_flag',
+                method: 'POST',
+                  data: {flag:ac_status, id: $('#userTableId').val(), user_name: $('#user_name').val(), email: $('#user_email').val()},
+                  success: function(result){
+                    console.log(result);
+                  },
+                  error: function(err){
+                    console.log(err);
+                  }
+                })
+          }else{
+            return false;
+          }
+      });
+  });
+</script>
+<!-- <script>
+  var socket = io("http://localhost:3000")
+  socket.on("connect", () => {
+    console.log(socket.id);
+  console.log(socket.connected); // true
+});
+</script> -->
+</body>
+</html>

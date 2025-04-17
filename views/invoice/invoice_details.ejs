@@ -1,0 +1,187 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <i class='fas fa-file-invoice' style='font-size:20px;'>&nbsp;<span style="font-size: 25px;">Invoice</span style="font-size: 25px;"></i>&nbsp;
+          <ul class="breadcrumb">
+            <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+            <li><a href="/user/user_list">UserList</a></li>&nbsp; / &nbsp;
+            <li>Invoice Details</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <!-- Main content -->
+        <div class="invoice p-3 mb-3" id="divToPrint">
+          <!-- title row -->
+          <div class="row">
+            <div class="col-12">
+              <h4>
+                  <img src="/img/logo_new.png" alt=""  width="50px"   >
+                  Admin, My Soul Mate
+              </h4>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- info row -->
+          <div class="row invoice-info">
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+              <address>
+                <b style="font-size: 21px;"><%= data1.length > 0 ?  data1[0].billing_name : '' %>,</b><br>
+                  <%= data1.length > 0 ?  data1[0].billing_address : '' %>,<br>
+                  <%= data1.length > 0 ?  data1[0].billing_city : '' %>- <%= data1.length > 0 ?  data1[0].billing_zip : '' %>,<br>
+                  <%= data1.length > 0 ?  data1[0].billing_country : '' %>, <%= data1.length > 0 ?  data1[0].billing_state : '' %>,<br>
+                   Phone: &nbsp;<%= data1.length > 0 ?  data1[0].billing_tel : '' %>,<br>
+                   Email: &nbsp;<%= data1.length > 0 ?  data1[0].billing_email : '' %>
+              </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col" style="margin-left: 18vw;">
+              <b>Reference ID: </b>&nbsp; <%= data1.length > 0 ?  data1[0].tracking_id : '' %><br>
+              <b>Bank Ref ID: </b>&nbsp; <%= data1.length > 0 ?  data1[0].bank_ref_no : '' %><br>
+              <b>Invoice Date: </b>&nbsp; <%= data1.length > 0 ? data1[0].trans_rec_date.toLocaleString() : '' %><br>
+              <b>Order ID: </b>&nbsp; <%= data1.length > 0 ?  data1[0].order_id : '' %><br>
+              <b>Order Date:</b>&nbsp; <%= data1.length > 0 ? data1[0].tnx_date.toLocaleString() : '' %><br>
+              <b>Payment Mode: </b>&nbsp; <%= data1.length > 0 ?  data1[0].payment_mode : '' %><br>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <!-- Table row -->
+          <div class="row">
+            <div class="col-12 table-responsive">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Qty</th>
+                  <th>Product</th>
+                  <th>Tennure(In Month)</th>
+                  <th>Description</th>
+                  <th>Total</th>
+                </tr>
+                <tr>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><%= data1.length > 0 ?  data1[0].pack_name : '' %></td>
+                  <td><%= data1.length > 0 ?  data1[0].tennure_period : '' %></td>
+                  <td><%= data1.length > 0 ?  data1[0].pack_name : '' %></td>
+                  <td>₹<%= data1.length > 0 ?  data1[0].amount : '' %>.00</td>
+                </tr>
+                <tr>
+                  <td colspan="4"><b>Total QTY: &nbsp; 1</b></td>
+                  <td><b>Total Price: &nbsp; ₹<%= data1.length > 0 ?  data1[0].amount : '' %>.00</b><br>
+                      All values are in <%= data1.length > 0 ?  data1[0].currency : '' %></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row no-print">
+            <div class="col-12">
+              <!-- <a href="" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a> -->
+              <button class="btn btn-default" onclick="printDiv()"><i class="fas fa-print"></i> Print</button>
+              <button type="button"  class="btn btn-primary float-right" style="margin-right: 5px;" onclick="generatePdf('downloadFull', 'FullDownload')">
+                <i class="fas fa-download"></i> Generate PDF
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- /.invoice -->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+
+<script>
+  function printDiv() {
+
+      var divToPrint = document.getElementById('divToPrint');
+
+      var WindowObject = window.open('', 'Print-Window');
+      WindowObject.document.open();
+      WindowObject.document.writeln('<!DOCTYPE html>');
+      WindowObject.document.writeln('<html><head><title></title><style type="text/css">');
+
+
+      WindowObject.document.writeln('@media print { .center { text-align: center;}' +
+          '                                         .inline { display: inline; }' +
+          '                                         .underline { text-decoration: underline; }' +
+          '                                         .left { margin-left: 315px;} ' +
+          '                                         .right { margin-right: 375px; display: inline; }' +
+          '                                          table { border-collapse: collapse; font-size: 10px;}' +
+          '                                          th, td { border: 1px solid black; border-collapse: collapse; padding: 6px;}' +
+          '                                           th, td { }' +
+          '                                         .border { border: 1px solid black; } ' +
+          '                                         .bottom { bottom: 5px; width: 100%; position: fixed ' +
+          '                                       ' +
+          '                                   } } </style>');
+      WindowObject.document.writeln('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">');    
+      WindowObject.document.writeln('<link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">');    
+      WindowObject.document.writeln('<link rel="stylesheet" href="/css/adminlte.min.css">');    
+      WindowObject.document.writeln('</head><body onload="window.print()">');
+      WindowObject.document.writeln(divToPrint.innerHTML);
+      WindowObject.document.writeln('</body></html>');
+      WindowObject.document.close();
+      setTimeout(function () {
+          WindowObject.close();
+      }, 8);
+
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha512-a9NgEEK7tsCvABL7KqtUTQjl69z7091EVPpw5KxPlZ93T141ffe1woLtbXTX+r2/8TtTvRX/v4zTL2UlMUPgwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  function generatePdf(divId, title){
+      var divToPrint = document.getElementById(divId);
+      $.ajax({
+          method: "POST",
+          url: "/download_pdf",
+          data: { pdfDiv: divToPrint.innerHTML },
+          xhrFields: {
+              responseType: 'blob' // Receive response as a binary blob
+          },
+          beforeSend: function () {
+              $(".loader-wrapper").show();
+          },
+          success: function (data) {
+          // Create a Blob URL for the PDF
+              const pdfUrl = URL.createObjectURL(data);
+
+              // Create an anchor element for downloading the PDF
+              const a = document.createElement('a');
+              a.href = pdfUrl;
+              a.download = `${title}_${new Date().getTime()}.pdf`; // Set the desired filename
+              a.style.display = 'none';
+
+              // Append the anchor to the document body and trigger a click event
+              document.body.appendChild(a);
+              a.click();
+
+              // Cleanup: Remove the anchor and revoke the Blob URL
+              document.body.removeChild(a);
+              URL.revokeObjectURL(pdfUrl);
+          },
+          error: function (xhr, status, error) {
+              console.error('Error:', error);
+          },
+          complete: function () {
+              $(".loader-wrapper").hide();
+          }
+      })
+  }
+</script>
+

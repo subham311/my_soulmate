@@ -1,0 +1,55 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <i class='fas fa-pencil-alt' style='font-size:20px;'>&nbsp;&nbsp;<span style="font-size: 25px;">Discount Text</span style="font-size: 25px;"></i>&nbsp;
+            <ul class="breadcrumb">
+              <li><a href="/dashboard">Dashboard</a></li>&nbsp; / &nbsp;
+              <li>Discount Text</li>
+            </ul>
+          </div> 
+      </div>
+    </div>
+  </section>
+
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="row mt-3">
+                      <div class="col-12">
+                        <a href="/discount/add_text" class="btn btn-primary float-end" style="margin-left: 71vw; border-radius: 7px;">Add Text</a>
+                      </div>
+                    </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-striped example2">
+                    <thead>
+                    <tr>
+                      <th class="text-center">#</th>
+                      <th class="text-center">Text</th>
+                      <th class="text-center">Status</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>                     
+                        <% if(text_data.msg.length > 0){
+                            var i = 1
+                            text_data.msg.forEach(dt => { %>
+                          <tr>
+                            <td class="text-center"><%= i %></td>
+                            <td class="text-center"><%= dt.discount_text %></td>
+                            <td class="text-center"><span class="badge bg-success text-dark"><%= dt.active_flag == 'N' ? 'Deactive' : dt.active_flag == 'Y' ? 'Active' : '' %></span></td>
+                            <td class="text-center"><a class="btn btn-primary view-button" href="/discount/add_text?id=<%= dt.id %>"><i class='fas fa-eye'></i</a></td>
+                          </tr>
+                        <% i++; })
+                        } %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
